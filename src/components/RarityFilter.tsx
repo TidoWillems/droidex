@@ -1,0 +1,42 @@
+import type { Rarity } from '../data/droids'
+
+type RarityOrAll = Rarity | 'ALL'
+
+interface Props {
+  active: RarityOrAll
+  onChange: (r: RarityOrAll) => void
+}
+
+const OPTIONS: { value: RarityOrAll; label: string; color: string }[] = [
+  { value: 'ALL',       label: 'ALL',       color: '#6b7280' },
+  { value: 'COMMON',    label: 'COMMON',    color: '#9ca3af' },
+  { value: 'RARE',      label: 'RARE',      color: '#3b82f6' },
+  { value: 'EPIC',      label: 'EPIC',      color: '#a855f7' },
+  { value: 'LEGENDARY', label: 'LEGEND',    color: '#f59e0b' },
+  { value: 'MYTHIC',    label: 'MYTHIC',    color: '#ef4444' },
+]
+
+export function RarityFilter({ active, onChange }: Props) {
+  return (
+    <div className="flex flex-wrap gap-1.5 px-3 py-2 bg-zinc-950 border-b border-zinc-800">
+      {OPTIONS.map((opt) => {
+        const isActive = opt.value === active
+        return (
+          <button
+            key={opt.value}
+            onClick={() => onChange(opt.value)}
+            className="px-2.5 py-0.5 text-[10px] font-bold tracking-widest rounded-full border transition-all duration-100"
+            style={{
+              borderColor: opt.color,
+              color: isActive ? '#000' : opt.color,
+              backgroundColor: isActive ? opt.color : 'transparent',
+              boxShadow: isActive ? `0 0 8px ${opt.color}88` : 'none',
+            }}
+          >
+            {opt.label}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
