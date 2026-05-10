@@ -1,38 +1,40 @@
 import { useState } from 'react'
+import { Wrench, Satellite, Crosshair, type LucideIcon } from 'lucide-react'
 import type { DroidCard as DroidCardType } from '../data/droids'
 
 interface Props {
   card: DroidCardType
   collected: boolean
   onToggle: (id: string) => void
-  highlighted?: boolean // used by rebirth panel hover
+  highlighted?: boolean
 }
 
-const RARITY_COLORS: Record<string, string> = {
+const RARITY_COLOR: Record<string, string> = {
   COMMON:    '#9ca3af',
-  RARE:      '#3b82f6',
+  RARE:      '#2dd4bf',
   EPIC:      '#a855f7',
   LEGENDARY: '#f59e0b',
   MYTHIC:    '#ef4444',
 }
 
-const TYPE_CONFIG: Record<string, { bg: string; shape: string; label: string }> = {
-  WORKER:    { bg: 'from-amber-900/60 to-amber-950/80',   shape: 'polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)', label: '⚙' },
-  ASTROMECH: { bg: 'from-sky-900/60 to-sky-950/80',       shape: '50%',                                                        label: '◉' },
-  BATTLE:    { bg: 'from-red-900/60 to-red-950/80',       shape: 'polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%)',         label: '⚡' },
+const TYPE_BADGE: Record<string, { Icon: LucideIcon; bg: string }> = {
+  WORKER:    { Icon: Wrench,     bg: '#16a34a' },
+  ASTROMECH: { Icon: Satellite,  bg: '#2563eb' },
+  BATTLE:    { Icon: Crosshair,  bg: '#dc2626' },
 }
 
-const TIER_STYLES: Record<string, { border: string; badge: string; glow: string }> = {
-  DEFAULT:  { border: 'border-zinc-700',        badge: '',                                         glow: '' },
-  GOLD:     { border: 'border-amber-400',        badge: 'bg-amber-400 text-black',                  glow: '0 0 10px 2px rgba(251,191,36,0.5)' },
-  DIAMOND:  { border: 'border-sky-300',          badge: 'bg-sky-300 text-black',                    glow: '0 0 10px 2px rgba(147,220,255,0.5)' },
-  RAINBOW:  { border: 'border-transparent',      badge: 'text-white rainbow-badge',                 glow: '0 0 12px 3px rgba(168,85,247,0.5)' },
+const TIER_BORDER: Record<string, string> = {
+  DEFAULT: 'border-zinc-600',
+  GOLD:    'border-amber-400',
+  DIAMOND: 'border-sky-300',
+  RAINBOW: 'border-transparent',
 }
 
-function initials(name: string): string {
-  const parts = name.split(/[\s-]+/)
-  if (parts.length === 1) return name.slice(0, 2).toUpperCase()
-  return parts.map((p) => p[0]).join('').slice(0, 3).toUpperCase()
+const TIER_GLOW: Record<string, string> = {
+  DEFAULT: '',
+  GOLD:    '0 0 10px 2px rgba(251,191,36,0.4)',
+  DIAMOND: '0 0 10px 2px rgba(147,220,255,0.4)',
+  RAINBOW: '0 0 12px 3px rgba(168,85,247,0.4)',
 }
 
 function imgSrc(name: string, tier: string): string {
@@ -42,37 +44,40 @@ function imgSrc(name: string, tier: string): string {
 
 export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
   const { droid, tier, id } = card
-  const rarityColor = RARITY_COLORS[droid.rarity]
-  const typeConfig = TYPE_CONFIG[droid.type]
-  const tierStyle = TIER_STYLES[tier]
+  const rarityColor = RARITY_COLOR[droid.rarity]
+  const badge = TYPE_BADGE[droid.type]
   const isRainbow = tier === 'RAINBOW'
   const [imgFailed, setImgFailed] = useState(false)
 
+  const ringClass = highlighted
+    ? 'ring-2 ring-yellow-400 ring-inset'
+    : collected
+      ? 'ring-2 ring-cyan-400 ring-inset'
+      : ''
+
   return (
     <button
+      type="button"
       onClick={() => onToggle(id)}
       title={`${droid.name} (${tier}) — click to toggle`}
       className={[
-        'relative flex flex-col items-center rounded-lg border-2 transition-all duration-150 select-none',
-        'bg-zinc-900 hover:bg-zinc-800 active:scale-95 cursor-pointer overflow-hidden',
-        tierStyle.border,
-        collected ? 'ring-2 ring-cyan-400' : '',
-        highlighted ? 'ring-2 ring-yellow-400 ring-offset-1 ring-offset-black' : '',
+        'relative flex flex-col rounded-lg border-2 overflow-hidden',
+        'transition-all duration-150 select-none cursor-pointer',
+        'bg-zinc-900 hover:brightness-110 active:scale-95',
+        TIER_BORDER[tier],
+        ringClass,
       ].join(' ')}
       style={{
         boxShadow: collected
-          ? '0 0 10px 2px rgba(0,229,255,0.4)'
-          : (tierStyle.glow ? tierStyle.glow : undefined),
-        borderImage: isRainbow
-          ? 'linear-gradient(135deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6) 1'
+          ? '0 0 12px 2px rgba(0,229,255,0.45)'
+          : (TIER_GLOW[tier] || undefined),
+        background: isRainbow
+          ? 'linear-gradient(#18181b,#18181b) padding-box, linear-gradient(135deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6) border-box'
           : undefined,
       }}
     >
-      {/* Rarity top stripe */}
-      <div className="w-full h-1" style={{ backgroundColor: rarityColor }} />
-
-      {/* Droid image or fallback icon */}
-      <div className={`w-full flex-1 flex items-center justify-center bg-gradient-to-b ${typeConfig.bg} min-h-[6rem] overflow-hidden`}>
+      {/* Droid image */}
+      <div className="w-full flex-1 min-h-[6rem] overflow-hidden bg-zinc-800">
         {!imgFailed ? (
           <img
             src={imgSrc(droid.name, tier)}
@@ -82,44 +87,41 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
             draggable={false}
           />
         ) : (
-          <div
-            className="w-12 h-12 flex items-center justify-center text-2xl font-bold"
-            style={{
-              clipPath: typeConfig.shape === '50%' ? undefined : typeConfig.shape,
-              borderRadius: typeConfig.shape === '50%' ? '50%' : undefined,
-              backgroundColor: rarityColor + '33',
-              border: `1px solid ${rarityColor}66`,
-              color: rarityColor,
-            }}
-          >
-            {initials(droid.name)}
+          <div className="w-full h-full flex items-center justify-center" style={{ color: rarityColor }}>
+            <badge.Icon size={32} />
           </div>
         )}
       </div>
 
-      {/* Name + meta */}
-      <div className="w-full px-2 pb-2 pt-1 text-center">
-        <p className="text-white font-bold text-xs leading-tight truncate">{droid.name}</p>
-        <p className="text-zinc-500 text-[10px] uppercase tracking-wide">{droid.type}</p>
+      {/* Footer */}
+      <div className="w-full bg-black px-2 pt-1 pb-1.5">
+        <p className="text-white font-black italic leading-tight truncate text-sm">
+          {droid.name}
+        </p>
+        <span
+          className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide mt-0.5 inline-block"
+          style={{
+            color: rarityColor,
+            backgroundColor: rarityColor + '22',
+            border: `1px solid ${rarityColor}66`,
+          }}
+        >
+          {droid.rarity}
+        </span>
       </div>
 
-      {/* Tier badge (non-default) */}
-      {tier !== 'DEFAULT' && (
-        <div
-          className={[
-            'absolute top-2 right-2 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider',
-            tierStyle.badge,
-          ].join(' ')}
-          style={isRainbow ? { background: 'linear-gradient(135deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa)' } : undefined}
-        >
-          {tier[0]}
-        </div>
-      )}
+      {/* Type icon — top right */}
+      <div
+        className="absolute top-1.5 right-1.5 w-6 h-6 rounded-md flex items-center justify-center"
+        style={{ backgroundColor: badge.bg }}
+      >
+        <badge.Icon size={14} color="white" />
+      </div>
 
-      {/* Collected checkmark */}
+      {/* Collected checkmark — top left */}
       {collected && (
-        <div className="absolute top-1.5 left-2 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center">
-          <svg viewBox="0 0 10 10" className="w-3 h-3 text-black" fill="none" stroke="currentColor" strokeWidth="2">
+        <div className="absolute top-1.5 left-1.5 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center">
+          <svg viewBox="0 0 10 10" className="w-3 h-3 text-black" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M1.5 5l2.5 2.5 4.5-4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
@@ -128,7 +130,9 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
       {/* Event locked overlay */}
       {droid.eventLocked && (
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-          <span className="text-red-400 text-[11px] font-bold text-center leading-tight px-1">EVENT<br />LOCKED</span>
+          <span className="text-red-400 text-[10px] font-bold text-center leading-tight px-1">
+            EVENT<br />LOCKED
+          </span>
         </div>
       )}
     </button>

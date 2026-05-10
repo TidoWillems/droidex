@@ -24,7 +24,7 @@ const TIER_STYLE: Record<Tier, { active: string; inactive: string; label: string
   },
   RAINBOW: {
     label: 'RAINBOW',
-    active: 'rainbow-tab border-transparent',
+    active: 'rainbow-tab bg-purple-500/10 border-violet-400 shadow-[0_0_8px_rgba(168,85,247,0.4)]',
     inactive: 'rainbow-tab-dim border-transparent hover:opacity-80',
   },
 }
