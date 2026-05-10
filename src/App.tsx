@@ -1,19 +1,19 @@
-import { useState } from 'react'
-import type { Tier, Rarity } from './data/droids'
-import { useTracker } from './hooks/useTracker'
-import { Header } from './components/Header'
-import { TierTabs } from './components/TierTabs'
-import { RarityFilter } from './components/RarityFilter'
-import { DroidGrid } from './components/DroidGrid'
-import { RebirthPanel } from './components/RebirthPanel'
+import { useState } from 'react';
+import type { Tier, Rarity } from './data/droids';
+import { useTracker } from './hooks/useTracker';
+import { Header } from './components/Header';
+import { TierTabs } from './components/TierTabs';
+import { RarityFilter } from './components/RarityFilter';
+import { DroidGrid } from './components/DroidGrid';
+import { RebirthPanel } from './components/RebirthPanel';
 
-type RarityOrAll = Rarity | 'ALL'
+type RarityOrAll = Rarity | 'ALL';
 
 export default function App() {
-  const { collected, toggle, rebirthLevel, setRebirthLevel } = useTracker()
-  const [tier, setTier] = useState<Tier>('DEFAULT')
-  const [rarity, setRarity] = useState<RarityOrAll>('ALL')
-  const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set())
+  const { collected, toggle, rebirthLevel, setRebirthLevel } = useTracker();
+  const [tier, setTier] = useState<Tier>('DEFAULT');
+  const [rarity, setRarity] = useState<RarityOrAll>('ALL');
+  const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());
 
   return (
     <div className="min-h-screen bg-black flex flex-col font-mono">
@@ -42,6 +42,18 @@ export default function App() {
         onSetRebirth={setRebirthLevel}
         onHighlight={setHighlightedIds}
       />
+
+      <footer className="px-4 py-2 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
+        Project:{' '}
+        <a
+          href="https://github.com/erikpeik/droidex"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+        >
+          github.com/erikpeik/droidex
+        </a>
+      </footer>
     </div>
-  )
+  );
 }
