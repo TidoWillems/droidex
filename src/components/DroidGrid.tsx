@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ALL_CARDS, RARITY_ORDER } from '../data/droids'
+import { ALL_CARDS } from '../data/droids'
 import type { Tier, Rarity } from '../data/droids'
 import { DroidCard } from './DroidCard'
 
@@ -12,18 +12,11 @@ interface Props {
 }
 
 export function DroidGrid({ tier, rarity, collected, onToggle, highlightedIds }: Props) {
-  const cards = useMemo(() => {
-    const filtered = ALL_CARDS.filter(
+  const cards = useMemo(() =>
+    ALL_CARDS.filter(
       (c) => c.tier === tier && (rarity === 'ALL' || c.droid.rarity === rarity)
-    )
-    // Sort by rarity then name
-    filtered.sort((a, b) => {
-      const ri = RARITY_ORDER.indexOf(a.droid.rarity) - RARITY_ORDER.indexOf(b.droid.rarity)
-      if (ri !== 0) return ri
-      return a.droid.name.localeCompare(b.droid.name)
-    })
-    return filtered
-  }, [tier, rarity])
+    ),
+  [tier, rarity])
 
   if (cards.length === 0) {
     return (
@@ -34,7 +27,7 @@ export function DroidGrid({ tier, rarity, collected, onToggle, highlightedIds }:
   }
 
   return (
-    <div className="grid gap-2 p-3" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))' }}>
+    <div className="grid gap-3 p-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
       {cards.map((card) => (
         <DroidCard
           key={card.id}

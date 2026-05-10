@@ -72,7 +72,7 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
       <div className="w-full h-1" style={{ backgroundColor: rarityColor }} />
 
       {/* Droid image or fallback icon */}
-      <div className={`w-full flex-1 flex items-center justify-center bg-gradient-to-b ${typeConfig.bg} min-h-[4rem] overflow-hidden`}>
+      <div className={`w-full flex-1 flex items-center justify-center bg-gradient-to-b ${typeConfig.bg} min-h-[6rem] overflow-hidden`}>
         {!imgFailed ? (
           <img
             src={imgSrc(droid.name, tier)}
@@ -98,16 +98,16 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
       </div>
 
       {/* Name + meta */}
-      <div className="w-full px-1.5 pb-1.5 pt-1 text-center">
-        <p className="text-white font-bold text-[10px] leading-tight truncate">{droid.name}</p>
-        <p className="text-zinc-500 text-[8px] uppercase tracking-wide">{droid.type}</p>
+      <div className="w-full px-2 pb-2 pt-1 text-center">
+        <p className="text-white font-bold text-xs leading-tight truncate">{droid.name}</p>
+        <p className="text-zinc-500 text-[10px] uppercase tracking-wide">{droid.type}</p>
       </div>
 
       {/* Tier badge (non-default) */}
       {tier !== 'DEFAULT' && (
         <div
           className={[
-            'absolute top-2 right-1.5 text-[7px] font-bold px-1 py-0.5 rounded uppercase tracking-wider',
+            'absolute top-2 right-2 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider',
             tierStyle.badge,
           ].join(' ')}
           style={isRainbow ? { background: 'linear-gradient(135deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa)' } : undefined}
@@ -118,8 +118,8 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
 
       {/* Collected checkmark */}
       {collected && (
-        <div className="absolute top-1 left-1.5 w-4 h-4 rounded-full bg-cyan-400 flex items-center justify-center">
-          <svg viewBox="0 0 10 10" className="w-2.5 h-2.5 text-black" fill="none" stroke="currentColor" strokeWidth="2">
+        <div className="absolute top-1.5 left-2 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center">
+          <svg viewBox="0 0 10 10" className="w-3 h-3 text-black" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M1.5 5l2.5 2.5 4.5-4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
@@ -128,7 +128,7 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
       {/* Event locked overlay */}
       {droid.eventLocked && (
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-          <span className="text-red-400 text-[9px] font-bold text-center leading-tight px-1">EVENT<br />LOCKED</span>
+          <span className="text-red-400 text-[11px] font-bold text-center leading-tight px-1">EVENT<br />LOCKED</span>
         </div>
       )}
     </button>
