@@ -61,19 +61,17 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
       onClick={() => onToggle(id)}
       title={`${droid.name} (${tier}) — click to toggle`}
       className={[
-        'relative flex flex-col rounded-lg border-2 overflow-hidden',
+        'relative flex flex-col rounded-lg border-4 overflow-hidden',
         'transition-all duration-150 select-none cursor-pointer',
         'bg-zinc-900 hover:brightness-110 active:scale-95',
         TIER_BORDER[tier],
+        isRainbow ? 'rainbow-border-animated' : '',
         ringClass,
       ].join(' ')}
       style={{
         boxShadow: collected
           ? '0 0 12px 2px rgba(0,229,255,0.45)'
           : TIER_GLOW[tier] || undefined,
-        background: isRainbow
-          ? 'linear-gradient(#18181b,#18181b) padding-box, linear-gradient(135deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6) border-box'
-          : undefined,
       }}
     >
       {/* Droid image */}
