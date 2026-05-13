@@ -1,22 +1,20 @@
-import type { Rarity } from '../data/droids';
+import type { DroidType } from '../data/droids';
 
-type RarityOrAll = Rarity | 'ALL';
+type DroidTypeOrAll = DroidType | 'ALL';
 
 interface Props {
-  active: RarityOrAll;
-  onChange: (r: RarityOrAll) => void;
+  active: DroidTypeOrAll;
+  onChange: (c: DroidTypeOrAll) => void;
 }
 
-const OPTIONS: { value: RarityOrAll; label: string; color: string }[] = [
+const OPTIONS: { value: DroidTypeOrAll; label: string; color: string }[] = [
   { value: 'ALL',       label: 'ALL',       color: '#6b7280' },
-  { value: 'COMMON',    label: 'COMMON',    color: '#16a34a' },
-  { value: 'RARE',      label: 'RARE',      color: '#3b82f6' },
-  { value: 'EPIC',      label: 'EPIC',      color: '#a855f7' },
-  { value: 'LEGENDARY', label: 'LEGENDARY', color: '#f59e0b' },
-  { value: 'MYTHIC',    label: 'MYTHIC',    color: '#ef4444' },
+  { value: 'WORKER',    label: 'WORKER',    color: '#16a34a' },
+  { value: 'ASTROMECH', label: 'ASTROMECH', color: '#7c3aed' },
+  { value: 'BATTLE',    label: 'BATTLE',    color: '#dc2626' },
 ];
 
-export function RarityFilter({ active, onChange }: Props) {
+export function ClassFilter({ active, onChange }: Props) {
   return (
     <div className="flex flex-wrap gap-1.5">
       {OPTIONS.map((opt) => {

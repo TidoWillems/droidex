@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Wrench, Satellite, Crosshair, type LucideIcon } from 'lucide-react';
+import { Wrench, Satellite, Crosshair, RefreshCw, type LucideIcon } from 'lucide-react';
 import type { DroidCard as DroidCardType } from '../data/droids';
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
   collected: boolean;
   onToggle: (id: string) => void;
   highlighted?: boolean;
+  rebirthLevels?: number[];
 }
 
 const RARITY_COLOR: Record<string, string> = {
@@ -42,7 +43,7 @@ function imgSrc(name: string, tier: string): string {
   return `${import.meta.env.BASE_URL}droids/${safe}_${tier}.png`;
 }
 
-export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
+export function DroidCard({ card, collected, onToggle, highlighted, rebirthLevels }: Props) {
   const { droid, tier, id } = card;
   const rarityColor = RARITY_COLOR[droid.rarity];
   const badge = TYPE_BADGE[droid.type];
@@ -99,16 +100,26 @@ export function DroidCard({ card, collected, onToggle, highlighted }: Props) {
         <p className="text-white font-black italic leading-tight truncate text-sm">
           {droid.name}
         </p>
-        <span
-          className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide mt-0.5 inline-block"
-          style={{
-            color: rarityColor,
-            backgroundColor: rarityColor + '22',
-            border: `1px solid ${rarityColor}66`,
-          }}
-        >
-          {droid.rarity}
-        </span>
+        <div className="flex items-center gap-1 flex-wrap mt-0.5">
+          <span
+            className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block"
+            style={{
+              color: rarityColor,
+              backgroundColor: rarityColor + '22',
+              border: `1px solid ${rarityColor}66`,
+            }}
+          >
+            {droid.rarity}
+          </span>
+          {rebirthLevels && rebirthLevels.length > 0 && (
+            <span
+              className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block text-orange-400 bg-orange-500/15 border border-orange-500/40"
+              title={`Required for rebirth${rebirthLevels.length > 1 ? 's' : ''} ${rebirthLevels.join(', ')}`}
+            >
+              <RefreshCw size={8} className="inline-block mr-0.5 align-middle" />{rebirthLevels.join('·')}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Type icon — top right */}

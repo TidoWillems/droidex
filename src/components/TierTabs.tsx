@@ -1,12 +1,17 @@
-import type { Tier } from '../data/droids'
+import type { TierOrAll } from '../data/droids'
 import { TIER_ORDER } from '../data/droids'
 
 interface Props {
-  active: Tier
-  onChange: (tier: Tier) => void
+  active: TierOrAll
+  onChange: (tier: TierOrAll) => void
 }
 
-const TIER_STYLE: Record<Tier, { active: string; inactive: string; label: string }> = {
+const TIER_STYLE: Record<TierOrAll, { active: string; inactive: string; label: string }> = {
+  ALL: {
+    label: 'ALL',
+    active: 'bg-zinc-700 text-white border-zinc-500',
+    inactive: 'text-zinc-500 border-transparent hover:text-zinc-300',
+  },
   DEFAULT: {
     label: 'DEFAULT',
     active: 'bg-zinc-700 text-white border-zinc-500',
@@ -29,19 +34,24 @@ const TIER_STYLE: Record<Tier, { active: string; inactive: string; label: string
   },
 }
 
+const TIER_WITH_ALL: TierOrAll[] = ['ALL', ...TIER_ORDER]
+
 export function TierTabs({ active, onChange }: Props) {
   return (
-    <div className="flex gap-1 px-3 pt-3 pb-0">
-      {TIER_ORDER.map((tier) => {
+    <div className="flex gap-1 px-3 pt-3 border-b border-zinc-800">
+      {TIER_WITH_ALL.map((tier) => {
         const isActive = tier === active
         const style = TIER_STYLE[tier]
         return (
           <button
             key={tier}
+            type="button"
             onClick={() => onChange(tier)}
             className={[
               'px-3 py-1.5 text-xs font-bold tracking-widest rounded-t-md border-t border-x transition-all duration-150',
-              isActive ? style.active : style.inactive,
+              isActive
+                ? style.active + ' -mb-px border-b border-b-zinc-950'
+                : style.inactive,
             ].join(' ')}
           >
             {style.label}

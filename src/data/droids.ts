@@ -1,6 +1,7 @@
 export type Rarity = 'COMMON' | 'RARE' | 'EPIC' | 'LEGENDARY' | 'MYTHIC'
 export type DroidType = 'WORKER' | 'ASTROMECH' | 'BATTLE'
 export type Tier = 'DEFAULT' | 'GOLD' | 'DIAMOND' | 'RAINBOW'
+export type TierOrAll = Tier | 'ALL'
 
 export interface Droid {
   name: string
