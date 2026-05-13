@@ -2,6 +2,8 @@
 
 A web-based tracker for the **Fortnite Star Wars Droid Tycoon** game mode. Track which droids you've collected across all tiers, and plan your next rebirth.
 
+**Live site: [droidex.erikpeik.fi](https://droidex.erikpeik.fi/)**
+
 ## Features
 
 - **Droid grid** — all 202 known droids across DEFAULT / GOLD / DIAMOND / RAINBOW tiers
@@ -16,6 +18,10 @@ Droid list and rebirth requirements sourced from the community spreadsheet:
 <https://docs.google.com/spreadsheets/d/1otLCKSCMKICMlnefirQ8KZhh_rdZTd5Mp8h0UYFUiqg>
 
 > The in-game DROIDEX shows 209 total droids. 202 are currently documented in the spreadsheet; 7 may be unreleased or undocumented.
+
+## Contributing
+
+Found a bug or want to suggest a feature? Open an [issue](https://github.com/erikpeik/droidex/issues) or submit a [pull request](https://github.com/erikpeik/droidex/pulls) — contributions are welcome.
 
 ## Getting Started
 
