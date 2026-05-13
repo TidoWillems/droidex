@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Tier, Rarity } from './data/droids';
+import { useAuth } from './hooks/useAuth';
 import { useTracker } from './hooks/useTracker';
 import { Header } from './components/Header';
 import { TierTabs } from './components/TierTabs';
@@ -10,14 +11,30 @@ import { RebirthPanel } from './components/RebirthPanel';
 type RarityOrAll = Rarity | 'ALL';
 
 export default function App() {
-  const { collected, toggle, rebirthLevel, setRebirthLevel } = useTracker();
+  const { user, loading, signInWithGoogle, signOut } = useAuth();
+  const { collected, toggle, rebirthLevel, setRebirthLevel } = useTracker(user?.uid ?? null);
   const [tier, setTier] = useState<Tier>('DEFAULT');
   const [rarity, setRarity] = useState<RarityOrAll>('ALL');
   const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center font-mono">
+        <span className="text-cyan-400 text-lg tracking-widest animate-pulse glow-cyan">
+          DROIDEX
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-black flex flex-col font-mono">
-      <Header collected={collected} rebirthLevel={rebirthLevel} />
+      <Header
+        collected={collected}
+        rebirthLevel={rebirthLevel}
+        onSignIn={user ? undefined : signInWithGoogle}
+        onSignOut={user ? signOut : undefined}
+      />
 
       <div className="flex flex-col flex-1 overflow-hidden">
         <TierTabs active={tier} onChange={setTier} />
