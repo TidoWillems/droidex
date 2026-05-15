@@ -1,5 +1,7 @@
 self.addEventListener('install', () => {
-  console.log('Droidex SW installed')
+  self.skipWaiting()
 })
 
-self.addEventListener('fetch', () => {})
+self.addEventListener('activate', () => {
+  console.log('SW active')
+})
