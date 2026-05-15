@@ -7,21 +7,16 @@ import { SearchInput } from './components/SearchInput';           import { Droid
 type DroidTypeOrAll = DroidType | 'ALL';                          type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
 export default function App() {                                     
 
-// const { user, loading, signInWithGoogle, signOut } = useAuth();   
+// const { user, loading, signInWithGoogle, signOut } = useAuth();
 
-const OFFLINE_MODE = true;
+const user = null
+const loading = false
 
-// import { useAuth } from './hooks/useAuth';
-
-const user = OFFLINE_MODE ? null : null;
-const loading = false;
-
-const signInWithGoogle = async () => {};
-const signOut = async () => {};
+const signInWithGoogle = async () => {}
+const signOut = async () => {}
 
 const { collected, toggle, rebirthLevel, setRebirthLevel } =
-  useTracker(OFFLINE_MODE ? null : user?.uid ?? null);
-
+  useTracker(null)
 const [tier, setTier] = useState<TierOrAll>('DEFAULT');           
 const [rarity, setRarity] = useState<RarityOrAll>('ALL');         
 const [droidClass, setDroidClass] = useState<DroidTypeOrAll>('ALL');
