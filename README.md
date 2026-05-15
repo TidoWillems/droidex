@@ -1,6 +1,18 @@
 # DROIDEX
 
-A web-based tracker for the **Fortnite Star Wars Droid Tycoon** game mode. Track which droids you've collected across all tiers, and plan your next rebirth.
+Forked from: Erik Peik's Droidex tracker  
+Original project: https://github.com/erikpeik/droidex
+
+This fork focuses on:
+
+- Android + Termux compatibility
+- Offline-first usage
+- Local-first persistence
+- No account required
+- Mobile workflow support
+
+A web-based tracker for the **Fortnite Star Wars Droid Tycoon** game mode.
+Track which droids you've collected across all tiers and plan your next rebirth.
 
 **Live site: [droidex.erikpeik.fi](https://droidex.erikpeik.fi/)**
 
@@ -49,3 +61,15 @@ Then update `DroidCard.tsx` to render an `<img>` when the file exists.
 - Vite
 - Tailwind CSS v3
 - localStorage (no backend)
+
+
+## Fork Notes
+
+Changes in this fork:
+
+- Firebase authentication removed from default flow
+- Local storage prioritized
+- Improved Android / Termux workflow
+- Experimental mobile-first branch
+
+The original project and core concept remain Erik Peik's work.
