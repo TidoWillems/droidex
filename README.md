@@ -1,75 +1,101 @@
-# DROIDEX
+# DROIDEX Android Offline
 
-Forked from: Erik Peik's Droidex tracker  
-Original project: https://github.com/erikpeik/droidex
+Forked from Erik Peik's Droidex tracker:  
+https://github.com/erikpeik/droidex
 
-This fork focuses on:
+This fork transforms the original project into a:
 
-- Android + Termux compatibility
-- Offline-first usage
-- Local-first persistence
+- Android + Termux compatible experience
+- Offline-first app
+- Local-first tracker
 - No account required
-- Mobile workflow support
+- Mobile workflow friendly
+- Installable PWA (Progressive Web App)
 
-A web-based tracker for the **Fortnite Star Wars Droid Tycoon** game mode.
-Track which droids you've collected across all tiers and plan your next rebirth.
+Track your **Fortnite Star Wars Droid Tycoon** droids across all tiers and plan your next rebirth.
 
-**Live site: [droidex.erikpeik.fi](https://droidex.erikpeik.fi/)**
+## Live App
+
+https://tidowillems.github.io/droidex/
+
+## Install as Android App
+
+Droidex Android Offline can be installed directly from the browser.
+
+Android / Chrome:
+
+1. Open Droidex
+2. Tap browser menu (⋮)
+3. Select **Install App** or **Add to Home Screen**
+4. Droidex appears in the Android app drawer
+
+Installed version includes:
+
+- standalone app mode
+- splash screen
+- launcher icon
+- offline support
+- local save state
+- no browser UI
+
+No Play Store required.
 
 ## Features
 
-- **Droid grid** — all 202 known droids across DEFAULT / GOLD / DIAMOND / RAINBOW tiers
-- **Rarity filter** — filter by COMMON, RARE, EPIC, LEGENDARY, or MYTHIC
-- **Click to collect** — toggle droids as collected; cyan glow marks what you own
-- **Rebirth tracker** — shows credit cost and required droids for each rebirth level (0→20); highlights missing droids in the grid on hover
-- **Persistent state** — progress saves to localStorage; survives page refresh
+- Droid grid across DEFAULT / GOLD / DIAMOND / RAINBOW tiers
+- Rarity filtering
+- Collection tracking
+- Rebirth planning
+- localStorage persistence
+- Offline-first behavior
+- Installable Android PWA
 
 ## Data
 
-Droid list and rebirth requirements sourced from the community spreadsheet:
-<https://docs.google.com/spreadsheets/d/1otLCKSCMKICMlnefirQ8KZhh_rdZTd5Mp8h0UYFUiqg>
+Droid list and rebirth requirements sourced from community spreadsheet:
 
-> The in-game DROIDEX shows 209 total droids. 202 are currently documented in the spreadsheet; 7 may be unreleased or undocumented.
+https://docs.google.com/spreadsheets/d/1otLCKSCMKICMlnefirQ8KZhh_rdZTd5Mp8h0UYFUiqg
 
-## Contributing
-
-Found a bug or want to suggest a feature? Open an [issue](https://github.com/erikpeik/droidex/issues) or submit a [pull request](https://github.com/erikpeik/droidex/pulls) — contributions are welcome.
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
-```
-
-Open <http://localhost:5173>
-
-## Adding Droid Images
-
-Droid cards currently use styled placeholders (type-shaped icons with initials). To add real images, drop a PNG into `public/droids/` named after the droid ID:
-
-```
-public/droids/MOUSE_DEFAULT.png
-public/droids/R2_RAINBOW.png
-```
-
-Then update `DroidCard.tsx` to render an `<img>` when the file exists.
+> The in-game DROIDEX shows 209 total droids. 202 are currently documented.
 
 ## Tech Stack
 
-- React 18 + TypeScript
+- React 18
+- TypeScript
 - Vite
-- Tailwind CSS v3
-- localStorage (no backend)
+- TailwindCSS
+- localStorage
+- Service Worker
+- Web Manifest
+- GitHub Pages
 
+## Credits
 
-## Fork Notes
+Original concept and project:
+
+Erik Peik  
+https://github.com/erikpeik/droidex
 
 Changes in this fork:
 
-- Firebase authentication removed from default flow
-- Local storage prioritized
-- Improved Android / Termux workflow
-- Experimental mobile-first branch
+- Firebase removed from default flow
+- local-first persistence
+- Android PWA support
+- offline support
+- mobile workflow optimization
 
-The original project and core concept remain Erik Peik's work.
+## Fan Project Notice
+
+Droidex Android Offline is a fan-made project.
+
+This project is not affiliated with, endorsed,
+sponsored, or approved by Epic Games, Disney,
+or Lucasfilm Ltd.
+
+Fortnite is a trademark of Epic Games.
+
+Star Wars and related names are trademarks of
+Lucasfilm Ltd. / Disney.
+
+All game-related assets, names, and imagery
+belong to their respective owners.
