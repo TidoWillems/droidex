@@ -1,7 +1,6 @@
 import { useState } from 'react';                                 
 import { Routes, Route } from 'react-router-dom';
 import type { TierOrAll, DroidType, Rarity } from './data/droids';
-// import { useAuth } from './hooks/useAuth';
 import { useTracker } from './hooks/useTracker';
 import { Header } from './components/Header';                     
 import { TierTabs } from './components/TierTabs';                 
