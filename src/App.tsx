@@ -1,43 +1,37 @@
-import { useState } from 'react';                                 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';                                 
+import { Routes, Route } from 'react-router-dom';
 import type { TierOrAll, DroidType, Rarity } from './data/droids';
 // import { useAuth } from './hooks/useAuth';
 import { useTracker } from './hooks/useTracker';
-import { Header } from './components/Header';                     import { TierTabs } from './components/TierTabs';                 import { RarityFilter } from './components/RarityFilter';         import { ClassFilter } from './components/ClassFilter';           import { CollectionFilter } from './components/CollectionFilter';
-import { SearchInput } from './components/SearchInput';           import { DroidGrid } from './components/DroidGrid';               import { RebirthPanel } from './components/RebirthPanel';         import { RebirthsPage } from './components/RebirthsPage';                                                                           type RarityOrAll = Rarity | 'ALL';
-type DroidTypeOrAll = DroidType | 'ALL';                          type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
+import { Header } from './components/Header';                     
+import { TierTabs } from './components/TierTabs';                 
+import { RarityFilter } from './components/RarityFilter';         
+import { ClassFilter } from './components/ClassFilter';            
+import { CollectionFilter } from './components/CollectionFilter';
+import { SearchInput } from './components/SearchInput';           
+import { DroidGrid } from './components/DroidGrid';               
+import { RebirthPanel } from './components/RebirthPanel';         
+import { RebirthsPage } from './components/RebirthsPage';
+type RarityOrAll = Rarity | 'ALL';
+type DroidTypeOrAll = DroidType | 'ALL';                          
+type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
 export default function App() {                                     
-
-// const { user, loading, signInWithGoogle, signOut } = useAuth();
-
-const user = null
-const loading = false
-
-const signInWithGoogle = async () => {}
-const signOut = async () => {}
-
 const { collected, toggle, rebirthLevel, setRebirthLevel } =
   useTracker(null)
 const [tier, setTier] = useState<TierOrAll>('DEFAULT');           
 const [rarity, setRarity] = useState<RarityOrAll>('ALL');         
 const [droidClass, setDroidClass] = useState<DroidTypeOrAll>('ALL');
-                                                                
-const [collectionStatus, setCollectionStatus] = useState<CollectionStatus>('ALL');                                                  
-
+const [collectionStatus, setCollectionStatus] = useState<CollectionStatus>('ALL');
 const [search, setSearch] = useState('');
-
-const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());                                                       const [filtersOpen, setFiltersOpen] = useState(false);
-if (loading) {                                                      return (                                                            <div className="min-h-screen bg-black flex items-center justify-center font-mono">                                                    <span className="text-cyan-400 text-lg tracking-widest animate-pulse glow-cyan">                                                      DROIDEX
-</span>                                                         </div>
-);
-}
+const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());                                                       
+const [filtersOpen, setFiltersOpen] = useState(false);
 
 return (
 <div className="min-h-screen bg-black flex flex-col font-mono">
+
 <Header
-collected={collected}
-rebirthLevel={rebirthLevel}
-onSignIn={user ? undefined : signInWithGoogle}
-onSignOut={user ? signOut : undefined}
+  collected={collected}
+  rebirthLevel={rebirthLevel}
 />
 
 <Routes>  
@@ -128,17 +122,36 @@ onSignOut={user ? signOut : undefined}
     />  
   </Routes>  
 
-  <footer className="px-4 py-2 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">  
-    Project:{' '}  
-    <a  
-      href="https://github.com/erikpeik/droidex"  
-      target="_blank"  
-      rel="noopener noreferrer"  
-      className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"  
-    >  
-      github.com/erikpeik/droidex  
-    </a>  
-  </footer>  
+<footer className="px-4 py-2 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
+
+  <div>Droidex Android Offline Fork</div>
+
+  <div className="mt-1">
+    Original:
+    <a
+      href="https://github.com/erikpeik/droidex"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-cyan-400 ml-1"
+    >
+      erikpeik/droidex
+    </a>
+  </div>
+
+  <div className="mt-1">
+    Fork:
+    <a
+      href="https://github.com/TidoWillems/droidex"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-cyan-400 ml-1"
+    >
+      TidoWillems/droidex
+    </a>
+  </div>
+
+</footer>
+
 </div>
 
 );
