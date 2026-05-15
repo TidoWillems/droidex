@@ -1,4 +1,4 @@
-const CACHE = 'droidex-v1'
+const CACHE = 'droidex-v2'
 
 self.addEventListener('install', (event) => {
   self.skipWaiting()
@@ -14,7 +14,15 @@ self.addEventListener('install', (event) => {
 })
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim())
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys
+          .filter((key) => key !== CACHE)
+          .map((key) => caches.delete(key))
+      )
+    ).then(() => self.clients.claim())
+  )
 })
 
 self.addEventListener('fetch', (event) => {
