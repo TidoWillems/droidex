@@ -121,9 +121,11 @@ return (
     />  
   </Routes>  
 
-<footer className="px-4 py-2 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
+<footer className="px-4 py-3 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
 
-  <div>Droidex Android Offline Fork</div>
+  <div className="font-semibold">
+    Droidex Android Offline Fork
+  </div>
 
   <div className="mt-1">
     Original:
@@ -149,34 +151,34 @@ return (
     </a>
   </div>
 
-<div className="mt-4 pt-3 border-t border-zinc-800 text-[10px] leading-relaxed text-zinc-600">
+  <div className="mt-4 pt-3 border-t border-zinc-800 text-[10px] leading-relaxed text-zinc-600">
 
-  <div className="font-bold tracking-wider mb-1">
-    FAN PROJECT NOTICE
+    <div className="font-bold tracking-wider mb-2">
+      FAN PROJECT NOTICE
+    </div>
+
+    <p>
+      Droidex Android Offline is a fan-made project.
+    </p>
+
+    <p className="mt-2">
+      This project is not affiliated with,
+      endorsed, sponsored, or approved by
+      Epic Games, Disney, or Lucasfilm Ltd.
+    </p>
+
+    <p className="mt-2">
+      Fortnite is a trademark of Epic Games.
+      Star Wars and related names are trademarks
+      of Lucasfilm Ltd. / Disney.
+    </p>
+
+    <p className="mt-2">
+      All game-related assets, names, and imagery
+      belong to their respective owners.
+    </p>
+
   </div>
-
-  <div>
-    Droidex Android Offline is a fan-made project.
-  </div>
-
-  <div className="mt-2">
-    This project is not affiliated with,
-    endorsed, sponsored, or approved by
-    Epic Games, Disney, or Lucasfilm Ltd.
-  </div>
-
-  <div className="mt-2">
-    Fortnite is a trademark of Epic Games.
-    Star Wars and related names are
-    trademarks of Lucasfilm Ltd. / Disney.
-  </div>
-
-  <div className="mt-2">
-    All game-related assets, names, and
-    imagery belong to their respective owners.
-  </div>
-
-</div>
 
 </footer>
 
