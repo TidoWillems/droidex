@@ -72,12 +72,12 @@ export const DROIDS: Droid[] = [
   // LEGENDARY
   { name: 'PROTO-ROLLER',   rarity: 'LEGENDARY', type: 'WORKER',    tiers: ALL_TIERS },
   { name: 'MECHA-DROID',    rarity: 'LEGENDARY', type: 'WORKER',    tiers: ALL_TIERS },
-  { name: 'MONO-WALKER',    rarity: 'LEGENDARY', type: 'WORKER',    tiers: ALL_TIERS },
+  { name: 'MONO-WLKR', rarity: 'LEGENDARY', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'BB9',            rarity: 'LEGENDARY', type: 'ASTROMECH', tiers: ALL_TIERS },
   { name: 'R7',             rarity: 'LEGENDARY', type: 'ASTROMECH', tiers: ALL_TIERS },
   { name: 'B2-RP',          rarity: 'LEGENDARY', type: 'BATTLE',    tiers: ALL_TIERS },
   { name: 'CYCLO-GRAV',     rarity: 'LEGENDARY', type: 'BATTLE',    tiers: ALL_TIERS },
-  { name: 'OPTI-STRIKE',    rarity: 'LEGENDARY', type: 'BATTLE',    tiers: ALL_TIERS },
+  { name: 'OPTI-STRK', rarity: 'LEGENDARY', type: 'BATTLE', tiers: ALL_TIERS },
 
   // MYTHIC (event locked, DEFAULT only)
   { name: 'BB8',           rarity: 'MYTHIC',    type: 'ASTROMECH', tiers: DEFAULT_ONLY, eventLocked: true },

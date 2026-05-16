@@ -18,7 +18,6 @@ function req(tier: Tier, name: string): RebirthDroidReq {
 }
 
 // "Base" in the guide = DEFAULT tier
-// MONO-WLKR → MONO-WALKER, OPTI-STRK → OPTI-STRIKE
 export const REBIRTH_LEVELS: RebirthLevel[] = [
   {
     from: 0, to: 1,
@@ -73,12 +72,12 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
   {
     from: 10, to: 11,
     credits: '550M',
-    droids: [req('RAINBOW', 'AMP WALKER'), req('RAINBOW', 'B1 HEAVY'), req('DEFAULT', 'BB9')],
+    droids: [req('RAINBOW', 'AMP WLKR'), req('RAINBOW', 'B1 HEAVY'), req('DEFAULT', 'BB9')],
   },
   {
     from: 11, to: 12,
     credits: '1.36B',
-    droids: [req('GOLD', 'PROTO-ROLLER'), req('DEFAULT', 'MECHA-DROID'), req('DEFAULT', 'MONO-WALKER')],
+    droids: [req('GOLD', 'PROTO-ROLLER'), req('DEFAULT', 'MECHA-DROID'), req('DEFAULT', 'MONO-WLKR')],
   },
   {
     from: 12, to: 13,
@@ -88,7 +87,7 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
   {
     from: 13, to: 14,
     credits: '8.45B',
-    droids: [req('DEFAULT', 'OPTI-STRIKE'), req('GOLD', 'MONO-WALKER'), req('GOLD', 'MECHA-DROID')],
+    droids: [req('DEFAULT', 'OPTI-STRK'), req('GOLD', 'MONO-WLKR'), req('GOLD', 'MECHA-DROID')],
   },
   {
     from: 14, to: 15,
@@ -98,7 +97,7 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
   {
     from: 15, to: 16,
     credits: '52.00B',
-    droids: [req('GOLD', 'OPTI-STRIKE'), req('DIAMOND', 'MONO-WALKER'), req('DIAMOND', 'PROTO-ROLLER')],
+    droids: [req('GOLD', 'OPTI-STRK'), req('DIAMOND', 'MONO-WLKR'), req('DIAMOND', 'PROTO-ROLLER')],
   },
   {
     from: 16, to: 17,
@@ -108,7 +107,7 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
   {
     from: 17, to: 18,
     credits: '325.00B',
-    droids: [req('DIAMOND', 'BB9'), req('DIAMOND', 'R7'), req('RAINBOW', 'MONO-WALKER')],
+    droids: [req('DIAMOND', 'BB9'), req('DIAMOND', 'R7'), req('RAINBOW', 'MONO-WLKR')],
   },
   {
     from: 18, to: 19,
@@ -118,6 +117,6 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
   {
     from: 19, to: 20,
     credits: '2.00T',
-    droids: [req('RAINBOW', 'R7'), req('RAINBOW', 'OPTI-STRIKE'), req('RAINBOW', 'MECHA-DROID')],
+    droids: [req('RAINBOW', 'R7'), req('RAINBOW', 'OPTI-STRK'), req('RAINBOW', 'MECHA-DROID')],
   },
 ]
