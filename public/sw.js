@@ -1,34 +1,53 @@
-const CACHE = 'droidex-v3'
+const CACHE = 'droidex-v5';
 
 self.addEventListener('install', (event) => {
-  self.skipWaiting()
+
+  self.skipWaiting();
 
   event.waitUntil(
-    caches.open(CACHE).then((cache) => {
-      return cache.addAll([
-        '/droidex/',
-        '/droidex/manifest.webmanifest',
-      ])
-    })
-  )
-})
+    caches.open(CACHE)
+      .then((cache) =>
+        cache.addAll([
+          '/droidex/',
+          '/droidex/manifest.webmanifest',
+          '/droidex/icon-192.png',
+          '/droidex/icon-512.png'
+        ])
+      )
+  );
+});
 
 self.addEventListener('activate', (event) => {
+
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== CACHE)
-          .map((key) => caches.delete(key))
+
+    caches.keys()
+      .then(keys =>
+
+        Promise.all(
+          keys
+            .filter(key => key !== CACHE)
+            .map(key => caches.delete(key))
+        )
+
       )
-    ).then(() => self.clients.claim())
-  )
-})
+      .then(() => self.clients.claim())
+
+  );
+
+});
 
 self.addEventListener('fetch', (event) => {
+
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      return cached || fetch(event.request)
-    })
-  )
-})
+
+    caches.match(event.request)
+      .then((cached) => {
+
+        return cached || fetch(event.request);
+
+      })
+
+  );
+
+});

@@ -8,6 +8,25 @@ export function Footer() {
     install
   } = useInstallPrompt();
 
+  async function shareApp() {
+
+    if (navigator.share) {
+      await navigator.share({
+        title: 'Droidex Android Offline',
+        text: 'Track Fortnite Star Wars Droid collection progress.',
+        url: 'https://tinyurl.com/droidex-app'
+      });
+
+      return;
+    }
+
+    await navigator.clipboard.writeText(
+      'https://tinyurl.com/droidex-app'
+    );
+
+    alert('Link copied');
+  }
+
   return (
 
     <footer className="px-4 py-3 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
@@ -40,33 +59,73 @@ export function Footer() {
         </a>
       </div>
 
-      <div className="mt-3 flex flex-wrap justify-center gap-3 text-zinc-400">
+      <div className="mt-3 flex gap-2 overflow-x-auto pb-2 justify-center">
 
-      <Link to="/tips">
-        Tips
-      </Link>
+        <Link
+          to="/tips"
+          className="
+            px-3 py-1 rounded border text-[10px]
+            border-zinc-700 text-zinc-500
+            hover:border-cyan-400
+            hover:text-cyan-300
+            transition-all
+          "
+        >
+          TIPS
+        </Link>
 
-       <span>
-         Share
-      </span>
+        <Link
+          to="/about"
+          className="
+            px-3 py-1 rounded border text-[10px]
+            border-zinc-700 text-zinc-500
+            hover:border-cyan-400
+            hover:text-cyan-300
+            transition-all
+          "
+        >
+          ABOUT
+        </Link>
 
-      {canInstall && (
         <button
-          onClick={install}
-          className="text-cyan-400"
-      >
-          Install App
+          onClick={shareApp}
+          className="
+            px-3 py-1 rounded border text-[10px]
+            border-zinc-700 text-zinc-500
+            hover:border-cyan-400
+            hover:text-cyan-300
+            transition-all
+          "
+        >
+          SHARE
         </button>
-      )}
 
-      <a
-        href="https://tinyurl.com/droidex-app"
-        target="_blank"
-        rel="noreferrer"
-        className="text-cyan-400"
-      >
-        droidex-app
-      </a>
+        {canInstall && (
+          <button
+            onClick={install}
+            className="
+              px-3 py-1 rounded border text-[10px]
+              border-emerald-600
+              text-emerald-400
+              shadow-[0_0_12px_rgba(16,185,129,.2)]
+            "
+          >
+            INSTALL
+          </button>
+        )}
+
+        <a
+          href="https://tinyurl.com/droidex-app"
+          target="_blank"
+          rel="noreferrer"
+          className="
+            px-3 py-1 rounded border text-[10px]
+            border-cyan-500 text-cyan-300
+            shadow-[0_0_12px_rgba(34,211,238,.25)]
+          "
+        >
+          APP
+        </a>
 
       </div>
 

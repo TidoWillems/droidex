@@ -13,6 +13,7 @@ import { RebirthPanel } from './components/RebirthPanel';
 import { RebirthsPage } from './components/RebirthsPage';
 import { Footer } from './components/Footer';
 import { TipsPage } from './components/TipsPage';
+import { AboutPage } from './components/AboutPage';
 
 type RarityOrAll = Rarity | 'ALL';
 type DroidTypeOrAll = DroidType | 'ALL';                          
@@ -130,6 +131,10 @@ return (
       }  
     />
     <Route path="/tips" element={<TipsPage />} />  
+    <Route
+  path="/about"
+  element={<AboutPage />}
+/>
   </Routes>  
 <Footer />
 </div>
