@@ -11,12 +11,22 @@ import { SearchInput } from './components/SearchInput';
 import { DroidGrid } from './components/DroidGrid';               
 import { RebirthPanel } from './components/RebirthPanel';         
 import { RebirthsPage } from './components/RebirthsPage';
+import { Footer } from './components/Footer';
+import { TipsPage } from './components/TipsPage';
+
 type RarityOrAll = Rarity | 'ALL';
 type DroidTypeOrAll = DroidType | 'ALL';                          
 type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
+
 export default function App() {                                     
-const { collected, toggle, rebirthLevel, setRebirthLevel } =
-  useTracker(null)
+
+const {
+  collected,
+  toggle,
+  rebirthLevel,
+  setRebirthLevel,
+} = useTracker(null);
+
 const [tier, setTier] = useState<TierOrAll>('DEFAULT');           
 const [rarity, setRarity] = useState<RarityOrAll>('ALL');         
 const [droidClass, setDroidClass] = useState<DroidTypeOrAll>('ALL');
@@ -118,70 +128,10 @@ return (
           onSetRebirth={setRebirthLevel}  
         />  
       }  
-    />  
+    />
+    <Route path="/tips" element={<TipsPage />} />  
   </Routes>  
-
-<footer className="px-4 py-3 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
-
-  <div className="font-semibold">
-    Droidex Android Offline Fork
-  </div>
-
-  <div className="mt-1">
-    Original:
-    <a
-      href="https://github.com/erikpeik/droidex"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-cyan-400 ml-1"
-    >
-      erikpeik/droidex
-    </a>
-  </div>
-
-  <div className="mt-1">
-    Fork:
-    <a
-      href="https://github.com/TidoWillems/droidex"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-cyan-400 ml-1"
-    >
-      TidoWillems/droidex
-    </a>
-  </div>
-
-  <div className="mt-4 pt-3 border-t border-zinc-800 text-[10px] leading-relaxed text-zinc-600">
-
-    <div className="font-bold tracking-wider mb-2">
-      FAN PROJECT NOTICE
-    </div>
-
-    <p>
-      Droidex Android Offline is a fan-made project.
-    </p>
-
-    <p className="mt-2">
-      This project is not affiliated with,
-      endorsed, sponsored, or approved by
-      Epic Games, Disney, or Lucasfilm Ltd.
-    </p>
-
-    <p className="mt-2">
-      Fortnite is a trademark of Epic Games.
-      Star Wars and related names are trademarks
-      of Lucasfilm Ltd. / Disney.
-    </p>
-
-    <p className="mt-2">
-      All game-related assets, names, and imagery
-      belong to their respective owners.
-    </p>
-
-  </div>
-
-</footer>
-
+<Footer />
 </div>
 
 );
