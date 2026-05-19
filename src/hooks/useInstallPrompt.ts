@@ -4,27 +4,17 @@ export function useInstallPrompt() {
   const [promptEvent, setPromptEvent] = useState<any>(null);
 
   useEffect(() => {
-
-    const handler = (e:any) => {
+    const handler = (e: any) => {
       e.preventDefault();
       setPromptEvent(e);
     };
 
-    window.addEventListener(
-      'beforeinstallprompt',
-      handler
-    );
+    window.addEventListener('beforeinstallprompt', handler);
 
-    return () =>
-      window.removeEventListener(
-        'beforeinstallprompt',
-        handler
-      );
-
+    return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
   async function install() {
-
     if (!promptEvent) return;
 
     promptEvent.prompt();
@@ -36,6 +26,6 @@ export function useInstallPrompt() {
 
   return {
     canInstall: !!promptEvent,
-    install
+    install,
   };
 }

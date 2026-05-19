@@ -1,4 +1,1 @@
-export const LANGUAGE =
-  navigator.language.startsWith("de")
-    ? "de"
-    : "en";
+export const LANGUAGE = navigator.language.startsWith('de') ? 'de' : 'en';

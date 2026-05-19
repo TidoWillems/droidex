@@ -1,18 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
-import './index.css'
-import App from './App'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { HashRouter } from 'react-router-dom';
+import './index.css';
+import App from './App';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
       <App />
     </HashRouter>
-  </StrictMode>,
-)
+  </StrictMode>
+);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/droidex/sw.js')
-  })
+    navigator.serviceWorker.register('/droidex/sw.js');
+  });
 }

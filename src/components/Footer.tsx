@@ -2,38 +2,27 @@ import { Link } from 'react-router-dom';
 import { useInstallPrompt } from '../hooks/useInstallPrompt';
 
 export function Footer() {
-
-  const {
-    canInstall,
-    install
-  } = useInstallPrompt();
+  const { canInstall, install } = useInstallPrompt();
 
   async function shareApp() {
-
     if (navigator.share) {
       await navigator.share({
         title: 'Droidex Android Offline',
         text: 'Track Fortnite Star Wars Droid collection progress.',
-        url: 'https://tinyurl.com/droidex-app'
+        url: 'https://tinyurl.com/droidex-app',
       });
 
       return;
     }
 
-    await navigator.clipboard.writeText(
-      'https://tinyurl.com/droidex-app'
-    );
+    await navigator.clipboard.writeText('https://tinyurl.com/droidex-app');
 
     alert('Link copied');
   }
 
   return (
-
     <footer className="px-4 py-3 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
-
-      <div className="font-semibold">
-        Droidex Android Offline Fork
-      </div>
+      <div className="font-semibold">Droidex Android Offline Fork</div>
 
       <div className="mt-1">
         Original:
@@ -60,7 +49,6 @@ export function Footer() {
       </div>
 
       <div className="mt-3 flex gap-2 overflow-x-auto pb-2 justify-center">
-
         <Link
           to="/tips"
           className="
@@ -126,36 +114,28 @@ export function Footer() {
         >
           APP
         </a>
-
       </div>
 
       <div className="mt-4 pt-3 border-t border-zinc-800 text-[10px] leading-relaxed text-zinc-600">
-
-        <div className="font-bold tracking-wider mb-2">
-          FAN PROJECT NOTICE
-        </div>
+        <div className="font-bold tracking-wider mb-2">FAN PROJECT NOTICE</div>
 
         <p>Droidex Android Offline is a fan-made project.</p>
 
         <p className="mt-2">
-          This project is not affiliated with, endorsed,
-          sponsored, or approved by Epic Games,
-          Disney, or Lucasfilm Ltd.
+          This project is not affiliated with, endorsed, sponsored, or approved
+          by Epic Games, Disney, or Lucasfilm Ltd.
         </p>
 
         <p className="mt-2">
-          Fortnite is a trademark of Epic Games.
-          Star Wars and related names are trademarks
-          of Lucasfilm Ltd. / Disney.
+          Fortnite is a trademark of Epic Games. Star Wars and related names are
+          trademarks of Lucasfilm Ltd. / Disney.
         </p>
 
         <p className="mt-2">
-          All game-related assets, names, and imagery
-          belong to their respective owners.
+          All game-related assets, names, and imagery belong to their respective
+          owners.
         </p>
-
       </div>
-
     </footer>
   );
 }

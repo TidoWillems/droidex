@@ -8,21 +8,18 @@
   "background_color": "#000000",
   "theme_color": "#000000",
   "orientation": "portrait",
-  "categories": ["games","productivity"],
+  "categories": ["games", "productivity"],
   "id": "/droidex/",
   "lang": "en",
   "screenshots": [
-  {
-    "src": "/droidex/screenshot1.png",
-    "sizes": "1080x2400",
-    "type": "image/png"
-  }
+    {
+      "src": "/droidex/screenshot1.png",
+      "sizes": "1080x2400",
+      "type": "image/png"
+    }
   ],
 
-  "display_override": [
-    "window-controls-overlay",
-    "standalone"
-  ],
+  "display_override": ["window-controls-overlay", "standalone"],
 
   "icons": [
     {

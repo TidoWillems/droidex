@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { Wrench, Satellite, Crosshair, RefreshCw, type LucideIcon } from 'lucide-react';
+import {
+  Wrench,
+  Satellite,
+  Crosshair,
+  RefreshCw,
+  type LucideIcon,
+} from 'lucide-react';
 import type { DroidCard as DroidCardType } from '../data/droids';
 
 interface Props {
@@ -43,7 +49,13 @@ function imgSrc(name: string, tier: string): string {
   return `${import.meta.env.BASE_URL}droids/${safe}_${tier}.png`;
 }
 
-export function DroidCard({ card, collected, onToggle, highlighted, rebirthLevels }: Props) {
+export function DroidCard({
+  card,
+  collected,
+  onToggle,
+  highlighted,
+  rebirthLevels,
+}: Props) {
   const { droid, tier, id } = card;
   const rarityColor = RARITY_COLOR[droid.rarity];
   const badge = TYPE_BADGE[droid.type];
@@ -65,7 +77,9 @@ export function DroidCard({ card, collected, onToggle, highlighted, rebirthLevel
         'relative flex flex-col rounded-lg border-4 overflow-hidden',
         'transition-all duration-150 select-none cursor-pointer',
         'bg-zinc-900 active:scale-95 droid-card',
-        collected || highlighted ? 'hover:brightness-110' : 'opacity-40 hover:opacity-90',
+        collected || highlighted
+          ? 'hover:brightness-110'
+          : 'opacity-40 hover:opacity-90',
         TIER_BORDER[tier],
         isRainbow ? 'rainbow-border-animated' : '',
         ringClass,
@@ -116,7 +130,11 @@ export function DroidCard({ card, collected, onToggle, highlighted, rebirthLevel
               className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block text-orange-400 bg-orange-500/15 border border-orange-500/40"
               title={`Required for rebirth${rebirthLevels.length > 1 ? 's' : ''} ${rebirthLevels.join(', ')}`}
             >
-              <RefreshCw size={8} className="inline-block mr-0.5 align-middle" />{rebirthLevels.join('·')}
+              <RefreshCw
+                size={8}
+                className="inline-block mr-0.5 align-middle"
+              />
+              {rebirthLevels.join('·')}
             </span>
           )}
         </div>
@@ -159,7 +177,6 @@ export function DroidCard({ card, collected, onToggle, highlighted, rebirthLevel
           </span>
         </div>
       )}
-
     </button>
   );
 }

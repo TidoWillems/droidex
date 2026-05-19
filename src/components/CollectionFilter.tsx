@@ -6,8 +6,8 @@ interface Props {
 }
 
 const OPTIONS: { value: CollectionStatus; label: string; color: string }[] = [
-  { value: 'ALL',     label: 'ALL',     color: '#6b7280' },
-  { value: 'OWNED',   label: 'OWNED',   color: '#22d3ee' },
+  { value: 'ALL', label: 'ALL', color: '#6b7280' },
+  { value: 'OWNED', label: 'OWNED', color: '#22d3ee' },
   { value: 'MISSING', label: 'MISSING', color: '#f87171' },
 ];
 

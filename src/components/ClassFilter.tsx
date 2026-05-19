@@ -8,10 +8,10 @@ interface Props {
 }
 
 const OPTIONS: { value: DroidTypeOrAll; label: string; color: string }[] = [
-  { value: 'ALL',       label: 'ALL',       color: '#6b7280' },
-  { value: 'WORKER',    label: 'WORKER',    color: '#16a34a' },
+  { value: 'ALL', label: 'ALL', color: '#6b7280' },
+  { value: 'WORKER', label: 'WORKER', color: '#16a34a' },
   { value: 'ASTROMECH', label: 'ASTROMECH', color: '#7c3aed' },
-  { value: 'BATTLE',    label: 'BATTLE',    color: '#dc2626' },
+  { value: 'BATTLE', label: 'BATTLE', color: '#dc2626' },
 ];
 
 export function ClassFilter({ active, onChange }: Props) {

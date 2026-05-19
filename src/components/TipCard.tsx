@@ -1,20 +1,22 @@
 import { LANGUAGE } from '../data/language';
 
-type Localized = string | {
-  de:string;
-  en:string;
-};
+type Localized =
+  | string
+  | {
+      de: string;
+      en: string;
+    };
 
 type Tip = {
-  id:string;
+  id: string;
 
-  category:string;
-  priority:number;
+  category: string;
+  priority: number;
 
-  title:Localized;
-  text:Localized;
+  title: Localized;
+  text: Localized;
 
-  verified:boolean;
+  verified: boolean;
 };
 
 interface Props {
@@ -22,7 +24,7 @@ interface Props {
 }
 
 function t(value: Localized) {
-  if (typeof value === "string") {
+  if (typeof value === 'string') {
     return value;
   }
 
@@ -32,50 +34,42 @@ function t(value: Localized) {
 export function TipCard({ tip }: Props) {
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
-
       {/* Kopf */}
       <div className="flex items-start justify-between gap-3">
-
         <div>
           <div className="text-[10px] tracking-widest text-cyan-400 font-bold">
             [{tip.category}]
           </div>
 
-          <h3 className="text-white font-bold mt-1">
-	    {t(tip.title)}
-          </h3>
+          <h3 className="text-white font-bold mt-1">{t(tip.title)}</h3>
         </div>
 
         {/* Priorität */}
         <div
           className="text-yellow-400 text-xs shrink-0"
-          title={`Priority ${tip.priority}`}
+          title={`Importance ${tip.priority}/5`}
         >
           {'★'.repeat(tip.priority)}
         </div>
-
       </div>
 
       {/* Inhalt */}
       <p className="mt-3 text-sm text-zinc-300 leading-relaxed">
-       {t(tip.text)}
+        {t(tip.text)}
       </p>
 
       {/* Status */}
       <div className="mt-4 pt-3 border-t border-zinc-800">
-
         {tip.verified ? (
           <div className="text-green-400 text-xs font-semibold">
-	    ✓ VERIFIED
+            ✓ VERIFIED INFO
           </div>
         ) : (
           <div className="text-amber-400 text-xs font-semibold">
-	    ⚠ COMMUNITY DISCOVERY
+            ⚠ COMMUNITY FINDING
           </div>
         )}
-
       </div>
-
     </div>
   );
 }

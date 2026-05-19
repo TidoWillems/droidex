@@ -3,71 +3,58 @@ import { TIPS } from '../data/tips';
 import { TipCard } from './TipCard';
 
 export function TipsPage() {
-  const [filter, setFilter] = useState("ALL");
+  const [filter, setFilter] = useState('ALL');
 
   const filteredTips = TIPS.filter((tip) => {
-    if (filter === "ALL") return true;
-    if (filter === "VERIFIED") return tip.verified;
-    if(filter==="COMMUNITY") return !tip.verified;
+    if (filter === 'ALL') return true;
+    if (filter === 'VERIFIED') return tip.verified;
+    if (filter === 'COMMUNITY') return !tip.verified;
 
     return tip.category === filter;
   });
 
-  const sortedTips =
-    [...filteredTips].sort(
-      (a,b)=>b.priority-a.priority
-    );
+  const sortedTips = [...filteredTips].sort((a, b) => b.priority - a.priority);
 
   return (
     <div className="p-4 space-y-3">
-
-      <h1 className="text-white text-xl font-bold mb-1">
-        Droid Tips
-      </h1>
+      <h1 className="text-white text-xl font-bold mb-1">Droid Guide</h1>
 
       <p className="text-xs text-zinc-500 mb-4">
-        Community discoveries, progression tips and hidden mechanics.
+        Community findings, progression advice and hidden mechanics.
       </p>
 
       <div className="flex gap-2 overflow-x-auto pb-2">
-
-{[
-  "ALL",
-  "VERIFIED",
-  "COMMUNITY",
-  "DISCOVERY",
-  "EVENT",
-  "MISSION",
-  "TEAM",
-  "PROGRESSION"
-].map((item) => (
-
+        {[
+          'ALL',
+          'VERIFIED',
+          'COMMUNITY',
+          'DISCOVERY',
+          'EVENT',
+          'MISSION',
+          'TEAM',
+          'PROGRESSION',
+        ].map((item) => (
           <button
             key={item}
-            onClick={()=>setFilter(item)}
+            onClick={() => setFilter(item)}
             className={`
   	    px-3 py-1 rounded border text-[10px]
   	    whitespace-nowrap transition-all
   	    ${
-    	    filter===item
-      	    ? "border-cyan-400 text-cyan-300 shadow-[0_0_12px_rgba(34,211,238,.25)]"
-	      : "border-zinc-700 text-zinc-500"
-	  }
+          filter === item
+            ? 'border-cyan-400 text-cyan-300 shadow-[0_0_12px_rgba(34,211,238,.25)]'
+            : 'border-zinc-700 text-zinc-500'
+        }
 	`}
           >
             {item}
           </button>
-
         ))}
-
       </div>
 
-	{sortedTips.map((tip) => (
-	  <TipCard
-	    key={tip.id}
-	    tip={tip}
-	  />
-	))}
+      {sortedTips.map((tip) => (
+        <TipCard key={tip.id} tip={tip} />
+      ))}
     </div>
   );
 }
