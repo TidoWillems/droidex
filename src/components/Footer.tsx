@@ -5,19 +5,25 @@ export function Footer() {
   const { canInstall, install } = useInstallPrompt();
 
   async function shareApp() {
+    const url = 'https://tinyurl.com/droidex-app';
+
     if (navigator.share) {
       await navigator.share({
         title: 'Droidex Android Offline',
         text: 'Track Fortnite Star Wars Droid collection progress.',
-        url: 'https://tinyurl.com/droidex-app',
+        url,
       });
 
       return;
     }
 
-    await navigator.clipboard.writeText('https://tinyurl.com/droidex-app');
+    try {
+      await navigator.clipboard.writeText(url);
 
-    alert('Link copied');
+      alert('Link copied');
+    } catch {
+      window.prompt('Copy link:', url);
+    }
   }
 
   return (
@@ -30,7 +36,7 @@ export function Footer() {
           href="https://github.com/erikpeik/droidex"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-cyan-400 ml-1"
+          className="text-cyan-300 ml-1 hover:text-cyan-100 transition-colors"
         >
           erikpeik/droidex
         </a>
@@ -42,7 +48,7 @@ export function Footer() {
           href="https://github.com/TidoWillems/droidex"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-cyan-400 ml-1"
+          className="text-cyan-300 ml-1 hover:text-cyan-100 transition-colors"
         >
           TidoWillems/droidex
         </a>

@@ -214,4 +214,21 @@ export const TIPS = [
 
     verified: true,
   },
+  {
+    id: 'pickaxe_companion',
+    category: 'PROGRESSION',
+    priority: 4,
+
+    title: {
+      de: 'Spitzhacken-Bonus nutzen',
+      en: 'Use Pickaxe Bonuses',
+    },
+
+    text: {
+      de: 'Einige Begleiter scheinen Boni zu geben, die den Fortschritt an der Spitzhacke beschleunigen. Das kann den Droid-Bau spürbar verkürzen.',
+      en: 'Some companions appear to provide bonuses that speed up pickaxe-related progress. This can noticeably reduce droid build time.',
+    },
+
+    verified: true,
+  },
 ];

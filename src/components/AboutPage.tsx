@@ -1,20 +1,19 @@
+import { GUIDE } from '../data/guide';
+import { UI } from '../data/ui';
+import { t } from '../lib/t';
+
 export function AboutPage() {
   return (
     <div className="p-4 space-y-4">
       <div>
-        <h1 className="text-white text-xl font-bold">
-          Droidex Android Offline
-        </h1>
+        <h1 className="text-white text-xl font-bold">{t(UI.aboutTitle)}</h1>
 
-        <p className="text-zinc-500 text-sm mt-2">
-          Collection tracker and companion for Fortnite Star Wars Droid
-          collection progress.
-        </p>
+        <p className="text-zinc-500 text-sm mt-2">{t(UI.aboutText)}</p>
       </div>
 
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
         <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
-          FEATURES
+          {t(UI.features)}
         </div>
 
         <ul className="mt-3 text-sm text-zinc-300 space-y-2">
@@ -27,7 +26,25 @@ export function AboutPage() {
 
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
         <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
-          BUILT WITH
+          APP GUIDE
+        </div>
+
+        <div className="mt-3 space-y-3">
+          {GUIDE.map((item) => (
+            <div key={item.id}>
+              <div className="text-cyan-300 text-sm font-medium">
+                {t(item.title)}
+              </div>
+
+              <div className="text-sm text-zinc-300">{t(item.text)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
+        <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
+          {t(UI.builtWith)}
         </div>
 
         <div className="mt-3 text-sm text-zinc-300 space-y-1">
@@ -40,7 +57,7 @@ export function AboutPage() {
 
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
         <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
-          SPECIAL TOOLS
+          {t(UI.specialTools)}
         </div>
 
         <p className="mt-3 text-sm text-zinc-300">
@@ -50,7 +67,7 @@ export function AboutPage() {
 
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
         <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
-          FORK
+          {t(UI.fork)}
         </div>
 
         <a
@@ -59,7 +76,7 @@ export function AboutPage() {
           rel="noreferrer"
           className="text-cyan-400 text-sm"
         >
-          View source on GitHub →
+          {t(UI.github)}
         </a>
       </div>
     </div>

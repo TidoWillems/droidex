@@ -13,4 +13,19 @@ export const GUIDE = [
       en: 'Droidex can be installed and used offline.',
     },
   },
+
+  {
+    id: 'share',
+    category: 'APP',
+
+    title: {
+      de: 'Teilen',
+      en: 'Share',
+    },
+
+    text: {
+      de: 'Versende Droidex direkt über den Share-Button.',
+      en: 'Send Droidex directly through the share button.',
+    },
+  },
 ];

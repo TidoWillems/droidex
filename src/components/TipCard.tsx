@@ -1,11 +1,4 @@
-import { LANGUAGE } from '../data/language';
-
-type Localized =
-  | string
-  | {
-      de: string;
-      en: string;
-    };
+import { t } from '../lib/t';
 
 type Tip = {
   id: string;
@@ -13,22 +6,21 @@ type Tip = {
   category: string;
   priority: number;
 
-  title: Localized;
-  text: Localized;
+  title: {
+    de: string;
+    en: string;
+  };
+
+  text: {
+    de: string;
+    en: string;
+  };
 
   verified: boolean;
 };
 
 interface Props {
   tip: Tip;
-}
-
-function t(value: Localized) {
-  if (typeof value === 'string') {
-    return value;
-  }
-
-  return value[LANGUAGE];
 }
 
 export function TipCard({ tip }: Props) {
