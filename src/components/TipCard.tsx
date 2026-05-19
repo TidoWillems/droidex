@@ -1,13 +1,32 @@
+import { LANGUAGE } from '../data/language';
+
+type Localized = string | {
+  de:string;
+  en:string;
+};
+
 type Tip = {
-  category: string;
-  priority: number;
-  title: string;
-  text: string;
-  verified: boolean;
+  id:string;
+
+  category:string;
+  priority:number;
+
+  title:Localized;
+  text:Localized;
+
+  verified:boolean;
 };
 
 interface Props {
   tip: Tip;
+}
+
+function t(value: Localized) {
+  if (typeof value === "string") {
+    return value;
+  }
+
+  return value[LANGUAGE];
 }
 
 export function TipCard({ tip }: Props) {
@@ -23,7 +42,7 @@ export function TipCard({ tip }: Props) {
           </div>
 
           <h3 className="text-white font-bold mt-1">
-            {tip.title}
+	    {t(tip.title)}
           </h3>
         </div>
 
@@ -39,7 +58,7 @@ export function TipCard({ tip }: Props) {
 
       {/* Inhalt */}
       <p className="mt-3 text-sm text-zinc-300 leading-relaxed">
-        {tip.text}
+       {t(tip.text)}
       </p>
 
       {/* Status */}

@@ -4,6 +4,10 @@ node_modules/
 # Build output
 dist/
 dist-ssr/
+droidex_images/
+*.zip
+scripts/debug_crops/*.png
+*.tsbuildinfo
 
 # Vite
 *.local
@@ -32,4 +36,3 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
-tsconfig.tsbuildinfo

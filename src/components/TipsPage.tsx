@@ -8,7 +8,7 @@ export function TipsPage() {
   const filteredTips = TIPS.filter((tip) => {
     if (filter === "ALL") return true;
     if (filter === "VERIFIED") return tip.verified;
-    if (filter === "DISCOVERY") return !tip.verified;
+    if(filter==="COMMUNITY") return !tip.verified;
 
     return tip.category === filter;
   });
@@ -31,13 +31,16 @@ export function TipsPage() {
 
       <div className="flex gap-2 overflow-x-auto pb-2">
 
-        {[
-          "ALL",
-          "VERIFIED",
-          "DISCOVERY",
-          "EVENT",
-          "MISSION"
-        ].map(item => (
+{[
+  "ALL",
+  "VERIFIED",
+  "COMMUNITY",
+  "DISCOVERY",
+  "EVENT",
+  "MISSION",
+  "TEAM",
+  "PROGRESSION"
+].map((item) => (
 
           <button
             key={item}
@@ -59,13 +62,12 @@ export function TipsPage() {
 
       </div>
 
-      {sortedTips.map((tip)=>(
-        <TipCard
-          key={tip.title}
-          tip={tip}
-        />
-      ))}
-
+	{sortedTips.map((tip) => (
+	  <TipCard
+	    key={tip.id}
+	    tip={tip}
+	  />
+	))}
     </div>
   );
 }
