@@ -98,7 +98,7 @@ export function RebirthPanel({
             <span className="text-zinc-500 text-xs flex items-center gap-0.5">
               <span className="text-orange-700">→</span>
               <span>
-                Rebirth{' '}
+                {t(UI.rebirth)}{' '}
                 <span className="text-zinc-300 font-bold">
                   {nextRebirth.to}
                 </span>
@@ -106,7 +106,7 @@ export function RebirthPanel({
             </span>
           ) : (
             <span className="text-yellow-400 text-xs font-bold tracking-wide">
-              MAX REBIRTH
+              {t(UI.max)}
             </span>
           )}
         </div>
@@ -165,7 +165,7 @@ export function RebirthPanel({
                   </span>
                 </div>
                 <span className="text-zinc-400 text-[10px] font-bold w-[88px] text-center truncate">
-                  Credits
+                  {t(UI.credits)}
                 </span>
               </div>
 

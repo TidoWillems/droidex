@@ -199,4 +199,33 @@ export const UI = {
     de: '★ MAX REBIRTH ERREICHT ★',
     en: '★ MAX REBIRTH REACHED ★',
   },
+  appGuide: {
+    de: 'APP HILFE',
+    en: 'APP GUIDE',
+  },
+
+  feature1: {
+    de: '✓ Sammlung verfolgen',
+    en: '✓ Track collection progress',
+  },
+
+  feature2: {
+    de: '✓ Rebirth-Planung verwalten',
+    en: '✓ Manage rebirth planning',
+  },
+
+  feature3: {
+    de: '✓ Als Offline-PWA installierbar',
+    en: '✓ Install as offline PWA',
+  },
+
+  feature4: {
+    de: '✓ Community-Tipps und Entdeckungen',
+    en: '✓ Community tips and discoveries',
+  },
+
+  thumbnailTool: {
+    de: 'Screenshot-Zuschneidepipeline für Droid-Vorschaubilder.',
+    en: 'Screenshot crop extraction pipeline for Droid thumbnails.',
+  },
 };

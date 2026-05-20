@@ -11,19 +11,15 @@ export function AboutPage() {
         <p className="text-zinc-500 text-sm mt-2">{t(UI.aboutText)}</p>
       </div>
 
-      <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
-        <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
-          {t(UI.features)}
-        </div>
-
-        <ul className="mt-3 text-sm text-zinc-300 space-y-2">
-          <li>✓ Track collection progress</li>
-          <li>✓ Manage rebirth planning</li>
-          <li>✓ Install as offline PWA</li>
-          <li>✓ Community tips and discoveries</li>
-        </ul>
+      <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
+        {t(UI.appGuide)}
       </div>
-
+      <ul className="mt-3 text-sm text-zinc-300 space-y-2">
+        <li>{t(UI.feature1)}</li>
+        <li>{t(UI.feature2)}</li>
+        <li>{t(UI.feature3)}</li>
+        <li>{t(UI.feature4)}</li>
+      </ul>
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
         <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
           APP GUIDE
@@ -59,10 +55,7 @@ export function AboutPage() {
         <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
           {t(UI.specialTools)}
         </div>
-
-        <p className="mt-3 text-sm text-zinc-300">
-          Screenshot crop extraction pipeline for Droid thumbnails.
-        </p>
+        <p className="mt-3 text-sm text-zinc-300">{t(UI.thumbnailTool)}</p>
       </div>
 
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
