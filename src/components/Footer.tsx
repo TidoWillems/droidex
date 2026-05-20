@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useInstallPrompt } from '../hooks/useInstallPrompt';
+import { UI } from '../data/ui';
+import { t } from '../lib/t';
 
 export function Footer() {
   const { canInstall, install } = useInstallPrompt();
@@ -20,9 +22,9 @@ export function Footer() {
     try {
       await navigator.clipboard.writeText(url);
 
-      alert('Link copied');
+      alert(t(UI.copied));
     } catch {
-      window.prompt('Copy link:', url);
+      window.prompt(t(UI.copied), url);
     }
   }
 
@@ -31,7 +33,7 @@ export function Footer() {
       <div className="font-semibold">Droidex Android Offline Fork</div>
 
       <div className="mt-1">
-        Original:
+        {t(UI.footerOriginal)}:
         <a
           href="https://github.com/erikpeik/droidex"
           target="_blank"
@@ -43,7 +45,7 @@ export function Footer() {
       </div>
 
       <div className="mt-1">
-        Fork:
+        {t(UI.footerFork)}:
         <a
           href="https://github.com/TidoWillems/droidex"
           target="_blank"
@@ -65,7 +67,7 @@ export function Footer() {
             transition-all
           "
         >
-          TIPS
+          {t(UI.footerTips)}
         </Link>
 
         <Link
@@ -78,7 +80,7 @@ export function Footer() {
             transition-all
           "
         >
-          ABOUT
+          {t(UI.footerAbout)}
         </Link>
 
         <button
@@ -91,7 +93,7 @@ export function Footer() {
             transition-all
           "
         >
-          SHARE
+          {t(UI.footerShare)}
         </button>
 
         {canInstall && (
@@ -104,7 +106,7 @@ export function Footer() {
               shadow-[0_0_12px_rgba(16,185,129,.2)]
             "
           >
-            INSTALL
+            {t(UI.footerInstall)}
           </button>
         )}
 
@@ -118,29 +120,18 @@ export function Footer() {
             shadow-[0_0_12px_rgba(34,211,238,.25)]
           "
         >
-          APP
+          {t(UI.footerApp)}
         </a>
       </div>
-
       <div className="mt-4 pt-3 border-t border-zinc-800 text-[10px] leading-relaxed text-zinc-600">
-        <div className="font-bold tracking-wider mb-2">FAN PROJECT NOTICE</div>
+        <div className="font-bold tracking-wider mb-2">{t(UI.fanProject)}</div>
+        <p>{t(UI.fanText1)}</p>
 
-        <p>Droidex Android Offline is a fan-made project.</p>
+        <p className="mt-2">{t(UI.fanText2)}</p>
 
-        <p className="mt-2">
-          This project is not affiliated with, endorsed, sponsored, or approved
-          by Epic Games, Disney, or Lucasfilm Ltd.
-        </p>
+        <p className="mt-2">{t(UI.fanText3)}</p>
 
-        <p className="mt-2">
-          Fortnite is a trademark of Epic Games. Star Wars and related names are
-          trademarks of Lucasfilm Ltd. / Disney.
-        </p>
-
-        <p className="mt-2">
-          All game-related assets, names, and imagery belong to their respective
-          owners.
-        </p>
+        <p className="mt-2">{t(UI.fanText4)}</p>
       </div>
     </footer>
   );

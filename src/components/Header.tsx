@@ -1,5 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { ALL_CARDS, TOTAL_DROIDS } from '../data/droids';
+import { UI } from '../data/ui';
+import { t } from '../lib/t';
 
 interface Props {
   collected: Set<string>;
@@ -27,7 +29,9 @@ export function Header({ collected, rebirthLevel }: Props) {
           />
         </div>
 
-        <p className="text-zinc-600 text-[10px] mt-0.5">{pct}% complete</p>
+        <p className="text-zinc-600 text-[10px] mt-0.5">
+          {pct}% {t(UI.complete)}
+        </p>
       </div>
 
       <NavLink
@@ -41,10 +45,13 @@ export function Header({ collected, rebirthLevel }: Props) {
           }`
         }
       >
-        <span className="text-xs uppercase tracking-wide">Collected</span>
+        <span className="text-xs uppercase tracking-wide">
+          {t(UI.collected)}
+        </span>
 
         <span className="font-bold text-lg leading-none">
           {collectedCount}
+
           <span className="text-[10px] font-normal opacity-60">
             /{TOTAL_DROIDS}
           </span>
@@ -61,17 +68,20 @@ export function Header({ collected, rebirthLevel }: Props) {
           }`
         }
       >
-        <span className="text-xs uppercase tracking-wide">Rebirth</span>
+        <span className="text-xs uppercase tracking-wide">{t(UI.rebirth)}</span>
 
         <span className="font-bold text-lg leading-none">{rebirthLevel}</span>
 
         {rebirthLevel >= 20 && (
-          <span className="text-yellow-400 text-xs font-bold ml-1">MAX</span>
+          <span className="text-yellow-400 text-xs font-bold ml-1">
+            {t(UI.max)}
+          </span>
         )}
       </NavLink>
 
       <div className="shrink-0 text-[10px] text-zinc-600 hidden sm:block">
-        {knownTotal} tracked · {TOTAL_DROIDS - knownTotal} TBD
+        {knownTotal} {t(UI.tracked)} · {TOTAL_DROIDS - knownTotal}{' '}
+        {t(UI.unknown)}
       </div>
     </header>
   );

@@ -1,3 +1,5 @@
+import { UI } from '../data/ui';
+import { t } from '../lib/t';
 import { useMemo, useState } from 'react';
 import { REBIRTH_LEVELS } from '../data/rebirths';
 
@@ -65,7 +67,7 @@ export function RebirthPanel({
       >
         <div className="flex items-center gap-3">
           <span className="glow-orange text-orange-400 font-bold text-sm tracking-widest uppercase">
-            REBIRTH
+            {t(UI.rebirth)}
           </span>
           <div className="flex items-center gap-1.5">
             <button
@@ -112,12 +114,12 @@ export function RebirthPanel({
           {nextRebirth &&
             (allMet ? (
               <span className="glow-green text-xs font-bold text-green-400">
-                ✓ READY
+                {t(UI.ready)}
               </span>
             ) : (
               <div className="flex flex-col items-end gap-0.5">
                 <span className="text-xs font-bold text-red-400">
-                  {ownedCount}/{nextRebirth.droids.length} droids
+                  {ownedCount}/{nextRebirth.droids.length} {t(UI.droids)}
                 </span>
                 <div className="flex gap-0.5">
                   {Array.from({ length: nextRebirth.droids.length }, (_, i) => (
@@ -139,7 +141,7 @@ export function RebirthPanel({
           <div className="flex items-center gap-3 mb-3">
             <div className="need-divider-left flex-1 h-px" />
             <span className="need-label text-[10px] font-black tracking-[0.3em] uppercase">
-              NEED
+              {t(UI.need)}
             </span>
             <div className="need-divider-right flex-1 h-px" />
           </div>
@@ -159,7 +161,7 @@ export function RebirthPanel({
                     {nextRebirth.credits}
                   </span>
                   <span className="text-amber-600 text-[8px] uppercase tracking-widest relative z-10">
-                    credits
+                    {t(UI.credits)}
                   </span>
                 </div>
                 <span className="text-zinc-400 text-[10px] font-bold w-[88px] text-center truncate">
@@ -275,7 +277,7 @@ export function RebirthPanel({
       {open && !nextRebirth && (
         <div className="px-4 pb-4 pt-2 text-center">
           <span className="glow-yellow text-yellow-400 font-black text-sm tracking-widest uppercase">
-            ★ MAX REBIRTH REACHED ★
+            {t(UI.maxRebirth)}
           </span>
         </div>
       )}

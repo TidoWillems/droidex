@@ -1,4 +1,6 @@
 import type { Rarity } from '../data/droids';
+import { UI } from '../data/ui';
+import { t } from '../lib/t';
 
 type RarityOrAll = Rarity | 'ALL';
 
@@ -7,8 +9,12 @@ interface Props {
   onChange: (r: RarityOrAll) => void;
 }
 
-const OPTIONS: { value: RarityOrAll; label: string; color: string }[] = [
-  { value: 'ALL', label: 'ALL', color: '#6b7280' },
+const OPTIONS: {
+  value: RarityOrAll;
+  label: string;
+  color: string;
+}[] = [
+  { value: 'ALL', label: t(UI.all), color: '#6b7280' },
   { value: 'COMMON', label: 'COMMON', color: '#16a34a' },
   { value: 'RARE', label: 'RARE', color: '#3b82f6' },
   { value: 'EPIC', label: 'EPIC', color: '#a855f7' },

@@ -1,4 +1,6 @@
 import type { DroidType } from '../data/droids';
+import { UI } from '../data/ui';
+import { t } from '../lib/t';
 
 type DroidTypeOrAll = DroidType | 'ALL';
 
@@ -7,11 +9,15 @@ interface Props {
   onChange: (c: DroidTypeOrAll) => void;
 }
 
-const OPTIONS: { value: DroidTypeOrAll; label: string; color: string }[] = [
-  { value: 'ALL', label: 'ALL', color: '#6b7280' },
-  { value: 'WORKER', label: 'WORKER', color: '#16a34a' },
-  { value: 'ASTROMECH', label: 'ASTROMECH', color: '#7c3aed' },
-  { value: 'BATTLE', label: 'BATTLE', color: '#dc2626' },
+const OPTIONS: {
+  value: DroidTypeOrAll;
+  label: string;
+  color: string;
+}[] = [
+  { value: 'ALL', label: t(UI.all), color: '#6b7280' },
+  { value: 'WORKER', label: t(UI.worker), color: '#16a34a' },
+  { value: 'ASTROMECH', label: t(UI.astromech), color: '#7c3aed' },
+  { value: 'BATTLE', label: t(UI.battle), color: '#dc2626' },
 ];
 
 export function ClassFilter({ active, onChange }: Props) {

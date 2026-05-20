@@ -1,3 +1,5 @@
+import { UI } from '../data/ui';
+import { t } from '../lib/t';
 import { useState } from 'react';
 import {
   Wrench,
@@ -72,7 +74,7 @@ export function DroidCard({
     <button
       type="button"
       onClick={() => onToggle(id)}
-      title={`${droid.name} (${tier}) — click to toggle`}
+      title={`${droid.name} (${tier}) — ${t(UI.cardToggle)}`}
       className={[
         'relative flex flex-col rounded-lg border-4 overflow-hidden',
         'transition-all duration-150 select-none cursor-pointer',
@@ -128,7 +130,11 @@ export function DroidCard({
           {rebirthLevels && rebirthLevels.length > 0 && (
             <span
               className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block text-orange-400 bg-orange-500/15 border border-orange-500/40"
-              title={`Required for rebirth${rebirthLevels.length > 1 ? 's' : ''} ${rebirthLevels.join(', ')}`}
+              title={`${
+                rebirthLevels.length > 1
+                  ? t(UI.rebirthRequiredPlural)
+                  : t(UI.rebirthRequired)
+              } ${rebirthLevels.join(', ')}`}
             >
               <RefreshCw
                 size={8}
@@ -171,9 +177,11 @@ export function DroidCard({
       {droid.eventLocked && (
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
           <span className="text-red-400 text-[10px] font-bold text-center leading-tight px-1">
-            EVENT
-            <br />
-            LOCKED
+            {t(UI.eventLocked)
+              .split(' ')
+              .map((line) => (
+                <div key={line}>{line}</div>
+              ))}
           </span>
         </div>
       )}
