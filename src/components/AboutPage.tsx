@@ -11,9 +11,7 @@ export function AboutPage() {
 
         <p className="text-zinc-500 text-sm mt-2">{t(UI.aboutText)}</p>
 
-         <p className="text-zinc-600 text-xs mt-1">
-  v{APP_VERSION}
-</p>
+        <p className="text-zinc-600 text-xs mt-1">v{APP_VERSION}</p>
       </div>
 
       <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
