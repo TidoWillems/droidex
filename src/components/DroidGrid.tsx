@@ -62,12 +62,17 @@ export function DroidGrid({
 
   const rebirthMap = useMemo(() => {
     const map: Record<string, number[]> = {};
+
     for (const level of REBIRTH_LEVELS) {
       for (const d of level.droids) {
-        if (!map[d.cardId]) map[d.cardId] = [];
-        map[d.cardId].push(level.from);
+        if (!map[d.name]) {
+          map[d.name] = [];
+        }
+
+        map[d.name].push(level.to);
       }
     }
+
     return map;
   }, []);
 
@@ -91,7 +96,7 @@ export function DroidGrid({
           collected={collected.has(card.id)}
           onToggle={onToggle}
           highlighted={highlightedIds?.has(card.id)}
-          rebirthLevels={rebirthMap[card.id]}
+          rebirthLevels={rebirthMap[card.droid.name]}
         />
       ))}
     </div>

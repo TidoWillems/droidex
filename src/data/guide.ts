@@ -1,3 +1,4 @@
+import { UI } from './ui';
 export const GUIDE = [
   {
     id: 'offline',
@@ -27,5 +28,10 @@ export const GUIDE = [
       de: 'Versende Droidex direkt über den Share-Button.',
       en: 'Send Droidex directly through the share button.',
     },
+  },
+  {
+    id: 'rebirth-badge',
+    title: UI.rebirthBadgeTitle,
+    text: UI.rebirthBadgeText,
   },
 ];
