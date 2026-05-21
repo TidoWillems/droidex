@@ -4,7 +4,10 @@
 
 - React + Vite + Tailwind
 - PWA via manifest + service worker
+- Version zentral über:
+  src/data/version.ts
 - Deployment:
+
   git push
   npm run deploy
 
@@ -14,12 +17,15 @@
 - Router wächst über eigenständige Pages
 - Tips = Daten + Cards + Filter
 - Screenshot-Cropping Pipeline bewusst erhalten
+- Rebirth-System = Daten + verschiedene Sichten
+- DroidCard erhält Zusatzinformationen aus Mapping-Layern
 
 ## Werkbank
 
 scripts/extract_thumbnails.py
 
 Erstellt Droids aus Screenshots
+
 → droidex_images (temporär)
 → public/droids
 
@@ -28,13 +34,32 @@ Erstellt Droids aus Screenshots
 - PWA Cache kann alte Versionen festhalten
 - gh-pages ist getrennt von main
 - INSTALL erscheint nur bei beforeinstallprompt
+- Bestehende Datenstrukturen können neue UI-Sichten erzeugen
+- Rebirth-Daten werden rückwärts zu Droid-Metadaten gemappt
+- Kleine UI-Hinweise können viel Navigationsaufwand ersetzen
+
+## Neue Features (v1.0.7)
+
+- Rebirth-Badge auf DroidCards:
+  ↻ 3·5·7
+
+- Zeigt alle Rebirth-Stufen, in denen ein Droid benötigt wird
+
+- Gruppiert nach Droid statt Tier:
+  BU-4D → 3·5·7
+  statt:
+  BU-4D_DEFAULT → 3
+  BU-4D_GOLD → 5
+
+- APP GUIDE erklärt Badge-Bedeutung
+- Versionierung zentralisiert
 
 ## Offene Ideen
 
 - Droid Card Drawer
-- About erweitern
 - Fortschrittsanalyse aus Screenshots
 - Admin/Debug Page
+- Rebirth-Prioritäten / "High Value Droids"
 
 # Deployment Flow
 
@@ -79,4 +104,5 @@ GitHub Pages / PWA live
 - gh-pages ist getrennt von main
 - PWA/Service Worker können alte Assets cachen
 - Cache-Version in public/sw.js erhöhen:
+
   const CACHE='droidex-v5'
