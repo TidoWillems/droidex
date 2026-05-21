@@ -58,7 +58,7 @@ export const DROIDS: Droid[] = [
   // EPIC
   { name: 'GROUNDMECH', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'LO', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
-  { name: 'AMP WALKER', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
+  { name: 'AMP WLKR', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'SEN-TRI', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'OPTI-POD', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'BB', rarity: 'EPIC', type: 'ASTROMECH', tiers: ALL_TIERS },
