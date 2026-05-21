@@ -1,3 +1,4 @@
+import { APP_VERSION } from '../data/version';
 import { GUIDE } from '../data/guide';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
@@ -9,6 +10,10 @@ export function AboutPage() {
         <h1 className="text-white text-xl font-bold">{t(UI.aboutTitle)}</h1>
 
         <p className="text-zinc-500 text-sm mt-2">{t(UI.aboutText)}</p>
+
+         <p className="text-zinc-600 text-xs mt-1">
+  v{APP_VERSION}
+</p>
       </div>
 
       <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
