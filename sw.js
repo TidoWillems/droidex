@@ -1,4 +1,4 @@
-const CACHE = 'droidex-v6';
+const CACHE = 'droidex-v1.0.7';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -23,7 +23,9 @@ self.addEventListener('activate', (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))
+          keys
+            .filter((key) => key !== CACHE)
+            .map((key) => caches.delete(key))
         )
       )
       .then(() => self.clients.claim())
