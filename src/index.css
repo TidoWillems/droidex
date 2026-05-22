@@ -31,6 +31,15 @@
   }
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 @layer utilities {
   .rainbow-tab {
     background: linear-gradient(

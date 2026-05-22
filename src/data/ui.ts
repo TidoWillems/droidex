@@ -233,8 +233,8 @@ export const UI = {
     en: 'REBIRTH ICON',
   },
 
-rebirthBadgeText: {
-  de: '↻ 3·5·7 bedeutet: Dieser Droid wird mehrfach für Rebirths benötigt. Oft lohnt es sich, ihn früh aufzuwerten und aufzubewahren.',
-  en: '↻ 3·5·7 means: this Droid is required for Rebirth 3, 5 and 7. Droids used across multiple Rebirth levels are often worth upgrading early and keeping in your Lounge.',
-},
+  rebirthBadgeText: {
+    de: '↻ 3·5·7 bedeutet: Dieser Droid wird mehrfach für Rebirths benötigt. Oft lohnt es sich, ihn früh aufzuwerten und aufzubewahren.',
+    en: '↻ 3·5·7 means: this Droid is required for Rebirth 3, 5 and 7. Droids used across multiple Rebirth levels are often worth upgrading early and keeping in your Lounge.',
+  },
 };
