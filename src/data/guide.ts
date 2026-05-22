@@ -34,4 +34,9 @@ export const GUIDE = [
     title: UI.rebirthBadgeTitle,
     text: UI.rebirthBadgeText,
   },
+  {
+    id: 'offline-timer',
+    title: UI.offlineTimerTitle,
+    text: UI.offlineTimerText,
+  },
 ];

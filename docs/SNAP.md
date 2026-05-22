@@ -54,6 +54,14 @@ Erstellt Droids aus Screenshots
 - APP GUIDE erklärt Badge-Bedeutung
 - Versionierung zentralisiert
 
+## Neue Features (v1.0.8)
+
+- Offline Timer System
+- Tracks manual offline income sessions
+- Mobile-friendly system panel in header
+- localStorage persistence
+- Firefox mobile layout stabilized through vertical system grouping
+
 ## Offene Ideen
 
 - Droid Card Drawer

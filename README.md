@@ -49,6 +49,7 @@ No Play Store required.
 - localStorage persistence
 - Offline-first behavior
 - Installable Android PWA
+- Offline income timer for planning Droid Tycoon collection cycles
 
 ## Data
 

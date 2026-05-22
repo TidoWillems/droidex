@@ -237,4 +237,13 @@ export const UI = {
     de: '↻ 3·5·7 bedeutet: Dieser Droid wird mehrfach für Rebirths benötigt. Oft lohnt es sich, ihn früh aufzuwerten und aufzubewahren.',
     en: '↻ 3·5·7 means: this Droid is required for Rebirth 3, 5 and 7. Droids used across multiple Rebirth levels are often worth upgrading early and keeping in your Lounge.',
   },
+  offlineTimerTitle: {
+    de: 'OFFLINE TIMER',
+    en: 'OFFLINE TIMER',
+  },
+
+  offlineTimerText: {
+    de: 'Plane deine Offline-Credit-Zyklen direkt in Droidex.',
+    en: 'Plan your offline credit cycles directly inside Droidex.',
+  },
 };
