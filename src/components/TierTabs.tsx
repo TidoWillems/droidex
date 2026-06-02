@@ -40,6 +40,12 @@ const TIER_STYLE: Record<
       'rainbow-tab bg-purple-500/10 border-violet-400 shadow-[0_0_8px_rgba(168,85,247,0.4)]',
     inactive: 'rainbow-tab-dim border-transparent hover:opacity-80',
   },
+  BESKAR: {
+    label: 'BESKAR',
+    active:
+      'bg-zinc-300/20 text-zinc-100 border-zinc-300 shadow-[0_0_8px_rgba(229,229,229,0.4)]',
+    inactive: 'text-zinc-500 border-transparent hover:text-zinc-300',
+  },
 };
 
 const TIER_WITH_ALL: TierOrAll[] = ['ALL', ...TIER_ORDER];

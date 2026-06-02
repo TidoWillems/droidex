@@ -37,6 +37,10 @@ Erstellt Droids aus Screenshots
 - Bestehende Datenstrukturen können neue UI-Sichten erzeugen
 - Rebirth-Daten werden rückwärts zu Droid-Metadaten gemappt
 - Kleine UI-Hinweise können viel Navigationsaufwand ersetzen
+- Rebirth-Daten werden rückwärts zu Droid-Metadaten gemappt
+- Bestehende Datenstrukturen können neue UI-Sichten erzeugen
+- Offline-first reduziert Systemkomplexität deutlich
+- Lokale Persistenz reicht für viele Companion-Apps vollständig aus
 
 ## Neue Features (v1.0.7)
 
@@ -61,13 +65,6 @@ Erstellt Droids aus Screenshots
 - Mobile-friendly system panel in header
 - localStorage persistence
 - Firefox mobile layout stabilized through vertical system grouping
-
-## Offene Ideen
-
-- Droid Card Drawer
-- Fortschrittsanalyse aus Screenshots
-- Admin/Debug Page
-- Rebirth-Prioritäten / "High Value Droids"
 
 # Deployment Flow
 

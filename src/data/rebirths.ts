@@ -18,6 +18,7 @@ function req(tier: Tier, name: string): RebirthDroidReq {
 }
 
 // "Base" in the guide = DEFAULT tier
+// MONO-WLKR → MONO-WALKER, OPTI-STRK → OPTI-STRIKE
 export const REBIRTH_LEVELS: RebirthLevel[] = [
   {
     from: 0,
@@ -120,7 +121,7 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
     to: 11,
     credits: '550M',
     droids: [
-      req('RAINBOW', 'AMP WLKR'),
+      req('RAINBOW', 'AMP WALKER'),
       req('RAINBOW', 'B1 HEAVY'),
       req('DEFAULT', 'BB9'),
     ],
@@ -132,7 +133,7 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
     droids: [
       req('GOLD', 'PROTO-ROLLER'),
       req('DEFAULT', 'MECHA-DROID'),
-      req('DEFAULT', 'MONO-WLKR'),
+      req('DEFAULT', 'MONO-WALKER'),
     ],
   },
   {
@@ -150,8 +151,8 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
     to: 14,
     credits: '8.45B',
     droids: [
-      req('DEFAULT', 'OPTI-STRK'),
-      req('GOLD', 'MONO-WLKR'),
+      req('DEFAULT', 'OPTI-STRIKE'),
+      req('GOLD', 'MONO-WALKER'),
       req('GOLD', 'MECHA-DROID'),
     ],
   },
@@ -166,8 +167,8 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
     to: 16,
     credits: '52.00B',
     droids: [
-      req('GOLD', 'OPTI-STRK'),
-      req('DIAMOND', 'MONO-WLKR'),
+      req('GOLD', 'OPTI-STRIKE'),
+      req('DIAMOND', 'MONO-WALKER'),
       req('DIAMOND', 'PROTO-ROLLER'),
     ],
   },
@@ -188,7 +189,7 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
     droids: [
       req('DIAMOND', 'BB9'),
       req('DIAMOND', 'R7'),
-      req('RAINBOW', 'MONO-WLKR'),
+      req('RAINBOW', 'MONO-WALKER'),
     ],
   },
   {
@@ -207,8 +208,38 @@ export const REBIRTH_LEVELS: RebirthLevel[] = [
     credits: '2.00T',
     droids: [
       req('RAINBOW', 'R7'),
-      req('RAINBOW', 'OPTI-STRK'),
+      req('RAINBOW', 'OPTI-STRIKE'),
       req('RAINBOW', 'MECHA-DROID'),
+    ],
+  },
+  {
+    from: 20,
+    to: 21,
+    credits: '3.00T',
+    droids: [
+      req('BESKAR', 'BB'),
+      req('BESKAR', 'ORB-WALKER'),
+      req('BESKAR', 'GROUNDMECH'),
+    ],
+  },
+  {
+    from: 21,
+    to: 22,
+    credits: '4.50T',
+    droids: [
+      req('BESKAR', 'AMP WALKER'),
+      req('BESKAR', 'B1 HEAVY'),
+      req('BESKAR', 'PROTO-ROLLER'),
+    ],
+  },
+  {
+    from: 22,
+    to: 23,
+    credits: '6.00T',
+    droids: [
+      req('BESKAR', 'OPTI-STRIKE'),
+      req('BESKAR', 'MONO-WALKER'),
+      req('BESKAR', 'R7'),
     ],
   },
 ];

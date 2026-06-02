@@ -6,9 +6,8 @@ dist/
 dist-ssr/
 droidex_images/
 *.zip
-scripts/debug_crops/*.png
 *.tsbuildinfo
-
+scripts/debug_crops/
 # Vite
 *.local
 .vite/

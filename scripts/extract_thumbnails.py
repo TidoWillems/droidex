@@ -20,9 +20,9 @@ import os
 
 # ─── Fixed grid layout (3840 x 2160) ─────────────────────────────────────────
 
-COL_LEFT = 335   # x of the LEFT EDGE of the first column
+COL_LEFT = 413   # x of the LEFT EDGE of the first column
 # (rarity dots sit 50 px inside each cell at x=391,675,…)
-CELL_W = 285   # cell width  = spacing between adjacent dot centres
+CELL_W = 291   # cell width  = spacing between adjacent dot centres
 
 # Y centre of each rarity label row (same on every page and every tier)
 ROW_YS = [732, 1030, 1320, 1615]

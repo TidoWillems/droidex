@@ -1,6 +1,6 @@
 export type Rarity = 'COMMON' | 'RARE' | 'EPIC' | 'LEGENDARY' | 'MYTHIC';
 export type DroidType = 'WORKER' | 'ASTROMECH' | 'BATTLE';
-export type Tier = 'DEFAULT' | 'GOLD' | 'DIAMOND' | 'RAINBOW';
+export type Tier = 'DEFAULT' | 'GOLD' | 'DIAMOND' | 'RAINBOW' | 'BESKAR';
 export type TierOrAll = Tier | 'ALL';
 
 export interface Droid {
@@ -17,7 +17,7 @@ export interface DroidCard {
   tier: Tier;
 }
 
-const ALL_TIERS: Tier[] = ['DEFAULT', 'GOLD', 'DIAMOND', 'RAINBOW'];
+const ALL_TIERS: Tier[] = ['DEFAULT', 'GOLD', 'DIAMOND', 'RAINBOW', 'BESKAR'];
 const DEFAULT_ONLY: Tier[] = ['DEFAULT'];
 
 export const DROIDS: Droid[] = [
@@ -58,9 +58,10 @@ export const DROIDS: Droid[] = [
   // EPIC
   { name: 'GROUNDMECH', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'LO', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
-  { name: 'AMP WLKR', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
+  { name: 'AMP WALKER', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'SEN-TRI', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'OPTI-POD', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
+  { name: 'GUNRUNNER', rarity: 'EPIC', type: 'WORKER', tiers: ALL_TIERS },
   { name: 'BB', rarity: 'EPIC', type: 'ASTROMECH', tiers: ALL_TIERS },
   { name: 'R2', rarity: 'EPIC', type: 'ASTROMECH', tiers: ALL_TIERS },
   { name: 'R6', rarity: 'EPIC', type: 'ASTROMECH', tiers: ALL_TIERS },
@@ -87,12 +88,22 @@ export const DROIDS: Droid[] = [
     type: 'WORKER',
     tiers: ALL_TIERS,
   },
-  { name: 'MONO-WLKR', rarity: 'LEGENDARY', type: 'WORKER', tiers: ALL_TIERS },
+  {
+    name: 'MONO-WALKER',
+    rarity: 'LEGENDARY',
+    type: 'WORKER',
+    tiers: ALL_TIERS,
+  },
   { name: 'BB9', rarity: 'LEGENDARY', type: 'ASTROMECH', tiers: ALL_TIERS },
   { name: 'R7', rarity: 'LEGENDARY', type: 'ASTROMECH', tiers: ALL_TIERS },
   { name: 'B2-RP', rarity: 'LEGENDARY', type: 'BATTLE', tiers: ALL_TIERS },
   { name: 'CYCLO-GRAV', rarity: 'LEGENDARY', type: 'BATTLE', tiers: ALL_TIERS },
-  { name: 'OPTI-STRK', rarity: 'LEGENDARY', type: 'BATTLE', tiers: ALL_TIERS },
+  {
+    name: 'OPTI-STRIKE',
+    rarity: 'LEGENDARY',
+    type: 'BATTLE',
+    tiers: ALL_TIERS,
+  },
 
   // MYTHIC (event locked, DEFAULT only)
   {
@@ -109,6 +120,13 @@ export const DROIDS: Droid[] = [
     tiers: DEFAULT_ONLY,
     eventLocked: true,
   },
+  {
+    name: 'IG-11 MARSHAL',
+    rarity: 'MYTHIC',
+    type: 'BATTLE',
+    tiers: DEFAULT_ONLY,
+    eventLocked: true,
+  },
 ];
 
 export const ALL_CARDS: DroidCard[] = DROIDS.flatMap((droid) =>
@@ -119,7 +137,7 @@ export const ALL_CARDS: DroidCard[] = DROIDS.flatMap((droid) =>
   }))
 );
 
-export const TOTAL_DROIDS = 209;
+export const TOTAL_DROIDS = 258;
 
 export const RARITY_ORDER: Rarity[] = [
   'COMMON',
@@ -128,4 +146,10 @@ export const RARITY_ORDER: Rarity[] = [
   'LEGENDARY',
   'MYTHIC',
 ];
-export const TIER_ORDER: Tier[] = ['DEFAULT', 'GOLD', 'DIAMOND', 'RAINBOW'];
+export const TIER_ORDER: Tier[] = [
+  'DEFAULT',
+  'GOLD',
+  'DIAMOND',
+  'RAINBOW',
+  'BESKAR',
+];

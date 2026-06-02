@@ -1,5 +1,11 @@
 # DROIDEX Android Offline
 
+Offline-first Droid collection companion for
+Fortnite Star Wars Droid Tycoon.
+
+Built for Android, PWAs and local tracking.
+No account required.
+
 Forked from Erik Peik's Droidex tracker:  
 https://github.com/erikpeik/droidex
 
@@ -57,7 +63,9 @@ Droid list and rebirth requirements sourced from community spreadsheet:
 
 https://docs.google.com/spreadsheets/d/1otLCKSCMKICMlnefirQ8KZhh_rdZTd5Mp8h0UYFUiqg
 
-> The in-game DROIDEX shows 209 total droids. 202 are currently documented.
+258 total droids
+Beskar tier included
+Rebirths up to 23 documented
 
 ## Tech Stack
 
