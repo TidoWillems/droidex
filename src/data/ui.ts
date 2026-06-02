@@ -246,4 +246,13 @@ export const UI = {
     de: 'Plane deine Offline-Credit-Zyklen direkt in Droidex.',
     en: 'Plan your offline credit cycles directly inside Droidex.',
   },
+  installedVersion: {
+    de: 'INSTALLIERTE VERSION',
+    en: 'INSTALLED VERSION',
+  },
+
+  availableVersion: {
+    de: 'VERFÜGBARE VERSION',
+    en: 'AVAILABLE VERSION',
+  },
 };

@@ -1,4 +1,30 @@
-const CACHE = 'droidex-v1.1.1';
+import fs from 'fs';
+
+const versionFile = 'src/data/version.ts';
+const versionSource = fs.readFileSync(versionFile, 'utf8');
+
+const match = versionSource.match(/APP_VERSION = '(.*?)'/);
+
+if (!match) {
+  throw new Error('APP_VERSION nicht gefunden');
+}
+
+const version = match[1];
+
+console.log(`Version: ${version}`);
+
+fs.writeFileSync(
+  'public/version.json',
+  JSON.stringify(
+    {
+      version,
+    },
+    null,
+    2
+  )
+);
+
+const sw = `const CACHE = 'droidex-v${version}';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -23,7 +49,9 @@ self.addEventListener('activate', (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))
+          keys
+            .filter((key) => key !== CACHE)
+            .map((key) => caches.delete(key))
         )
       )
       .then(() => self.clients.claim())
@@ -37,3 +65,9 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+`;
+
+fs.writeFileSync('public/sw.js', sw);
+
+console.log('version.json aktualisiert');
+console.log('sw.js aktualisiert');

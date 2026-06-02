@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { ALL_CARDS, TOTAL_DROIDS } from '../data/droids';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
+import { useAppUpdate } from '../hooks/useAppUpdate';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   collected: Set<string>;
@@ -13,6 +15,8 @@ export function Header({ collected, rebirthLevel }: Props) {
   const collectedCount = collected.size;
   const knownTotal = ALL_CARDS.length;
   const pct = Math.round((collectedCount / TOTAL_DROIDS) * 100);
+  const { updateAvailable, latestVersion } = useAppUpdate();
+  const location = useLocation();
 
   return (
     <header
@@ -171,6 +175,20 @@ export function Header({ collected, rebirthLevel }: Props) {
         {' · '}
         {TOTAL_DROIDS - knownTotal} {t(UI.unknown)}
       </div>
+
+      {updateAvailable && location.pathname !== '/about' && (
+        <NavLink
+          to="/about"
+          className="
+      text-xs
+      text-cyan-400
+      px-1
+      hover:text-cyan-300
+    "
+        >
+          ⬤ UPDATE VERFÜGBAR · v{latestVersion}
+        </NavLink>
+      )}
     </header>
   );
 }

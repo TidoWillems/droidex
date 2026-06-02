@@ -2,8 +2,33 @@ import { APP_VERSION } from '../data/version';
 import { GUIDE } from '../data/guide';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
+import { useAppUpdate } from '../hooks/useAppUpdate';
+import { useState } from 'react';
 
 export function AboutPage() {
+  const { updateAvailable, latestVersion } = useAppUpdate();
+  const [updating, setUpdating] = useState(false);
+
+  async function forceUpdate() {
+    setUpdating(true);
+
+    try {
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+
+        await Promise.all(registrations.map((reg) => reg.unregister()));
+      }
+
+      const keys = await caches.keys();
+
+      await Promise.all(keys.map((key) => caches.delete(key)));
+
+      window.location.reload();
+    } catch {
+      window.location.reload();
+    }
+  }
+
   return (
     <div className="p-4 space-y-4">
       <div>
@@ -11,7 +36,38 @@ export function AboutPage() {
 
         <p className="text-zinc-500 text-sm mt-2">{t(UI.aboutText)}</p>
 
-        <p className="text-zinc-600 text-xs mt-1">v{APP_VERSION}</p>
+        <div className="mt-2 space-y-2">
+          <p className="text-zinc-600 text-xs">Installed: v{APP_VERSION}</p>
+
+          {updateAvailable && (
+            <>
+              <p className="text-cyan-400 text-xs">
+                Available: v{latestVersion}
+              </p>
+              <button
+                type="button"
+                onClick={forceUpdate}
+                disabled={updating}
+                className="
+    mt-2
+    px-3
+    py-2
+    text-xs
+    font-bold
+    tracking-widest
+    rounded-lg
+    border
+    border-cyan-700
+    bg-zinc-900
+    text-cyan-400
+    disabled:opacity-50
+  "
+              >
+                {updating ? 'AKTUALISIERE...' : 'APP AKTUALISIEREN'}
+              </button>
+            </>
+          )}
+        </div>
       </div>
 
       <div className="text-cyan-400 text-[10px] font-bold tracking-widest">

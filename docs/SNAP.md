@@ -111,3 +111,38 @@ GitHub Pages / PWA live
 - Cache-Version in public/sw.js erhöhen:
 
   const CACHE='droidex-v5'
+
+## Versionierung
+
+Version wird zentral gepflegt in:
+
+src/data/version.ts
+
+Beispiel:
+
+export const APP_VERSION = '1.1.1';
+
+Build-Prozess erzeugt automatisch:
+
+- public/version.json
+- public/sw.js (CACHE-Version)
+
+Script:
+
+npm run version:update
+
+Wird automatisch durch den Build aufgerufen:
+
+npm run build
+
+Release-Ablauf:
+
+1. APP_VERSION erhöhen
+2. git add -A
+3. git commit -m "vX.Y.Z"
+4. git push
+5. npm run deploy
+
+Ziel:
+
+Version existiert nur an einer Stelle und wird automatisch in alle benötigten Dateien übernommen.
