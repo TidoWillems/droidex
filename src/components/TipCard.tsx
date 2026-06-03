@@ -9,11 +9,13 @@ type Tip = {
   title: {
     de: string;
     en: string;
+    fi: string;
   };
 
   text: {
     de: string;
     en: string;
+    fi: string;
   };
 
   verified: boolean;

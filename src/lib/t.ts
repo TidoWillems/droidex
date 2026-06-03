@@ -5,6 +5,7 @@ type Localized =
   | {
       de: string;
       en: string;
+      fi?: string;
     };
 
 export function t(value: Localized) {
@@ -12,5 +13,5 @@ export function t(value: Localized) {
     return value;
   }
 
-  return value[LANGUAGE];
+  return value[LANGUAGE] ?? value.en;
 }

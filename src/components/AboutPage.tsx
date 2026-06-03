@@ -37,13 +37,16 @@ export function AboutPage() {
         <p className="text-zinc-500 text-sm mt-2">{t(UI.aboutText)}</p>
 
         <div className="mt-2 space-y-2">
-          <p className="text-zinc-600 text-xs">Installed: v{APP_VERSION}</p>
+          <p className="text-zinc-600 text-xs">
+            {t(UI.installedVersion)}: v{APP_VERSION}
+          </p>
 
           {updateAvailable && (
             <>
               <p className="text-cyan-400 text-xs">
-                Available: v{latestVersion}
+                {t(UI.availableVersion)}: v{latestVersion}
               </p>
+
               <button
                 type="button"
                 onClick={forceUpdate}
