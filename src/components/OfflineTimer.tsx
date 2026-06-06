@@ -14,7 +14,6 @@ export function OfflineTimer() {
       <button
         onClick={() => setOpen((o) => !o)}
         className="
-        w-full
         flex
         items-center
         justify-between
@@ -22,8 +21,8 @@ export function OfflineTimer() {
         border
         border-zinc-700
         bg-zinc-900
-        px-3
-        py-2
+        px-2
+        py-1.5
         text-cyan-400
       "
       >
@@ -33,21 +32,21 @@ export function OfflineTimer() {
           <span className="text-xs uppercase tracking-widest">Offline</span>
         </div>
 
-        <span className="font-semibold text-lg leading-none">{remaining}</span>
+        <span className="font-semibold text-xs leading-none">{remaining}</span>
       </button>
 
       {/* Panel */}
       {open && (
         <div
           className="
-          mt-2
-          rounded-lg
-          border
-          border-zinc-700
-          bg-black
-          p-3
-          shadow-2xl
-        "
+  mt-2
+  rounded-lg
+  border
+  border-zinc-700
+  bg-black
+  p-2
+  shadow-2xl
+"
         >
           <div className="text-[10px] tracking-widest text-zinc-500 mb-2">
             OFFLINE TIMER
@@ -72,7 +71,7 @@ export function OfflineTimer() {
             <option value={8}>08:00</option>
           </select>
 
-          <div className="flex gap-2 mt-3">
+          <div className="flex gap-2 mt-2">
             <button
               onClick={start}
               className="
@@ -81,7 +80,7 @@ export function OfflineTimer() {
               bg-cyan-900
               hover:bg-cyan-800
               py-2
-              text-sm
+              text-xs
             "
             >
               Logged out
@@ -95,7 +94,7 @@ export function OfflineTimer() {
               bg-zinc-800
               hover:bg-zinc-700
               py-2
-              text-sm
+              text-xs
             "
             >
               Reset

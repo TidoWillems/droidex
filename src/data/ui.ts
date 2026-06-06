@@ -42,7 +42,7 @@ export const UI = {
   },
 
   collected: {
-    de: 'Gesammelt',
+    de: 'Gesamt',
     en: 'Collected',
     fi: 'Kerätty',
   },

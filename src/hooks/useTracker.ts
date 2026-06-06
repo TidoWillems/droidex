@@ -1,28 +1,36 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
 const STORAGE_KEY = 'droidex_v1';
-
+const BACKUP_KEY = 'droidex_v1_backup';
 interface StoredState {
   collected: string[];
   rebirthLevel: number;
 }
 
 function readLocalStorage(): StoredState | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+  const candidates = [
+    localStorage.getItem(STORAGE_KEY),
+    localStorage.getItem(BACKUP_KEY),
+  ];
 
-    if (raw) {
+  for (const raw of candidates) {
+    if (!raw) continue;
+
+    try {
       return JSON.parse(raw) as StoredState;
+    } catch {
+      // nächsten Kandidaten probieren
     }
-  } catch {
-    // ignore broken data
   }
 
   return null;
 }
 
 function writeLocalStorage(state: StoredState) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  const payload = JSON.stringify(state);
+
+  localStorage.setItem(STORAGE_KEY, payload);
+  localStorage.setItem(BACKUP_KEY, payload);
 }
 
 export function useTracker(_uid: string | null) {

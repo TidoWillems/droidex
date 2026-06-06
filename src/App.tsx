@@ -33,7 +33,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-black flex flex-col font-mono">
-      <Header collected={collected} rebirthLevel={rebirthLevel} />
+      <Header
+        collected={collected}
+        rebirthLevel={rebirthLevel}
+        isMissingActive={collectionStatus === 'MISSING'}
+        onShowMissing={() => {
+          setTier('ALL');
+          setCollectionStatus('MISSING');
+          setFiltersOpen(false);
+        }}
+      />
 
       <Routes>
         <Route

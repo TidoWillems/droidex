@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'offlineTimer';
+const BACKUP_KEY = 'offlineTimer_backup';
 
 type TimerData = {
   startedAt: number | null;
@@ -8,23 +9,41 @@ type TimerData = {
 };
 
 export function useOfflineTimer() {
-  const [data, setData] = useState<TimerData>(() => {
-    const raw = localStorage.getItem(STORAGE_KEY);
+  function readLocalStorage(): TimerData | null {
+    const candidates = [
+      localStorage.getItem(STORAGE_KEY),
+      localStorage.getItem(BACKUP_KEY),
+    ];
 
-    if (raw) {
-      return JSON.parse(raw);
+    for (const raw of candidates) {
+      if (!raw) continue;
+
+      try {
+        return JSON.parse(raw) as TimerData;
+      } catch {
+        // nächsten Kandidaten probieren
+      }
     }
 
-    return {
-      startedAt: null,
-      durationHours: 8,
-    };
+    return null;
+  }
+
+  const [data, setData] = useState<TimerData>(() => {
+    return (
+      readLocalStorage() ?? {
+        startedAt: null,
+        durationHours: 8,
+      }
+    );
   });
 
   const [remaining, setRemaining] = useState('');
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    const payload = JSON.stringify(data);
+
+    localStorage.setItem(STORAGE_KEY, payload);
+    localStorage.setItem(BACKUP_KEY, payload);
   }, [data]);
 
   useEffect(() => {
