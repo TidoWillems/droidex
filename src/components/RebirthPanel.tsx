@@ -76,8 +76,7 @@ export function RebirthPanel({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-								onSetRebirth(Math.max(0, rebirthLevel - 1));
-
+                onSetRebirth(Math.max(0, rebirthLevel - 1));
               }}
               className="w-6 h-6 rounded-sm bg-zinc-800 border border-zinc-700 text-zinc-300 hover:bg-orange-900/40 hover:border-orange-700/60 hover:text-orange-300 flex items-center justify-center text-sm leading-none transition-colors font-bold"
             >
@@ -90,8 +89,7 @@ export function RebirthPanel({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-								onSetRebirth(Math.min(MAX_REBIRTH, rebirthLevel + 1));
-
+                onSetRebirth(Math.min(MAX_REBIRTH, rebirthLevel + 1));
               }}
               className="w-6 h-6 rounded-sm bg-zinc-800 border border-zinc-700 text-zinc-300 hover:bg-orange-900/40 hover:border-orange-700/60 hover:text-orange-300 flex items-center justify-center text-sm leading-none transition-colors font-bold"
             >

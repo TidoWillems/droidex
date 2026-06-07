@@ -55,6 +55,23 @@ export function TipsPage() {
       {sortedTips.map((tip) => (
         <TipCard key={tip.id} tip={tip} />
       ))}
+
+      <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
+        <div className="text-cyan-400 text-xs tracking-widest font-bold mb-2">
+          COMMUNITY
+        </div>
+
+        <div className="text-xs text-zinc-400 mb-3">
+          Entdeckung, Korrektur oder Tipp?
+        </div>
+
+        <a
+          href="mailto:tido.willems@gmail.com?subject=Droidex%20Community%20Tip"
+          className="text-sm text-cyan-400 hover:text-cyan-300"
+        >
+          ✉ Entdeckung melden
+        </a>
+      </div>
     </div>
   );
 }

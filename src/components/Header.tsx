@@ -19,9 +19,9 @@ export function Header({
   isMissingActive,
   onShowMissing,
 }: Props) {
-	const collectedCount = ALL_CARDS.filter((card) =>
-  collected.has(card.id)
-).length;
+  const collectedCount = ALL_CARDS.filter((card) =>
+    collected.has(card.id)
+  ).length;
   const missingCount = TOTAL_DROIDS - collectedCount;
   const knownTotal = ALL_CARDS.length;
   const pct = Math.round((collectedCount / TOTAL_DROIDS) * 100);

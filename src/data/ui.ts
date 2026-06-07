@@ -288,9 +288,28 @@ export const UI = {
   },
 
   rebirthBadgeText: {
-    de: '↻ 3·5·7 bedeutet: Dieser Droid wird mehrfach für Rebirths benötigt. Oft lohnt es sich, ihn früh aufzuwerten und aufzubewahren.',
-    en: '↻ 3·5·7 means: this Droid is required for Rebirth 3, 5 and 7. Droids used across multiple Rebirth levels are often worth upgrading early and keeping in your Lounge.',
-    fi: '↻ 3·5·7 tarkoittaa: tätä droidia tarvitaan Rebirth-tasoille 3, 5 ja 7. Useissa Rebirth-tasoissa käytetyt droidit kannattaa usein päivittää aikaisin ja säilyttää Loungessa.',
+    de: `↻ 3·5·7 bedeutet:
+Dieser Droid wird in mehreren Rebirths benötigt.
+
+Oft lohnt es sich, ihn dauerhaft im Tycoon einzusetzen oder in der Lounge zu parken.
+Wird er verkauft, musst du ihn später erneut herstellen.
+
+Benötigte Rebirth-Droids erkennst du direkt auf den DroidCards oder im Rebirth-Bereich.`,
+
+    en: `↻ 3·5·7 means:
+This Droid is required for multiple Rebirths.
+
+It is often worth keeping it permanently active in your Tycoon or parked in the Lounge.
+If it gets sold, you will need to build it again later.
+
+You can identify required Rebirth Droids directly on the Droid Cards or in the Rebirth section.`,
+    fi: `↻ 3·5·7 tarkoittaa:
+Tätä droidia tarvitaan useissa Rebirth-vaiheissa.
+
+Usein kannattaa pitää se pysyvästi käytössä Tycoonissa tai säilyttää Loungessa.
+Jos se myydään, joudut valmistamaan sen myöhemmin uudelleen.
+
+Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osiosta.`,
   },
 
   offlineTimerTitle: {

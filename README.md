@@ -1,75 +1,99 @@
-# DROIDEX Android Offline
+# DROIDEX
 
-Offline-first Droid collection companion for
+Collection & Rebirth Companion for
 Fortnite Star Wars Droid Tycoon.
 
-Built for Android, PWAs and local tracking.
+Offline-first.
+Installable as a Progressive Web App.
 No account required.
 
-Forked from Erik Peik's Droidex tracker:  
+Forked from Erik Peik's Droidex tracker:
+
 https://github.com/erikpeik/droidex
 
-This fork transforms the original project into a:
+---
 
-- Android + Termux compatible experience
-- Offline-first app
-- Local-first tracker
-- No account required
-- Mobile workflow friendly
-- Installable PWA (Progressive Web App)
-
-Track your **Fortnite Star Wars Droid Tycoon** droids across all tiers and plan your next rebirth.
-
-## Live App
+Live App
 
 https://tidowillems.github.io/droidex/
 
-## Install as Android App
+---
 
-Droidex Android Offline can be installed directly from the browser.
+Install as App
 
-Android / Chrome:
+Droidex can be installed directly from your browser.
+
+Android / Chrome
 
 1. Open Droidex
-2. Tap browser menu (⋮)
-3. Select **Install App** or **Add to Home Screen**
+2. Tap the browser menu (⋮)
+3. Select Install App or Add to Home Screen
 4. Droidex appears in the Android app drawer
 
 Installed version includes:
 
 - standalone app mode
-- splash screen
 - launcher icon
+- splash screen
 - offline support
-- local save state
+- local save data
 - no browser UI
 
 No Play Store required.
 
-## Features
+---
 
-- Droid grid across DEFAULT / GOLD / DIAMOND / RAINBOW tiers
-- Rarity filtering
+Features
+
+- Track all Droid Tycoon droids across every tier
 - Collection tracking
 - Rebirth planning
-- localStorage persistence
-- Offline-first behavior
-- Installable Android PWA
-- Offline income timer for planning Droid Tycoon collection cycles
+- Rebirth requirement indicators
+- Offline income timer
+- Local data storage
+- Offline-first operation
+- Mobile-friendly interface
+- Installable PWA
 
-## Data
+---
 
-Droid list and rebirth requirements sourced from community spreadsheet:
+Rebirth Planning
+
+Droidex highlights droids that are required for future rebirth milestones.
+
+Example:
+
+↻ 3·5·7
+
+This means the droid is required again for Rebirth 3, 5 and 7.
+
+Keeping these droids active in your Tycoon or parked in the Lounge can save you from rebuilding them later.
+
+Required rebirth droids are visible directly on Droid Cards and in the Rebirth section.
+
+---
+
+Data
+
+Droid list and rebirth requirements are based on community-maintained research:
 
 https://docs.google.com/spreadsheets/d/1otLCKSCMKICMlnefirQ8KZhh_rdZTd5Mp8h0UYFUiqg
 
-258 total droids
-Beskar tier included
-Rebirths up to 23 documented
+Current coverage:
 
-## Tech Stack
+- 258 documented droids
+- DEFAULT
+- GOLD
+- DIAMOND
+- RAINBOW
+- BESKAR tiers
+- Rebirths documented through 23
 
-- React 18
+---
+
+Tech Stack
+
+- React
 - TypeScript
 - Vite
 - TailwindCSS
@@ -78,33 +102,39 @@ Rebirths up to 23 documented
 - Web Manifest
 - GitHub Pages
 
-## Credits
+---
 
-Original concept and project:
+Credits
 
-Erik Peik  
+Original project:
+
+Erik Peik
+
 https://github.com/erikpeik/droidex
 
-Changes in this fork:
+Additional work in this fork:
 
-- Firebase removed from default flow
-- local-first persistence
-- Android PWA support
-- offline support
-- mobile workflow optimization
+- Offline-first architecture
+- Local-first persistence
+- Collection tracking improvements
+- Rebirth planning tools
+- Offline-first architecture
+- Mobile UI improvements
+- PWA installation support
+- Rebirth planning tools
+- Offline income timer
+- Mobile UI improvements
 
-## Fan Project Notice
+---
 
-Droidex Android Offline is a fan-made project.
+Fan Project Notice
 
-This project is not affiliated with, endorsed,
-sponsored, or approved by Epic Games, Disney,
-or Lucasfilm Ltd.
+Droidex is a fan-made project.
+
+This project is not affiliated with, endorsed, sponsored, or approved by Epic Games, Disney, or Lucasfilm Ltd.
 
 Fortnite is a trademark of Epic Games.
 
-Star Wars and related names are trademarks of
-Lucasfilm Ltd. / Disney.
+Star Wars and related names are trademarks of Lucasfilm Ltd. / Disney.
 
-All game-related assets, names, and imagery
-belong to their respective owners.
+All game-related assets, names, and imagery belong to their respective owners.

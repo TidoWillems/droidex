@@ -61,6 +61,22 @@ Erstellt Droids aus Screenshots
   gültige Karten ∩ gespeicherte Karten
 - Storage-Migration aktuell nicht notwendig.
 
+## Erkenntnisse (v1.1.5)
+
+PWA Update Detection verbessert.
+
+Vorher:
+
+- version.json nur beim App-Start geprüft
+
+Jetzt:
+
+- App-Start prüft Version
+- visibilitychange prüft Version beim Zurückkehren zur App
+
+Ergebnis:
+Installierte PWAs erkennen neue Releases ohne manuellen Reload deutlich schneller.
+
 ## Neue Features (v1.0.7)
 
 - Rebirth-Badge auf DroidCards:
