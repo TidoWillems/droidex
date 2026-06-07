@@ -7,7 +7,8 @@ export function useAppUpdate() {
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [latestVersion, setLatestVersion] = useState(APP_VERSION);
 
-  useEffect(() => {
+useEffect(() => {
+  const checkForUpdate = () => {
     fetch(`${import.meta.env.BASE_URL}version.json?t=${Date.now()}`)
       .then((r) => r.json())
       .then((data) => {
@@ -18,7 +19,30 @@ export function useAppUpdate() {
         }
       })
       .catch(() => {});
-  }, []);
+  };
+
+  // Sofort beim Start
+  checkForUpdate();
+
+  // Wenn App wieder sichtbar wird
+  const onVisibilityChange = () => {
+    if (document.visibilityState === 'visible') {
+      checkForUpdate();
+    }
+  };
+
+  document.addEventListener(
+    'visibilitychange',
+    onVisibilityChange
+  );
+
+  return () => {
+    document.removeEventListener(
+      'visibilitychange',
+      onVisibilityChange
+    );
+  };
+}, []);
 
   return {
     updateAvailable,
