@@ -42,6 +42,25 @@ Erstellt Droids aus Screenshots
 - Offline-first reduziert Systemkomplexität deutlich
 - Lokale Persistenz reicht für viele Companion-Apps vollständig aus
 
+## Erkenntnisse (v1.1.3)
+
+- Header vollständig als 2x3 Dashboard neu aufgebaut
+- App-Logo ersetzt den bisherigen DROIDEX-Schriftzug
+- Progress-Anzeige direkt im Balken
+- Assets unter GitHub Pages über import.meta.env.BASE_URL referenzieren
+- git push veröffentlicht keinen neuen App-Stand
+- gh-pages bleibt die einzige Veröffentlichungsquelle
+- version.json ist die zuverlässigste Prüfung des Live-Deployments
+
+## Erkenntnisse (v1.1.4)
+
+- Historische localStorage-Daten können veraltete Karten-IDs enthalten.
+- UI-Zählungen dürfen nicht auf rohen Storage-Daten basieren.
+- ALL_CARDS ist die autoritative Kartenbasis.
+- Fortschritt wird gegen gültige Karten berechnet:
+  gültige Karten ∩ gespeicherte Karten
+- Storage-Migration aktuell nicht notwendig.
+
 ## Neue Features (v1.0.7)
 
 - Rebirth-Badge auf DroidCards:
@@ -66,51 +85,124 @@ Erstellt Droids aus Screenshots
 - localStorage persistence
 - Firefox mobile layout stabilized through vertical system grouping
 
-# Deployment Flow
+## Neue Features (v1.1.3)
 
-Lokale Entwicklung:
+### Dashboard Header Redesign
+
+- Neues 2x3 Dashboard Layout
+- Logo als visuelles Zentrum
+- REBIRTH / OFFLINE links
+- GESAMT / FEHLEND rechts
+- Fortschrittsbalken unter Dashboard
+- Kompaktere mobile Darstellung
+- GESAMMELT → GESAMT
+
+### PWA Update System
+
+- Version zentral über src/data/version.ts
+- Build erzeugt automatisch:
+  - public/version.json
+  - Service-Worker Cache-Version
+
+- useAppUpdate prüft:
+  - installierte Version
+  - veröffentlichte Version
+
+- About-Seite zeigt:
+  - installierte Version
+  - verfügbare Version
+
+- APP AKTUALISIEREN:
+  - entfernt Service Worker
+  - löscht alle Caches
+  - lädt App neu
+
+Ziel:
+Sofortige Aktualisierung installierter PWAs ohne manuelles Cache-Management.
+
+## Deployment Flow
+
+Entwicklung
+
+Starten:
 
 npm run dev -- --host
 
-Build testen:
+Build prüfen
 
 npm run build
 
-Git speichern:
+Änderungen speichern
 
 git add -A
 git commit -m "Beschreibung"
 git push
 
-GitHub Pages veröffentlichen:
+Veröffentlichung
 
 npm run deploy
+
+Schnellveröffentlichung
+
+npm run release
 
 Ablauf:
 
-main
+Code ändern
 ↓
+SNAP aktualisieren
+↓
+npm run build
+↓
+git add -A
+git commit -m "..."
 git push
-
-Quellcode auf GitHub
-
 ↓
-npm run deploy
+npm run release
 
-dist → gh-pages
+Hinweise:
 
-↓
-GitHub Pages / PWA live
-
-## Hinweise
-
-- git push veröffentlicht nur Quellcode
+- git push veröffentlicht nur den Quellcode
 - npm run deploy veröffentlicht die App
 - gh-pages ist getrennt von main
-- PWA/Service Worker können alte Assets cachen
-- Cache-Version in public/sw.js erhöhen:
+- PWA kann ältere Assets zwischenspeichern
+- version.json zeigt die aktuell veröffentlichte Version
+- Release prüfen:
 
-  const CACHE='droidex-v5'
+curl https://tidowillems.github.io/droidex/version.json
+
+## Release-Prinzip
+
+Es gibt zwei getrennte Vorgänge:
+
+### Quellcode sichern
+
+git add -A
+git commit -m "..."
+git push
+
+Ergebnis:
+
+- main aktualisiert
+- GitHub Repository aktualisiert
+- keine Auswirkung auf die Live-App
+
+### Release veröffentlichen
+
+npm run deploy
+
+Ergebnis:
+
+- Versiondateien aktualisiert
+- Produktionsbuild erzeugt
+- GitHub Pages veröffentlicht
+- PWA kann Update erkennen
+
+Merksatz:
+
+git push = Code speichern
+
+npm run deploy = Release veröffentlichen
 
 ## Versionierung
 
@@ -146,3 +238,37 @@ Release-Ablauf:
 Ziel:
 
 Version existiert nur an einer Stelle und wird automatisch in alle benötigten Dateien übernommen.
+
+## Projektregel
+
+Vor größeren Änderungen:
+
+- Architektur verstehen
+- SNAP aktualisieren
+- Änderung umsetzen
+- SNAP aktualisieren
+- Release
+
+Ziel:
+
+Wissensverlust zwischen Sessions minimieren.
+
+SNAP dient als laufendes Projektgedächtnis.
+
+## Wissensschleife
+
+SNAP ist kein Archiv.
+
+SNAP ist ein laufendes Projektgedächtnis.
+
+Arbeitszyklus:
+
+Verstehen
+→ SNAP aktualisieren
+→ Umsetzen
+→ SNAP aktualisieren
+→ Veröffentlichen
+
+Ziel:
+
+Kontextverlust zwischen Sessions reduzieren und Projektwissen kontinuierlich verdichten.

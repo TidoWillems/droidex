@@ -137,7 +137,8 @@ export const ALL_CARDS: DroidCard[] = DROIDS.flatMap((droid) =>
   }))
 );
 
-export const TOTAL_DROIDS = 258;
+export const TOTAL_DROIDS = ALL_CARDS.length;
+console.log('ALL_CARDS', ALL_CARDS.length);
 
 export const RARITY_ORDER: Rarity[] = [
   'COMMON',

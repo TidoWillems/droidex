@@ -8,6 +8,7 @@
     "build": "npm run version:update && tsc -b && vite build",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist",
+    "release": "npm run deploy",
     "format": "prettier . --write",
     "version:update": "node scripts/update-version.mjs"
   },
