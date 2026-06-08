@@ -42,7 +42,7 @@ export function Header({
     "
     >
       {/* Dashboard */}
-      <div className="grid gap-3">
+      <div className="grid gap-1">
         {/* 2x3 Dashboard */}
         <div className="grid grid-cols-3 grid-rows-2 gap-x-3 gap-y-2 items-center">
           {/* REBIRTH */}
@@ -83,7 +83,8 @@ export function Header({
     flex
     justify-center
     items-center
-    drop-shadow-[0_0_18px_rgba(0,229,255,0.35)]
+		opacity-85
+		drop-shadow-[0_0_12px_rgba(0,229,255,0.55)]
   "
           >
             <Link to="/">
@@ -91,8 +92,8 @@ export function Header({
                 src={`${import.meta.env.BASE_URL}icon-192.png`}
                 alt="Droidex"
                 className="
-				h-[68px] 
-				w-[68px]
+				h-[88px] 
+				w-[88px]
         object-contain
       "
               />
@@ -167,7 +168,7 @@ export function Header({
         <div>
           <div
             className="
-        h-4
+        h-3
         bg-zinc-800
         rounded-full
         overflow-hidden
