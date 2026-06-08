@@ -134,6 +134,14 @@ export function AboutPage() {
           {t(UI.github)}
         </a>
       </div>
+
+      <div className="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden">
+        <img
+          src={`${import.meta.env.BASE_URL}og-image.png`}
+          alt="Droidex Android Offline"
+          className="w-full"
+        />
+      </div>
     </div>
   );
 }

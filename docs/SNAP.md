@@ -140,6 +140,18 @@ Ergebnis:
 
 - Navigation kann zunehmend über Module und Aufklappbereiche organisiert werden statt über neue Seiten.
 
+## Identität (v1.1.9)
+
+- Community-Bereich vollständig in ui.ts integriert
+- Mehrsprachigkeit auf About-, Footer- und Tips-Seiten vereinheitlicht
+- OG-Image als Social Preview eingeführt
+- OG-Image zusätzlich als visueller Abschluss der AboutPage verwendet
+
+Erkenntnis:
+
+- Projektgrafiken können zugleich Branding, Social Preview und In-App-Inhalt sein.
+- Die AboutPage endet stärker mit einer visuellen Zusammenfassung des Projekts statt mit reinem Text.
+
 ### PWA Update System
 
 - Version zentral über src/data/version.ts
