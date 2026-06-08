@@ -168,7 +168,7 @@ Tätä droidia tarvitaan useissa Rebirth-vaiheissa.
 Usein kannattaa pitää se pysyvästi käytössä Tycoonissa tai säilyttää Loungessa.
 Jos se myydään, joudut valmistamaan sen myöhemmin uudelleen.
 
-Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osiosta.`},offlineTimerTitle:{de:"OFFLINE TIMER",en:"OFFLINE TIMER",fi:"OFFLINE TIMER"},offlineTimerText:{de:"Plane deine Offline-Credit-Zyklen direkt in Droidex.",en:"Plan your offline credit cycles directly inside Droidex.",fi:"Suunnittele offline-krediittijaksosi suoraan Droidexissa."},installedVersion:{de:"INSTALLIERTE VERSION",en:"INSTALLED VERSION",fi:"ASENNETTU VERSIO"},availableVersion:{de:"VERFÜGBARE VERSION",en:"AVAILABLE VERSION",fi:"SAATAVILLA OLEVA VERSIO"}},n0=navigator.language.startsWith("de")?"de":navigator.language.startsWith("fi")?"fi":"en";function A(e){return typeof e=="string"?e:e[n0]??e.en}const No="1.1.7";function jd(){const[e,t]=y.useState(!1),[n,r]=y.useState(No);return y.useEffect(()=>{const l=()=>{fetch(`/droidex/version.json?t=${Date.now()}`).then(o=>o.json()).then(o=>{r(o.version),o.version!==No&&t(!0)}).catch(()=>{})};l();const i=()=>{document.visibilityState==="visible"&&l()};return document.addEventListener("visibilitychange",i),()=>{document.removeEventListener("visibilitychange",i)}},[]),{updateAvailable:e,latestVersion:n}}function r0({collected:e,rebirthLevel:t,isMissingActive:n,onShowMissing:r}){const l=pr.filter(d=>e.has(d.id)).length,i=Wr-l,o=pr.length,a=Math.round(l/Wr*100),{updateAvailable:s,latestVersion:u}=jd(),m=Qe();return c.jsxs("header",{className:`  
+Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osiosta.`},offlineTimerTitle:{de:"OFFLINE TIMER",en:"OFFLINE TIMER",fi:"OFFLINE TIMER"},offlineTimerText:{de:"Plane deine Offline-Credit-Zyklen direkt in Droidex.",en:"Plan your offline credit cycles directly inside Droidex.",fi:"Suunnittele offline-krediittijaksosi suoraan Droidexissa."},installedVersion:{de:"INSTALLIERTE VERSION",en:"INSTALLED VERSION",fi:"ASENNETTU VERSIO"},availableVersion:{de:"VERFÜGBARE VERSION",en:"AVAILABLE VERSION",fi:"SAATAVILLA OLEVA VERSIO"},footerCommunity:{de:"COMMUNITY",en:"COMMUNITY",fi:"YHTEISÖ"}},n0=navigator.language.startsWith("de")?"de":navigator.language.startsWith("fi")?"fi":"en";function A(e){return typeof e=="string"?e:e[n0]??e.en}const No="1.1.8";function jd(){const[e,t]=y.useState(!1),[n,r]=y.useState(No);return y.useEffect(()=>{const l=()=>{fetch(`/droidex/version.json?t=${Date.now()}`).then(o=>o.json()).then(o=>{r(o.version),o.version!==No&&t(!0)}).catch(()=>{})};l();const i=()=>{document.visibilityState==="visible"&&l()};return document.addEventListener("visibilitychange",i),()=>{document.removeEventListener("visibilitychange",i)}},[]),{updateAvailable:e,latestVersion:n}}function r0({collected:e,rebirthLevel:t,isMissingActive:n,onShowMissing:r}){const l=pr.filter(d=>e.has(d.id)).length,i=Wr-l,o=pr.length,a=Math.round(l/Wr*100),{updateAvailable:s,latestVersion:u}=jd(),m=Qe();return c.jsxs("header",{className:`  
       bg-black  
       border-b  
       border-zinc-800  
@@ -257,7 +257,13 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
             hover:border-cyan-400
             hover:text-cyan-300
             transition-all
-          `,children:A(I.footerAbout)}),c.jsx("button",{onClick:o,className:`
+          `,children:A(I.footerAbout)}),c.jsx("a",{href:"https://communities.epicgames.com/channel/QHWF/star-wars-droid-tycoon",target:"_blank",rel:"noreferrer",className:`
+    px-3 py-1 rounded border text-[10px]
+    border-zinc-700 text-zinc-500
+    hover:border-cyan-400
+    hover:text-cyan-300
+    transition-all
+  `,children:A(I.footerCommunity)}),c.jsx("button",{onClick:o,className:`
             px-3 py-1 rounded border text-[10px]
             border-zinc-700 text-zinc-500
             hover:border-cyan-400
