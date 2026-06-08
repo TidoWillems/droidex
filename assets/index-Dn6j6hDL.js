@@ -168,7 +168,7 @@ Tätä droidia tarvitaan useissa Rebirth-vaiheissa.
 Usein kannattaa pitää se pysyvästi käytössä Tycoonissa tai säilyttää Loungessa.
 Jos se myydään, joudut valmistamaan sen myöhemmin uudelleen.
 
-Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osiosta.`},offlineTimerTitle:{de:"OFFLINE TIMER",en:"OFFLINE TIMER",fi:"OFFLINE TIMER"},offlineTimerText:{de:"Plane deine Offline-Credit-Zyklen direkt in Droidex.",en:"Plan your offline credit cycles directly inside Droidex.",fi:"Suunnittele offline-krediittijaksosi suoraan Droidexissa."},installedVersion:{de:"INSTALLIERTE VERSION",en:"INSTALLED VERSION",fi:"ASENNETTU VERSIO"},availableVersion:{de:"VERFÜGBARE VERSION",en:"AVAILABLE VERSION",fi:"SAATAVILLA OLEVA VERSIO"}},n0=navigator.language.startsWith("de")?"de":navigator.language.startsWith("fi")?"fi":"en";function A(e){return typeof e=="string"?e:e[n0]??e.en}const No="1.1.6";function jd(){const[e,t]=y.useState(!1),[n,r]=y.useState(No);return y.useEffect(()=>{const l=()=>{fetch(`/droidex/version.json?t=${Date.now()}`).then(o=>o.json()).then(o=>{r(o.version),o.version!==No&&t(!0)}).catch(()=>{})};l();const i=()=>{document.visibilityState==="visible"&&l()};return document.addEventListener("visibilitychange",i),()=>{document.removeEventListener("visibilitychange",i)}},[]),{updateAvailable:e,latestVersion:n}}function r0({collected:e,rebirthLevel:t,isMissingActive:n,onShowMissing:r}){const l=pr.filter(d=>e.has(d.id)).length,i=Wr-l,o=pr.length,a=Math.round(l/Wr*100),{updateAvailable:s,latestVersion:u}=jd(),m=Qe();return c.jsxs("header",{className:`  
+Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osiosta.`},offlineTimerTitle:{de:"OFFLINE TIMER",en:"OFFLINE TIMER",fi:"OFFLINE TIMER"},offlineTimerText:{de:"Plane deine Offline-Credit-Zyklen direkt in Droidex.",en:"Plan your offline credit cycles directly inside Droidex.",fi:"Suunnittele offline-krediittijaksosi suoraan Droidexissa."},installedVersion:{de:"INSTALLIERTE VERSION",en:"INSTALLED VERSION",fi:"ASENNETTU VERSIO"},availableVersion:{de:"VERFÜGBARE VERSION",en:"AVAILABLE VERSION",fi:"SAATAVILLA OLEVA VERSIO"}},n0=navigator.language.startsWith("de")?"de":navigator.language.startsWith("fi")?"fi":"en";function A(e){return typeof e=="string"?e:e[n0]??e.en}const No="1.1.7";function jd(){const[e,t]=y.useState(!1),[n,r]=y.useState(No);return y.useEffect(()=>{const l=()=>{fetch(`/droidex/version.json?t=${Date.now()}`).then(o=>o.json()).then(o=>{r(o.version),o.version!==No&&t(!0)}).catch(()=>{})};l();const i=()=>{document.visibilityState==="visible"&&l()};return document.addEventListener("visibilitychange",i),()=>{document.removeEventListener("visibilitychange",i)}},[]),{updateAvailable:e,latestVersion:n}}function r0({collected:e,rebirthLevel:t,isMissingActive:n,onShowMissing:r}){const l=pr.filter(d=>e.has(d.id)).length,i=Wr-l,o=pr.length,a=Math.round(l/Wr*100),{updateAvailable:s,latestVersion:u}=jd(),m=Qe();return c.jsxs("header",{className:`  
       bg-black  
       border-b  
       border-zinc-800  
@@ -177,7 +177,7 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
       flex  
       flex-col  
       gap-3  
-    `,children:[c.jsxs("div",{className:"grid gap-3",children:[c.jsxs("div",{className:"grid grid-cols-3 grid-rows-2 gap-x-3 gap-y-2 items-center",children:[c.jsxs(ll,{to:"/rebirths",className:({isActive:d})=>`
+    `,children:[c.jsxs("div",{className:"grid gap-1",children:[c.jsxs("div",{className:"grid grid-cols-3 grid-rows-2 gap-x-3 gap-y-2 items-center",children:[c.jsxs(ll,{to:"/rebirths",className:({isActive:d})=>`
         flex
         items-center
         justify-between
@@ -193,10 +193,11 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
     flex
     justify-center
     items-center
-    drop-shadow-[0_0_18px_rgba(0,229,255,0.35)]
+		opacity-85
+		drop-shadow-[0_0_12px_rgba(0,229,255,0.55)]
   `,children:c.jsx(fr,{to:"/",children:c.jsx("img",{src:"/droidex/icon-192.png",alt:"Droidex",className:`
-				h-[68px] 
-				w-[68px]
+				h-[88px] 
+				w-[88px]
         object-contain
       `})})}),c.jsxs(ll,{to:"/",end:!0,className:({isActive:d})=>`
         flex
@@ -217,7 +218,7 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
           border
           ${n?"border-red-500 bg-red-950 text-red-300":"border-red-800 bg-zinc-900 text-red-400"}
         `,children:[c.jsx("span",{className:"text-xs uppercase tracking-wide",children:"FEHLEND"}),c.jsx("span",{className:"font-bold text-lg leading-none",children:i})]})})]}),c.jsx("div",{children:c.jsxs("div",{className:`
-        h-4
+        h-3
         bg-zinc-800
         rounded-full
         overflow-hidden
