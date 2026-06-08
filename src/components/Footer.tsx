@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom';
 import { useInstallPrompt } from '../hooks/useInstallPrompt';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
+import { useState } from 'react';
 
 export function Footer() {
   const { canInstall, install } = useInstallPrompt();
+  const [fanOpen, setFanOpen] = useState(false);
+  const [creditsOpen, setCreditsOpen] = useState(false);
 
   async function shareApp() {
     const url = 'https://tinyurl.com/droidex-app';
@@ -30,32 +33,44 @@ export function Footer() {
 
   return (
     <footer className="px-4 py-3 border-t border-zinc-800 bg-black text-center text-xs text-zinc-500">
-      <div className="font-semibold">Droidex Android Offline Fork</div>
+      <div className="font-semibold text-zinc-400">Droidex</div>
 
-      <div className="mt-1">
-        {t(UI.footerOriginal)}:
-        <a
-          href="https://github.com/erikpeik/droidex"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-cyan-300 ml-1 hover:text-cyan-100 transition-colors"
+      <div className="mt-3">
+        <button
+          onClick={() => setCreditsOpen(!creditsOpen)}
+          className="w-full text-center font-bold tracking-wider"
         >
-          erikpeik/droidex
-        </a>
-      </div>
+          PROJEKT & CREDITS {creditsOpen ? '▲' : '▼'}
+        </button>
 
-      <div className="mt-1">
-        {t(UI.footerFork)}:
-        <a
-          href="https://github.com/TidoWillems/droidex"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-cyan-300 ml-1 hover:text-cyan-100 transition-colors"
-        >
-          TidoWillems/droidex
-        </a>
-      </div>
+        {creditsOpen && (
+          <div className="mt-3">
+            <div>
+              {t(UI.footerOriginal)}:
+              <a
+                href="https://github.com/erikpeik/droidex"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-300 ml-1"
+              >
+                erikpeik/droidex
+              </a>
+            </div>
 
+            <div className="mt-1">
+              {t(UI.footerFork)}:
+              <a
+                href="https://github.com/TidoWillems/droidex"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-300 ml-1"
+              >
+                TidoWillems/droidex
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
       <div className="mt-3 flex gap-2 overflow-x-auto pb-2 justify-center">
         <Link
           to="/tips"
@@ -124,14 +139,26 @@ export function Footer() {
         </a>
       </div>
       <div className="mt-4 pt-3 border-t border-zinc-800 text-[10px] leading-relaxed text-zinc-600">
-        <div className="font-bold tracking-wider mb-2">{t(UI.fanProject)}</div>
-        <p>{t(UI.fanText1)}</p>
+        <button
+          onClick={() => setFanOpen(!fanOpen)}
+          className="w-full text-center"
+        >
+          <div className="font-bold tracking-wider">
+            {t(UI.fanProject)} {fanOpen ? '▲' : '▼'}
+          </div>
+        </button>
 
-        <p className="mt-2">{t(UI.fanText2)}</p>
+        {fanOpen && (
+          <>
+            <p className="mt-3">{t(UI.fanText1)}</p>
 
-        <p className="mt-2">{t(UI.fanText3)}</p>
+            <p className="mt-2">{t(UI.fanText2)}</p>
 
-        <p className="mt-2">{t(UI.fanText4)}</p>
+            <p className="mt-2">{t(UI.fanText3)}</p>
+
+            <p className="mt-2">{t(UI.fanText4)}</p>
+          </>
+        )}
       </div>
     </footer>
   );

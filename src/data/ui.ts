@@ -31,7 +31,7 @@ export const UI = {
 
   fork: {
     de: 'QUELLCODE',
-    en: 'FORK',
+    en: 'SOURCECODE',
     fi: 'LÄHDEKOODI',
   },
 
@@ -84,9 +84,9 @@ export const UI = {
   },
 
   footerFork: {
-    de: 'Fork',
-    en: 'Fork',
-    fi: 'Haarautuma',
+    de: 'Android Offline',
+    en: 'Android Offline',
+    fi: 'Android Offline',
   },
 
   footerTips: {
