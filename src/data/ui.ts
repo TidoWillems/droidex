@@ -341,4 +341,21 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
     en: 'COMMUNITY',
     fi: 'YHTEISÖ',
   },
+  communityTitle: {
+    de: 'COMMUNITY',
+    en: 'COMMUNITY',
+    fi: 'YHTEISÖ',
+  },
+
+  communityText: {
+    de: 'Entdeckung, Korrektur oder Tipp?',
+    en: 'Discovery, correction or tip?',
+    fi: 'Löytö, korjaus vai vinkki?',
+  },
+
+  communityReport: {
+    de: '✉ Entdeckung melden',
+    en: '✉ Report discovery',
+    fi: '✉ Ilmoita löydöstä',
+  },
 };
