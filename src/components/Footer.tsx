@@ -98,6 +98,21 @@ export function Footer() {
           {t(UI.footerAbout)}
         </Link>
 
+        <a
+          href="https://communities.epicgames.com/channel/QHWF/star-wars-droid-tycoon"
+          target="_blank"
+          rel="noreferrer"
+          className="
+    px-3 py-1 rounded border text-[10px]
+    border-zinc-700 text-zinc-500
+    hover:border-cyan-400
+    hover:text-cyan-300
+    transition-all
+  "
+        >
+          {t(UI.footerCommunity)}
+        </a>
+
         <button
           onClick={shareApp}
           className="

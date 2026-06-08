@@ -335,4 +335,10 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
     en: 'AVAILABLE VERSION',
     fi: 'SAATAVILLA OLEVA VERSIO',
   },
+
+  footerCommunity: {
+    de: 'COMMUNITY',
+    en: 'COMMUNITY',
+    fi: 'YHTEISÖ',
+  },
 };

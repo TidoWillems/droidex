@@ -133,7 +133,7 @@ export function RebirthPanel({
                 </div>
               </div>
             ))}
-          <span className="text-zinc-600 text-xs">{open ? '▲' : '▼' }</span>
+          <span className="text-zinc-600 text-xs">{open ? '▲' : '▼'}</span>
         </div>
       </button>
 

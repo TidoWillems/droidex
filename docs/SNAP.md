@@ -37,8 +37,6 @@ Erstellt Droids aus Screenshots
 - Bestehende Datenstrukturen können neue UI-Sichten erzeugen
 - Rebirth-Daten werden rückwärts zu Droid-Metadaten gemappt
 - Kleine UI-Hinweise können viel Navigationsaufwand ersetzen
-- Rebirth-Daten werden rückwärts zu Droid-Metadaten gemappt
-- Bestehende Datenstrukturen können neue UI-Sichten erzeugen
 - Offline-first reduziert Systemkomplexität deutlich
 - Lokale Persistenz reicht für viele Companion-Apps vollständig aus
 
@@ -112,6 +110,35 @@ Installierte PWAs erkennen neue Releases ohne manuellen Reload deutlich schnelle
 - Fortschrittsbalken unter Dashboard
 - Kompaktere mobile Darstellung
 - GESAMMELT → GESAMT
+
+## Erkenntnisse (v1.1.7)
+
+### Header Verdichtung
+
+- Dashboard gap von 3 auf 1 reduziert
+- Progressbar von h-4 auf h-3 reduziert
+- Logo auf 88px vergrößert
+- Transparenter Logo-Hintergrund verwendet
+- Kompakter Glow statt großflächiger Lichtwolke
+
+Ergebnis:
+
+- Dashboard und Progressbar wirken als zusammenhängende Einheit
+- Logo übernimmt die visuelle Mitte deutlicher
+- Weniger vertikaler Platzbedarf
+- Höhere Informationsdichte ohne schlechtere Lesbarkeit
+
+- Header weiter verdichtet:
+  - größeres Logo
+  - schmalerer Progress-Balken
+  - reduzierter Abstand Dashboard ↔ Progress
+
+- Footer als Navigationszentrum ausgebaut:
+  - ausklappbare Credits
+  - ausklappbarer Fanprojekt-Hinweis
+  - Community-Link zur Epic-Droid-Tycoon-Community
+
+- Navigation kann zunehmend über Module und Aufklappbereiche organisiert werden statt über neue Seiten.
 
 ### PWA Update System
 
