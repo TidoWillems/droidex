@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+
 import type { TierOrAll, DroidType, Rarity } from './data/droids';
 import { useTracker } from './hooks/useTracker';
 import { Header } from './components/Header';
@@ -30,13 +31,23 @@ export default function App() {
   const [search, setSearch] = useState('');
   const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setCollectionStatus('ALL');
+    }
+  }, [location.pathname]);
+
+  const isMissingActive =
+    location.pathname === '/' && collectionStatus === 'MISSING';
 
   return (
     <div className="min-h-screen bg-black flex flex-col font-mono">
       <Header
         collected={collected}
         rebirthLevel={rebirthLevel}
-        isMissingActive={collectionStatus === 'MISSING'}
+        isMissingActive={isMissingActive}
         onShowMissing={() => {
           setTier('ALL');
           setCollectionStatus('MISSING');

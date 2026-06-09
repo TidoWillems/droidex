@@ -40,6 +40,29 @@ Erstellt Droids aus Screenshots
 - Offline-first reduziert Systemkomplexität deutlich
 - Lokale Persistenz reicht für viele Companion-Apps vollständig aus
 
+### PWA Update System
+
+- Version zentral über src/data/version.ts
+- Build erzeugt automatisch:
+  - public/version.json
+  - Service-Worker Cache-Version
+
+- useAppUpdate prüft:
+  - installierte Version
+  - veröffentlichte Version
+
+- About-Seite zeigt:
+  - installierte Version
+  - verfügbare Version
+
+- APP AKTUALISIEREN:
+  - entfernt Service Worker
+  - löscht alle Caches
+  - lädt App neu
+
+Ziel:
+Sofortige Aktualisierung installierter PWAs ohne manuelles Cache-Management.
+
 ## Erkenntnisse (v1.1.3)
 
 - Header vollständig als 2x3 Dashboard neu aufgebaut
@@ -152,28 +175,36 @@ Erkenntnis:
 - Projektgrafiken können zugleich Branding, Social Preview und In-App-Inhalt sein.
 - Die AboutPage endet stärker mit einer visuellen Zusammenfassung des Projekts statt mit reinem Text.
 
-### PWA Update System
+## Erkenntnisse (v1.1.10)
 
-- Version zentral über src/data/version.ts
-- Build erzeugt automatisch:
-  - public/version.json
-  - Service-Worker Cache-Version
+### Droid Asset Recovery
 
-- useAppUpdate prüft:
-  - installierte Version
-  - veröffentlichte Version
+- Screenshot-Cropping Pipeline erfolgreich zur Rekonstruktion fehlender Droid-Assets genutzt.
+- Community-Projekte können als zusätzliche Asset-Quelle dienen.
+- Upstream-Projekte sollten bevorzugt mit neuen Screenshots versorgt werden statt lokale Asset-Forks dauerhaft zu pflegen.
+- Beskar-Droiden vollständig dokumentiert und an das Upstream-Projekt gemeldet.
+- extract_thumbnails.py bleibt als Fallback- und Rekonstruktionswerkzeug erhalten.
 
-- About-Seite zeigt:
-  - installierte Version
-  - verfügbare Version
+- TipsPage von Community-Funden zu kuratiertem Spielwissen weiterentwickelt.
+- Doppelte Discovery- und Rebirth-Tipps zusammengeführt.
+- Patchnote-Wissen als verifizierte TipCards integriert.
+- OG-Coverbild als visueller Abschluss der AboutPage ergänzt.
+- AboutPage wirkt dadurch weniger technisch und stärker als Projektpräsentation.
 
-- APP AKTUALISIEREN:
-  - entfernt Service Worker
-  - löscht alle Caches
-  - lädt App neu
+### Header Navigation State
 
-Ziel:
-Sofortige Aktualisierung installierter PWAs ohne manuelles Cache-Management.
+- FEHLEND ist kein eigener Router-Zustand, sondern ein Filterzustand.
+- Beim Verlassen der Hauptseite werden sammlungsbezogene Filter zurückgesetzt.
+- Header-Buttons dürfen ihren aktiven Zustand nicht über Seitenwechsel hinweg behalten.
+- useLocation + useEffect eignen sich als zentrale Stelle für Navigation-Cleanup.
+
+Ergebnis:
+
+- FEHLEND verhält sich wie eine temporäre Ansicht.
+- Zurückkehren auf die Hauptseite startet wieder mit neutralem Zustand.
+- Weniger UI-Verwirrung durch "hängengebliebene" Filter.
+
+
 
 ## Deployment Flow
 

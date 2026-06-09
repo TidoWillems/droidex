@@ -75,7 +75,6 @@ export function Header({
               {rebirthLevel}
             </span>
           </NavLink>
-
           {/* LOGO (über beide Reihen) */}
           <div
             className="
@@ -131,7 +130,6 @@ export function Header({
               </span>
             </span>
           </NavLink>
-
           {/* OFFLINE */}
           <OfflineTimer />
 

@@ -19,44 +19,6 @@ export const TIPS = [
   },
 
   {
-    id: 'rebirth_early',
-    category: 'PROGRESSION',
-    priority: 5,
-
-    title: {
-      de: 'Nicht zu früh rebirthen',
-      en: "Don't Rebirth Too Early",
-      fi: 'Älä tee Rebirthia liian aikaisin',
-    },
-
-    text: {
-      de: 'Rebirth bringt Vorteile, aber zu frühes Zurücksetzen kann deinen Fortschritt bremsen.',
-      en: 'Rebirth has benefits, but resetting too early can slow down your progress.',
-      fi: 'Rebirth tuo etuja, mutta liian aikainen nollaus voi hidastaa etenemistäsi.',
-    },
-    verified: true,
-  },
-
-  {
-    id: 'missions_early',
-    category: 'MISSION',
-    priority: 4,
-
-    title: {
-      de: 'Missionen früh nutzen',
-      en: 'Use Missions Early',
-      fi: 'Hyödynnä tehtävät aikaisin',
-    },
-
-    text: {
-      de: 'Missionen liefern nicht nur Ressourcen. Manche Unlocks scheinen an Aufgaben gekoppelt zu sein.',
-      en: 'Missions provide more than resources. Some unlocks appear to be tied to specific tasks.',
-      fi: 'Tehtävät tarjoavat muutakin kuin resursseja. Osa avauksista näyttää olevan sidottu tiettyihin tehtäviin.',
-    },
-    verified: false,
-  },
-
-  {
     id: 'special_unlocks',
     category: 'DISCOVERY',
     priority: 5,
@@ -68,11 +30,11 @@ export const TIPS = [
     },
 
     text: {
-      de: 'Community-Hinweise deuten auf Mission-, Event- und Spezial-Unlocks hin.',
-      en: 'Community findings suggest mission, event, and special unlock methods.',
-      fi: 'Yhteisön havainnot viittaavat tehtävä-, tapahtuma- ja erikoisavauksiin.',
+      de: 'Nicht alle Droids stammen direkt vom Förderband. Einige werden über Events, Missionen oder besondere Spielmechaniken freigeschaltet.',
+      en: 'Not all droids come directly from conveyors. Some are unlocked through events, missions, or special gameplay mechanics.',
+      fi: 'Kaikki droidit eivät tule suoraan liukuhihnoilta. Osa avautuu tapahtumien, tehtävien tai erityisten pelimekaniikkojen kautta.',
     },
-    verified: false,
+    verified: true,
   },
 
   {
@@ -95,41 +57,23 @@ export const TIPS = [
   },
 
   {
-    id: 'hidden_conditions',
-    category: 'DISCOVERY',
-    priority: 4,
-
-    title: {
-      de: 'Droids können versteckte Bedingungen haben',
-      en: 'Droids May Have Hidden Conditions',
-      fi: 'Droideilla voi olla piilotettuja ehtoja',
-    },
-
-    text: {
-      de: 'Nicht alle Droids scheinen einfach aus Förderbändern zu stammen. Manche könnten an Fortschritt, Events oder spezielle Aktionen gekoppelt sein.',
-      en: 'Not all droids seem to come directly from conveyors. Some may depend on progression, events, or special actions.',
-      fi: 'Kaikki droidit eivät näytä tulevan suoraan liukuhihnoilta. Osa voi riippua etenemisestä, tapahtumista tai erityisistä toimista.',
-    },
-    verified: false,
-  },
-
-  {
-    id: 'rebirth_timing',
+    id: 'rebirth_strategy',
     category: 'PROGRESSION',
-    priority: 4,
+    priority: 5,
 
     title: {
-      de: 'Rebirth bewusst timen',
-      en: 'Time Rebirth Carefully',
-      fi: 'Ajoita Rebirth harkiten',
+      de: 'Rebirth strategisch planen',
+      en: 'Plan Rebirth Strategically',
+      fi: 'Suunnittele Rebirth strategisesti',
     },
 
     text: {
-      de: 'Vor einem Rebirth kann es sinnvoll sein, seltene Droids, Event-Fortschritte und Unlocks mitzunehmen.',
-      en: 'Before rebirthing, it may be worth collecting rare droids, event progress, and unlocks.',
-      fi: 'Ennen Rebirthia voi olla hyödyllistä kerätä harvinaisia droideja, tapahtumaetenemistä ja avauksia.',
+      de: 'Vor einem Rebirth lohnt es sich oft, seltene Droids, Event-Fortschritt und wichtige Unlocks mitzunehmen. Ein zu früher Rebirth kann den Fortschritt verlangsamen.',
+      en: 'Before rebirthing, it is often worth collecting rare droids, event progress, and important unlocks. Reb irthing too early can slow progression.',
+      fi: 'Ennen Rebirthia kannattaa usein kerätä harvinaisia droideja, tapahtumaetenemistä ja tärkeitä avauksia. Liian aikainen Rebirth voi hidastaa etenemistä.',
     },
-    verified: false,
+
+    verified: true,
   },
 
   {
@@ -242,6 +186,82 @@ export const TIPS = [
       en: 'Some companions appear to provide bonuses that speed up pickaxe-related progress. This can noticeably reduce droid build time.',
       fi: 'Jotkin seuralaiset näyttävät antavan bonuksia, jotka nopeuttavat hakkuun liittyvää etenemistä. Tämä voi lyhentää droidien rakennusaikaa merkittävästi.',
     },
+    verified: true,
+  },
+  {
+    id: 'beskar_upgrade',
+    category: 'PROGRESSION',
+    priority: 5,
+
+    title: {
+      de: 'Rainbow wird Beskar',
+      en: 'Rainbow To Beskar',
+      fi: 'Rainbowista Beskariksi',
+    },
+
+    text: {
+      de: 'Rainbow-Droids können mit Upgrade Chips zu Beskar-Droids verbessert werden. Verkaufe wertvolle Rainbow-Droids nicht vorschnell.',
+      en: 'Rainbow droids can be upgraded into Beskar droids using Upgrade Chips. Do not sell valuable Rainbow droids too early.',
+      fi: 'Rainbow-droidit voidaan päivittää Beskar-droidiksi Upgrade Chipeillä. Älä myy arvokkaita Rainbow-droideja liian aikaisin.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'bb8_upgrade_bonus',
+    category: 'PROGRESSION',
+    priority: 5,
+
+    title: {
+      de: 'BB-8 verdoppelt Upgrade Chips',
+      en: 'BB-8 Doubles Upgrade Chips',
+      fi: 'BB-8 tuplaa Upgrade Chipit',
+    },
+
+    text: {
+      de: 'Der Event-Droid BB-8 gewährt beim Verkauf eines Droids zusätzlich 100 % der erhaltenen Upgrade Chips. Wer BB-8 besitzt, sollte Verkäufe gezielt mit ihm kombinieren.',
+      en: 'The BB-8 event droid grants an additional 100% Upgrade Chips whenever a droid is sold. If you own BB-8, combine sales with this bonus.',
+      fi: 'BB-8-tapahtumadrodi antaa myytäessä lisäksi 100 % Upgrade Chipejä. Jos omistat BB-8:n, hyödynnä bonus myynneissä.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'depot_speed_bonus',
+    category: 'PROGRESSION',
+    priority: 4,
+
+    title: {
+      de: 'Depot-Bonus nutzen',
+      en: 'Use Depot Bonus',
+      fi: 'Hyödynnä Depot-bonus',
+    },
+
+    text: {
+      de: 'Droids werden 10 % schneller hergestellt, wenn sie am passenden Depot gebaut werden.',
+      en: 'Droids are crafted 10% faster when built at the correct depot.',
+      fi: 'Droidit valmistuvat 10 % nopeammin oikealla Depotilla.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'flawless_droids',
+    category: 'DISCOVERY',
+    priority: 4,
+
+    title: {
+      de: 'Flawless Droids',
+      en: 'Flawless Droids',
+      fi: 'Flawless-droidit',
+    },
+
+    text: {
+      de: 'Beim Herstellen eines Droids besteht eine kleine Chance auf eine Flawless-Version. Einmal freigeschaltet bleibt der kosmetische Effekt dauerhaft für diesen Droid-Typ erhalten.',
+      en: 'Crafting a droid has a small chance to produce a Flawless version. Once unlocked, the cosmetic effect remains permanently available for that droid type.',
+      fi: 'Droidia valmistettaessa on pieni mahdollisuus saada Flawless-versio. Avattu kosmeettinen efekti säilyy pysyvästi kyseiselle droidityypille.',
+    },
+
     verified: true,
   },
 ];
