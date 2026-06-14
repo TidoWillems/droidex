@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { ALL_CARDS, TIER_ORDER } from '../data/droids';
 import type { TierOrAll, DroidType, Rarity } from '../data/droids';
-import { REBIRTH_LEVELS } from '../data/rebirths';
 import { DroidCard } from './DroidCard';
+import { REBIRTH_PATHS } from '../data/rebirthPaths';
 
 type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
 
@@ -11,6 +11,7 @@ interface Props {
   rarity: Rarity | 'ALL';
   droidClass: DroidType | 'ALL';
   collectionStatus: CollectionStatus;
+  rebirthPath: number;
   search: string;
   collected: Set<string>;
   onToggle: (id: string) => void;
@@ -22,6 +23,7 @@ export function DroidGrid({
   rarity,
   droidClass,
   collectionStatus,
+  rebirthPath,
   search,
   collected,
   onToggle,
@@ -63,7 +65,8 @@ export function DroidGrid({
   const rebirthMap = useMemo(() => {
     const map: Record<string, number[]> = {};
 
-    for (const level of REBIRTH_LEVELS) {
+    const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
+    for (const level of activePath) {
       for (const d of level.droids) {
         if (!map[d.name]) {
           map[d.name] = [];
@@ -74,7 +77,7 @@ export function DroidGrid({
     }
 
     return map;
-  }, []);
+  }, [rebirthPath]);
 
   if (cards.length === 0) {
     return (

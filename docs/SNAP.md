@@ -191,6 +191,55 @@ Erkenntnis:
 - OG-Coverbild als visueller Abschluss der AboutPage ergänzt.
 - AboutPage wirkt dadurch weniger technisch und stärker als Projektpräsentation.
 
+## Erkenntnisse (v1.1.11)
+
+v1.1.11 markiert den Übergang von festen Listen
+zu mehrdimensionalen Beziehungen.
+
+- Super-Rebirth-Erkundung (v1.1.11) - Neuer Progressionspfad oberhalb des
+  klassischen Rebirth-Systems entdeckt. - Nova-Kristalle als neue Meta-Währung. -
+  Nova-Shop mit permanenten Upgrades. - Iconic Droids ermöglichen offenbar
+  Wiederbeschaffung ehemaliger Event-Droids. - Vollständiger Tycoon-Reset bei Super
+  Rebirth. Droidex Sammelstaus bleibt erhalten.- Datenbasis wird aktuell über
+  Screenshots dokumentiert. - Noch keine Architekturentscheidung treffen, bevor
+  mehrere Super-Rebirth-Stufen bekannt sind.
+
+- Erkenntnis:
+
+Droiden besitzen zunehmend mehrere unabhängige Dimensionen:
+
+- Tier
+- Klasse
+- Rebirth-Verwendung
+- Super-Rebirth-Verwendung
+- Event/Iconic-Herkunft
+- Squad-Rolle
+
+Die Datenstruktur sollte langfristig eher auf Merkmale
+(tags/relations) als auf einzelne Spezialfelder wachsen.
+
+(- Spiel verwendet nun vier rotierende Requirement-Pfade.
+
+- Originalpfad entspricht Requirement Set 1.
+- Requirement Sets 2–4 enthalten alternative Droid-Anforderungen.
+- Rebirth-Datenmodell muss künftig Pfad + Level unterscheiden.
+- Bisherige Droidex-Rebirth-Architektur basiert auf einem einzelnen Pfad.
+- Super-Level/Nova-System deutet auf zusätzliche Meta-Progression oberhalb klassischer Rebirths hin.)
+## Erkenntnisse (v1.1.11)
+
+### Rebirth Path System
+
+- Rebirth-Pfade 1–4 vollständig integriert.
+- REBIRTH_PATHS dient als zentrale Mapping-Schicht.
+- RebirthPanel, RebirthsPage und DroidGrid nutzen denselben aktiven Pfad.
+- DroidCard-Rebirth-Badges werden dynamisch aus dem aktiven Pfad berechnet.
+- Rebirth-Pfad wird lokal gespeichert und beim App-Start wiederhergestellt.
+
+Erkenntnis:
+
+- Mehrere Progressionspfade konnten ohne Änderung der DroidCard-Struktur integriert werden.
+- Die Mapping-Schicht zwischen Daten und UI erwies sich als flexibel genug für alternative Requirement-Sets.
+
 ### Header Navigation State
 
 - FEHLEND ist kein eigener Router-Zustand, sondern ein Filterzustand.
@@ -204,7 +253,24 @@ Ergebnis:
 - Zurückkehren auf die Hauptseite startet wieder mit neutralem Zustand.
 - Weniger UI-Verwirrung durch "hängengebliebene" Filter.
 
+## Erkenntnisse (v1.1.11)
 
+### Community Navigation
+
+- Community-Link auf Epic-Labs-Einstiegsebene angehoben.
+- Nutzer sehen dadurch:
+  - aktuelle Updates
+  - Community Highlights
+  - Entwickler-Mitteilungen
+  - direkten Zugang zum Droid-Tycoon-Kanal
+
+Erkenntnis:
+
+- Der beste Community-Link ist nicht immer der tiefste Link.
+- Einstiegspunkte mit Kontext erzeugen mehr Orientierung als direkte Zielseiten.
+
+##################
+##################
 
 ## Deployment Flow
 

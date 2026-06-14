@@ -1,9 +1,10 @@
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
 import { useMemo, useState } from 'react';
-import { REBIRTH_LEVELS } from '../data/rebirths';
+import { REBIRTH_PATHS } from '../data/rebirthPaths';
 
 interface Props {
+  rebirthPath: number;
   rebirthLevel: number;
   collected: Set<string>;
   onSetRebirth: (level: number) => void;
@@ -23,19 +24,18 @@ function imgSrc(name: string, tier: string): string {
 }
 
 export function RebirthPanel({
+  rebirthPath,
   rebirthLevel,
   collected,
   onSetRebirth,
   onHighlight,
 }: Props) {
   const [open, setOpen] = useState(true);
+  const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
 
-  const MAX_REBIRTH = Math.max(...REBIRTH_LEVELS.map((r) => r.from));
+  const MAX_REBIRTH = Math.max(...activePath.map((r) => r.from));
 
-  const nextRebirth = useMemo(
-    () => REBIRTH_LEVELS.find((r) => r.from === rebirthLevel),
-    [rebirthLevel]
-  );
+  const nextRebirth = activePath.find((r) => r.from === rebirthLevel);
 
   const allMet = useMemo(
     () => nextRebirth?.droids.every((d) => collected.has(d.cardId)) ?? false,

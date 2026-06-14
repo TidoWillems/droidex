@@ -1,6 +1,7 @@
-import { REBIRTH_LEVELS } from '../data/rebirths';
+import { REBIRTH_PATHS } from '../data/rebirthPaths';
 
 interface Props {
+  rebirthPath: number;
   rebirthLevel: number;
   collected: Set<string>;
   onSetRebirth: (level: number) => void;
@@ -18,7 +19,14 @@ function imgSrc(name: string, tier: string): string {
   return `${import.meta.env.BASE_URL}droids/${safe}_${tier}.png`;
 }
 
-export function RebirthsPage({ rebirthLevel, collected, onSetRebirth }: Props) {
+export function RebirthsPage({
+  rebirthPath,
+  rebirthLevel,
+  collected,
+  onSetRebirth,
+}: Props) {
+  const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
+
   return (
     <div className="flex-1 overflow-y-auto">
       {/* Sticky rebirth level selector */}
@@ -54,7 +62,7 @@ export function RebirthsPage({ rebirthLevel, collected, onSetRebirth }: Props) {
 
       {/* Level cards */}
       <div className="max-w-3xl mx-auto px-3 py-3 space-y-3">
-        {REBIRTH_LEVELS.map((level) => {
+        {activePath.map((level) => {
           const isDone = level.to <= rebirthLevel;
           const isCurrent = level.from === rebirthLevel;
           const allMet = level.droids.every((d) => collected.has(d.cardId));

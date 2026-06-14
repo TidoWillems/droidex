@@ -21,7 +21,14 @@ type DroidTypeOrAll = DroidType | 'ALL';
 type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
 
 export default function App() {
-  const { collected, toggle, rebirthLevel, setRebirthLevel } = useTracker(null);
+  const {
+    collected,
+    toggle,
+    rebirthLevel,
+    setRebirthLevel,
+    rebirthPath,
+    setRebirthPath,
+  } = useTracker(null);
 
   const [tier, setTier] = useState<TierOrAll>('DEFAULT');
   const [rarity, setRarity] = useState<RarityOrAll>('ALL');
@@ -54,6 +61,22 @@ export default function App() {
           setFiltersOpen(false);
         }}
       />
+
+      <div className="flex justify-center gap-2 py-2">
+        {[1, 2, 3, 4].map((path) => (
+          <button
+            key={path}
+            onClick={() => setRebirthPath(path)}
+            className={`px-3 py-1 rounded border ${
+              rebirthPath === path
+                ? 'border-orange-500 text-orange-400'
+                : 'border-zinc-700 text-zinc-400'
+            }`}
+          >
+            RB{path}
+          </button>
+        ))}
+      </div>
 
       <Routes>
         <Route
@@ -127,6 +150,7 @@ export default function App() {
                 {/* Droid grid — scrollable, fills remaining space */}
                 <div className="order-last lg:order-first flex-1 overflow-y-auto">
                   <DroidGrid
+                    rebirthPath={rebirthPath}
                     tier={tier}
                     rarity={rarity}
                     droidClass={droidClass}
@@ -140,6 +164,7 @@ export default function App() {
               </div>
 
               <RebirthPanel
+                rebirthPath={rebirthPath}
                 rebirthLevel={rebirthLevel}
                 collected={collected}
                 onSetRebirth={setRebirthLevel}
@@ -152,6 +177,7 @@ export default function App() {
           path="/rebirths"
           element={
             <RebirthsPage
+              rebirthPath={rebirthPath}
               rebirthLevel={rebirthLevel}
               collected={collected}
               onSetRebirth={setRebirthLevel}

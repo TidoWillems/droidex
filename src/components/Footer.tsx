@@ -99,7 +99,7 @@ export function Footer() {
         </Link>
 
         <a
-          href="https://communities.epicgames.com/channel/QHWF/star-wars-droid-tycoon"
+          href="https://www.fortnite.com/@epiclabs/7865-8305-9184"
           target="_blank"
           rel="noreferrer"
           className="

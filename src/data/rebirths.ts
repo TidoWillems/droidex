@@ -1,5 +1,4 @@
 import type { Tier } from './droids';
-
 export interface RebirthDroidReq {
   name: string;
   tier: Tier;
@@ -13,7 +12,7 @@ export interface RebirthLevel {
   droids: RebirthDroidReq[];
 }
 
-function req(tier: Tier, name: string): RebirthDroidReq {
+export function req(tier: Tier, name: string): RebirthDroidReq {
   return { name, tier, cardId: `${name}_${tier}` };
 }
 

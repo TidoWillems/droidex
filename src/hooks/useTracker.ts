@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-const STORAGE_KEY = 'droidex_v1';
-const BACKUP_KEY = 'droidex_v1_backup';
+const STORAGE_KEY = 'droidex_v2';
+const BACKUP_KEY = 'droidex_v2_backup';
 interface StoredState {
   collected: string[];
   rebirthLevel: number;
+  rebirthPath: number;
 }
 
 function readLocalStorage(): StoredState | null {
@@ -38,6 +39,10 @@ export function useTracker(_uid: string | null) {
 
   const [rebirthLevel, setRebirthLevelState] = useState<number>(0);
 
+  const [rebirthPath, setRebirthPathState] = useState<number>(1);
+
+  const rebirthPathRef = useRef(rebirthPath);
+
   const rebirthLevelRef = useRef(rebirthLevel);
 
   useEffect(() => {
@@ -45,11 +50,18 @@ export function useTracker(_uid: string | null) {
   }, [rebirthLevel]);
 
   useEffect(() => {
+    rebirthPathRef.current = rebirthPath;
+  }, [rebirthPath]);
+
+  useEffect(() => {
     const local = readLocalStorage();
+		
 
     setCollected(new Set(local?.collected ?? []));
 
     setRebirthLevelState(local?.rebirthLevel ?? 0);
+
+    setRebirthPathState(local?.rebirthPath ?? 1);
   }, []);
 
   const toggle = useCallback((id: string) => {
@@ -65,6 +77,7 @@ export function useTracker(_uid: string | null) {
       writeLocalStorage({
         collected: Array.from(next),
         rebirthLevel: rebirthLevelRef.current,
+        rebirthPath: rebirthPathRef.current,
       });
 
       return next;
@@ -78,6 +91,21 @@ export function useTracker(_uid: string | null) {
       writeLocalStorage({
         collected: Array.from(prev),
         rebirthLevel: level,
+        rebirthPath: rebirthPathRef.current,
+      });
+
+      return prev;
+    });
+  }, []);
+
+  const setRebirthPath = useCallback((path: number) => {
+    setRebirthPathState(path);
+
+    setCollected((prev) => {
+      writeLocalStorage({
+        collected: Array.from(prev),
+        rebirthLevel: rebirthLevelRef.current,
+        rebirthPath: path,
       });
 
       return prev;
@@ -89,5 +117,7 @@ export function useTracker(_uid: string | null) {
     toggle,
     rebirthLevel,
     setRebirthLevel,
+    rebirthPath,
+    setRebirthPath,
   };
 }
