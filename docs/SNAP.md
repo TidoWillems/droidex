@@ -311,6 +311,21 @@ Erkenntnis:
 Neue Systemzustände benötigen nicht zwingend neue UI.
 Oft genügt ein kleiner Orientierungshinweis an der richtigen Stelle.
 
+
+## Erkenntnisse (v1.2.2)
+
+### Asset Synchronisation
+
+- Aktualisierte Droid-Bilder aus Upstream übernommen.
+- Dateinamen bleiben mit Upstream kompatibel.
+- Historische Alias-Assets (WLKR / STRK) wurden entfernt.
+
+Erkenntnis:
+
+- Verbesserte Assets lassen sich unabhängig von App-Logik übernehmen.
+- Upstream bleibt wertvolle Quelle für Bildmaterial und Datenkorrekturen.
+
+
 ##################
 ##################
 
