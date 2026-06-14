@@ -358,4 +358,28 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
     en: '✉ Report discovery',
     fi: '✉ Ilmoita löydöstä',
   },
+	
+	rebirthPathsTitle: {
+  de: 'REBIRTH-PFADE',
+  en: 'REBIRTH PATHS',
+  fi: 'REBIRTH-POLUT',
+},
+
+rebirthPathsText: {
+  de: `RB1–RB4 stehen für die vier bekannten Rebirth-Anforderungspfade.
+
+Jeder Pfad verwendet andere Droid-Kombinationen.
+
+Die Auswahl oben in Droidex zeigt dir die Anforderungen des gewählten Pfades.`,
+  en: `RB1–RB4 represent the four known Rebirth requirement paths.
+
+Each path uses different Droid combinations.
+
+The selector at the top of Droidex shows the requirements for the chosen path.`,
+  fi: `RB1–RB4 tarkoittavat neljää tunnettua Rebirth-vaatimuspolkua.
+
+Jokainen polku käyttää eri droidiyhdistelmiä.
+
+Droidexin yläosan valinta näyttää valitun polun vaatimukset.`,
+},
 };

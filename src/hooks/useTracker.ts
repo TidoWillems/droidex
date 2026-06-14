@@ -7,20 +7,28 @@ interface StoredState {
   rebirthLevel: number;
   rebirthPath: number;
 }
-
 function readLocalStorage(): StoredState | null {
   const candidates = [
     localStorage.getItem(STORAGE_KEY),
     localStorage.getItem(BACKUP_KEY),
+
+    // Migration von v1
+    localStorage.getItem('droidex_v1'),
+    localStorage.getItem('droidex_v1_backup'),
   ];
 
   for (const raw of candidates) {
     if (!raw) continue;
 
     try {
-      return JSON.parse(raw) as StoredState;
+      const state = JSON.parse(raw) as StoredState;
+
+      // automatisch nach v2 migrieren
+      writeLocalStorage(state);
+
+      return state;
     } catch {
-      // nächsten Kandidaten probieren
+      //
     }
   }
 

@@ -36,6 +36,12 @@ export const GUIDE = [
     text: UI.rebirthBadgeText,
   },
 
+	{
+  id: 'rebirth-paths',
+  title: UI.rebirthPathsTitle,
+  text: UI.rebirthPathsText,
+},
+
   {
     id: 'offline-timer',
     title: UI.offlineTimerTitle,

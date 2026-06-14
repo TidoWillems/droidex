@@ -269,6 +269,48 @@ Erkenntnis:
 - Der beste Community-Link ist nicht immer der tiefste Link.
 - Einstiegspunkte mit Kontext erzeugen mehr Orientierung als direkte Zielseiten.
 
+#################
+
+Erkenntnisse (v1.2.0)
+
+Multi-Path Rebirth System
+
+- Vier Rebirth-Pfade integriert (RB1–RB4)
+- Aktiver Pfad global steuerbar
+- Pfadwechsel direkt über die RB1–RB4 Buttons
+- Rebirth-Pfad wird lokal gespeichert und beim App-Start wiederhergestellt
+- RebirthPanel, RebirthsPage und DroidGrid nutzen denselben aktiven Pfad
+- DroidCard-Badges reagieren dynamisch auf den gewählten Pfad
+
+Erkenntnisse:
+
+- Rebirth besteht nun aus zwei Dimensionen:
+  
+  - Rebirth Path
+  - Rebirth Level
+
+- Beide Zustände müssen gemeinsam betrachtet werden.
+
+- Neue Progressionssysteme lassen sich über Datenlayer und Mapping-Schichten integrieren, ohne neue UI-Systeme einzuführen.
+
+## Release v1.2.1
+
+### Rebirth Path Persistence
+
+- Rebirth-Pfad wird lokal gespeichert
+- Automatische Migration von droidex_v1 nach droidex_v2
+- Bestehende Sammlungen werden übernommen
+
+### Rebirth Path Guide
+
+- Neuer APP-GUIDE-Eintrag für RB1–RB4
+- Erklärt die vier bekannten Requirement-Pfade
+
+Erkenntnis:
+
+Neue Systemzustände benötigen nicht zwingend neue UI.
+Oft genügt ein kleiner Orientierungshinweis an der richtigen Stelle.
+
 ##################
 ##################
 
