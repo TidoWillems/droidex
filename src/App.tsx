@@ -23,7 +23,11 @@ type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
 export default function App() {
   const {
     collected,
-    toggle,
+    present,
+
+    toggleCollected,
+    togglePresent,
+
     rebirthLevel,
     setRebirthLevel,
     rebirthPath,
@@ -35,6 +39,7 @@ export default function App() {
   const [droidClass, setDroidClass] = useState<DroidTypeOrAll>('ALL');
   const [collectionStatus, setCollectionStatus] =
     useState<CollectionStatus>('ALL');
+
   const [search, setSearch] = useState('');
   const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -143,6 +148,48 @@ export default function App() {
                         active={collectionStatus}
                         onChange={setCollectionStatus}
                       />
+                      {/* REBIRTH FILTER (temporarily hidden)                   
+   <div className="px-4 py-3 border-t border-zinc-800">
+                        <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
+                          REBIRTH
+                        </p>
+
+                        <div className="flex flex-wrap gap-2">
+                          <button
+                            onClick={() => setRebirthFilter('ALL')}
+                            className={
+                              rebirthFilter === 'ALL'
+                                ? 'filter-chip-active'
+                                : 'filter-chip'
+                            }
+                          >
+                            ALLE
+                          </button>
+
+                          <button
+                            onClick={() => setRebirthFilter('NEEDED')}
+                            className={
+                              rebirthFilter === 'NEEDED'
+                                ? 'filter-chip-active'
+                                : 'filter-chip'
+                            }
+                          >
+                            BENÖTIGT
+                          </button>
+
+                          <button
+                            onClick={() => setRebirthFilter('HISTORICAL')}
+                            className={
+                              rebirthFilter === 'HISTORICAL'
+                                ? 'filter-chip-active'
+                                : 'filter-chip'
+                            }
+                          >
+                            VERKAUFT
+                          </button>
+                        </div>
+                      </div>
+*/}
                     </div>
                   </div>
                 </aside>
@@ -151,13 +198,17 @@ export default function App() {
                 <div className="order-last lg:order-first flex-1 overflow-y-auto">
                   <DroidGrid
                     rebirthPath={rebirthPath}
+                    rebirthLevel={rebirthLevel}
                     tier={tier}
                     rarity={rarity}
                     droidClass={droidClass}
                     collectionStatus={collectionStatus}
+                    rebirthFilter="ALL"
                     search={search}
                     collected={collected}
-                    onToggle={toggle}
+                    present={present}
+                    onToggle={toggleCollected}
+                    onTogglePresent={togglePresent}
                     highlightedIds={highlightedIds}
                   />
                 </div>
@@ -167,6 +218,7 @@ export default function App() {
                 rebirthPath={rebirthPath}
                 rebirthLevel={rebirthLevel}
                 collected={collected}
+                present={present}
                 onSetRebirth={setRebirthLevel}
                 onHighlight={setHighlightedIds}
               />
@@ -180,6 +232,7 @@ export default function App() {
               rebirthPath={rebirthPath}
               rebirthLevel={rebirthLevel}
               collected={collected}
+              present={present}
               onSetRebirth={setRebirthLevel}
             />
           }

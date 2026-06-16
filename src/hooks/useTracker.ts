@@ -4,6 +4,8 @@ const STORAGE_KEY = 'droidex_v2';
 const BACKUP_KEY = 'droidex_v2_backup';
 interface StoredState {
   collected: string[];
+  present: string[];
+
   rebirthLevel: number;
   rebirthPath: number;
 }
@@ -45,6 +47,8 @@ function writeLocalStorage(state: StoredState) {
 export function useTracker(_uid: string | null) {
   const [collected, setCollected] = useState<Set<string>>(new Set());
 
+  const [present, setPresent] = useState<Set<string>>(new Set());
+
   const [rebirthLevel, setRebirthLevelState] = useState<number>(0);
 
   const [rebirthPath, setRebirthPathState] = useState<number>(1);
@@ -63,34 +67,62 @@ export function useTracker(_uid: string | null) {
 
   useEffect(() => {
     const local = readLocalStorage();
-		
 
     setCollected(new Set(local?.collected ?? []));
+    setPresent(new Set(local?.present ?? []));
 
     setRebirthLevelState(local?.rebirthLevel ?? 0);
 
     setRebirthPathState(local?.rebirthPath ?? 1);
   }, []);
 
-  const toggle = useCallback((id: string) => {
-    setCollected((prev) => {
-      const next = new Set(prev);
+  const toggleCollected = useCallback(
+    (id: string) => {
+      setCollected((prev) => {
+        const next = new Set(prev);
 
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
+        if (next.has(id)) {
+          next.delete(id);
+        } else {
+          next.add(id);
+        }
 
-      writeLocalStorage({
-        collected: Array.from(next),
-        rebirthLevel: rebirthLevelRef.current,
-        rebirthPath: rebirthPathRef.current,
+        writeLocalStorage({
+          collected: Array.from(next),
+          present: Array.from(present),
+          rebirthLevel: rebirthLevelRef.current,
+          rebirthPath: rebirthPathRef.current,
+        });
+
+        return next;
       });
+    },
+    [present]
+  );
 
-      return next;
-    });
-  }, []);
+  const togglePresent = useCallback(
+    (id: string) => {
+      setPresent((prev) => {
+        const next = new Set(prev);
+
+        if (next.has(id)) {
+          next.delete(id);
+        } else {
+          next.add(id);
+        }
+
+        writeLocalStorage({
+          collected: Array.from(collected),
+          present: Array.from(next),
+          rebirthLevel: rebirthLevelRef.current,
+          rebirthPath: rebirthPathRef.current,
+        });
+
+        return next;
+      });
+    },
+    [collected]
+  );
 
   const setRebirthLevel = useCallback((level: number) => {
     setRebirthLevelState(level);
@@ -98,6 +130,7 @@ export function useTracker(_uid: string | null) {
     setCollected((prev) => {
       writeLocalStorage({
         collected: Array.from(prev),
+        present: Array.from(present),
         rebirthLevel: level,
         rebirthPath: rebirthPathRef.current,
       });
@@ -112,6 +145,7 @@ export function useTracker(_uid: string | null) {
     setCollected((prev) => {
       writeLocalStorage({
         collected: Array.from(prev),
+        present: Array.from(present),
         rebirthLevel: rebirthLevelRef.current,
         rebirthPath: path,
       });
@@ -122,7 +156,9 @@ export function useTracker(_uid: string | null) {
 
   return {
     collected,
-    toggle,
+    present,
+    toggleCollected,
+    togglePresent,
     rebirthLevel,
     setRebirthLevel,
     rebirthPath,

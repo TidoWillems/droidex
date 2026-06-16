@@ -7,6 +7,7 @@ interface Props {
   rebirthPath: number;
   rebirthLevel: number;
   collected: Set<string>;
+  present: Set<string>;
   onSetRebirth: (level: number) => void;
   onHighlight: (ids: Set<string>) => void;
 }
@@ -27,25 +28,39 @@ export function RebirthPanel({
   rebirthPath,
   rebirthLevel,
   collected,
+  present,
   onSetRebirth,
   onHighlight,
 }: Props) {
   const [open, setOpen] = useState(true);
   const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
 
+  const futureUseCountMap = useMemo(() => {
+    const map: Record<string, number> = {};
+
+    activePath.forEach((level) => {
+      if (level.from <= rebirthLevel) return;
+
+      level.droids.forEach((droid) => {
+        map[droid.cardId] = (map[droid.cardId] ?? 0) + 1;
+      });
+    });
+
+    return map;
+  }, [activePath, rebirthLevel]);
+
   const MAX_REBIRTH = Math.max(...activePath.map((r) => r.from));
 
   const nextRebirth = activePath.find((r) => r.from === rebirthLevel);
 
   const allMet = useMemo(
-    () => nextRebirth?.droids.every((d) => collected.has(d.cardId)) ?? false,
-    [nextRebirth, collected]
+    () => nextRebirth?.droids.every((d) => present.has(d.cardId)) ?? false,
+    [nextRebirth, present]
   );
 
   const ownedCount = useMemo(
-    () =>
-      nextRebirth?.droids.filter((d) => collected.has(d.cardId)).length ?? 0,
-    [nextRebirth, collected]
+    () => nextRebirth?.droids.filter((d) => present.has(d.cardId)).length ?? 0,
+    [nextRebirth, present]
   );
 
   const handleMouseEnter = () => {
@@ -173,7 +188,9 @@ export function RebirthPanel({
 
               {/* Droid cards */}
               {nextRebirth.droids.map((d) => {
-                const have = collected.has(d.cardId);
+                const isCollected = collected.has(d.cardId);
+                const isPresent = present.has(d.cardId);
+                console.log('futureUseCountMap', futureUseCountMap);
                 return (
                   <div
                     key={d.cardId}
@@ -181,7 +198,7 @@ export function RebirthPanel({
                   >
                     {/* Warning triangle above card if missing */}
                     <div className="h-5 flex items-center justify-center">
-                      {!have && (
+                      {!isPresent && (
                         <div className="flex items-center justify-center w-5 h-5 rounded bg-yellow-400/15">
                           <svg
                             viewBox="0 0 16 14"
@@ -211,7 +228,13 @@ export function RebirthPanel({
 
                     {/* Card */}
                     <div
-                      className={`relative w-[88px] h-[88px] rounded-xl border-2 overflow-hidden bg-zinc-900 ${have ? 'droid-card-owned' : 'droid-card-missing'}`}
+                      className={`relative w-[88px] h-[88px] rounded-xl border-2 overflow-hidden bg-zinc-900 ${
+                        isPresent
+                          ? 'droid-card-owned'
+                          : isCollected
+                            ? 'border-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.45)]'
+                            : 'droid-card-missing'
+                      }`}
                     >
                       {/* Droid image */}
                       <img
@@ -232,11 +255,23 @@ export function RebirthPanel({
                         </span>
                       </div>
 
+                      {futureUseCountMap[d.cardId] > 0 && (
+                        <div className="absolute top-1 right-1 px-1.5 rounded bg-amber-900/90 border border-amber-500/50 text-[9px] font-bold text-amber-300">
+                          ↻{futureUseCountMap[d.cardId]}
+                        </div>
+                      )}
+
                       {/* Check / X circle — top left */}
                       <div
-                        className={`absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center ${have ? 'bg-green-500' : 'bg-red-500'}`}
+                        className={`absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center ${
+                          isPresent
+                            ? 'bg-green-500'
+                            : isCollected
+                              ? 'bg-cyan-500'
+                              : 'bg-red-500'
+                        }`}
                       >
-                        {have ? (
+                        {isPresent ? (
                           <svg
                             viewBox="0 0 10 10"
                             className="w-3 h-3"

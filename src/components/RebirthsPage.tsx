@@ -4,6 +4,7 @@ interface Props {
   rebirthPath: number;
   rebirthLevel: number;
   collected: Set<string>;
+  present: Set<string>;
   onSetRebirth: (level: number) => void;
 }
 
@@ -23,6 +24,7 @@ export function RebirthsPage({
   rebirthPath,
   rebirthLevel,
   collected,
+  present,
   onSetRebirth,
 }: Props) {
   const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
@@ -65,10 +67,20 @@ export function RebirthsPage({
         {activePath.map((level) => {
           const isDone = level.to <= rebirthLevel;
           const isCurrent = level.from === rebirthLevel;
-          const allMet = level.droids.every((d) => collected.has(d.cardId));
+          const allMet = level.droids.every((d) => present.has(d.cardId));
           const ownedCount = level.droids.filter((d) =>
-            collected.has(d.cardId)
+            present.has(d.cardId)
           ).length;
+
+          const remainingMap: Record<string, number> = {};
+
+          activePath
+            .filter((l) => l.from > level.from)
+            .forEach((l) => {
+              l.droids.forEach((d) => {
+                remainingMap[d.name] = (remainingMap[d.name] ?? 0) + 1;
+              });
+            });
 
           return (
             <div
@@ -111,7 +123,9 @@ export function RebirthsPage({
               {/* Droid cards */}
               <div className="flex flex-wrap gap-3">
                 {level.droids.map((d) => {
-                  const have = collected.has(d.cardId);
+                  const isCollected = collected.has(d.cardId);
+                  const isPresent = present.has(d.cardId);
+                  const futureUses = remainingMap[d.name] ?? 0;
                   return (
                     <div
                       key={d.cardId}
@@ -121,9 +135,11 @@ export function RebirthsPage({
                         className={`relative w-[76px] h-[76px] rounded-xl border-2 overflow-hidden bg-zinc-900 ${
                           isDone
                             ? 'border-zinc-700'
-                            : have
-                              ? 'border-green-500 shadow-[0_0_8px_2px_rgba(34,197,94,0.35)]'
-                              : 'border-red-500 shadow-[0_0_8px_2px_rgba(239,68,68,0.35)]'
+                            : isPresent
+                              ? 'border-green-500'
+                              : isCollected
+                                ? 'border-yellow-500'
+                                : 'border-red-500'
                         }`}
                       >
                         <img
@@ -142,11 +158,23 @@ export function RebirthsPage({
                             {d.tier}
                           </span>
                         </div>
+
+                        {futureUses > 0 && (
+                          <div
+                            className={`absolute top-1 right-1 px-1 rounded border text-[8px] font-bold ${
+                              futureUses === 1
+                                ? 'bg-emerald-900/90 border-amber-500/50 text-amber-300'
+                                : 'bg-amber-900/90 border-amber-500/50 text-amber-300'
+                            }`}
+                          >
+                            {futureUses === 1 ? 'LAST' : `↻${futureUses}`}
+                          </div>
+                        )}
                         {!isDone && (
                           <div
-                            className={`absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center ${have ? 'bg-green-500' : 'bg-red-500'}`}
+                            className={`absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center ${isPresent ? 'bg-green-500' : 'bg-red-500'}`}
                           >
-                            {have ? (
+                            {isPresent ? (
                               <svg
                                 viewBox="0 0 10 10"
                                 className="w-3 h-3"

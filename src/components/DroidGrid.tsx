@@ -5,6 +5,7 @@ import { DroidCard } from './DroidCard';
 import { REBIRTH_PATHS } from '../data/rebirthPaths';
 
 type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
+type RebirthStatus = 'ALL' | 'NEEDED' | 'HISTORICAL';
 
 interface Props {
   tier: TierOrAll;
@@ -12,9 +13,16 @@ interface Props {
   droidClass: DroidType | 'ALL';
   collectionStatus: CollectionStatus;
   rebirthPath: number;
+  rebirthLevel: number;
+  rebirthFilter: RebirthStatus;
   search: string;
+
   collected: Set<string>;
+  present: Set<string>;
+
   onToggle: (id: string) => void;
+  onTogglePresent: (id: string) => void;
+
   highlightedIds?: Set<string>;
 }
 
@@ -24,16 +32,31 @@ export function DroidGrid({
   droidClass,
   collectionStatus,
   rebirthPath,
+  rebirthLevel,
+  rebirthFilter,
   search,
+
   collected,
+  present,
+
   onToggle,
+  onTogglePresent,
+
   highlightedIds,
 }: Props) {
   const tierIndex = useMemo(
     () => Object.fromEntries(TIER_ORDER.map((t, i) => [t, i])),
     []
   );
+  const requiredIds = useMemo(() => {
+    const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
 
+    return new Set(
+      activePath
+        .filter((r) => r.from >= rebirthLevel)
+        .flatMap((r) => r.droids.map((d) => d.cardId))
+    );
+  }, [rebirthPath, rebirthLevel]);
   const cards = useMemo(() => {
     const filtered = ALL_CARDS.filter((c) => {
       if (tier !== 'ALL' && c.tier !== tier) return false;
@@ -46,6 +69,15 @@ export function DroidGrid({
         !c.droid.name.toLowerCase().includes(search.trim().toLowerCase())
       )
         return false;
+
+      if (rebirthFilter === 'NEEDED' && !requiredIds.has(c.id)) return false;
+
+      if (
+        rebirthFilter === 'HISTORICAL' &&
+        !(collected.has(c.id) && !present.has(c.id))
+      )
+        return false;
+
       return true;
     });
     if (tier === 'ALL') {
@@ -59,9 +91,11 @@ export function DroidGrid({
     collectionStatus,
     search,
     collected,
+    present,
+    rebirthFilter,
+    requiredIds,
     tierIndex,
   ]);
-
   const rebirthMap = useMemo(() => {
     const map: Record<string, number[]> = {};
 
@@ -76,6 +110,19 @@ export function DroidGrid({
       }
     }
 
+    return map;
+  }, [rebirthPath]);
+
+  const futureUseMap = useMemo(() => {
+    const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
+
+    const map: Record<string, number> = {};
+
+    activePath.forEach((level) => {
+      level.droids.forEach((droid) => {
+        map[droid.cardId] = Math.max(map[droid.cardId] ?? 0, level.from);
+      });
+    });
     return map;
   }, [rebirthPath]);
 
@@ -97,9 +144,13 @@ export function DroidGrid({
           key={card.id}
           card={card}
           collected={collected.has(card.id)}
+          present={present.has(card.id)}
           onToggle={onToggle}
+          onTogglePresent={onTogglePresent}
           highlighted={highlightedIds?.has(card.id)}
           rebirthLevels={rebirthMap[card.droid.name]}
+          lastRequiredRebirth={futureUseMap[card.id]}
+          currentRebirth={rebirthLevel}
         />
       ))}
     </div>

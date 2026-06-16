@@ -12,10 +12,17 @@ import type { DroidCard as DroidCardType } from '../data/droids';
 
 interface Props {
   card: DroidCardType;
+
   collected: boolean;
+  present: boolean;
+
   onToggle: (id: string) => void;
+  onTogglePresent: (id: string) => void;
+
   highlighted?: boolean;
   rebirthLevels?: number[];
+  lastRequiredRebirth?: number;
+  currentRebirth?: number;
 }
 
 const RARITY_COLOR: Record<string, string> = {
@@ -53,16 +60,29 @@ function imgSrc(name: string, tier: string): string {
 
 export function DroidCard({
   card,
+
   collected,
+  present,
+
   onToggle,
+  onTogglePresent,
+
   highlighted,
   rebirthLevels,
+  lastRequiredRebirth,
+  currentRebirth,
 }: Props) {
   const { droid, tier, id } = card;
   const rarityColor = RARITY_COLOR[droid.rarity];
   const badge = TYPE_BADGE[droid.type];
   const isRainbow = tier === 'RAINBOW';
   const [imgFailed, setImgFailed] = useState(false);
+
+  const isPresent = present;
+  const isSafe =
+    lastRequiredRebirth !== undefined &&
+    currentRebirth !== undefined &&
+    currentRebirth > lastRequiredRebirth;
 
   const ringClass = highlighted
     ? 'ring-2 ring-yellow-400 ring-inset'
@@ -143,6 +163,15 @@ export function DroidCard({
               {rebirthLevels.join('·')}
             </span>
           )}
+
+          {isSafe && (
+            <span
+              className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block text-zinc-300 bg-zinc-700/30 border border-zinc-500/40"
+              title="No future rebirth requirement"
+            >
+              SAFE
+            </span>
+          )}
         </div>
       </div>
 
@@ -172,6 +201,33 @@ export function DroidCard({
           </svg>
         </div>
       )}
+
+      {/* Present marker — bottom left */}
+      <div
+        className={`absolute bottom-1.5 left-1.5 z-20 w-5 h-5 rounded-full flex items-center justify-center ${
+          isPresent ? 'bg-green-500' : 'bg-zinc-700'
+        }`}
+        onClick={(e) => {
+          e.stopPropagation();
+          onTogglePresent(id);
+        }}
+      >
+        {isPresent && (
+          <svg
+            viewBox="0 0 10 10"
+            className="w-3 h-3 text-black"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+          >
+            <path
+              d="M1.5 5l2.5 2.5 4.5-4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        )}
+      </div>
 
       {/* Event locked overlay */}
       {droid.eventLocked && (

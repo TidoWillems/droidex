@@ -94,7 +94,7 @@ export function AboutPage() {
                 {t(item.title)}
               </div>
 
-              <div className="text-sm text-zinc-300">{t(item.text)}</div>
+              <div className="text-sm text-zinc-300 whitespace-pre-wrap">{t(item.text)}</div>
             </div>
           ))}
         </div>

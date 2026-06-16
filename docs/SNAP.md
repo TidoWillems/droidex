@@ -225,6 +225,7 @@ Die Datenstruktur sollte langfristig eher auf Merkmale
 - Rebirth-Datenmodell muss künftig Pfad + Level unterscheiden.
 - Bisherige Droidex-Rebirth-Architektur basiert auf einem einzelnen Pfad.
 - Super-Level/Nova-System deutet auf zusätzliche Meta-Progression oberhalb klassischer Rebirths hin.)
+
 ## Erkenntnisse (v1.1.11)
 
 ### Rebirth Path System
@@ -285,7 +286,6 @@ Multi-Path Rebirth System
 Erkenntnisse:
 
 - Rebirth besteht nun aus zwei Dimensionen:
-  
   - Rebirth Path
   - Rebirth Level
 
@@ -311,7 +311,6 @@ Erkenntnis:
 Neue Systemzustände benötigen nicht zwingend neue UI.
 Oft genügt ein kleiner Orientierungshinweis an der richtigen Stelle.
 
-
 ## Erkenntnisse (v1.2.2)
 
 ### Asset Synchronisation
@@ -325,6 +324,91 @@ Erkenntnis:
 - Verbesserte Assets lassen sich unabhängig von App-Logik übernehmen.
 - Upstream bleibt wertvolle Quelle für Bildmaterial und Datenkorrekturen.
 
+## Erkenntnisse (v1.2.x)
+
+Sammlung und Verfügbarkeit sind unterschiedliche Zustände.
+
+- gesammelt = Droid wurde mindestens einmal freigeschaltet/gebaut
+- anwesend = Droid existiert aktuell im Tycoon
+
+Rebirth-Anforderungen sollten auf Verfügbarkeit
+statt auf Sammlung basieren.
+
+Squads und Lounge können als Quellen der
+Droid-Verfügbarkeit betrachtet werden.
+
+20260615 DroidCards
+✓ Zweiter Status eingeführt
+✓ Persistenz funktioniert
+✓ Mobile UI funktioniert
+✓ Markerposition funktioniert
+✓ Keine Debug-Hardcodes mehr
+
+## Erkenntnisse (v1.2.x)
+
+### Besitz vs Verfügbarkeit
+
+Droiden besitzen mindestens zwei unabhängige Zustände:
+
+- collected = jemals besessen
+- present = aktuell verfügbar
+
+Daraus entstehen drei relevante Sammlungszustände:
+
+- aktuell vorhanden
+- historisch vorhanden
+- nie besessen
+
+Rebirth-Anforderungen beziehen sich auf Verfügbarkeit,
+nicht auf historischen Besitz.
+
+Historischer Besitz bleibt jedoch strategisch relevant,
+weil verkaufte Droiden in späteren Rebirth-Stufen erneut
+benötigt werden können.
+
+Erkenntnis:
+
+Die gleiche Datenbasis kann gleichzeitig
+Sammlung, Verfügbarkeit und Rebirth-Planung abbilden.
+
+Rebirth-Relevanz ist nicht identisch mit Sammlung.
+
+Wichtiger Zustand:
+
+required + collected + not present
+
+= potentieller zukünftiger Rebuild-Kandidat.
+
+Rebirth-Anforderungen sind keine Ereignisse eines einzelnen Levels, sondern eine Eigenschaft des verbleibenden Progressionspfades. Deshalb basiert die Verkaufsentscheidung auf zukünftiger Verwendung und nicht auf dem nächsten Rebirth-Level.
+
+## Erkenntnisse (v1.2.3)
+
+### Rebirth-Nutzung als verbleibender Pfad
+
+Rebirth-Relevanz ist keine Eigenschaft eines Droids,
+sondern eine Eigenschaft seiner zukünftigen Verwendung
+innerhalb eines gewählten Rebirth-Pfades.
+
+Daraus ergeben sich zwei strategische Zustände:
+
+LAST
+= letzter bekannter Einsatz im aktuellen Pfad
+
+↻N
+= Droid wird noch N-mal benötigt
+
+Die für Spieler relevante Frage lautet nicht:
+
+"Wird dieser Droid irgendwann benötigt?"
+
+sondern:
+
+"Kann ich ihn jetzt verkaufen oder brauche ich ihn später erneut?"
+
+Erkenntnis:
+
+Zukunftsrelevanz lässt sich oft verständlicher darstellen
+als verbleibende Nutzung statt als absolute Nutzungshäufigkeit.
 
 ##################
 ##################

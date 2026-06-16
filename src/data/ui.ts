@@ -288,28 +288,40 @@ export const UI = {
   },
 
   rebirthBadgeText: {
-    de: `↻ 3·5·7 bedeutet:
-Dieser Droid wird in mehreren Rebirths benötigt.
+    de: `Die kleinen Symbole zeigen, ob ein Droid später erneut benötigt wird.
 
-Oft lohnt es sich, ihn dauerhaft im Tycoon einzusetzen oder in der Lounge zu parken.
-Wird er verkauft, musst du ihn später erneut herstellen.
+LAST
+Dies ist der letzte bekannte Einsatz des Droids im gewählten Rebirth-Pfad.
+Danach kann er verkauft oder für andere Zwecke verwendet werden.
 
-Benötigte Rebirth-Droids erkennst du direkt auf den DroidCards oder im Rebirth-Bereich.`,
+↻1, ↻2, ↻3 ...
+Der Droid wird nach diesem Rebirth noch einmal oder mehrfach benötigt.
+Wird er verkauft, muss er später erneut hergestellt werden.
 
-    en: `↻ 3·5·7 means:
-This Droid is required for multiple Rebirths.
+Die Anzeige hilft bei der Planung von Tycoon-, Lounge- und Rebirth-Droids.`,
 
-It is often worth keeping it permanently active in your Tycoon or parked in the Lounge.
-If it gets sold, you will need to build it again later.
+    en: `The small badges show whether a Droid will be needed again later.
 
-You can identify required Rebirth Droids directly on the Droid Cards or in the Rebirth section.`,
-    fi: `↻ 3·5·7 tarkoittaa:
-Tätä droidia tarvitaan useissa Rebirth-vaiheissa.
+LAST
+This is the final known use of the Droid in the selected Rebirth path.
+After that it can be sold or used for other purposes.
 
-Usein kannattaa pitää se pysyvästi käytössä Tycoonissa tai säilyttää Loungessa.
-Jos se myydään, joudut valmistamaan sen myöhemmin uudelleen.
+↻1, ↻2, ↻3 ...
+The Droid will be required again in future Rebirths.
+If it is sold, it will need to be rebuilt later.
 
-Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osiosta.`,
+This helps with planning Tycoon, Lounge and Rebirth Droids.`,
+    fi: `Pienet merkit näyttävät, tarvitaanko droidia myöhemmin uudelleen.
+
+LAST
+Tämä on droidin viimeinen tunnettu käyttökerta valitulla Rebirth-polulla.
+Sen jälkeen sen voi myydä tai käyttää muihin tarkoituksiin.
+
+↻1, ↻2, ↻3 ...
+Droidia tarvitaan vielä tulevissa Rebirth-vaiheissa.
+Jos se myydään, se täytyy rakentaa myöhemmin uudelleen.
+
+Merkinnät helpottavat Tycoon-, Lounge- ja Rebirth-suunnittelua.`,
   },
 
   offlineTimerTitle: {
@@ -358,28 +370,28 @@ Rebirthiin tarvittavat droidit tunnistat suoraan Droid-korteista tai Rebirth-osi
     en: '✉ Report discovery',
     fi: '✉ Ilmoita löydöstä',
   },
-	
-	rebirthPathsTitle: {
-  de: 'REBIRTH-PFADE',
-  en: 'REBIRTH PATHS',
-  fi: 'REBIRTH-POLUT',
-},
 
-rebirthPathsText: {
-  de: `RB1–RB4 stehen für die vier bekannten Rebirth-Anforderungspfade.
+  rebirthPathsTitle: {
+    de: 'REBIRTH-PFADE',
+    en: 'REBIRTH PATHS',
+    fi: 'REBIRTH-POLUT',
+  },
+
+  rebirthPathsText: {
+    de: `RB1–RB4 stehen für die vier bekannten Rebirth-Anforderungspfade.
 
 Jeder Pfad verwendet andere Droid-Kombinationen.
 
 Die Auswahl oben in Droidex zeigt dir die Anforderungen des gewählten Pfades.`,
-  en: `RB1–RB4 represent the four known Rebirth requirement paths.
+    en: `RB1–RB4 represent the four known Rebirth requirement paths.
 
 Each path uses different Droid combinations.
 
 The selector at the top of Droidex shows the requirements for the chosen path.`,
-  fi: `RB1–RB4 tarkoittavat neljää tunnettua Rebirth-vaatimuspolkua.
+    fi: `RB1–RB4 tarkoittavat neljää tunnettua Rebirth-vaatimuspolkua.
 
 Jokainen polku käyttää eri droidiyhdistelmiä.
 
 Droidexin yläosan valinta näyttää valitun polun vaatimukset.`,
-},
+  },
 };
