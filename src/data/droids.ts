@@ -122,7 +122,7 @@ export const DROIDS: Droid[] = [
   },
   {
     name: 'IG-11 MARSHAL',
-		rarity: 'ICONIC',
+    rarity: 'ICONIC',
     type: 'BATTLE',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
@@ -134,13 +134,13 @@ export const DROIDS: Droid[] = [
     tiers: DEFAULT_ONLY,
     eventLocked: true,
   },
-{
-  name: 'CB-23',
-  rarity: 'ICONIC',
-  type: 'ASTROMECH',
-  tiers: DEFAULT_ONLY,
-  eventLocked: true,
-}
+  {
+    name: 'CB-23',
+    rarity: 'ICONIC',
+    type: 'ASTROMECH',
+    tiers: DEFAULT_ONLY,
+    eventLocked: true,
+  },
 ];
 
 export const ALL_CARDS: DroidCard[] = DROIDS.flatMap((droid) =>

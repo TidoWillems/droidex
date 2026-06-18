@@ -455,8 +455,6 @@ Ziel:
 Vom reinen Sammler-Tracker
 zum Droid-Wissenssystem.
 
-
-
 ### Upgrade Chips
 
 Bekannte Quellen:
@@ -580,6 +578,23 @@ von einfachen Sammelobjekten
 zu Wissensobjekten mit mehreren
 unabhängigen Eigenschaften.
 
+
+## Erkenntnisse (v1.3.2)
+
+### Collected Marker Recovery
+
+- Historischer Collected-Haken wurde versehentlich bei UI-Refactoring entfernt.
+- Git-Historie erlaubte exakte Rekonstruktion der ursprünglichen Implementierung.
+- Collected und Present repräsentieren unterschiedliche Zustände und benötigen getrennte Visualisierung.
+
+Erkenntnis:
+
+UI-Verdichtung darf unterschiedliche Bedeutungen nicht unbeabsichtigt verschmelzen.
+
+Collected = jemals besessen
+Present = aktuell verfügbar
+
+Beide Zustände bleiben strategisch relevant.
 #### UI polish ?: ja / nein
 
 Feedback:
@@ -587,6 +602,61 @@ Ein Nutzer fragte nach der Bedeutung von RB1–RB4.
 Aktuell keine Änderung nötig.
 Weiter beobachten, ob die Frage mehrfach auftaucht.
 
+##################
+##################
+
+## Ideen (Backlog)
+
+### Sammlung
+
+- Mark All
+  - komplette Sammlung als vorhanden markieren
+  - hilfreich bei Gerätewechsel
+  - hilfreich nach verlorenem localStorage
+
+- Clear Collection
+  - Sammlung komplett zurücksetzen
+
+- Export / Import
+  - JSON Export
+  - JSON Import
+  - langfristig robuster als Mark All
+
+  - Mark All könnte später durch Export/Import ersetzt werden.
+
+### Iconic Droids
+
+- source = Nova Shop
+- novaCost dokumentieren
+- availabilityDate dokumentieren
+- "Coming Soon" statt "Secret"
+
+### Droid Wissen
+
+- Companion-Effekte erweitern
+- Upgrade-Chip-Quellen dokumentieren
+- Nova-System dokumentieren
+- Squad-Boni erfassen
+
+### UI
+
+- Rebirth-Ready-Indikator weiter beobachten
+- Card-Höhe eventuell leicht erhöhen
+- Companion-Badges vereinheitlichen
+
+### Langfristig
+
+- Droid-Merkmalsmodell:
+  - rarity
+  - tier
+  - source
+  - companionAbility
+  - rebirthUsage
+  - eventLocked
+  - novaCost
+
+##################
+##################
 ##################
 
 ## Deployment Flow

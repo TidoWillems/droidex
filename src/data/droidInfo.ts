@@ -18,8 +18,8 @@ export const DROID_INFO: Record<string, DroidInfo> = {
   'IG-11 MARSHAL': {
     abilities: ['BP SHIELD'],
   },
-	
-	'CB-23': {
-  abilities: ['SECRET'],
-	},
+
+  'CB-23': {
+    abilities: ['SECRET'],
+  },
 };
