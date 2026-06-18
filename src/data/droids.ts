@@ -1,4 +1,4 @@
-export type Rarity = 'COMMON' | 'RARE' | 'EPIC' | 'LEGENDARY' | 'MYTHIC';
+export type Rarity = 'COMMON' | 'RARE' | 'EPIC' | 'LEGENDARY' | 'ICONIC';
 export type DroidType = 'WORKER' | 'ASTROMECH' | 'BATTLE';
 export type Tier = 'DEFAULT' | 'GOLD' | 'DIAMOND' | 'RAINBOW' | 'BESKAR';
 export type TierOrAll = Tier | 'ALL';
@@ -105,28 +105,42 @@ export const DROIDS: Droid[] = [
     tiers: ALL_TIERS,
   },
 
-  // MYTHIC (event locked, DEFAULT only)
+  // ICONIC (event locked, DEFAULT only)
   {
     name: 'BB8',
-    rarity: 'MYTHIC',
+    rarity: 'ICONIC',
     type: 'ASTROMECH',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
   },
   {
     name: 'MISTER BONES',
-    rarity: 'MYTHIC',
+    rarity: 'ICONIC',
     type: 'BATTLE',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
   },
   {
     name: 'IG-11 MARSHAL',
-    rarity: 'MYTHIC',
+		rarity: 'ICONIC',
     type: 'BATTLE',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
   },
+  {
+    name: 'DJ R-3X',
+    rarity: 'ICONIC',
+    type: 'WORKER',
+    tiers: DEFAULT_ONLY,
+    eventLocked: true,
+  },
+{
+  name: 'CB-23',
+  rarity: 'ICONIC',
+  type: 'ASTROMECH',
+  tiers: DEFAULT_ONLY,
+  eventLocked: true,
+}
 ];
 
 export const ALL_CARDS: DroidCard[] = DROIDS.flatMap((droid) =>
@@ -145,7 +159,7 @@ export const RARITY_ORDER: Rarity[] = [
   'RARE',
   'EPIC',
   'LEGENDARY',
-  'MYTHIC',
+  'ICONIC',
 ];
 export const TIER_ORDER: Tier[] = [
   'DEFAULT',

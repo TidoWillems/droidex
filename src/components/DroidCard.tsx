@@ -9,6 +9,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import type { DroidCard as DroidCardType } from '../data/droids';
+import { DROID_INFO } from '../data/droidInfo';
 
 interface Props {
   card: DroidCardType;
@@ -30,7 +31,7 @@ const RARITY_COLOR: Record<string, string> = {
   RARE: '#3b82f6',
   EPIC: '#a855f7',
   LEGENDARY: '#f59e0b',
-  MYTHIC: '#ef4444',
+  ICONIC: '#ff00aa',
 };
 
 const TYPE_BADGE: Record<string, { Icon: LucideIcon; bg: string }> = {
@@ -79,6 +80,7 @@ export function DroidCard({
   const [imgFailed, setImgFailed] = useState(false);
 
   const isPresent = present;
+  const info = DROID_INFO[droid.name];
   const isSafe =
     lastRequiredRebirth !== undefined &&
     currentRebirth !== undefined &&
@@ -152,6 +154,28 @@ export function DroidCard({
           </span>
         </div>
 
+        {info?.abilities && (
+          <div className="mt-1 flex flex-wrap gap-1">
+            {info.abilities.map((ability) => (
+              <span
+                key={ability}
+                className="
+          text-[8px]
+          px-1
+          py-px
+          rounded
+          border
+          border-cyan-500/40
+          bg-cyan-500/10
+          text-cyan-300
+        "
+              >
+                {ability}
+              </span>
+            ))}
+          </div>
+        )}
+
         {rebirthLevels && rebirthLevels.length > 0 && (
           <div className="mt-1">
             <span
@@ -189,25 +213,6 @@ export function DroidCard({
       >
         <badge.Icon size={14} color="white" />
       </div>
-
-      {/* Collected checkmark — top left */}
-      {collected && (
-        <div className="absolute top-0.5 left-0.5 z-20 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center">
-          <svg
-            viewBox="0 0 10 10"
-            className="w-3 h-3 text-black"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-          >
-            <path
-              d="M1.5 5l2.5 2.5 4.5-4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-      )}
 
       {/* Event locked overlay */}
       {droid.eventLocked && (

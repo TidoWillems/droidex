@@ -455,6 +455,8 @@ Ziel:
 Vom reinen Sammler-Tracker
 zum Droid-Wissenssystem.
 
+
+
 ### Upgrade Chips
 
 Bekannte Quellen:
@@ -558,6 +560,33 @@ Der Nutzer interessiert sich nicht für einzelne Zustände,
 sondern für die Frage:
 
 "Brauche ich diesen Droid noch?"
+
+## Erkenntnisse (v1.3.1)
+
+### Iconic Droids
+
+Die Einführung von CB-23 bestätigt,
+dass Iconic Droids als eigenständige
+Sammlungskategorie behandelt werden sollten.
+
+Companion-Effekte, Nova-Shop-Verfügbarkeit
+und Event-Herkunft sind voneinander unabhängige
+Merkmale.
+
+Erkenntnis:
+
+Droiden entwickeln sich zunehmend
+von einfachen Sammelobjekten
+zu Wissensobjekten mit mehreren
+unabhängigen Eigenschaften.
+
+#### UI polish ?: ja / nein
+
+Feedback:
+Ein Nutzer fragte nach der Bedeutung von RB1–RB4.
+Aktuell keine Änderung nötig.
+Weiter beobachten, ob die Frage mehrfach auftaucht.
+
 ##################
 
 ## Deployment Flow
