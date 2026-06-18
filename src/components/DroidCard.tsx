@@ -132,11 +132,14 @@ export function DroidCard({
       </div>
 
       {/* Footer */}
-      <div className="w-full bg-black px-2 pt-1 pb-1.5">
+      <div className="w-full bg-black px-2 pt-1 pb-4 min-h-[5.2rem]">
         <p className="text-white font-black italic leading-tight truncate text-sm">
           {droid.name}
         </p>
-        <div className="flex items-center gap-1 flex-wrap mt-0.5">
+        <p className="text-[9px] uppercase tracking-wider text-zinc-500">
+          {droid.type}
+        </p>
+        <div className="mt-0.5">
           <span
             className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block"
             style={{
@@ -147,37 +150,41 @@ export function DroidCard({
           >
             {droid.rarity}
           </span>
-          {rebirthLevels && rebirthLevels.length > 0 && (
+        </div>
+
+        {rebirthLevels && rebirthLevels.length > 0 && (
+          <div className="mt-1">
             <span
-              className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block text-orange-400 bg-orange-500/15 border border-orange-500/40"
+              className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-flex items-center gap-1 text-orange-400 bg-orange-500/15 border border-orange-500/40"
               title={`${
                 rebirthLevels.length > 1
                   ? t(UI.rebirthRequiredPlural)
                   : t(UI.rebirthRequired)
               } ${rebirthLevels.join(', ')}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                onTogglePresent(id);
+              }}
             >
-              <RefreshCw
-                size={8}
-                className="inline-block mr-0.5 align-middle"
+              <span
+                className={`w-2.5 h-2.5 rounded-full border border-black/40 ${
+                  isPresent ? 'bg-green-500' : 'bg-zinc-500'
+                }`}
               />
-              {rebirthLevels.join('·')}
-            </span>
-          )}
 
-          {isSafe && (
-            <span
-              className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-block text-zinc-300 bg-zinc-700/30 border border-zinc-500/40"
-              title="No future rebirth requirement"
-            >
-              SAFE
+              <RefreshCw size={8} className="inline-block align-middle" />
+
+              {rebirthLevels.join('·')}
+
+              {isSafe && <span className="text-green-400 ml-1">✓</span>}
             </span>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Type icon — top right */}
       <div
-        className="absolute top-1.5 right-1.5 z-20 w-6 h-6 rounded-md flex items-center justify-center"
+        className="absolute top-0.5 right-0.5 z-20 w-6 h-6 rounded-md flex items-center justify-center"
         style={{ backgroundColor: badge.bg }}
       >
         <badge.Icon size={14} color="white" />
@@ -185,7 +192,7 @@ export function DroidCard({
 
       {/* Collected checkmark — top left */}
       {collected && (
-        <div className="absolute top-1.5 left-1.5 z-20 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center">
+        <div className="absolute top-0.5 left-0.5 z-20 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center">
           <svg
             viewBox="0 0 10 10"
             className="w-3 h-3 text-black"
@@ -201,33 +208,6 @@ export function DroidCard({
           </svg>
         </div>
       )}
-
-      {/* Present marker — bottom left */}
-      <div
-        className={`absolute bottom-1.5 left-1.5 z-20 w-5 h-5 rounded-full flex items-center justify-center ${
-          isPresent ? 'bg-green-500' : 'bg-zinc-700'
-        }`}
-        onClick={(e) => {
-          e.stopPropagation();
-          onTogglePresent(id);
-        }}
-      >
-        {isPresent && (
-          <svg
-            viewBox="0 0 10 10"
-            className="w-3 h-3 text-black"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-          >
-            <path
-              d="M1.5 5l2.5 2.5 4.5-4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
-      </div>
 
       {/* Event locked overlay */}
       {droid.eventLocked && (

@@ -264,4 +264,136 @@ export const TIPS = [
 
     verified: true,
   },
+  {
+    id: 'rebirth_quality',
+    category: 'PROGRESSION',
+    priority: 5,
+
+    title: {
+      de: 'Höhere Stufen zählen ebenfalls',
+      en: 'Higher Tiers Also Count',
+      fi: 'Korkeammat tasot kelpaavat myös',
+    },
+
+    text: {
+      de: 'Wenn ein Rebirth einen Gold-, Diamant-, Rainbow- oder Beskar-Droid verlangt, kann auch eine höhere Qualitätsstufe verwendet werden. Ein Beskar-Droid erfüllt beispielsweise auch Anforderungen für Rainbow, Diamant oder Gold.',
+      en: 'If a rebirth requires a Gold, Diamond, Rainbow or Beskar droid, higher quality versions can also be used. A Beskar droid can satisfy Rainbow, Diamond and Gold requirements.',
+      fi: 'Jos Rebirth vaatii Gold-, Diamond-, Rainbow- tai Beskar-droidin, myös korkeampi laatu kelpaa. Esimerkiksi Beskar-droidi täyttää myös Rainbow-, Diamond- ja Gold-vaatimukset.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'upgrade_chip_sources',
+    category: 'PROGRESSION',
+    priority: 5,
+
+    title: {
+      de: 'Upgrade Chips kommen aus mehreren Quellen',
+      en: 'Upgrade Chips Have Multiple Sources',
+      fi: 'Upgrade Chipejä saa useista lähteistä',
+    },
+
+    text: {
+      de: 'Upgrade Chips erhältst du durch World Quests, beim Fertigstellen von Droids an der Werkbank und beim Verkauf selbst hergestellter Gold-, Diamant-, Rainbow- oder Beskar-Droids.',
+      en: 'Upgrade Chips can be earned through World Quests, completing droids at the workshop and selling self-crafted Gold, Diamond, Rainbow or Beskar droids.',
+      fi: 'Upgrade Chipejä saa World Quest -tehtävistä, droidien valmistumisesta työpajalla sekä myymällä itse rakennettuja Gold-, Diamond-, Rainbow- tai Beskar-droideja.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'droid_tiers',
+    category: 'DISCOVERY',
+    priority: 4,
+
+    title: {
+      de: 'Droid-Qualität verstehen',
+      en: 'Understand Droid Quality',
+      fi: 'Ymmärrä droidien laatu',
+    },
+
+    text: {
+      de: 'Jeder Droid kann in mehreren Qualitätsstufen existieren: Standard → Gold → Diamant → Rainbow → Beskar. Zusätzlich besitzt jeder Droid eine Seltenheit wie Gewöhnlich, Selten, Epic oder Legendär.',
+      en: 'Each droid can exist in multiple quality tiers: Standard → Gold → Diamond → Rainbow → Beskar. Every droid also has a rarity such as Common, Rare, Epic or Legendary.',
+      fi: 'Jokainen droidi voi esiintyä useissa laatutasoissa: Standard → Gold → Diamond → Rainbow → Beskar. Lisäksi jokaisella droidilla on harvinaisuus kuten Common, Rare, Epic tai Legendary.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'djr3x_world_quests',
+    category: 'PROGRESSION',
+    priority: 5,
+
+    title: {
+      de: 'DJ R-3X verdoppelt World Quest Belohnungen',
+      en: 'DJ R-3X Doubles World Quest Rewards',
+      fi: 'DJ R-3X tuplaa World Quest -palkinnot',
+    },
+
+    text: {
+      de: 'DJ R-3X kann World Quests aller Droid-Klassen ausführen. Er ist nicht auf Worker-, Astromech- oder Battle-Missionen beschränkt und erhöht zusätzlich die Belohnungen von World Quests.',
+      en: 'DJ R-3X can complete World Quests of all droid classes. He is not restricted to Worker, Astromech or Battle missions and also increases World Quest rewards.',
+      fi: 'DJ R-3X voi suorittaa kaikkien droidiluokkien World Quest -tehtäviä. Hän ei ole sidottu Worker-, Astromech- tai Battle-tehtäviin ja kasvattaa lisäksi World Quest -palkintoja.',
+    },
+    verified: true,
+  },
+  {
+    id: 'ig11_blueprint_shield',
+    category: 'PROGRESSION',
+    priority: 4,
+
+    title: {
+      de: 'IG-11 schützt Blaupausen',
+      en: 'IG-11 Protects Blueprints',
+      fi: 'IG-11 suojaa piirustuksia',
+    },
+
+    text: {
+      de: 'IG-11 Marshal gewährt einen Blaupausenschild-Bonus. Das kann bei seltenen Droid-Blaupausen besonders nützlich sein.',
+      en: 'IG-11 Marshal grants a blueprint shield bonus. This can be useful for rare droid blueprints.',
+      fi: 'IG-11 Marshal antaa blueprint-suojan. Se voi olla hyödyllinen harvinaisille droidipiirustuksille.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'mister_bones_damage',
+    category: 'PROGRESSION',
+    priority: 4,
+
+    title: {
+      de: 'Mister Bones erhöht Kampfschaden',
+      en: 'Mister Bones Increases Damage',
+      fi: 'Mister Bones lisää vahinkoa',
+    },
+
+    text: {
+      de: 'Mister Bones gewährt als Begleiter doppelten Schaden im Kampf. Das erleichtert Event-Kämpfe und Trooper-Wellen deutlich.',
+      en: 'As a companion, Mister Bones grants double combat damage. This can greatly help during events and trooper waves.',
+      fi: 'Seuralaisena Mister Bones antaa kaksinkertaisen vahingon taistelussa.',
+    },
+
+    verified: true,
+  },
+  {
+    id: 'nova_crystals',
+    category: 'PROGRESSION',
+    priority: 5,
+
+    title: {
+      de: 'Nova-Kristalle sind Meta-Fortschritt',
+      en: 'Nova Crystals Are Meta Progression',
+      fi: 'Nova-kristallit ovat metaprogessiota',
+    },
+
+    text: {
+      de: 'Nova-Kristalle werden über besondere Event-Inhalte verdient und dienen zum Freischalten dauerhafter kosmetischer und spielrelevanter Inhalte.',
+      en: 'Nova Crystals are earned through special event content and unlock permanent cosmetic and gameplay-related rewards.',
+      fi: 'Nova-kristalleja ansaitaan erityisistä tapahtumista ja niillä avataan pysyviä palkintoja.',
+    },
+
+    verified: false,
+  },
 ];

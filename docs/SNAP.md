@@ -411,6 +411,153 @@ Zukunftsrelevanz lässt sich oft verständlicher darstellen
 als verbleibende Nutzung statt als absolute Nutzungshäufigkeit.
 
 ##################
+
+v1.3.0
+Zukunftsorientierte Rebirth-Planung
+
+## Erkenntnisse (v1.3.x)
+
+### Droid Progression
+
+Droiden besitzen mindestens zwei unabhängige Progressionsachsen:
+
+- Tier
+  Standard → Gold → Diamond → Rainbow → Beskar
+
+- Seltenheit
+  Common → Rare → Epic → Legendary
+
+Rebirth-Anforderungen scheinen Mindest-Tiers
+zu prüfen.
+
+Ein höheres Tier erfüllt weiterhin die
+Anforderung niedrigerer Tier-Stufen.
+
+Beispiel:
+
+Gold erforderlich
+→ Diamond, Rainbow und Beskar sind ebenfalls gültig.
+
+--DROIDEX SNAP
+
+Nächste Ausbaustufe:
+
+- DroidCard vertikal erweitern
+- Rebirth-Ready-Indikator neu positionieren
+- Flawless-Tracking ergänzen
+- optionale Metadaten vorbereiten:
+  source
+  ability
+  eventLocked
+  novaCost
+
+Ziel:
+Vom reinen Sammler-Tracker
+zum Droid-Wissenssystem.
+
+### Upgrade Chips
+
+Bekannte Quellen:
+
+- World Quests
+- Droid-Fertigstellungen
+- Verkauf selbst gebauter Gold+ Droids
+- Companion-Boni
+
+Upgrade Chips bilden ein eigenes
+Meta-Progressionssystem oberhalb
+des normalen Droid-Baus.
+
+### Companion-Boni
+
+Droids besitzen teilweise einzigartige
+Begleiter-Effekte.
+
+Beispiele:
+
+- BB-8 → Upgrade Chips
+- DJ R-3X → 2x World Quest Rewards
+- Mister Bones → 2x Schaden
+- IG-11 Marshal → Blaupausenschild
+
+Erkenntnis:
+
+Der strategische Wert eines Droids ergibt sich
+nicht nur aus Rebirth-Anforderungen,
+sondern auch aus Companion-Effekten
+und Upgrade-Synergien.
+
+## Erkenntnisse (v1.3.x)
+
+### Rebirth-Verfügbarkeit auf DroidCards
+
+Die Rebirth-Anzeige wurde von einer getrennten Darstellung
+zu einer gemeinsamen Statusanzeige zusammengeführt.
+
+Vorher:
+
+EPIC ●
+↻ 7·10·12
+
+Jetzt:
+
+EPIC
+● ↻ 7·10·12
+
+Bedeutung:
+
+- ↻ zeigt zukünftige Rebirth-Verwendungen im aktiven Pfad
+- ● zeigt die aktuelle Verfügbarkeit des Droids
+- Grün = verfügbar
+- Grau = nicht verfügbar
+
+Erkenntnis:
+
+Verfügbarkeit ist nur im Kontext einer Anforderung relevant.
+
+Ein separater "Present"-Marker erzeugt zusätzlichen
+Interpretationsaufwand.
+
+Die Zusammenführung von Verfügbarkeit und Rebirth-Nutzung
+reduziert visuelle Unruhe und macht den Status direkt lesbar.
+
+Der Nutzer liest nun unmittelbar:
+
+● ↻ 7·10·12
+
+statt zwei unabhängige UI-Elemente gedanklich
+miteinander verknüpfen zu müssen.
+
+## Erkenntnisse (v1.3.0)
+
+### Rebirth Badge Verdichtung
+
+Rebirth-Relevanz, Verfügbarkeit und Verkaufsrelevanz
+wurden zu einer gemeinsamen UI-Einheit verdichtet.
+
+Beispiele:
+
+● ↻ 3·5·8
+○ ↻ 3·5·8
+● ↻ 1 ✓
+
+Bedeutung:
+
+- Punkt = aktuell vorhanden
+- ↻ = zukünftige Rebirth-Verwendungen
+- ✓ = letzter bekannter Einsatz im aktiven Pfad
+
+Das frühere SAFE-Badge wurde entfernt.
+
+Erkenntnis:
+
+Zusammengehörige Entscheidungsinformationen
+sollten innerhalb derselben visuellen Einheit erscheinen.
+
+Der Nutzer interessiert sich nicht für einzelne Zustände,
+sondern für die Frage:
+
+"Brauche ich diesen Droid noch?"
 ##################
 
 ## Deployment Flow
