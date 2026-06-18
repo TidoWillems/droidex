@@ -578,7 +578,6 @@ von einfachen Sammelobjekten
 zu Wissensobjekten mit mehreren
 unabhängigen Eigenschaften.
 
-
 ## Erkenntnisse (v1.3.2)
 
 ### Collected Marker Recovery
@@ -595,12 +594,13 @@ Collected = jemals besessen
 Present = aktuell verfügbar
 
 Beide Zustände bleiben strategisch relevant.
-#### UI polish ?: ja / nein
 
-Feedback:
-Ein Nutzer fragte nach der Bedeutung von RB1–RB4.
-Aktuell keine Änderung nötig.
-Weiter beobachten, ob die Frage mehrfach auftaucht.
+## v1.3.3
+- Restored Collected status marker
+- Updated status indicator guide
+- Added CB-23 knowledge entry
+- Documentation cleanup
+
 
 ##################
 ##################
@@ -654,6 +654,15 @@ Weiter beobachten, ob die Frage mehrfach auftaucht.
   - rebirthUsage
   - eventLocked
   - novaCost
+  - flawless
+
+#### UI polish ?: ja / nein
+
+Feedback:
+Ein Nutzer fragte nach der Bedeutung von RB1–RB4.
+Aktuell keine Änderung nötig.
+Weiter beobachten, ob die Frage mehrfach auftaucht.
+
 
 ##################
 ##################
@@ -794,6 +803,8 @@ Wissensverlust zwischen Sessions minimieren.
 
 SNAP dient als laufendes Projektgedächtnis.
 
+## Projekt zippen -kann zur Kontextbildung /-aufrechterhaltung beitragen
+
 ## Wissensschleife
 
 SNAP ist kein Archiv.
@@ -811,3 +822,5 @@ Verstehen
 Ziel:
 
 Kontextverlust zwischen Sessions reduzieren und Projektwissen kontinuierlich verdichten.
+
+Erkenntnisse zur Pielmechanik werden fortan mit erfasst.

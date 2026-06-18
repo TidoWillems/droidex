@@ -282,46 +282,95 @@ export const UI = {
   },
 
   rebirthBadgeTitle: {
-    de: 'REBIRTH-SYMBOL',
-    en: 'REBIRTH ICON',
-    fi: 'REBIRTH-KUVAKE',
+    de: 'STATUSANZEIGE',
+    en: 'STATUS INDICATOR',
+    fi: 'TILAOSOITIN',
   },
 
   rebirthBadgeText: {
-    de: `Die kleinen Symbole zeigen, ob ein Droid später erneut benötigt wird.
+    de: `Die kleine Statusanzeige kombiniert Verfügbarkeit und zukünftige Rebirth-Nutzung.
 
-LAST
-Dies ist der letzte bekannte Einsatz des Droids im gewählten Rebirth-Pfad.
-Danach kann er verkauft oder für andere Zwecke verwendet werden.
+●
+Der Droid ist aktuell verfügbar.
+
+○
+Der Droid wurde gesammelt, ist aber derzeit nicht verfügbar.
 
 ↻1, ↻2, ↻3 ...
-Der Droid wird nach diesem Rebirth noch einmal oder mehrfach benötigt.
-Wird er verkauft, muss er später erneut hergestellt werden.
+Der Droid wird in zukünftigen Rebirth-Stufen des gewählten Pfades erneut benötigt.
+
+✓
+Der aktuell gewählte Rebirth liegt bereits hinter dem letzten bekannten Einsatz dieses Droids.
+Er wird im gewählten Pfad nicht mehr benötigt.
+
+Beispiele:
+
+● ↻1
+Verfügbar und noch einmal benötigt.
+
+○ ↻3·5·8
+Nicht verfügbar, wird aber später erneut benötigt.
+
+● ↻1 ✓
+Verfügbar und letzter bekannter Einsatz erreicht.
 
 Die Anzeige hilft bei der Planung von Tycoon-, Lounge- und Rebirth-Droids.`,
 
-    en: `The small badges show whether a Droid will be needed again later.
+    en: `The status indicator combines availability and future Rebirth usage.
 
-LAST
-This is the final known use of the Droid in the selected Rebirth path.
-After that it can be sold or used for other purposes.
+●
+The Droid is currently available.
 
-↻1, ↻2, ↻3 ...
-The Droid will be required again in future Rebirths.
-If it is sold, it will need to be rebuilt later.
-
-This helps with planning Tycoon, Lounge and Rebirth Droids.`,
-    fi: `Pienet merkit näyttävät, tarvitaanko droidia myöhemmin uudelleen.
-
-LAST
-Tämä on droidin viimeinen tunnettu käyttökerta valitulla Rebirth-polulla.
-Sen jälkeen sen voi myydä tai käyttää muihin tarkoituksiin.
+○
+The Droid has been collected but is not currently available.
 
 ↻1, ↻2, ↻3 ...
-Droidia tarvitaan vielä tulevissa Rebirth-vaiheissa.
-Jos se myydään, se täytyy rakentaa myöhemmin uudelleen.
+The Droid will be required again in future Rebirth levels of the selected path.
 
-Merkinnät helpottavat Tycoon-, Lounge- ja Rebirth-suunnittelua.`,
+✓
+The currently selected Rebirth is already beyond the last known use of this Droid.
+It is no longer required in the selected path.
+
+Examples:
+
+● ↻1
+Available and needed once more.
+
+○ ↻3·5·8
+Not available, but required again later.
+
+● ↻1 ✓
+Available and last known use reached.
+
+This indicator helps with planning Tycoon, Lounge and Rebirth Droids.`,
+
+    fi: `Tilailmaisin yhdistää saatavuuden ja tulevan Rebirth-käytön.
+
+●
+Droidi on tällä hetkellä saatavilla.
+
+○
+Droidi on kerätty, mutta ei ole tällä hetkellä saatavilla.
+
+↻1, ↻2, ↻3 ...
+Droidia tarvitaan myöhemmissä valitun polun Rebirth-vaiheissa.
+
+✓
+Valittu Rebirth on jo tämän droidin viimeisen tunnetun käyttökerran jälkeen.
+Sitä ei enää tarvita valitulla polulla.
+
+Esimerkkejä:
+
+● ↻1
+Saatavilla ja tarvitaan vielä kerran.
+
+○ ↻3·5·8
+Ei saatavilla, mutta tarvitaan myöhemmin uudelleen.
+
+● ↻1 ✓
+Saatavilla ja viimeinen tunnettu käyttökerta on saavutettu.
+
+Merkintä auttaa Tycoon-, Lounge- ja Rebirth-droidien suunnittelussa.`,
   },
 
   offlineTimerTitle: {
