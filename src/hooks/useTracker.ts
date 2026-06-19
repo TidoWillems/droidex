@@ -5,6 +5,7 @@ const BACKUP_KEY = 'droidex_v2_backup';
 interface StoredState {
   collected: string[];
   present: string[];
+  flawless: string[];
 
   rebirthLevel: number;
   rebirthPath: number;
@@ -49,6 +50,8 @@ export function useTracker(_uid: string | null) {
 
   const [present, setPresent] = useState<Set<string>>(new Set());
 
+  const [flawless, setFlawless] = useState<Set<string>>(new Set());
+
   const [rebirthLevel, setRebirthLevelState] = useState<number>(0);
 
   const [rebirthPath, setRebirthPathState] = useState<number>(1);
@@ -70,6 +73,7 @@ export function useTracker(_uid: string | null) {
 
     setCollected(new Set(local?.collected ?? []));
     setPresent(new Set(local?.present ?? []));
+    setFlawless(new Set(local?.flawless ?? []));
 
     setRebirthLevelState(local?.rebirthLevel ?? 0);
 
@@ -90,6 +94,7 @@ export function useTracker(_uid: string | null) {
         writeLocalStorage({
           collected: Array.from(next),
           present: Array.from(present),
+          flawless: Array.from(flawless),
           rebirthLevel: rebirthLevelRef.current,
           rebirthPath: rebirthPathRef.current,
         });
@@ -97,7 +102,7 @@ export function useTracker(_uid: string | null) {
         return next;
       });
     },
-    [present]
+    [present, flawless]
   );
 
   const togglePresent = useCallback(
@@ -114,6 +119,7 @@ export function useTracker(_uid: string | null) {
         writeLocalStorage({
           collected: Array.from(collected),
           present: Array.from(next),
+          flawless: Array.from(flawless),
           rebirthLevel: rebirthLevelRef.current,
           rebirthPath: rebirthPathRef.current,
         });
@@ -121,44 +127,83 @@ export function useTracker(_uid: string | null) {
         return next;
       });
     },
-    [collected]
+    [collected, flawless]
   );
 
-  const setRebirthLevel = useCallback((level: number) => {
-    setRebirthLevelState(level);
+  const toggleFlawless = useCallback(
+    (id: string) => {
+      setFlawless((prev) => {
+        const next = new Set(prev);
 
-    setCollected((prev) => {
-      writeLocalStorage({
-        collected: Array.from(prev),
-        present: Array.from(present),
-        rebirthLevel: level,
-        rebirthPath: rebirthPathRef.current,
+        if (next.has(id)) {
+          next.delete(id);
+        } else {
+          next.add(id);
+        }
+
+        writeLocalStorage({
+          collected: Array.from(collected),
+          present: Array.from(present),
+          flawless: Array.from(next),
+          rebirthLevel: rebirthLevelRef.current,
+          rebirthPath: rebirthPathRef.current,
+        });
+
+        return next;
       });
+    },
+    [collected, present]
+  );
 
-      return prev;
-    });
-  }, []);
+  const setRebirthLevel = useCallback(
+    (level: number) => {
+      setRebirthLevelState(level);
 
-  const setRebirthPath = useCallback((path: number) => {
-    setRebirthPathState(path);
+      setCollected((prev) => {
+        writeLocalStorage({
+          collected: Array.from(prev),
+          present: Array.from(present),
+          flawless: Array.from(flawless),
 
-    setCollected((prev) => {
-      writeLocalStorage({
-        collected: Array.from(prev),
-        present: Array.from(present),
-        rebirthLevel: rebirthLevelRef.current,
-        rebirthPath: path,
+          rebirthLevel: level,
+          rebirthPath: rebirthPathRef.current,
+        });
+
+        return prev;
       });
+    },
+    [present, flawless]
+  );
 
-      return prev;
-    });
-  }, []);
+  const setRebirthPath = useCallback(
+    (path: number) => {
+      setRebirthPathState(path);
+
+      setCollected((prev) => {
+        writeLocalStorage({
+          collected: Array.from(prev),
+          present: Array.from(present),
+          flawless: Array.from(flawless),
+
+          rebirthLevel: rebirthLevelRef.current,
+          rebirthPath: path,
+        });
+
+        return prev;
+      });
+    },
+    [present, flawless]
+  );
 
   return {
     collected,
     present,
+    flawless,
+
     toggleCollected,
     togglePresent,
+    toggleFlawless,
+
     rebirthLevel,
     setRebirthLevel,
     rebirthPath,

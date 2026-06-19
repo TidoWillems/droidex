@@ -24,9 +24,11 @@ export default function App() {
   const {
     collected,
     present,
+    flawless,
 
     toggleCollected,
     togglePresent,
+    toggleFlawless,
 
     rebirthLevel,
     setRebirthLevel,
@@ -58,6 +60,7 @@ export default function App() {
     <div className="min-h-screen bg-black flex flex-col font-mono">
       <Header
         collected={collected}
+        flawless={flawless}
         rebirthLevel={rebirthLevel}
         isMissingActive={isMissingActive}
         onShowMissing={() => {
@@ -207,8 +210,10 @@ export default function App() {
                     search={search}
                     collected={collected}
                     present={present}
+                    flawless={flawless}
                     onToggle={toggleCollected}
                     onTogglePresent={togglePresent}
+                    onToggleFlawless={toggleFlawless}
                     highlightedIds={highlightedIds}
                   />
                 </div>

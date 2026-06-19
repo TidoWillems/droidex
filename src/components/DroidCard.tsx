@@ -16,9 +16,11 @@ interface Props {
 
   collected: boolean;
   present: boolean;
+  flawless: boolean;
 
   onToggle: (id: string) => void;
   onTogglePresent: (id: string) => void;
+  onToggleFlawless: (id: string) => void;
 
   highlighted?: boolean;
   rebirthLevels?: number[];
@@ -64,9 +66,11 @@ export function DroidCard({
 
   collected,
   present,
+  flawless,
 
   onToggle,
   onTogglePresent,
+  onToggleFlawless,
 
   highlighted,
   rebirthLevels,
@@ -134,11 +138,12 @@ export function DroidCard({
       </div>
 
       {/* Footer */}
-      <div className="w-full bg-black px-2 pt-1 pb-4 min-h-[5.2rem]">
+      <div className="w-full bg-black px-1.5 pt-1 pb-0.5 min-h-[5.2rem]">
         <p className="text-white font-black italic leading-tight truncate text-sm">
           {droid.name}
         </p>
-        <p className="text-[9px] uppercase tracking-wider text-zinc-500">
+        <p className="flex items-center justify-center gap-1 text-[9px] uppercase tracking-wider text-zinc-500">
+          <badge.Icon size={10} />
           {droid.type}
         </p>
         <div className="mt-0.5">
@@ -177,9 +182,25 @@ export function DroidCard({
         )}
 
         {rebirthLevels && rebirthLevels.length > 0 && (
-          <div className="mt-1">
+          <div className="mt-auto pt-1 -mx-1">
             <span
-              className="text-[9px] font-bold px-1.5 py-px rounded-full uppercase tracking-wide inline-flex items-center gap-1 text-orange-400 bg-orange-500/15 border border-orange-500/40"
+              className="
+w-full
+h-5
+px-0.5
+rounded-full
+border
+border-orange-500/40
+bg-orange-500/15
+text-orange-400
+text-[9px]
+font-bold
+uppercase
+tracking-wide
+flex
+items-center
+justify-between
+"
               title={`${
                 rebirthLevels.length > 1
                   ? t(UI.rebirthRequiredPlural)
@@ -196,27 +217,41 @@ export function DroidCard({
                 }`}
               />
 
-              <RefreshCw size={8} className="inline-block align-middle" />
+              <span className="flex items-center gap-1">
+                <RefreshCw size={8} />
+                {rebirthLevels.join('·')}
+              </span>
 
-              {rebirthLevels.join('·')}
-
-              {isSafe && <span className="text-green-400 ml-1">✓</span>}
+              <span className="w-3 text-right">{isSafe ? '✓' : ''}</span>
             </span>
           </div>
         )}
       </div>
 
-      {/* Type icon — top right */}
+      {/* Flawless */}
       <div
-        className="absolute top-0.5 right-0.5 z-20 w-6 h-6 rounded-md flex items-center justify-center"
-        style={{ backgroundColor: badge.bg }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggleFlawless(id);
+        }}
+        className="absolute top-0.5 left-0.5 z-20 w-5 h-5 rounded-full
+  border flex items-center justify-center cursor-pointer"
+        title="Flawless"
       >
-        <badge.Icon size={14} color="white" />
+        <span
+          className={`text-base leading-none transition-all ${
+            flawless
+              ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]'
+              : 'text-zinc-500'
+          }`}
+        >
+          ✦
+        </span>
       </div>
 
       {/* Collected checkmark — top left */}
       {collected && (
-        <div className="absolute top-0.5 left-0.5 z-20 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center">
+        <div className="absolute top-0.5 right-0.5 z-20 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center transition-all">
           {' '}
           <svg
             viewBox="0 0 10 10"

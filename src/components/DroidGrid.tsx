@@ -19,9 +19,11 @@ interface Props {
 
   collected: Set<string>;
   present: Set<string>;
+  flawless: Set<string>;
 
   onToggle: (id: string) => void;
   onTogglePresent: (id: string) => void;
+  onToggleFlawless: (id: string) => void;
 
   highlightedIds?: Set<string>;
 }
@@ -38,9 +40,11 @@ export function DroidGrid({
 
   collected,
   present,
+  flawless,
 
   onToggle,
   onTogglePresent,
+  onToggleFlawless,
 
   highlightedIds,
 }: Props) {
@@ -145,8 +149,10 @@ export function DroidGrid({
           card={card}
           collected={collected.has(card.id)}
           present={present.has(card.id)}
+          flawless={flawless.has(card.id)}
           onToggle={onToggle}
           onTogglePresent={onTogglePresent}
+          onToggleFlawless={onToggleFlawless}
           highlighted={highlightedIds?.has(card.id)}
           rebirthLevels={rebirthMap[card.droid.name]}
           lastRequiredRebirth={futureUseMap[card.id]}

@@ -8,21 +8,29 @@ import { useLocation } from 'react-router-dom';
 
 interface Props {
   collected: Set<string>;
+  flawless: Set<string>;
   rebirthLevel: number;
-  isMissingActive: boolean;
+	
   onShowMissing: () => void;
 }
 
 export function Header({
   collected,
+  flawless,
   rebirthLevel,
-  isMissingActive,
+
   onShowMissing,
 }: Props) {
   const collectedCount = ALL_CARDS.filter((card) =>
     collected.has(card.id)
   ).length;
-  const missingCount = TOTAL_DROIDS - collectedCount;
+
+  const flawlessCount = ALL_CARDS.filter((card) =>
+    flawless.has(card.id)
+  ).length;
+
+  const flawlessPct = Math.round((flawlessCount / TOTAL_DROIDS) * 100);
+
   const knownTotal = ALL_CARDS.length;
   const pct = Math.round((collectedCount / TOTAL_DROIDS) * 100);
   const { updateAvailable, latestVersion } = useAppUpdate();
@@ -43,8 +51,8 @@ export function Header({
     >
       {/* Dashboard */}
       <div className="grid gap-1">
-        {/* 2x3 Dashboard */}
-        <div className="grid grid-cols-3 grid-rows-2 gap-x-3 gap-y-2 items-center">
+        {/* 2x2 Dashboard */}
+        <div className="grid grid-cols-2 grid-rows-2 gap-x-3 gap-y-2 items-center">
           {/* REBIRTH */}
           <NavLink
             to="/rebirths"
@@ -56,7 +64,8 @@ export function Header({
         rounded-lg
         border
         px-3
-        py-2
+				py-1.5
+        
         min-w-[110px]
         transition-colors
         ${
@@ -70,11 +79,21 @@ export function Header({
             <span className="text-xs uppercase tracking-widest">
               {t(UI.rebirth)}
             </span>
+<span
+  className="
+    text-xs
+    font-bold
+    uppercase
+    tracking-widest
+    text-orange-400
+    drop-shadow-[0_0_4px_rgba(251,146,60,0.45)]
+  "
+>
+  {rebirthLevel}
+</span>
 
-            <span className="font-bold text-xl leading-none">
-              {rebirthLevel}
-            </span>
           </NavLink>
+
           {/* LOGO (über beide Reihen) */}
           <div
             className="
@@ -83,7 +102,6 @@ export function Header({
     justify-center
     items-center
 		opacity-85
-		drop-shadow-[0_0_12px_rgba(0,229,255,0.55)]
   "
           >
             <Link to="/">
@@ -98,109 +116,74 @@ export function Header({
               />
             </Link>
           </div>
-          {/* GESAMMELT */}
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              `
-        flex
-        items-center
-        gap-2
-        rounded-lg
-        px-3
-        py-1.5
-        border
-        ${
-          isActive
-            ? 'bg-zinc-900 border-cyan-700 text-cyan-400'
-            : 'bg-zinc-900 border-zinc-700 text-zinc-500'
-        }
-      `
-            }
-          >
-            <span className="text-xs uppercase tracking-wide">
-              {t(UI.collected)}
-            </span>
 
-            <span className="font-bold text-lg leading-none">
-              {collectedCount}
-              <span className="text-[10px] font-normal opacity-60">
-                /{TOTAL_DROIDS}
-              </span>
-            </span>
-          </NavLink>
           {/* OFFLINE */}
-          <OfflineTimer />
-
-          {/* FEHLEND */}
-          <div className="flex justify-end">
-            <button
-              type="button"
-              onClick={onShowMissing}
-              className={`
-          flex
-          items-center
-          gap-2
-          rounded-lg
-          px-3
-          py-1.5
-          border
-          ${
-            isMissingActive
-              ? 'border-red-500 bg-red-950 text-red-300'
-              : 'border-red-800 bg-zinc-900 text-red-400'
-          }
-        `}
-            >
-              <span className="text-xs uppercase tracking-wide">FEHLEND</span>
-
-              <span className="font-bold text-lg leading-none">
-                {missingCount}
-              </span>
-            </button>
+          <div className="col-start-3 flex justify-end">
+            <OfflineTimer />
           </div>
         </div>
 
-        {/* PROGRESS */}
-        <div>
-          <div
-            className="
-        h-3
-        bg-zinc-800
-        rounded-full
-        overflow-hidden
-        relative
-      "
-          >
-            <div
-              className="
-          h-full
-          bg-gradient-to-r
-          from-cyan-500
-          to-cyan-300
-          transition-all
-          duration-300
-        "
+        {/* COLLECTED */}
+        <div className="mb-0">
+          <div className="relative h-3 rounded-full overflow-hidden flex">
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0 })}
+              className="h-full bg-gradient-to-r from-cyan-500 to-cyan-300"
               style={{ width: `${pct}%` }}
+            />
+
+            <button
+              type="button"
+              onClick={onShowMissing}
+              className="h-full bg-red-800 hover:bg-red-900 transition-colors"
+              style={{ width: `${100 - pct}%` }}
             />
 
             <span
               className="
-          absolute
-          inset-0
-          flex
-          items-center
-          justify-center
-          text-[10px]
-          font-bold
-          text-black
-          pointer-events-none
-        "
+    absolute inset-0
+    flex items-center justify-between
+    px-3
+py-1.3
+    text-[9px] font-bold
+    text-zinc-800
+    pointer-events-none
+  "
             >
-              {pct}%
+              <span>COLLECTED {collectedCount}</span>
+              <span>{TOTAL_DROIDS - collectedCount} MISSING</span>
             </span>
           </div>
+        </div>
+
+        {/* FLAWLESS */}
+
+        <div className="relative h-3 bg-zinc-800 rounded-full overflow-hidden flex">
+          <button
+            type="button"
+            className="h-full bg-gradient-to-r from-zinc-100 to-white"
+            style={{ width: `${flawlessPct}%` }}
+          />
+
+          <button
+            type="button"
+            className="h-full bg-zinc-500"
+            style={{ width: `${100 - flawlessPct}%` }}
+          />
+          <span
+            className="
+    absolute inset-0
+    flex items-center justify-between
+    px-3
+    text-[9px] font-bold
+    text-zinc-800
+    pointer-events-none
+  "
+          >
+            <span>FLAWLESS {flawlessCount}</span>
+            <span>{TOTAL_DROIDS - flawlessCount} OPEN</span>
+          </span>
         </div>
       </div>
 
