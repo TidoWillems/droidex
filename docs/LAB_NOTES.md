@@ -1,5 +1,43 @@
 # Droidex SNAP
 
+## Erkenntnisse (v1.4.0)
+
+### SNAP Entkopplung
+
+- SNAP auf Projektkern reduziert
+- Historische Erkenntnisse nach LAB_NOTES verschoben
+- CHANGELOG als Release-Historie eingeführt
+
+Erkenntnis:
+
+- Projektgedächtnis und Forschungstagebuch haben unterschiedliche Aufgaben.
+- SNAP sollte schnell lesbar bleiben.
+- Historisches Wissen darf wachsen, ohne die tägliche Orientierung zu erschweren.
+
+### Header Verdichtung
+
+- Dashboard auf 2x2 reduziert
+- Gesamt-Button entfernt
+- Progress-Anzeigen direkt als Interaktionsfläche genutzt
+- Rebirth-Anzeige vereinfacht
+
+Erkenntnis:
+
+- Häufig genutzte Aktionen funktionieren besser als Teil bestehender UI-Elemente als über zusätzliche Buttons.
+- Informationsdichte kann erhöht werden, solange die visuelle Struktur erhalten bleibt.
+
+### Guide Refresh
+
+- Guide an Collected / Present angepasst
+- Flawless dokumentiert
+- Rebirth-Pfade dokumentiert
+- Zukunftsorientierte Rebirth-Planung beschrieben
+
+Erkenntnis:
+
+- Der Guide sollte den aktuellen mentalen Modellraum erklären und nicht historische UI-Zustände dokumentieren.
+
+
 ## Architektur
 
 - React + Vite + Tailwind
