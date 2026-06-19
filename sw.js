@@ -1,4 +1,4 @@
-const CACHE = 'droidex-v1.3.3';
+const CACHE = 'droidex-vv1.4.0';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
