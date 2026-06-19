@@ -21,15 +21,14 @@ export function Header({
 
   onShowMissing,
 }: Props) {
-
   const collectedCount = ALL_CARDS.filter((card) =>
     collected.has(card.id)
   ).length;
-const flawlessCount = DROIDS.filter((droid) =>
-  flawless.has(droid.name)
-).length;
+  const flawlessCount = DROIDS.filter((droid) =>
+    flawless.has(droid.name)
+  ).length;
 
-const flawlessPct = Math.round((flawlessCount / DROIDS.length) * 100);
+  const flawlessPct = Math.round((flawlessCount / DROIDS.length) * 100);
   const knownTotal = ALL_CARDS.length;
   const pct = Math.round((collectedCount / TOTAL_DROIDS) * 100);
   const { updateAvailable, latestVersion } = useAppUpdate();
@@ -51,76 +50,63 @@ const flawlessPct = Math.round((flawlessCount / DROIDS.length) * 100);
       {/* Dashboard */}
       <div className="grid gap-1">
         {/* 2x2 Dashboard */}
-        <div className="grid grid-cols-2 grid-rows-2 gap-x-3 gap-y-2 items-center">
+        <div className="grid grid-cols-3 gap-x-3 items-center">
           {/* REBIRTH */}
           <NavLink
             to="/rebirths"
             className={({ isActive }) =>
               `
-        flex
-        items-center
-        justify-between
-        rounded-lg
-        border
-        px-3
-				py-1.5
-        
-        min-w-[110px]
-        transition-colors
-        ${
-          isActive
-            ? 'bg-zinc-900 border-orange-700 text-orange-400'
-            : 'bg-zinc-900 border-zinc-700 text-zinc-500'
-        }
-      `
+      flex
+      items-center
+      justify-between
+      rounded-lg
+      border
+      px-3
+      py-1.5
+      min-w-[110px]
+      transition-colors
+      ${
+        isActive
+          ? 'bg-zinc-900 border-orange-700 text-orange-400'
+          : 'bg-zinc-900 border-zinc-700 text-zinc-500'
+      }
+    `
             }
           >
             <span className="text-xs uppercase tracking-widest">
               {t(UI.rebirth)}
             </span>
+
             <span
               className="
-    text-xs
-    font-bold
-    uppercase
-    tracking-widest
-    text-orange-400
-    drop-shadow-[0_0_4px_rgba(251,146,60,0.45)]
-  "
+      text-xs
+      font-bold
+      uppercase
+      tracking-widest
+      text-orange-400
+      drop-shadow-[0_0_4px_rgba(251,146,60,0.45)]
+    "
             >
               {rebirthLevel}
             </span>
           </NavLink>
 
-          {/* LOGO (über beide Reihen) */}
-          <div
-            className="
-    row-span-2
-    flex
-    justify-center
-    items-center
-		opacity-85
-  "
-          >
+          {/* LOGO */}
+          <div className="flex justify-center opacity-85">
             <Link to="/">
               <img
                 src={`${import.meta.env.BASE_URL}icon-192.png`}
                 alt="Droidex"
-                className="
-				h-[88px] 
-				w-[88px]
-        object-contain
-      "
+                className="h-[88px] w-[88px] object-contain"
               />
             </Link>
           </div>
 
           {/* OFFLINE */}
-          <div className="col-start-3 flex justify-end">
+          <div className="flex justify-end">
             <OfflineTimer />
           </div>
         </div>
-
         {/* COLLECTED */}
         <div className="mb-0">
           <div className="relative h-3 rounded-full overflow-hidden flex">
@@ -180,7 +166,7 @@ py-1.3
   "
           >
             <span>FLAWLESS {flawlessCount}</span>
-							<span>{DROIDS.length - flawlessCount} OPEN</span>
+            <span>{DROIDS.length - flawlessCount} OPEN</span>
           </span>
         </div>
       </div>
