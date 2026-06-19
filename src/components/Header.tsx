@@ -10,7 +10,7 @@ interface Props {
   collected: Set<string>;
   flawless: Set<string>;
   rebirthLevel: number;
-	
+
   onShowMissing: () => void;
 }
 
@@ -79,8 +79,8 @@ export function Header({
             <span className="text-xs uppercase tracking-widest">
               {t(UI.rebirth)}
             </span>
-<span
-  className="
+            <span
+              className="
     text-xs
     font-bold
     uppercase
@@ -88,10 +88,9 @@ export function Header({
     text-orange-400
     drop-shadow-[0_0_4px_rgba(251,146,60,0.45)]
   "
->
-  {rebirthLevel}
-</span>
-
+            >
+              {rebirthLevel}
+            </span>
           </NavLink>
 
           {/* LOGO (über beide Reihen) */}
