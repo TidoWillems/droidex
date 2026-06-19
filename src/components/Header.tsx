@@ -135,7 +135,7 @@ export function Header({
             <button
               type="button"
               onClick={onShowMissing}
-              className="h-full bg-red-800 hover:bg-red-900 transition-colors"
+              className="h-full bg-red-500 hover:bg-red-600 transition-colors"
               style={{ width: `${100 - pct}%` }}
             />
 

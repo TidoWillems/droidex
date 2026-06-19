@@ -1,5 +1,110 @@
 # Droidex SNAP
 
+## 2026-06-19
+
+UI
+
+Header-Missing-Bar von bg-red-800 auf helleren Rotton umgestellt.
+
+Erkenntnis:
+Farben sollten projektweit dieselbe Bedeutung besitzen.
+
+Cyan   = Besitz / Fortschritt
+Rot    = Fehlend / benötigt
+Orange = Rebirth
+Weiß   = Flawless
+
+Die konsistente Farbsprache verbessert die Lesbarkeit stärker als zusätzliche UI-Elemente.
+
+## 2026-06-19 — Backup / Export-Import
+
+Status:
+- Export von droidex_v2 implementiert
+- Import mit Validierung implementiert
+- Überschreibungsbestätigung vor Import
+- Integration in AboutPage abgeschlossen
+
+Erkenntnisse:
+- Backup-Funktion eignet sich besonders für Gerätewechsel.
+- Offline-First profitiert stark von einem manuellen Exportmechanismus.
+- Export/Import erhöht Datensicherheit zusätzlich zum lokalen Backup.
+
+Mögliche Erweiterungen:
+
+### Backup-Versionierung
+
+Backup-Datei um Metadaten erweitern:
+
+{
+  "backupVersion": 1,
+  "createdAt": "...",
+  "data": { ... }
+}
+
+Vorteil:
+- zukünftige Formatänderungen möglich
+- saubere Migrationen
+
+### Import-Migrationen
+
+Importer soll ältere Backup-Versionen automatisch erkennen
+und auf neue Datenstrukturen migrieren.
+
+### Backup-Zeitstempel
+
+Exportierte Datei enthält Erstellungsdatum.
+
+Mögliche Anzeige:
+
+Backup erstellt:
+2026-06-19 16:20
+
+### Erfolgsbestätigung
+
+Nach erfolgreichem Import:
+
+✓ Backup erfolgreich importiert
+
+anstatt nur Reload.
+
+### Erweiterbare Backup-Inhalte
+
+Aktuell:
+
+✓ Collected
+✓ Present
+✓ Flawless
+✓ Rebirth Path
+✓ Rebirth Level
+
+Später denkbar:
+
+- Sprache
+- Offline-Timer-Einstellungen
+- Favoriten
+- Notizen
+- Companion-Daten
+
+## 2026-06-18 – Export / Import v1.4.1
+
+Implementiert:
+
+- Export lokaler Droidex-Daten als JSON
+- Import vorhandener Backups
+- Validierung der Importdatei
+- Bestätigungsdialog vor Überschreiben
+- Wiederherstellung von:
+  - collected
+  - present
+  - flawless
+  - rebirthLevel
+  - rebirthPath
+
+Ergebnis:
+
+Droidex-Daten können nun zwischen Geräten gesichert
+und wiederhergestellt werden.
+
 ## Erkenntnisse (v1.4.0)
 
 ### SNAP Entkopplung
@@ -36,7 +141,6 @@ Erkenntnis:
 Erkenntnis:
 
 - Der Guide sollte den aktuellen mentalen Modellraum erklären und nicht historische UI-Zustände dokumentieren.
-
 
 ## Architektur
 

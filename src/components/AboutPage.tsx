@@ -4,10 +4,12 @@ import { UI } from '../data/ui';
 import { t } from '../lib/t';
 import { useAppUpdate } from '../hooks/useAppUpdate';
 import { useState } from 'react';
+import { exportData, importData } from '../lib/exportImport';
 
 export function AboutPage() {
   const { updateAvailable, latestVersion } = useAppUpdate();
   const [updating, setUpdating] = useState(false);
+  const fileInputId = 'droidex-import';
 
   async function forceUpdate() {
     setUpdating(true);
@@ -70,6 +72,80 @@ export function AboutPage() {
               </button>
             </>
           )}
+        </div>
+      </div>
+
+      <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
+        <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
+          DATA
+        </div>
+
+        <div className="mt-3 flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={exportData}
+            className="
+        px-3
+        py-2
+        text-xs
+        font-bold
+        tracking-widest
+        rounded-lg
+        border
+        border-cyan-700
+        bg-zinc-900
+        text-cyan-400
+      "
+          >
+            EXPORT DATA
+          </button>
+
+          <label
+            htmlFor={fileInputId}
+            className="
+        px-3
+        py-2
+        text-xs
+        font-bold
+        tracking-widest
+        rounded-lg
+        border
+        border-orange-700
+        bg-zinc-900
+        text-orange-400
+        text-center
+        cursor-pointer
+      "
+          >
+            IMPORT DATA
+          </label>
+
+          <input
+            id={fileInputId}
+            type="file"
+            accept=".json"
+            className="hidden"
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+
+              if (!file) return;
+
+              try {
+                await importData(file);
+              } catch {
+                alert('Ungültige Droidex-Datei');
+              }
+            }}
+          />
+          <div className="text-xs text-zinc-500 space-y-1">
+            <div>Backup enthält:</div>
+
+            <div>✓ Collected</div>
+            <div>✓ Present</div>
+            <div>✓ Flawless</div>
+            <div>✓ Rebirth Path</div>
+            <div>✓ Rebirth Level</div>
+          </div>
         </div>
       </div>
 

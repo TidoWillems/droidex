@@ -53,8 +53,6 @@ export default function App() {
     }
   }, [location.pathname]);
 
- 
-
   return (
     <div className="min-h-screen bg-black flex flex-col font-mono">
       <Header
