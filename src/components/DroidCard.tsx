@@ -232,7 +232,7 @@ justify-between
       <div
         onClick={(e) => {
           e.stopPropagation();
-          onToggleFlawless(id);
+          onToggleFlawless(droid.name);
         }}
         className="absolute top-0.5 left-0.5 z-20 w-5 h-5 rounded-full
   border flex items-center justify-center cursor-pointer"

@@ -1,6 +1,6 @@
 import { OfflineTimer } from './OfflineTimer';
 import { Link, NavLink } from 'react-router-dom';
-import { ALL_CARDS, TOTAL_DROIDS } from '../data/droids';
+import { ALL_CARDS, TOTAL_DROIDS, DROIDS } from '../data/droids';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
 import { useAppUpdate } from '../hooks/useAppUpdate';
@@ -21,16 +21,15 @@ export function Header({
 
   onShowMissing,
 }: Props) {
+
   const collectedCount = ALL_CARDS.filter((card) =>
     collected.has(card.id)
   ).length;
+const flawlessCount = DROIDS.filter((droid) =>
+  flawless.has(droid.name)
+).length;
 
-  const flawlessCount = ALL_CARDS.filter((card) =>
-    flawless.has(card.id)
-  ).length;
-
-  const flawlessPct = Math.round((flawlessCount / TOTAL_DROIDS) * 100);
-
+const flawlessPct = Math.round((flawlessCount / DROIDS.length) * 100);
   const knownTotal = ALL_CARDS.length;
   const pct = Math.round((collectedCount / TOTAL_DROIDS) * 100);
   const { updateAvailable, latestVersion } = useAppUpdate();
@@ -181,7 +180,7 @@ py-1.3
   "
           >
             <span>FLAWLESS {flawlessCount}</span>
-            <span>{TOTAL_DROIDS - flawlessCount} OPEN</span>
+							<span>{DROIDS.length - flawlessCount} OPEN</span>
           </span>
         </div>
       </div>

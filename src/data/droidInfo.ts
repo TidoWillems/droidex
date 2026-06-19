@@ -11,15 +11,15 @@ export const DROID_INFO: Record<string, DroidInfo> = {
     abilities: ['2x CHIPS'],
   },
 
+  'CB-23': {
+    abilities: ['SECRET'],
+  },
+
   'MISTER BONES': {
     abilities: ['2x DMG'],
   },
 
   'IG-11 MARSHAL': {
     abilities: ['BP SHIELD'],
-  },
-
-  'CB-23': {
-    abilities: ['SECRET'],
   },
 };

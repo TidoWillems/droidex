@@ -149,7 +149,7 @@ export function DroidGrid({
           card={card}
           collected={collected.has(card.id)}
           present={present.has(card.id)}
-          flawless={flawless.has(card.id)}
+          flawless={flawless.has(card.droid.name)}
           onToggle={onToggle}
           onTogglePresent={onTogglePresent}
           onToggleFlawless={onToggleFlawless}

@@ -1,5 +1,81 @@
 # Droidex SNAP
 
+VALIDIERT
+
+Fortnite behandelt Flawless pro Droid,
+nicht pro Klasse.
+
+51 reguläre Droids teilen sich den Flawless-Status
+über Default, Gold, Diamond, Rainbow und Beskar.
+
+Droidex speichert aktuell Flawless pro Karte
+(card.id).
+
+Spätere Umstellung prüfen:
+Flawless auf Droid-Ebene speichern
+(droid.name).
+
+Vorteile:
+
+- entspricht dem Spiel
+- reduziert Datenspeicherung
+- vereinfacht Logik
+- Flawless-Fortschritt basiert auf 51 Droids
+  statt 260 Karten
+
+FLAWLESS-System bestätigt.
+
+Spiel zählt Flawless pro Droid, nicht pro Kartenvariante.
+
+Nachweis:
+Ingame-Anzeige zeigt 10/51 statt 10/260.
+
+Default, Gold, Diamond, Rainbow und Beskar
+erhöhen den Flawless-Zähler nicht separat.
+
+Droidex speichert Flawless aktuell vermutlich
+zu granular auf card.id-Ebene.
+
+Später prüfen:
+
+- Einführung einer droidId
+- Flawless auf Droid-Ebene speichern
+- Header auf 51-Droid-Basis umstellen
+- Event/Iconic weiterhin separat behandeln
+
+Collected = Kartenebene (260)
+
+Flawless = Droidebene (51)
+
+Datenmodell trennt diese beiden Konzepte aktuell nicht sauber.
+
+Später prüfen:
+
+- flawless auf droid.name speichern
+- eigener TOTAL_FLAWLESS_DROIDS Wert
+- Header getrennt berechnen
+
+## 2026-06-19
+
+Dependencies
+
+Aktualisiert:
+
+- react-router-dom 7.18
+- lucide-react 1.21
+- postcss 8.5.15
+- prettier 3.8.4
+- @types/react 18.3.31
+
+Build erfolgreich.
+
+Erkenntnis:
+
+Kleine Dependency-Updates können regelmäßig übernommen werden,
+ohne größere Architektur- oder UI-Anpassungen zu benötigen.
+
+React 19, Vite 8, Tailwind 4 und TypeScript 6 bleiben vorerst außerhalb des Upgrade-Pfades.
+
 ## 2026-06-19
 
 UI
@@ -9,22 +85,24 @@ Header-Missing-Bar von bg-red-800 auf helleren Rotton umgestellt.
 Erkenntnis:
 Farben sollten projektweit dieselbe Bedeutung besitzen.
 
-Cyan   = Besitz / Fortschritt
-Rot    = Fehlend / benötigt
+Cyan = Besitz / Fortschritt
+Rot = Fehlend / benötigt
 Orange = Rebirth
-Weiß   = Flawless
+Weiß = Flawless
 
 Die konsistente Farbsprache verbessert die Lesbarkeit stärker als zusätzliche UI-Elemente.
 
 ## 2026-06-19 — Backup / Export-Import
 
 Status:
+
 - Export von droidex_v2 implementiert
 - Import mit Validierung implementiert
 - Überschreibungsbestätigung vor Import
 - Integration in AboutPage abgeschlossen
 
 Erkenntnisse:
+
 - Backup-Funktion eignet sich besonders für Gerätewechsel.
 - Offline-First profitiert stark von einem manuellen Exportmechanismus.
 - Export/Import erhöht Datensicherheit zusätzlich zum lokalen Backup.
@@ -36,12 +114,13 @@ Mögliche Erweiterungen:
 Backup-Datei um Metadaten erweitern:
 
 {
-  "backupVersion": 1,
-  "createdAt": "...",
-  "data": { ... }
+"backupVersion": 1,
+"createdAt": "...",
+"data": { ... }
 }
 
 Vorteil:
+
 - zukünftige Formatänderungen möglich
 - saubere Migrationen
 
