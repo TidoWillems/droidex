@@ -53,8 +53,7 @@ export default function App() {
     }
   }, [location.pathname]);
 
-  const isMissingActive =
-    location.pathname === '/' && collectionStatus === 'MISSING';
+ 
 
   return (
     <div className="min-h-screen bg-black flex flex-col font-mono">
@@ -62,7 +61,6 @@ export default function App() {
         collected={collected}
         flawless={flawless}
         rebirthLevel={rebirthLevel}
-        isMissingActive={isMissingActive}
         onShowMissing={() => {
           setTier('ALL');
           setCollectionStatus('MISSING');
