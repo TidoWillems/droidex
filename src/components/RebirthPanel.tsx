@@ -190,7 +190,6 @@ export function RebirthPanel({
               {nextRebirth.droids.map((d) => {
                 const isCollected = collected.has(d.cardId);
                 const isPresent = present.has(d.cardId);
-                console.log('futureUseCountMap', futureUseCountMap);
                 return (
                   <div
                     key={d.cardId}

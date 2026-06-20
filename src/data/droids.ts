@@ -153,10 +153,6 @@ export const ALL_CARDS: DroidCard[] = DROIDS.flatMap((droid) =>
 );
 
 export const TOTAL_DROIDS = ALL_CARDS.length;
-console.log('ALL_CARDS', ALL_CARDS.length);
-
-console.log('DROIDS', DROIDS.length);
-console.log('NON_ICONIC', DROIDS.filter((d) => d.rarity !== 'ICONIC').length);
 
 export const RARITY_ORDER: Rarity[] = [
   'COMMON',
@@ -172,8 +168,3 @@ export const TIER_ORDER: Tier[] = [
   'RAINBOW',
   'BESKAR',
 ];
-console.log('DROIDS', DROIDS.length);
-
-console.log('NON_ICONIC', DROIDS.filter((d) => d.rarity !== 'ICONIC').length);
-
-console.log('ALL_CARDS', ALL_CARDS.length);
