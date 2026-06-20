@@ -85,6 +85,7 @@ export function DroidCard({
 
   const isPresent = present;
   const info = DROID_INFO[droid.name];
+  const canBeFlawless = droid.canBeFlawless !== false;
   const isSafe =
     lastRequiredRebirth !== undefined &&
     currentRebirth !== undefined &&
@@ -136,7 +137,6 @@ export function DroidCard({
         )}
         <div className="tv-distortion" />
       </div>
-
       {/* Footer */}
       <div className="w-full bg-black px-1.5 pt-1 pb-0.5 min-h-[5.2rem]">
         <p className="text-white font-black italic leading-tight truncate text-sm">
@@ -227,45 +227,45 @@ justify-between
           </div>
         )}
       </div>
-
       {/* Flawless */}
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-          onToggleFlawless(droid.name);
-        }}
-        className={`
-    absolute
-    top-0.5
-    left-0.5
-    z-20
-    w-5
-    h-5
-    rounded-full
-    flex
-    items-center
-    justify-center
-    cursor-pointer
-    transition-all
-    ${
-      flawless
-        ? 'bg-yellow-500 shadow-[0_0_12px_rgba(255,215,0,0.9)]'
-        : 'bg-black/50 border-2  border-zinc-500'
-    }
-  `}
-        title="Flawless"
-      >
-        <span
-          className={`text-lg leading-none transition-all ${
-            flawless
-              ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]'
-              : 'text-zinc-500'
-          }`}
+      {canBeFlawless && (
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleFlawless(droid.name);
+          }}
+          className={`
+      absolute
+      top-0.5
+      left-0.5
+      z-20
+      w-5
+      h-5
+      rounded-full
+      flex
+      items-center
+      justify-center
+      cursor-pointer
+      transition-all
+      ${
+        flawless
+          ? 'bg-yellow-500 shadow-[0_0_12px_rgba(255,215,0,0.9)]'
+          : 'bg-black/50 border-2 border-zinc-500'
+      }
+    `}
+          title="Flawless"
         >
-          ✦
-        </span>
-      </div>
-
+          <span
+            className={`text-lg leading-none transition-all ${
+              flawless
+                ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]'
+                : 'text-zinc-500'
+            }`}
+          >
+            ✦
+          </span>
+        </div>
+      )}
       {/* Collected checkmark — top left */}
       {collected && (
         <div className="absolute top-0.5 right-0.5 z-20 w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center transition-all">
@@ -285,9 +285,8 @@ justify-between
           </svg>
         </div>
       )}
-
       {/* Event locked overlay */}
-      {droid.eventLocked && (
+      {droid.eventLocked && !collected && (
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
           <span className="text-red-400 text-[10px] font-bold text-center leading-tight px-1">
             {t(UI.eventLocked)

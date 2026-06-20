@@ -1,5 +1,300 @@
 # Droidex SNAP
 
+Der neue Fortschrittsindikator ist eigentlich kein "Progress Bar"-Pattern mehr.
+Er ist inzwischen eher ein:
+D G D R B
+Tier-DNA Pattern
+Das könnte künftig auch in:
+DroidCard
+Droid Details
+Companion-Erklärungen
+Tipps
+wiederverwendet werden.
+
+#####
+
+2026-06
+
+Droid Progress v2
+
+Rebirth-Seite zeigt nun verdichteten Droid-Fortschritt
+anstatt einzelner Kartenzustände.
+
+Darstellung:
+
+□D □G □D □R □B
+
+bzw.
+
+■D ■G ■D □R □B
+
+Farbcodierung folgt dem bestehenden Tier-Schema:
+
+Default = Weiß
+Gold = Orange
+Diamond = Cyan
+Rainbow = Violett
+Beskar = Grau
+
+Erkenntnis:
+
+Ein Droid wird mental als Entwicklungslinie wahrgenommen.
+
+Die Tierfolge transportiert mehr Information
+als ein generischer Fortschrittsbalken,
+ohne zusätzlichen Platzbedarf.
+
+Designprinzip:
+
+Granulare Daten.
+Verdichtete Darstellung.
+
+Card → Droid → Rebirth
+
+- Ein Droid ist eine Entwicklungslinie, nicht nur eine Kartenvariante.
+- Höhere Tierstufen implizieren niedrigere Tierstufen (Hierarchy Pattern).
+- Fortschritt sollte verdichtet dargestellt werden statt einzelne Kartenzustände zu zeigen.
+- Farbsemantik sollte zwischen Collection, Rebirth und Progress konsistent bleiben.
+
+#####
+
+2026-06
+
+Droid-Hierarchie eingeführt.
+
+Collected:
+
+- Blueprint mindestens einmal genutzt
+- Droidex-Fortschritt
+
+Present:
+
+- Droid aktuell vorhanden
+- Werkbank / Tycoon / Lounge
+
+Effective Present:
+
+- durch Hierarchie erfüllte Rebirth-Anforderung
+- höhere Tierstufen erfüllen niedrigere Tierstufen
+- Beskar > Rainbow > Diamond > Gold > Default
+
+Rebirth-System nutzt Effective Present.
+Inventar- und Sammelsystem nutzen Present.
+
+### Droid Hierarchy
+
+Tier-Reihenfolge:
+
+DEFAULT
+→ GOLD
+→ DIAMOND
+→ RAINBOW
+→ BESKAR
+
+Höhere Tierstufen erfüllen automatisch alle darunterliegenden Tierstufen.
+
+Rebirth nutzt Effective Present statt exakter Kartenübereinstimmung.
+
+#####
+
+Effective Presence Pattern
+
+Rebirth-Anforderungen prüfen nicht mehr auf exakte Karten.
+
+Eine höhere Droid-Stufe erfüllt automatisch
+alle darunterliegenden Stufen.
+
+Beispiel:
+
+STRIKE-ORB BESKAR
+
+erfüllt automatisch:
+
+STRIKE-ORB RAINBOW
+STRIKE-ORB DIAMOND
+STRIKE-ORB GOLD
+STRIKE-ORB DEFAULT
+
+Datenmodell:
+
+Collected
+= Karte existiert
+
+Present
+= Karte aktuell vorhanden
+
+Effective Present
+= Anforderung erfüllt
+(durch gleiche oder höhere Stufe)
+
+Beispiel:
+
+STRIKE-ORB RAINBOW present
+
+⇒ STRIKE-ORB GOLD effective present
+
+Designprinzip:
+
+Fortschritt vererbt sich nach unten.
+
+Der Nutzer besitzt einen Droiden,
+nicht nur einzelne Kartenvarianten.
+
+####
+
+Droid Progress v1
+
+Ein Droid ist eine Entwicklungslinie:
+
+DEFAULT → GOLD → DIAMOND → RAINBOW → BESKAR
+
+Die Collection speichert weiterhin einzelne Karten.
+
+Die UI darf diese Karten jedoch zu einem Fortschrittsbalken verdichten.
+
+Beispiel:
+
+R9
+■■■□□
+
+entspricht:
+
+R9 DEFAULT
+R9 GOLD
+R9 DIAMOND
+
+besessen
+
+R9 RAINBOW
+R9 BESKAR
+
+fehlen
+
+Designprinzip:
+
+Daten bleiben granular.
+Darstellung wird verdichtet.
+
+Dies entspricht bereits bestehenden Droidex-Mustern:
+
+0/3 droids → MISSING
+READY → Status + Aktion
+Mehrere Karten → ein Fortschrittsindikator
+
+Card → Droid → Rebirth → Collection
+
+#####
+
+Droid Progress Pattern
+
+Ein Droid ist keine einzelne Karte.
+
+Ein Droid ist eine Entwicklungslinie.
+
+DEFAULT
+→ GOLD
+→ DIAMOND
+→ RAINBOW
+→ BESKAR
+
+Die Collection speichert Karten.
+Die UI zeigt Fortschritt.
+
+Beispiel:
+
+R9
+■■■□□
+
+statt
+
+R9 DEFAULT
+R9 GOLD
+R9 DIAMOND
+
+####
+
+Droid Hierarchy v1
+
+Ein höheres Droid-Tier impliziert alle niedrigeren Tier-Stufen.
+
+Beispiel:
+
+R9 BESKAR
+
+erfüllt automatisch:
+
+R9 RAINBOW
+R9 DIAMOND
+R9 GOLD
+R9 DEFAULT
+
+Der Nutzer denkt in Entwicklungsständen eines Droiden,
+nicht in voneinander unabhängigen Karten.
+
+Daher gilt:
+
+BESKAR
+↓
+RAINBOW
+↓
+DIAMOND
+↓
+GOLD
+↓
+DEFAULT
+
+Tier N erfüllt automatisch alle Tier < N.
+
+Konsequenzen:
+
+- weniger manuelle Klicks
+- Rebirth-Anforderungen werden realistischer
+- Droid-Progress kann direkt berechnet werden
+- Inventar entspricht dem mentalen Modell des Spielers
+
+Beispiel:
+
+Gespeichert:
+
+R9_BESKAR
+
+Effektiv vorhanden:
+
+R9_DEFAULT
+R9_GOLD
+R9_DIAMOND
+R9_RAINBOW
+R9_BESKAR
+
+Designprinzip:
+
+Daten bleiben granular.
+Besitz wird hierarchisch interpretiert.
+
+#####
+
+Rebirth UX Pattern
+
+Statusanzeigen dürfen gleichzeitig Aktionen sein.
+
+Der Nutzer denkt nicht in separaten Modi
+(Ansehen / Bearbeiten),
+sondern in Zuständen.
+
+Wenn ein Zustand sichtbar ist,
+soll er möglichst direkt veränderbar sein.
+
+Beispiele:
+
+- Droid ✓ / ✕
+- READY
+- DONE
+- x/y droids
+
+Dadurch sinkt die Anzahl separater Buttons
+und die Oberfläche bleibt kompakt.
+
+########
 VALIDIERT
 
 Fortnite behandelt Flawless pro Droid,

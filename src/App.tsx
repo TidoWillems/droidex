@@ -235,6 +235,14 @@ export default function App() {
               collected={collected}
               present={present}
               onSetRebirth={setRebirthLevel}
+              onTogglePresent={togglePresent}
+              onMarkLevelDone={(ids) => {
+                ids.forEach((id) => {
+                  if (!present.has(id)) {
+                    togglePresent(id);
+                  }
+                });
+              }}
             />
           }
         />

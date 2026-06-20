@@ -2,6 +2,7 @@ import { UI } from '../data/ui';
 import { t } from '../lib/t';
 import { useMemo, useState } from 'react';
 import { REBIRTH_PATHS } from '../data/rebirthPaths';
+import { hasEffectiveCard } from '../lib/droidHierarchy';
 
 interface Props {
   rebirthPath: number;
@@ -54,12 +55,16 @@ export function RebirthPanel({
   const nextRebirth = activePath.find((r) => r.from === rebirthLevel);
 
   const allMet = useMemo(
-    () => nextRebirth?.droids.every((d) => present.has(d.cardId)) ?? false,
+    () =>
+      nextRebirth?.droids.every((d) => hasEffectiveCard(present, d.cardId)) ??
+      false,
     [nextRebirth, present]
   );
 
   const ownedCount = useMemo(
-    () => nextRebirth?.droids.filter((d) => present.has(d.cardId)).length ?? 0,
+    () =>
+      nextRebirth?.droids.filter((d) => hasEffectiveCard(present, d.cardId))
+        .length ?? 0,
     [nextRebirth, present]
   );
 
@@ -189,7 +194,7 @@ export function RebirthPanel({
               {/* Droid cards */}
               {nextRebirth.droids.map((d) => {
                 const isCollected = collected.has(d.cardId);
-                const isPresent = present.has(d.cardId);
+                const isPresent = hasEffectiveCard(present, d.cardId);
                 return (
                   <div
                     key={d.cardId}

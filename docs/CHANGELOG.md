@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.5.0
+
+- Droid Hierarchy System
+- Effective Present Logic
+- Tier Inheritance (Beskar → Default)
+- Rebirth Requirement Simplification
+- Droid Progress Visualization
+- Rebirth Progress Indicators
+- Rebirth UX Refinements
+
 ## v1.4.0
 
 - Header Redesign

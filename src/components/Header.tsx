@@ -24,11 +24,17 @@ export function Header({
   const collectedCount = ALL_CARDS.filter((card) =>
     collected.has(card.id)
   ).length;
-  const flawlessCount = DROIDS.filter((droid) =>
-    flawless.has(droid.name)
+
+  const flawlessEligible = DROIDS.filter((d) => d.canBeFlawless !== false);
+
+  const flawlessCount = flawlessEligible.filter((d) =>
+    flawless.has(d.name)
   ).length;
 
-  const flawlessPct = Math.round((flawlessCount / DROIDS.length) * 100);
+  const flawlessTotal = flawlessEligible.length;
+
+  const flawlessPct = Math.round((flawlessCount / flawlessTotal) * 100);
+
   const knownTotal = ALL_CARDS.length;
   const pct = Math.round((collectedCount / TOTAL_DROIDS) * 100);
   const { updateAvailable, latestVersion } = useAppUpdate();
@@ -123,13 +129,12 @@ export function Header({
               className="h-full bg-red-500 hover:bg-red-600 transition-colors"
               style={{ width: `${100 - pct}%` }}
             />
-
             <span
               className="
     absolute inset-0
     flex items-center justify-between
     px-3
-py-1.3
+    py-1.3
     text-[9px] font-bold
     text-zinc-800
     pointer-events-none
@@ -149,7 +154,6 @@ py-1.3
             className="h-full bg-gradient-to-r from-zinc-100 to-white"
             style={{ width: `${flawlessPct}%` }}
           />
-
           <button
             type="button"
             className="h-full bg-zinc-500"
@@ -166,7 +170,7 @@ py-1.3
   "
           >
             <span>FLAWLESS {flawlessCount}</span>
-            <span>{DROIDS.length - flawlessCount} OPEN</span>
+            <span>{flawlessTotal - flawlessCount} OPEN</span>
           </span>
         </div>
       </div>

@@ -364,5 +364,11 @@
   },
   "IG-11 MARSHAL": {
     "DEFAULT": { "cost": null, "income": "5%/s", "value": null }
+  },
+  "DJ R-3X": {
+    "DEFAULT": { "cost": null, "income": "5%/s", "value": null }
+  },
+  "CB-23": {
+    "DEFAULT": { "cost": null, "income": "5%/s", "value": null }
   }
 }

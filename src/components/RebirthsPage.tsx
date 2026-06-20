@@ -1,4 +1,5 @@
 import { REBIRTH_PATHS } from '../data/rebirthPaths';
+import { hasEffectiveCard, getDroidProgress } from '../lib/droidHierarchy';
 
 interface Props {
   rebirthPath: number;
@@ -6,6 +7,9 @@ interface Props {
   collected: Set<string>;
   present: Set<string>;
   onSetRebirth: (level: number) => void;
+  onTogglePresent: (id: string) => void;
+
+  onMarkLevelDone: (cardIds: string[]) => void;
 }
 
 const TIER_TEXT: Record<string, string> = {
@@ -26,8 +30,11 @@ export function RebirthsPage({
   collected,
   present,
   onSetRebirth,
+  onTogglePresent,
+  onMarkLevelDone,
 }: Props) {
   const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
+  const MAX_REBIRTH = Math.max(...activePath.map((r) => r.from));
 
   return (
     <div className="flex-1 overflow-y-auto">
@@ -48,14 +55,14 @@ export function RebirthsPage({
           <span className="text-orange-400 font-black text-xl leading-none w-8 text-center">
             {rebirthLevel}
           </span>
-          {rebirthLevel >= 20 && (
+          {rebirthLevel >= MAX_REBIRTH && (
             <span className="text-yellow-400 text-xs font-bold">MAX</span>
           )}
         </div>
         <button
           type="button"
-          onClick={() => onSetRebirth(Math.min(20, rebirthLevel + 1))}
-          disabled={rebirthLevel >= 20}
+          onClick={() => onSetRebirth(Math.min(MAX_REBIRTH, rebirthLevel + 1))}
+          disabled={rebirthLevel >= MAX_REBIRTH}
           className="w-8 h-8 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-base font-bold transition-colors"
         >
           →
@@ -67,9 +74,11 @@ export function RebirthsPage({
         {activePath.map((level) => {
           const isDone = level.to <= rebirthLevel;
           const isCurrent = level.from === rebirthLevel;
-          const allMet = level.droids.every((d) => present.has(d.cardId));
+          const allMet = level.droids.every((d) =>
+            hasEffectiveCard(present, d.cardId)
+          );
           const ownedCount = level.droids.filter((d) =>
-            present.has(d.cardId)
+            hasEffectiveCard(present, d.cardId)
           ).length;
 
           const remainingMap: Record<string, number> = {};
@@ -104,19 +113,25 @@ export function RebirthsPage({
                   {level.credits} credits
                 </span>
                 <div className="ml-auto">
-                  {isDone ? (
-                    <span className="text-xs font-bold text-zinc-500">
-                      ✓ DONE
-                    </span>
-                  ) : allMet ? (
-                    <span className="text-xs font-bold text-green-400">
-                      ✓ READY
-                    </span>
-                  ) : (
-                    <span className="text-xs font-bold text-red-400">
-                      {ownedCount}/{level.droids.length} droids
-                    </span>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onMarkLevelDone(level.droids.map((d) => d.cardId))
+                    }
+                    className={`px-2 py-1 rounded-md text-xs font-bold transition-colors ${
+                      isDone
+                        ? 'text-zinc-500 hover:text-zinc-300'
+                        : allMet
+                          ? 'text-green-400 hover:text-green-300'
+                          : 'text-red-400 hover:text-red-300'
+                    }`}
+                  >
+                    {isDone
+                      ? '✓ DONE'
+                      : allMet
+                        ? '✓ READY'
+                        : `${ownedCount}/${level.droids.length} droids`}
+                  </button>
                 </div>
               </div>
 
@@ -124,8 +139,10 @@ export function RebirthsPage({
               <div className="flex flex-wrap gap-3">
                 {level.droids.map((d) => {
                   const isCollected = collected.has(d.cardId);
-                  const isPresent = present.has(d.cardId);
+
+                  const isPresent = hasEffectiveCard(present, d.cardId);
                   const futureUses = remainingMap[d.name] ?? 0;
+                  const progress = getDroidProgress(present, d.name);
                   return (
                     <div
                       key={d.cardId}
@@ -171,8 +188,15 @@ export function RebirthsPage({
                           </div>
                         )}
                         {!isDone && (
-                          <div
-                            className={`absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center ${isPresent ? 'bg-green-500' : 'bg-red-500'}`}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onTogglePresent(d.cardId);
+                            }}
+                            className={`absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center ${
+                              isPresent ? 'bg-green-500' : 'bg-red-500'
+                            }`}
                           >
                             {isPresent ? (
                               <svg
@@ -202,12 +226,53 @@ export function RebirthsPage({
                                 />
                               </svg>
                             )}
-                          </div>
+                          </button>
                         )}
                       </div>
                       <span className="text-white text-[10px] font-bold w-[76px] text-center truncate">
                         {d.name}
                       </span>
+                      <div className="w-[76px] flex justify-center gap-1 mt-0.5 text-[7px] font-black">
+                        <span
+                          className={
+                            progress >= 1 ? 'text-zinc-300' : 'text-zinc-700'
+                          }
+                        >
+                          {progress >= 1 ? '■' : '□'}D
+                        </span>
+
+                        <span
+                          className={
+                            progress >= 2 ? 'text-amber-400' : 'text-zinc-700'
+                          }
+                        >
+                          {progress >= 2 ? '■' : '□'}G
+                        </span>
+
+                        <span
+                          className={
+                            progress >= 3 ? 'text-sky-300' : 'text-zinc-700'
+                          }
+                        >
+                          {progress >= 3 ? '■' : '□'}D
+                        </span>
+
+                        <span
+                          className={
+                            progress >= 4 ? 'text-purple-400' : 'text-zinc-700'
+                          }
+                        >
+                          {progress >= 4 ? '■' : '□'}R
+                        </span>
+
+                        <span
+                          className={
+                            progress >= 5 ? 'text-zinc-100' : 'text-zinc-700'
+                          }
+                        >
+                          {progress >= 5 ? '■' : '□'}B
+                        </span>
+                      </div>
                     </div>
                   );
                 })}
@@ -216,7 +281,7 @@ export function RebirthsPage({
           );
         })}
 
-        {rebirthLevel >= 20 && (
+        {rebirthLevel >= MAX_REBIRTH && (
           <div className="text-center py-6 text-yellow-400 font-bold text-sm">
             Maximum rebirth level reached!
           </div>

@@ -8,7 +8,9 @@ export interface Droid {
   rarity: Rarity;
   type: DroidType;
   tiers: Tier[];
+
   eventLocked?: boolean;
+  canBeFlawless?: boolean;
 }
 
 export interface DroidCard {
@@ -113,12 +115,14 @@ export const DROIDS: Droid[] = [
     type: 'WORKER',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
+    canBeFlawless: false,
   },
   {
     name: 'BB8',
     rarity: 'ICONIC',
     type: 'ASTROMECH',
     tiers: DEFAULT_ONLY,
+    canBeFlawless: false,
     eventLocked: true,
   },
   {
@@ -127,6 +131,7 @@ export const DROIDS: Droid[] = [
     type: 'ASTROMECH',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
+    canBeFlawless: false,
   },
   {
     name: 'MISTER BONES',
@@ -134,6 +139,7 @@ export const DROIDS: Droid[] = [
     type: 'BATTLE',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
+    canBeFlawless: false,
   },
   {
     name: 'IG-11 MARSHAL',
@@ -141,6 +147,7 @@ export const DROIDS: Droid[] = [
     type: 'BATTLE',
     tiers: DEFAULT_ONLY,
     eventLocked: true,
+    canBeFlawless: false,
   },
 ];
 
