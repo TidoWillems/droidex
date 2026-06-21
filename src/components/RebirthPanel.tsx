@@ -2,7 +2,8 @@ import { UI } from '../data/ui';
 import { t } from '../lib/t';
 import { useMemo, useState } from 'react';
 import { REBIRTH_PATHS } from '../data/rebirthPaths';
-import { hasEffectiveCard } from '../lib/droidHierarchy';
+import { hasEffectiveCard, getDroidProgress } from '../lib/droidHierarchy';
+import { TierDNA } from './TierDNA';
 
 interface Props {
   rebirthPath: number;
@@ -193,6 +194,7 @@ export function RebirthPanel({
 
               {/* Droid cards */}
               {nextRebirth.droids.map((d) => {
+                const progress = getDroidProgress(present, d.name);
                 const isCollected = collected.has(d.cardId);
                 const isPresent = hasEffectiveCard(present, d.cardId);
                 return (
@@ -307,6 +309,10 @@ export function RebirthPanel({
                     <span className="text-white text-[10px] font-bold w-[88px] text-center truncate">
                       {d.name}
                     </span>
+
+                    <div className="w-[88px] mt-0.5">
+                      <TierDNA progress={progress} />
+                    </div>
                   </div>
                 );
               })}

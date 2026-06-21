@@ -6,12 +6,14 @@ import { REBIRTH_PATHS } from '../data/rebirthPaths';
 
 type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
 type RebirthStatus = 'ALL' | 'NEEDED' | 'HISTORICAL';
+type FlawlessStatus = 'ALL' | 'FLAWLESS' | 'MISSING';
 
 interface Props {
   tier: TierOrAll;
   rarity: Rarity | 'ALL';
   droidClass: DroidType | 'ALL';
   collectionStatus: CollectionStatus;
+  flawlessStatus: FlawlessStatus;
   rebirthPath: number;
   rebirthLevel: number;
   rebirthFilter: RebirthStatus;
@@ -33,6 +35,7 @@ export function DroidGrid({
   rarity,
   droidClass,
   collectionStatus,
+  flawlessStatus,
   rebirthPath,
   rebirthLevel,
   rebirthFilter,
@@ -68,6 +71,10 @@ export function DroidGrid({
       if (droidClass !== 'ALL' && c.droid.type !== droidClass) return false;
       if (collectionStatus === 'OWNED' && !collected.has(c.id)) return false;
       if (collectionStatus === 'MISSING' && collected.has(c.id)) return false;
+      const isFlawless = flawless.has(c.droid.name);
+      if (flawlessStatus === 'FLAWLESS' && !isFlawless) return false;
+      if (flawlessStatus === 'MISSING' && isFlawless) return false;
+
       if (
         search.trim() &&
         !c.droid.name.toLowerCase().includes(search.trim().toLowerCase())
@@ -93,13 +100,16 @@ export function DroidGrid({
     rarity,
     droidClass,
     collectionStatus,
+    flawlessStatus,
     search,
     collected,
     present,
+    flawless,
     rebirthFilter,
     requiredIds,
     tierIndex,
   ]);
+
   const rebirthMap = useMemo(() => {
     const map: Record<string, number[]> = {};
 
@@ -149,6 +159,7 @@ export function DroidGrid({
           card={card}
           collected={collected.has(card.id)}
           present={present.has(card.id)}
+          presentCards={present}
           flawless={flawless.has(card.droid.name)}
           onToggle={onToggle}
           onTogglePresent={onTogglePresent}

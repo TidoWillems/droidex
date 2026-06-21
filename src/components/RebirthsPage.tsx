@@ -1,5 +1,6 @@
 import { REBIRTH_PATHS } from '../data/rebirthPaths';
 import { hasEffectiveCard, getDroidProgress } from '../lib/droidHierarchy';
+import { TierDNA } from './TierDNA';
 
 interface Props {
   rebirthPath: number;
@@ -232,46 +233,8 @@ export function RebirthsPage({
                       <span className="text-white text-[10px] font-bold w-[76px] text-center truncate">
                         {d.name}
                       </span>
-                      <div className="w-[76px] flex justify-center gap-1 mt-0.5 text-[7px] font-black">
-                        <span
-                          className={
-                            progress >= 1 ? 'text-zinc-300' : 'text-zinc-700'
-                          }
-                        >
-                          {progress >= 1 ? '■' : '□'}D
-                        </span>
-
-                        <span
-                          className={
-                            progress >= 2 ? 'text-amber-400' : 'text-zinc-700'
-                          }
-                        >
-                          {progress >= 2 ? '■' : '□'}G
-                        </span>
-
-                        <span
-                          className={
-                            progress >= 3 ? 'text-sky-300' : 'text-zinc-700'
-                          }
-                        >
-                          {progress >= 3 ? '■' : '□'}D
-                        </span>
-
-                        <span
-                          className={
-                            progress >= 4 ? 'text-purple-400' : 'text-zinc-700'
-                          }
-                        >
-                          {progress >= 4 ? '■' : '□'}R
-                        </span>
-
-                        <span
-                          className={
-                            progress >= 5 ? 'text-zinc-100' : 'text-zinc-700'
-                          }
-                        >
-                          {progress >= 5 ? '■' : '□'}B
-                        </span>
+                      <div className="w-[76px] mt-0.5">
+                        <TierDNA progress={progress} />
                       </div>
                     </div>
                   );

@@ -15,10 +15,12 @@ import { RebirthsPage } from './components/RebirthsPage';
 import { Footer } from './components/Footer';
 import { TipsPage } from './components/TipsPage';
 import { AboutPage } from './components/AboutPage';
+import { FlawlessFilter } from './components/FlawlessFilter';
 
 type RarityOrAll = Rarity | 'ALL';
 type DroidTypeOrAll = DroidType | 'ALL';
 type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
+type FlawlessStatus = 'ALL' | 'FLAWLESS' | 'MISSING';
 
 export default function App() {
   const {
@@ -41,6 +43,8 @@ export default function App() {
   const [droidClass, setDroidClass] = useState<DroidTypeOrAll>('ALL');
   const [collectionStatus, setCollectionStatus] =
     useState<CollectionStatus>('ALL');
+
+  const [flawlessStatus, setFlawlessStatus] = useState<FlawlessStatus>('ALL');
 
   const [search, setSearch] = useState('');
   const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());
@@ -147,6 +151,18 @@ export default function App() {
                         active={collectionStatus}
                         onChange={setCollectionStatus}
                       />
+
+                      <div className="px-4 py-3 border-t border-zinc-800">
+                        <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
+                          FLAWLESS
+                        </p>
+
+                        <FlawlessFilter
+                          active={flawlessStatus}
+                          onChange={setFlawlessStatus}
+                        />
+                      </div>
+
                       {/* REBIRTH FILTER (temporarily hidden)                   
    <div className="px-4 py-3 border-t border-zinc-800">
                         <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
@@ -202,6 +218,7 @@ export default function App() {
                     rarity={rarity}
                     droidClass={droidClass}
                     collectionStatus={collectionStatus}
+                    flawlessStatus={flawlessStatus}
                     rebirthFilter="ALL"
                     search={search}
                     collected={collected}

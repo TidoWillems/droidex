@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import type { DroidCard as DroidCardType } from '../data/droids';
 import { DROID_INFO } from '../data/droidInfo';
+import { getDroidProgress } from '../lib/droidHierarchy';
+import { TierDNA } from './TierDNA';
 
 interface Props {
   card: DroidCardType;
@@ -21,6 +23,8 @@ interface Props {
   onToggle: (id: string) => void;
   onTogglePresent: (id: string) => void;
   onToggleFlawless: (id: string) => void;
+
+  presentCards: Set<string>;
 
   highlighted?: boolean;
   rebirthLevels?: number[];
@@ -76,6 +80,7 @@ export function DroidCard({
   rebirthLevels,
   lastRequiredRebirth,
   currentRebirth,
+  presentCards,
 }: Props) {
   const { droid, tier, id } = card;
   const rarityColor = RARITY_COLOR[droid.rarity];
@@ -85,6 +90,7 @@ export function DroidCard({
 
   const isPresent = present;
   const info = DROID_INFO[droid.name];
+  const progress = getDroidProgress(presentCards, droid.name);
   const canBeFlawless = droid.canBeFlawless !== false;
   const isSafe =
     lastRequiredRebirth !== undefined &&
@@ -142,6 +148,10 @@ export function DroidCard({
         <p className="text-white font-black italic leading-tight truncate text-sm">
           {droid.name}
         </p>
+        <div className="mt-0.5">
+          <TierDNA progress={progress} />
+        </div>
+
         <p className="flex items-center justify-center gap-1 text-[9px] uppercase tracking-wider text-zinc-500">
           <badge.Icon size={10} />
           {droid.type}

@@ -1,4 +1,165 @@
-# Droidex SNAP
+# Droidex LAB NOTES
+
+### Flawless Architektur
+
+Validiert.
+
+Collected:
+- Kartenebene
+
+Present:
+- Kartenebene
+
+Flawless:
+- Droid-Ebene
+
+Die Persistenz speichert Flawless bereits über droid.name.
+
+
+### Flawless Filter
+
+Implementiert.
+
+Filterebene:
+- ALL
+- FLAWLESS
+- MISSING
+
+Verwendet:
+flawless.has(droid.name)
+
+Bestätigung:
+Flawless wird bereits effektiv als Droid-Merkmal behandelt.
+Der Filter validiert damit die zukünftige Droid-basierte Architektur.
+
+## TierDNA
+
+### Ziel
+
+Sichtbar machen, wie weit ein Droid innerhalb seiner Tier-Linie entwickelt werden kann bzw. bereits existiert.
+
+Beispiel:
+
+□D ■G ■D ■R ■B
+
+D = Default
+G = Gold
+D = Diamond
+R = Rainbow
+B = Beskar
+
+### Umsetzung
+
+Neue Komponente:
+
+src/components/TierDNA.tsx
+
+Nutzt:
+
+getDroidProgress(present, droidName)
+
+und zeigt eine kompakte DNA-Zeile.
+
+### Verwendung
+
+Aktuell eingebunden in:
+
+- DroidCard
+- RebirthPanel
+
+### Erkenntnis
+
+Die TierDNA funktioniert besser als Metadaten denn als Hauptinformation.
+
+Endgültige Darstellung:
+
+gap-0.5
+text-[6px]
+
+Dadurch bleibt sie lesbar, dominiert die Karte aber nicht.
+
+### Nutzen
+
+Die DNA zeigt:
+
+- Entwicklungsbaum eines Droiden
+- Beskar-Potenzial
+- Fortschritt innerhalb einer Droid-Linie
+
+ohne zusätzliche Dialoge oder Detailansichten.
+
+### Architektur-Erkenntnis
+
+TierDNA beschreibt den Droiden selbst.
+
+Sie ist unabhängig von:
+
+- Collected
+- Present
+- Rebirth
+- Flawless
+
+Dadurch bleibt die Komponente universell nutzbar.
+
+### Offene Ideen
+
+- DNA-basierte Filter
+- DNA Completion Statistiken
+- Droid Detailansicht
+- Companion Empfehlungen
+
+Derzeit gilt TierDNA als abgeschlossenes Grundbauteil.
+
+Design Patterns
+
+Droid Hierarchy Pattern
+
+Ein höheres Tier erfüllt automatisch alle niedrigeren Tierstufen.
+
+BESKAR
+↓
+RAINBOW
+↓
+DIAMOND
+↓
+GOLD
+↓
+DEFAULT
+
+Die Collection speichert Karten.
+
+Die Logik arbeitet auf Droid-Ebene.
+
+---
+
+Tier DNA Pattern
+
+Ein Droid wird als Entwicklungslinie dargestellt:
+
+D G D R B
+
+Jede Position repräsentiert eine Tierstufe.
+
+Beispiel:
+
+■D ■G ■D □R □B
+
+Bedeutung:
+
+- Default vorhanden
+- Gold vorhanden
+- Diamond vorhanden
+- Rainbow fehlt
+- Beskar fehlt
+
+Designprinzip:
+
+Granulare Daten.
+Verdichtete Darstellung.
+
+Card → Droid → Rebirth → Collection
+
+####
 
 Der neue Fortschrittsindikator ist eigentlich kein "Progress Bar"-Pattern mehr.
 Er ist inzwischen eher ein:

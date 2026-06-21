@@ -1,14 +1,25 @@
 # Changelog
 
+
+## v1.5.1
+
+- Tier DNA component
+- Flawless filter
+- Droid-level Flawless architecture validation
+- Collection and Rebirth UI refinements
+- Documentation updates
+
 ## v1.5.0
 
 - Droid Hierarchy System
 - Effective Present Logic
 - Tier Inheritance (Beskar → Default)
-- Rebirth Requirement Simplification
+- Rebirth Progress Tracking
 - Droid Progress Visualization
-- Rebirth Progress Indicators
-- Rebirth UX Refinements
+- Rebirth UX Improvements
+- Future Usage Indicators
+- Rebirth Path Refinements
+- UI Consistency Improvements
 
 ## v1.4.0
 
