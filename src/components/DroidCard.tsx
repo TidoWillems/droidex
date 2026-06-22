@@ -12,6 +12,7 @@ import type { DroidCard as DroidCardType } from '../data/droids';
 import { DROID_INFO } from '../data/droidInfo';
 import { getDroidProgress } from '../lib/droidHierarchy';
 import { TierDNA } from './TierDNA';
+import { getFutureUsage } from '../lib/companion';
 
 interface Props {
   card: DroidCardType;
@@ -96,6 +97,8 @@ export function DroidCard({
     lastRequiredRebirth !== undefined &&
     currentRebirth !== undefined &&
     currentRebirth > lastRequiredRebirth;
+
+  const futureUsage = getFutureUsage(currentRebirth ?? 0, lastRequiredRebirth);
 
   const ringClass = highlighted
     ? 'ring-2 ring-yellow-400 ring-inset'
@@ -211,11 +214,10 @@ flex
 items-center
 justify-between
 "
-              title={`${
-                rebirthLevels.length > 1
-                  ? t(UI.rebirthRequiredPlural)
-                  : t(UI.rebirthRequired)
-              } ${rebirthLevels.join(', ')}`}
+              title={`${futureUsage}
+${
+  rebirthLevels.length > 1 ? t(UI.rebirthRequiredPlural) : t(UI.rebirthRequired)
+} ${rebirthLevels.join(', ')}`}
               onClick={(e) => {
                 e.stopPropagation();
                 onTogglePresent(id);

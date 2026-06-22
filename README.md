@@ -118,7 +118,6 @@ Additional work in this fork:
 - Local-first persistence
 - Collection tracking improvements
 - Rebirth planning tools
-- Offline-first architecture
 - Mobile UI improvements
 - PWA installation support
 - Rebirth planning tools

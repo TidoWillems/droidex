@@ -1,6 +1,20 @@
 # IDEAS
 
 20260622
+
+## Companion
+
+✓ getFutureUsage()
+✓ getFutureUseCount()
+✓ isLastUsage()
+
+□ RebirthPage nutzt Companion
+✓ RebirthPanel nutzt Companion
+✓ Zukunftslogik aus UI entfernen
+
+□ getMissingDroids()
+□ getReadyReason()
+
 ## Rebirth
 
 - Direktlink RebirthPanel → RebirthPage
@@ -30,6 +44,7 @@ Droid-Level Architektur validiert.
 Mögliche Erweiterungen:
 
 ✓ 20260621 - Flawless Fortschritt (x / 51)
+
 - Flawless Statistiken
 - Flawless Collection View
 - Fehlende Flawless-Droids
@@ -94,3 +109,6 @@ statt reine Sammelobjekte.
 ## UI
 
 - DroidGrid mit kleinem Dreieck aus-/einblendbar
+- Alke Droids als alle zustände markierbar. also quickedits fur sie Auswahl. erleichert db-verwaltung.
+- Sorachlogik auch fur zuletzt erstellte Dateien.
+- App Sriten per Slide wechseln

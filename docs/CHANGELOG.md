@@ -1,5 +1,23 @@
 # Changelog
 
+v1.5.3
+
+Companion v0
+
+- companion.ts eingeführt
+- Zukunftslogik zentralisiert
+- DroidCard nutzt Companion
+- RebirthPage nutzt Companion
+- WIP entfernt
+## v1.5.3
+
+✓ Companion Layer
+✓ getFutureUsage()
+✓ getFutureUseCount()
+✓ isLastUsage()
+✓ getFutureUseCountForDroid()
+✓ DroidCard nutzt Companion
+✓ RebirthPage nutzt Companion
 ## v1.5.2
 
 - AboutPage redesign

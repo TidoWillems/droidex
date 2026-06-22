@@ -1,8 +1,45 @@
 # LAB NOTES
 
+20260622
+
+## Companion Verdichtung
+
+Rebirth-Zukunftslogik wurde aus der UI
+in companion.ts verschoben.
+
+Die RebirthPage zeigt Zukunftsinformationen,
+berechnet sie jedoch nicht mehr selbst.
+
+Companion entwickelt sich damit von einer
+Hilfsfunktionensammlung zu einer zentralen
+Interpretationsschicht.
+
+## Companion
+
+Neue Funktionen werden zuerst als
+Interpretation gebaut und danach
+in bestehende UIs integriert.
+
+Ziel:
+
+Wissen zentralisieren,
+UI vereinfachen.
+
 ## Erkenntnisse
 
-20260622
+Architektur-Erkenntnis
+Gerade passiert etwas, das sehr gut zu euren LAB_NOTES passt:
+Vorher:
+Rebirth berechnet Rebirth-Wissen
+RebirthPage berechnet Rebirth-Wissen
+DroidCard berechnet Rebirth-Wissen
+Nach Companion:
+Companion berechnet Wissen
+
+RebirthPanel zeigt Wissen
+RebirthPage zeigt Wissen
+DroidCard zeigt Wissen
+Das ist exakt die Entkopplung, die ihr bei TierDNA schon erreicht habt.
 
 ## Companion Layer
 

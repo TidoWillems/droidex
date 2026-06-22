@@ -1,5 +1,31 @@
 # Droidex Architecture
+
 20260622
+
+## Milestone: Companion Layer
+Companion v0
+
+✓ getFutureUsage()
+✓ getFutureUseCount()
+✓ isLastUsage()
+✓ getFutureUseCountForDroid()
+
+□ getReadyReason()
+□ getMissingDroids()
+□ getRebirthStatus()
+□ getCompanionExplanation()
+##
+
+Companion benötigt
+rebirth-unabhängige Eingaben.
+
+Wenn Wissen nur innerhalb einer UI berechnet wird,
+kann Companion es nicht wiederverwenden.
+
+Ziel:
+Companion erhält Rohdaten,
+nicht UI-Zwischenergebnisse.
+
 ## Data Layers
 
 ### Flawless

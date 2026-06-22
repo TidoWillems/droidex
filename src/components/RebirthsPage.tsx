@@ -1,6 +1,7 @@
 import { REBIRTH_PATHS } from '../data/rebirthPaths';
 import { hasEffectiveCard, getDroidProgress } from '../lib/droidHierarchy';
 import { TierDNA } from './TierDNA';
+import { getFutureUseCountForDroid } from '../lib/companion';
 
 interface Props {
   rebirthPath: number;
@@ -82,16 +83,6 @@ export function RebirthsPage({
             hasEffectiveCard(present, d.cardId)
           ).length;
 
-          const remainingMap: Record<string, number> = {};
-
-          activePath
-            .filter((l) => l.from > level.from)
-            .forEach((l) => {
-              l.droids.forEach((d) => {
-                remainingMap[d.name] = (remainingMap[d.name] ?? 0) + 1;
-              });
-            });
-
           return (
             <div
               key={level.from}
@@ -142,7 +133,11 @@ export function RebirthsPage({
                   const isCollected = collected.has(d.cardId);
 
                   const isPresent = hasEffectiveCard(present, d.cardId);
-                  const futureUses = remainingMap[d.name] ?? 0;
+                  const futureUses = getFutureUseCountForDroid(
+                    activePath,
+                    level.from,
+                    d.name
+                  );
                   const progress = getDroidProgress(present, d.name);
                   return (
                     <div
