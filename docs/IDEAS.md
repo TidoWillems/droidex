@@ -1,46 +1,96 @@
 # IDEAS
 
-Tier DNA v2
-
-Prüfen, ob Tier-DNA langfristig
-Tier-Labels teilweise ersetzen kann.
-
-DEFAULT → GOLD → DIAMOND → RAINBOW → BESKAR
-
-wird als Entwicklungszustand eines Droiden dargestellt.
-
-Mögliche Zielrichtung:
-
-Card → Tier DNA → Droid
-
-anstatt
-
-Card → Tier Label → Droid
-
+20260622
 ## Rebirth
 
 - Direktlink RebirthPanel → RebirthPage
 - Rebirth-Filter auf benötigte Droiden
 
-## Droid DNA
+---
 
-- Tier-DNA auch in DroidGrid anzeigen
-- Tier-DNA in Droid Details
-- Companion kann DNA erklären
+## TierDNA
+
+Status:
+Grundsystem implementiert.
+
+Mögliche Erweiterungen:
+
+- DNA-basierte Filter
+- DNA Completion Statistiken
+- TierDNA in Droid Details
+- Companion-Erklärungen
+
+---
+
+## Flawless
+
+Status:
+Droid-Level Architektur validiert.
+
+Mögliche Erweiterungen:
+
+✓ 20260621 - Flawless Fortschritt (x / 51)
+- Flawless Statistiken
+- Flawless Collection View
+- Fehlende Flawless-Droids
+
+---
+
+## Backup
+
+- Backup-Versionierung
+- Import-Migrationen
+- Backup-Zeitstempel
+- Import-Erfolgsbestätigung
+- Erweiterbare Backup-Inhalte
+
+---
 
 ## Companion
 
 - Warum READY?
 - Welche Droiden fehlen?
-- Nächster sinnvoller Upgrade-Schritt
+- Warum wird ein Droid benötigt?
+- Verkaufsentscheidung unterstützen
+- TierDNA erklären
 
-## Rebirth
+Bewertet:
 
-- Direktlink vom RebirthPanel zur RebirthPage
+- Present
+- Effective Present
+- Rebirth
+- Flawless
+- TierDNA
 
-Begründung:
-Schneller Wechsel zwischen Übersicht und Planung.
+---
 
-Status:
-Nicht umgesetzt.
-Während der Arbeit entstand zunächst das Tier-DNA-System.
+## Droid Wissen
+
+- Companion-Effekte
+- Upgrade-Chip-Quellen
+- Nova-System
+- Squad-Boni
+
+---
+
+## Langfristig
+
+Droid-Merkmalsmodell:
+
+- rarity
+- tier
+- source
+- companionAbility
+- rebirthUsage
+- eventLocked
+- novaCost
+- flawless
+
+Ziel:
+
+Droiden als Wissensobjekte
+statt reine Sammelobjekte.
+
+## UI
+
+- DroidGrid mit kleinem Dreieck aus-/einblendbar

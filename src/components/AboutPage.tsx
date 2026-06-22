@@ -145,9 +145,40 @@ export function AboutPage() {
             <div>✓ Flawless</div>
             <div>✓ Rebirth Path</div>
             <div>✓ Rebirth Level</div>
+						<div className="pt-2 text-[11px] text-zinc-600">
+  Exportiert als JSON-Datei.
+  Kann zwischen Geräten übertragen werden.
+</div>
           </div>
         </div>
       </div>
+
+<div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
+  <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
+    SYSTEM
+  </div>
+
+  <div className="mt-3 text-sm text-zinc-300 space-y-1">
+    <div>✓ Backup System</div>
+    <div>✓ Import System</div>
+    <div>✓ Flawless Tracking</div>
+    <div>✓ TierDNA</div>
+    <div>✓ Rebirth Planner</div>
+    <div>✓ Offline Mode</div>
+
+<div className="pt-2 text-zinc-500">
+  Companion Assistant — WIP
+</div>
+
+<div className="pt-2 text-xs text-zinc-500 space-y-1">
+  <div>○ Warum READY?</div>
+  <div>○ Welche Droiden fehlen?</div>
+  <div>○ Warum wird ein Droid benötigt?</div>
+  <div>○ Verkaufsentscheidungen</div>
+  <div>○ TierDNA Analyse</div>
+</div>
+  </div>
+</div>
 
       <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
         {t(UI.appGuide)}

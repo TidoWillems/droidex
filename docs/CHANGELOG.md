@@ -1,12 +1,19 @@
 # Changelog
 
+## v1.5.2
+
+- AboutPage redesign
+- Backup documentation
+- System overview section
+- Flawless filter integration
+- Documentation consolidation
 
 ## v1.5.1
 
 - Tier DNA component
 - Flawless filter
-- Droid-level Flawless architecture validation
-- Collection and Rebirth UI refinements
+- Flawless progress tracking
+- Collection UI refinements
 - Documentation updates
 
 ## v1.5.0
