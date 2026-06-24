@@ -1,6 +1,13 @@
 # Changelog
 
-v1.5.3
+## v1.5.4
+
+✓ getMissingDroids()
+✓ getReadyReason()
+✓ Companion nutzt Droid Hierarchy
+✓ Rebirth READY-Logik vereinheitlicht
+
+## v1.5.3
 
 Companion v0
 
@@ -9,7 +16,6 @@ Companion v0
 - DroidCard nutzt Companion
 - RebirthPage nutzt Companion
 - WIP entfernt
-## v1.5.3
 
 ✓ Companion Layer
 ✓ getFutureUsage()
@@ -18,6 +24,7 @@ Companion v0
 ✓ getFutureUseCountForDroid()
 ✓ DroidCard nutzt Companion
 ✓ RebirthPage nutzt Companion
+
 ## v1.5.2
 
 - AboutPage redesign

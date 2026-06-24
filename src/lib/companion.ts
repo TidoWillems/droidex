@@ -1,3 +1,5 @@
+import { hasEffectiveCard } from './droidHierarchy';
+
 export function getFutureUsage(
   currentRebirth: number,
   lastRequiredRebirth?: number
@@ -37,7 +39,7 @@ export function getFutureUseCountForDroid(
   activePath
     .filter((level) => level.from > currentLevel)
     .forEach((level) => {
-level.droids.forEach((droid: any) => {
+      level.droids.forEach((droid: any) => {
         if (droid.name === droidName) {
           count++;
         }
@@ -45,6 +47,57 @@ level.droids.forEach((droid: any) => {
     });
 
   return count;
+}
+
+export function getMissingDroids(
+  present: Set<string>,
+  droids: readonly {
+    cardId: string;
+    name: string;
+    tier: string;
+  }[]
+) {
+return droids.filter(
+  (droid) => !hasEffectiveCard(
+    present,
+    droid.cardId
+  )
+);
+}
+
+export function getReadyReason(
+  present: Set<string>,
+  droids: readonly {
+    cardId: string;
+    name: string;
+    tier: string;
+  }[]
+): string {
+  const missing = getMissingDroids(present, droids);
+
+  if (missing.length === 0) {
+    return 'READY';
+  }
+
+  if (missing.length === 1) {
+    return `${missing[0].name} fehlt`;
+  }
+
+  return `${missing.length} Droiden fehlen`;
+}
+
+export function isReady(
+  present: Set<string>,
+  droids: readonly {
+    cardId: string;
+    name: string;
+    tier: string;
+  }[]
+): boolean {
+  return getMissingDroids(
+    present,
+    droids
+  ).length === 0;
 }
 
 // später evtl.

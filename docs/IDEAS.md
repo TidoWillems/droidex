@@ -1,4 +1,4 @@
-# IDEAS
+.# IDEAS
 
 20260622
 
@@ -8,12 +8,12 @@
 ✓ getFutureUseCount()
 ✓ isLastUsage()
 
-□ RebirthPage nutzt Companion
+✓RebirthPage nutzt Companion
 ✓ RebirthPanel nutzt Companion
 ✓ Zukunftslogik aus UI entfernen
 
-□ getMissingDroids()
-□ getReadyReason()
+✓ getMissingDroids()
+✓ getReadyReason()
 
 ## Rebirth
 

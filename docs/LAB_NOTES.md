@@ -1,7 +1,25 @@
 # LAB NOTES
 
-20260622
 
+20260624
+### Companion + Hierarchy
+
+Companion darf Besitzzustände nicht
+direkt gegen present prüfen.
+
+Gameplay-Relevanz basiert auf
+Effective Present.
+
+getMissingDroids()
+und getReadyReason()
+verwenden daher hasEffectiveCard().
+
+Dadurch bleiben Companion,
+RebirthPage und Droid Hierarchy
+konsistent.
+
+
+20260622
 ## Companion Verdichtung
 
 Rebirth-Zukunftslogik wurde aus der UI

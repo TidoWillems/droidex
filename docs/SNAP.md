@@ -68,11 +68,10 @@ REBIRTH_PATHS
 ## Wichtige Erkenntnisse
 
 - Sammlung und Verfügbarkeit sind unterschiedliche Zustände.
-- Rebirth-Anforderungen basieren auf Verfügbarkeit.
 - Zukunftsrelevanz ist wichtiger als historische Nutzung.
 - Mapping-Layer erlauben neue Progressionssysteme ohne UI-Umbauten.
 - Offline-First reduziert Komplexität erheblich.
-
+- Rebirth-Anforderungen basieren auf Effective Present.
 ---
 
 ## Hauptmodule

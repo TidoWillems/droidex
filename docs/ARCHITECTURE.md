@@ -3,18 +3,30 @@
 20260622
 
 ## Milestone: Companion Layer
+
 Companion v0
 
 ✓ getFutureUsage()
 ✓ getFutureUseCount()
 ✓ isLastUsage()
 ✓ getFutureUseCountForDroid()
+✓ getMissingDroids()
 
-□ getReadyReason()
-□ getMissingDroids()
+✓ DroidCard nutzt Companion
+✓ RebirthPage nutzt Companion
+
+✓ getReadyReason()
 □ getRebirthStatus()
 □ getCompanionExplanation()
+
 ##
+
+Companion muss nicht vollständig sein,
+um Architekturwert zu liefern.
+
+Bereits das Verschieben einzelner
+Berechnungen aus der UI erzeugt
+Wiederverwendbarkeit.
 
 Companion benötigt
 rebirth-unabhängige Eingaben.
@@ -70,10 +82,15 @@ Rules:
 
 Higher tiers satisfy lower tiers.
 
+Only hasEffectiveCard()
+may evaluate ownership
+for gameplay requirements.
+
 Used by:
 
 - Effective Present
 - Rebirth
+- Companion
 - TierDNA
 - Progress Calculation
 
