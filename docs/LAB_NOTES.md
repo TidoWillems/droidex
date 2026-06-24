@@ -1,8 +1,26 @@
 # LAB NOTES
 
-
 20260624
+
+v1.5.5
+
+✓ getReadyExplanation()
+
+noch keine UI
+
 ### Companion + Hierarchy
+
+Companion erzeugt nicht nur Antworten.
+
+Companion erzeugt Antworten
+aus anderen Companion-Erkenntnissen.
+
+Companion wurde erstmals als eigenes
+System in der AboutPage sichtbar gemacht.
+
+Der Companion entwickelte sich von
+einer Hilfsfunktionssammlung zu einer
+Interpretationsschicht mit eigener Roadmap.
 
 Companion darf Besitzzustände nicht
 direkt gegen present prüfen.
@@ -18,8 +36,8 @@ Dadurch bleiben Companion,
 RebirthPage und Droid Hierarchy
 konsistent.
 
-
 20260622
+
 ## Companion Verdichtung
 
 Rebirth-Zukunftslogik wurde aus der UI

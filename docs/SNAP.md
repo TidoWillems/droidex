@@ -67,11 +67,15 @@ REBIRTH_PATHS
 
 ## Wichtige Erkenntnisse
 
+- Companion entwickelt sich schrittweise
+  von Statusfunktionen zu erklärbaren
+  Interpretationen.
 - Sammlung und Verfügbarkeit sind unterschiedliche Zustände.
 - Zukunftsrelevanz ist wichtiger als historische Nutzung.
 - Mapping-Layer erlauben neue Progressionssysteme ohne UI-Umbauten.
 - Offline-First reduziert Komplexität erheblich.
 - Rebirth-Anforderungen basieren auf Effective Present.
+
 ---
 
 ## Hauptmodule

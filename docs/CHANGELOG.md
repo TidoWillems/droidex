@@ -1,5 +1,17 @@
 # Changelog
 
+
+
+
+## v1.5.5
+
+✓ Companion in AboutPage sichtbar
+✓ Companion Roadmap sichtbar
+✓ getReadyExplanation()
+✓ getRequirementExplanation()
+✓ Companion-Dokumentation verdichtet
+✓ Companion als Interpretationsschicht geschärft
+
 ## v1.5.4
 
 ✓ getMissingDroids()

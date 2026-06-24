@@ -166,14 +166,23 @@ export function AboutPage() {
           <div>✓ Rebirth Planner</div>
           <div>✓ Offline Mode</div>
 
-          <div className="pt-2 text-zinc-500">Companion Assistant — WIP</div>
+          <div className="pt-4 border-t border-zinc-800 mt-4">
+            <div className="pt-2 text-cyan-400 text-[10px] font-bold tracking-widest">
+              COMPANION
+            </div>
+            <div className="pt-2 text-xs text-zinc-500 space-y-1">
+              <div>✓ Future Usage</div>
+              <div>✓ Missing Droids</div>
+              <div>✓ Requirement Analysis</div>
+            </div>
+            <div className="pt-2 text-zinc-600">ROADMAP</div>
 
-          <div className="pt-2 text-xs text-zinc-500 space-y-1">
-            <div>○ Warum READY?</div>
-            <div>○ Welche Droiden fehlen?</div>
-            <div>○ Warum wird ein Droid benötigt?</div>
-            <div>○ Verkaufsentscheidungen</div>
-            <div>○ TierDNA Analyse</div>
+            <div className="pt-1 text-xs text-zinc-600 space-y-1">
+              <div>○ Why READY?</div>
+              <div>○ Why needed?</div>
+              <div>○ Sell advice</div>
+              <div>○ TierDNA analysis</div>
+            </div>
           </div>
         </div>
       </div>

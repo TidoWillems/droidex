@@ -1,5 +1,37 @@
 .# IDEAS
 
+
+20260624
+
+## Debug / Diagnose
+
+Ziel:
+
+Logik direkt aus den Projektdaten prüfen,
+ohne Browser-DevTools oder APK-Builds.
+
+Mögliche Erweiterungen:
+
+- TypeScript Debug-Skripte unter scripts/
+- Companion-Funktionen direkt per CLI testen
+- Rebirth-Pfade analysieren
+- Droid-Nutzung auswerten
+- Datenmodelle validieren
+- Konsistenzprüfungen für Savegames
+
+Beispiele:
+
+npx tsx scripts/checkRebirth.ts
+
+Langfristig:
+
+Debug-Wissen möglichst aus denselben
+Datenquellen ableiten wie die App selbst.
+
+Termux → Diagnose
+App → Status
+Browser-DevTools → Ausnahmefall
+
 20260622
 
 ## Companion
@@ -63,11 +95,13 @@ Mögliche Erweiterungen:
 
 ## Companion
 
-- Warum READY?
-- Welche Droiden fehlen?
-- Warum wird ein Droid benötigt?
-- Verkaufsentscheidung unterstützen
-- TierDNA erklären
+✓ Warum READY?
+✓ Welche Droiden fehlen?
+✓ Warum wird ein Droid benötigt?
+
+□ Companion Explanation UI
+□ Verkaufsentscheidung unterstützen
+□ TierDNA erklären
 
 Bewertet:
 
@@ -109,6 +143,6 @@ statt reine Sammelobjekte.
 ## UI
 
 - DroidGrid mit kleinem Dreieck aus-/einblendbar
-- Alke Droids als alle zustände markierbar. also quickedits fur sie Auswahl. erleichert db-verwaltung.
+- Alke Droids als alle zustände markierbar. also quickedits für die Auswahl. erleichert db-verwaltung.
 - Sorachlogik auch fur zuletzt erstellte Dateien.
 - App Sriten per Slide wechseln

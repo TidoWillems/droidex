@@ -57,12 +57,7 @@ export function getMissingDroids(
     tier: string;
   }[]
 ) {
-return droids.filter(
-  (droid) => !hasEffectiveCard(
-    present,
-    droid.cardId
-  )
-);
+  return droids.filter((droid) => !hasEffectiveCard(present, droid.cardId));
 }
 
 export function getReadyReason(
@@ -86,6 +81,23 @@ export function getReadyReason(
   return `${missing.length} Droiden fehlen`;
 }
 
+export function getReadyExplanation(
+  present: Set<string>,
+  droids: readonly {
+    cardId: string;
+    name: string;
+    tier: string;
+  }[]
+): string[] {
+  const missing = getMissingDroids(present, droids);
+
+  if (missing.length === 0) {
+    return ['Alle Anforderungen erfüllt'];
+  }
+
+  return missing.map((droid) => `${droid.name} fehlt`);
+}
+
 export function isReady(
   present: Set<string>,
   droids: readonly {
@@ -94,11 +106,35 @@ export function isReady(
     tier: string;
   }[]
 ): boolean {
-  return getMissingDroids(
-    present,
-    droids
-  ).length === 0;
+  return getMissingDroids(present, droids).length === 0;
 }
+
+export function getRequirementExplanation(
+  activePath: readonly any[],
+  droidName: string
+): string[] {
+  const usages: string[] = [];
+
+  activePath.forEach((level) => {
+    const required = level.droids.some(
+      (droid: any) => droid.name === droidName
+    );
+
+    if (required) {
+      usages.push(
+        `Benötigt für RB${level.from} → RB${level.to}`
+      );
+    }
+  });
+
+  if (usages.length === 0) {
+    return ['Nicht für Rebirth benötigt'];
+  }
+
+  return usages;
+}
+
+//=================================
 
 // später evtl.
 // export function getFutureStatus(
