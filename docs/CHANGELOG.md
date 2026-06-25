@@ -1,8 +1,5 @@
 # Changelog
 
-
-
-
 ## v1.5.5
 
 ✓ Companion in AboutPage sichtbar

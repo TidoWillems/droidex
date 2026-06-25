@@ -1,15 +1,31 @@
 # Droidex Architecture
 
-20260624
+## 20260624
 
 v1.5.3
-Companion erzeugt Analyse
+Companion erzeugt Analysen.
 
 v1.5.4
-Companion erzeugt Erklärungen
+Companion erzeugt Erklärungen.
 
 v1.5.5
-UI zeigt Companion-Wissen
+Companion-Wissen wird erstmals in der UI sichtbar.
+
+v1.5.6
+Companion trennt Status und Erklärung.
+
+Dadurch entstehen zwei unabhängige Ebenen:
+
+Status
+→ READY
+→ 1 FEHLT
+→ 2 FEHLEN
+
+Erklärung
+→ Alle Anforderungen erfüllt
+→ STRIKE-ORB fehlt
+→ BB9
+→ CYCLO-GRAV
 
 20260622
 

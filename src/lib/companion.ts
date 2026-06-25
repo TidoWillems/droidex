@@ -121,9 +121,7 @@ export function getRequirementExplanation(
     );
 
     if (required) {
-      usages.push(
-        `Benötigt für RB${level.from} → RB${level.to}`
-      );
+      usages.push(`Benötigt für RB${level.from} → RB${level.to}`);
     }
   });
 

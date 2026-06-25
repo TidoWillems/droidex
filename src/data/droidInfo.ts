@@ -4,7 +4,7 @@ export interface DroidInfo {
 
 export const DROID_INFO: Record<string, DroidInfo> = {
   'DJ R-3X': {
-    abilities: ['ALL QUESTS', '2x QUEST'],
+    abilities: ['WORKER+ASTRO', '2x REWARDS'],
   },
 
   BB8: {

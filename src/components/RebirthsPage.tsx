@@ -5,6 +5,7 @@ import {
   getFutureUseCountForDroid,
   getMissingDroids,
   getReadyReason,
+  getReadyExplanation,
 } from '../lib/companion';
 
 interface Props {
@@ -126,6 +127,14 @@ export function RebirthsPage({
                   </button>
                 </div>
               </div>
+
+{!isDone && (
+  <div className="mt-2 text-[11px] text-zinc-500 space-y-1">
+    {getReadyExplanation(present, level.droids).map((line) => (
+      <div key={line}>{line}</div>
+    ))}
+  </div>
+)}
 
               {/* Droid cards */}
               <div className="flex flex-wrap gap-3">

@@ -333,9 +333,9 @@ export const TIPS = [
     },
 
     text: {
-      de: 'DJ R-3X kann World Quests aller Droid-Klassen ausführen. Er ist nicht auf Worker-, Astromech- oder Battle-Missionen beschränkt und erhöht zusätzlich die Belohnungen von World Quests.',
-      en: 'DJ R-3X can complete World Quests of all droid classes. He is not restricted to Worker, Astromech or Battle missions and also increases World Quest rewards.',
-      fi: 'DJ R-3X voi suorittaa kaikkien droidiluokkien World Quest -tehtäviä. Hän ei ole sidottu Worker-, Astromech- tai Battle-tehtäviin ja kasvattaa lisäksi World Quest -palkintoja.',
+      de: 'DJ R-3X kann sowohl Worker- als auch Astromech-World-Quests ausführen. Zusätzlich verdoppelt er die Belohnungen dieser Missionen.',
+      en: 'DJ R-3X can complete both Worker and Astromech World Quests. He also doubles World Quest rewards.',
+      fi: 'DJ R-3X voi suorittaa sekä Worker- että Astromech World Quest -tehtäviä. Lisäksi hän tuplaa World Quest -palkinnot.',
     },
     verified: true,
   },
