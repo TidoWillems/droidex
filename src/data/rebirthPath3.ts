@@ -225,4 +225,14 @@ export const REBIRTH_LEVELS_3: RebirthLevel[] = [
       req('BESKAR', 'PROTO-ROLLER'),
     ],
   },
+{
+  from: 22,
+  to: 23,
+  credits: '6.00T',
+  droids: [
+    req('BESKAR', 'BB9'),
+    req('BESKAR', 'CYCLO-GRAV'),
+    req('BESKAR', 'B2-RP'),
+  ],
+},
 ];

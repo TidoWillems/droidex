@@ -132,20 +132,13 @@ export function getRequirementExplanation(
   return usages;
 }
 
-//=================================
-
-// später evtl.
-// export function getFutureStatus(
-//  currentRebirth: number,
-//  rebirthLevels: number[] = []
-//): string {
-//  const count = getFutureUseCount(
-//    currentRebirth,
-//    rebirthLevels
-//  );
-//
-//  if (count === 0) return 'SAFE';
-//  if (count === 1) return 'LAST';
-//
-//  return `REUSE:${count}`;
-//}
+export function getNextAction(
+ _present: Set<string>,
+ _droids: readonly {
+    cardId: string;
+    name: string;
+    tier: string;
+  }[]
+): string {
+  return '';
+}

@@ -6,6 +6,7 @@ import {
   getMissingDroids,
   getReadyReason,
   getReadyExplanation,
+	getNextAction,
 } from '../lib/companion';
 
 interface Props {
@@ -81,11 +82,9 @@ export function RebirthsPage({
         {activePath.map((level) => {
           const isDone = level.to <= rebirthLevel;
           const isCurrent = level.from === rebirthLevel;
-
           const missing = getMissingDroids(present, level.droids);
-
           const readyReason = getReadyReason(present, level.droids);
-
+					const nextAction = getNextAction(present, level.droids);
           const allMet = missing.length === 0;
 
           return (
@@ -128,19 +127,23 @@ export function RebirthsPage({
                 </div>
               </div>
 
-{!isDone && (
-  <div className="mt-2 text-[11px] text-zinc-500 space-y-1">
-    {getReadyExplanation(present, level.droids).map((line) => (
-      <div key={line}>{line}</div>
-    ))}
-  </div>
-)}
+              {!isDone && (
+                <div className="mt-2 text-[11px] space-y-1">
+                  {nextAction && (
+                    <div className="text-sky-400 font-medium">{nextAction}</div>
+                  )}
 
+                  {getReadyExplanation(present, level.droids).map((line) => (
+                    <div key={line} className="text-zinc-500">
+                      {line}
+                    </div>
+                  ))}
+                </div>
+              )}
               {/* Droid cards */}
               <div className="flex flex-wrap gap-3">
                 {level.droids.map((d) => {
                   const isCollected = collected.has(d.cardId);
-
                   const isPresent = hasEffectiveCard(present, d.cardId);
                   const futureUses = getFutureUseCountForDroid(
                     activePath,
