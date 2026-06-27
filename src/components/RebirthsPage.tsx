@@ -2,11 +2,11 @@ import { REBIRTH_PATHS } from '../data/rebirthPaths';
 import { hasEffectiveCard, getDroidProgress } from '../lib/droidHierarchy';
 import { TierDNA } from './TierDNA';
 import {
-  getFutureUseCountForDroid,
+  getRemainingRequirementCount,
   getMissingDroids,
   getReadyReason,
   getReadyExplanation,
-	getNextAction,
+  getNextAction,
 } from '../lib/companion';
 
 interface Props {
@@ -84,7 +84,7 @@ export function RebirthsPage({
           const isCurrent = level.from === rebirthLevel;
           const missing = getMissingDroids(present, level.droids);
           const readyReason = getReadyReason(present, level.droids);
-					const nextAction = getNextAction(present, level.droids);
+          const nextAction = getNextAction(present, level.droids);
           const allMet = missing.length === 0;
 
           return (
@@ -145,11 +145,13 @@ export function RebirthsPage({
                 {level.droids.map((d) => {
                   const isCollected = collected.has(d.cardId);
                   const isPresent = hasEffectiveCard(present, d.cardId);
-                  const futureUses = getFutureUseCountForDroid(
+                  const remainingRequirements = getRemainingRequirementCount(
                     activePath,
                     level.from,
                     d.name
                   );
+
+                  const isLastRequirement = remainingRequirements === 1;
                   const progress = getDroidProgress(present, d.name);
                   return (
                     <div
@@ -184,17 +186,20 @@ export function RebirthsPage({
                           </span>
                         </div>
 
-                        {futureUses > 0 && (
+                        {remainingRequirements > 0 && (
                           <div
                             className={`absolute top-1 right-1 px-1 rounded border text-[8px] font-bold ${
-                              futureUses === 1
+                              isLastRequirement
                                 ? 'bg-emerald-900/90 border-amber-500/50 text-amber-300'
                                 : 'bg-amber-900/90 border-amber-500/50 text-amber-300'
                             }`}
                           >
-                            {futureUses === 1 ? 'LAST' : `↻${futureUses}`}
+                            {isLastRequirement
+                              ? 'LAST'
+                              : `↻${remainingRequirements}`}
                           </div>
                         )}
+
                         {!isDone && (
                           <button
                             type="button"

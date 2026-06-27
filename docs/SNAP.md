@@ -67,6 +67,9 @@ REBIRTH_PATHS
 
 ## Wichtige Erkenntnisse
 
+- Companion priorisiert spielrelevante
+  Entscheidungen vor rein mathematischen
+  Auswertungen.
 - Companion entwickelt sich schrittweise
   von Statusfunktionen zu erklärbaren
   Interpretationen.

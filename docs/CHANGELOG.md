@@ -1,5 +1,15 @@
 # Changelog
 
+
+## v1.5.8
+
+✓ Rebirth-Zukunftsanzeige vereinheitlicht
+✓ LAST beschreibt nun den tatsächlich letzten Einsatz eines Droiden
+✓ Countdown der verbleibenden Einsätze konsistent
+✓ getRemainingRequirementCount() eingeführt
+✓ RebirthPage nutzt verbleibende Anforderungen statt FutureUsage
+✓ Companion-Logik für Verkaufsentscheidungen verbessert
+
 ## v1.5.5
 
 ✓ Companion in AboutPage sichtbar

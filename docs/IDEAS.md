@@ -4,7 +4,7 @@
 
 ## In App Logik
 
-- Konsistenz herstellen, wenn aus vers3hen die rebirthanforderungen als geg3b geklickt wurden obwohl ein droid nicht collected ist, erscheint momentan nich der Rebirth als volkziehbar. Also rebirthready kann nicht klickbar sein, wenn der droid nicht collected ist. umgekehrt genauso: wenn der user die rebirthanforderungen als gegeben sieht und er das mjt klick auf das rebjrth badge bestatig4 mussen alle dazugehorigen droids als collected gesetzt werden.
+- Konsistenz herstellen, wenn aus vers3hen die rebirthanforderungen als geg3b geklickt wurden obwohl ein droid nicht collected ist, erscheint momentan nich der Rebirth als volkziehbar. Also rebirthready kann nicht klickbar sein, wenn der droid nicht collected ist. umgekehrt genauso: wenn der user die rebirthanforderungen als gegeben sieht und er das mit klick auf das rebirth badge bestätigt müssen alle dazugehorigen droids als collected gesetzt werden und ebenfalls die rebirthanforderungen alle auf gegeben gesetzt wersen.
 
 ## Companion v1
 
@@ -12,6 +12,8 @@
 ✓ getReadyReason()
 ✓ getReadyExplanation()
 ✓ getRequirementExplanation()
+✓ Remaining Requirement Counter
+✓ LAST = letzter tatsächlicher Einsatz
 
 □ getSellAdvice()
 □ getCompanionExplanation()

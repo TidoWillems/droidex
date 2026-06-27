@@ -1,5 +1,26 @@
 # LAB NOTES
 
+### Companion
+
+Die mathematisch korrekte Antwort
+ist nicht immer die hilfreichste.
+
+Spieler treffen Entscheidungen
+anhand der angezeigten Information.
+
+LAST darf deshalb erst erscheinen,
+wenn der aktuelle Einsatz
+wirklich der letzte Einsatz
+dieses Droiden ist.
+
+Die Anzeige beschreibt nun
+die verbleibenden Einsätze
+einschließlich des aktuellen Rebirths.
+
+Dadurch unterstützt Companion
+Verkaufsentscheidungen,
+statt lediglich Daten zu zählen.
+
 20260624
 
 v1.5.5
@@ -145,6 +166,14 @@ Informationsdichte kann erhöht werden,
 solange die visuelle Struktur erhalten bleibt.
 
 ---
+
+### Backup-System
+
+- Export/Import basiert auf vollständigem droidex_v2 State.
+- Keine Feld-selektiven Exporte.
+- Nutzerrelevante Fortschritte werden automatisch mitgesichert.
+- UI kommuniziert gesicherte Bereiche als Statusliste.
+- Zukünftige Erweiterungen über backupVersion möglich.
 
 ### SNAP Entkopplung
 

@@ -1,5 +1,59 @@
 # Droidex Architecture
 
+## 20260626
+
+## Rule Layer
+
+Zwischen Daten und Companion entsteht eine eigene
+Regelschicht.
+
+DATA
+→ beschreibt Objekte.
+
+RULES
+→ beschreiben Gameplay-Regeln.
+
+COMPANION
+→ interpretiert die Regeln.
+
+UI
+→ stellt Ergebnisse dar.
+
+Aktuelle Rule-Module:
+
+- Droid Hierarchy
+  - hasEffectiveCard()
+  - getHighestOwnedTier()
+  - getDroidProgress()
+  - getDroidProgressPercent()
+
+Zukünftige Rule-Module:
+
+- Rebirth Rules
+- Event Rules
+- Companion Ability Rules
+- Upgrade Chip Rules
+- Nova Rules
+- Mission Rules
+
+Companion soll Regeln nicht besitzen,
+sondern Antworten aus Rule-Modulen ableiten.
+
+v1.5.8
+
+Companion unterscheidet jetzt zwischen
+
+- zukünftigen Einsätzen
+- verbleibenden Einsätzen
+
+Die Rebirth-UI zeigt bewusst die
+verbleibenden Einsätze inklusive
+des aktuellen Rebirths an.
+
+Dadurch entspricht LAST dem
+tatsächlich letzten Einsatz
+eines Droiden.
+
 ## 20260624
 
 v1.5.3

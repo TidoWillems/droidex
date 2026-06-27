@@ -29,24 +29,15 @@ export function isLastUsage(
   return getFutureUseCount(currentRebirth, rebirthLevels) === 1;
 }
 
-export function getFutureUseCountForDroid(
+export function getRemainingRequirementCount(
   activePath: readonly any[],
   currentLevel: number,
   droidName: string
 ): number {
-  let count = 0;
-
-  activePath
-    .filter((level) => level.from > currentLevel)
-    .forEach((level) => {
-      level.droids.forEach((droid: any) => {
-        if (droid.name === droidName) {
-          count++;
-        }
-      });
-    });
-
-  return count;
+  return activePath
+    .filter((level) => level.from >= currentLevel)
+    .flatMap((level) => level.droids)
+    .filter((d: any) => d.name === droidName).length;
 }
 
 export function getMissingDroids(
@@ -133,8 +124,8 @@ export function getRequirementExplanation(
 }
 
 export function getNextAction(
- _present: Set<string>,
- _droids: readonly {
+  _present: Set<string>,
+  _droids: readonly {
     cardId: string;
     name: string;
     tier: string;
