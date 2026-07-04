@@ -4,15 +4,35 @@ import { UI } from '../data/ui';
 import { t } from '../lib/t';
 import { useAppUpdate } from '../hooks/useAppUpdate';
 import { useState } from 'react';
+
+import { getSystemStatus } from '../lib/systemStatus';
+
 import { exportData, importData } from '../lib/exportImport';
+import { createUpdateBackup } from '../lib/backup';
 
 export function AboutPage() {
   const { updateAvailable, latestVersion } = useAppUpdate();
   const [updating, setUpdating] = useState(false);
   const fileInputId = 'droidex-import';
 
+  const system = getSystemStatus();
+
+  const ready = system.filter((item) => item.ok).length;
+  const total = system.length;
+  const percent = Math.round((ready / total) * 100);
+
+  const categories = [
+    'application',
+    'storage',
+    'database',
+    'rules',
+    'companion',
+  ] as const;
+
   async function forceUpdate() {
     setUpdating(true);
+
+    createUpdateBackup();
 
     try {
       if ('serviceWorker' in navigator) {
@@ -154,36 +174,95 @@ export function AboutPage() {
       </div>
 
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
-        <div className="text-cyan-400 text-[10px] font-bold tracking-widest">
+        <div className="text-cyan-400 text-[8px] font-bold tracking-widest">
           SYSTEM
         </div>
-
-        <div className="mt-3 text-sm text-zinc-300 space-y-1">
-          <div>✓ Backup System</div>
-          <div>✓ Import System</div>
-          <div>✓ Flawless Tracking</div>
-          <div>✓ TierDNA</div>
-          <div>✓ Rebirth Planner</div>
-          <div>✓ Offline Mode</div>
-
-          <div className="pt-4 border-t border-zinc-800 mt-4">
-            <div className="pt-2 text-cyan-400 text-[10px] font-bold tracking-widest">
-              COMPANION
-            </div>
-            <div className="pt-2 text-xs text-zinc-500 space-y-1">
-              <div>✓ Future Usage</div>
-              <div>✓ Missing Droids</div>
-              <div>✓ Requirement Analysis</div>
-            </div>
-            <div className="pt-2 text-zinc-600">ROADMAP</div>
-
-            <div className="pt-1 text-xs text-zinc-600 space-y-1">
-              <div>○ Why READY?</div>
-              <div>○ Why needed?</div>
-              <div>○ Sell advice</div>
-              <div>○ TierDNA analysis</div>
-            </div>
+        <div className="mb-4">
+          <div className="flex justify-between text-xs text-zinc-400">
+            <span>
+              {ready} / {total} Systems Ready
+            </span>
+            <span>{percent}%</span>
           </div>
+
+          <div className="mt-2 h-2 rounded-full bg-zinc-800 overflow-hidden">
+            <div
+              className="h-full bg-cyan-500 transition-all"
+              style={{ width: `${percent}%` }}
+            />
+          </div>
+
+          <div className="mt-2 text-xs text-zinc-500">
+            All core systems operational.
+          </div>
+        </div>
+
+        <div className="mt-4 space-y-5">
+          {categories.map((category) => {
+            const items = system.filter((item) => item.category === category);
+
+            if (!items.length) return null;
+
+            return (
+              <div key={category} className="space-y-4">
+                <div className="text-[10px] tracking-widest text-cyan-500 font-bold uppercase">
+                  {category}
+                </div>
+
+                {items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="border-b border-zinc-800 pb-4 last:border-b-0"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="text-white">
+                        {item.ok ? '✓' : '○'} {item.label}
+                      </div>
+
+                      <div
+                        className={`
+                text-[10px]
+                font-bold
+                tracking-widest
+                ${item.ok ? 'text-cyan-400' : 'text-orange-400'}
+              `}
+                      >
+                        {item.status.toUpperCase()}
+                      </div>
+                    </div>
+
+                    <div className="mt-1 ml-5 text-xs text-zinc-500">
+                      {item.detail}
+                    </div>
+
+                    {item.recommendation && (
+                      <>
+                        <div className="mt-3 ml-5 text-[10px] text-amber-400 tracking-widest">
+                          RECOMMENDATION
+                        </div>
+
+                        <div className="ml-5 text-xs text-zinc-400">
+                          {item.recommendation}
+                        </div>
+                      </>
+                    )}
+
+                    {item.technical && (
+                      <>
+                        <div className="mt-3 ml-5 text-[10px] text-cyan-500 tracking-widest">
+                          TECHNICAL
+                        </div>
+
+                        <div className="ml-5 text-xs text-zinc-600">
+                          {item.technical}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            );
+          })}
         </div>
       </div>
 

@@ -1,16 +1,14 @@
-import { exportBackup } from './backup';
-
-const STORAGE_KEY = 'droidex_v2';
+import { exportBackup, getCurrentData, saveCurrentData } from './backup';
 
 export function exportData() {
-  const raw = localStorage.getItem(STORAGE_KEY);
+  const data = getCurrentData();
 
-  if (!raw) {
+  if (!data) {
     alert('Keine Daten gefunden.');
     return;
   }
 
-  exportBackup(JSON.parse(raw));
+  exportBackup(data);
 }
 
 export async function importData(file: File) {
@@ -30,7 +28,8 @@ export async function importData(file: File) {
     return;
   }
 
-  localStorage.setItem('droidex_v2', JSON.stringify(data));
+  saveCurrentData(data);
+
   localStorage.setItem('droidex_v2_backup', JSON.stringify(data));
 
   window.location.reload();

@@ -4,18 +4,12 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import type { TierOrAll, DroidType, Rarity } from './data/droids';
 import { useTracker } from './hooks/useTracker';
 import { Header } from './components/Header';
-import { TierTabs } from './components/TierTabs';
-import { RarityFilter } from './components/RarityFilter';
-import { ClassFilter } from './components/ClassFilter';
-import { CollectionFilter } from './components/CollectionFilter';
-import { SearchInput } from './components/SearchInput';
-import { DroidGrid } from './components/DroidGrid';
-import { RebirthPanel } from './components/RebirthPanel';
 import { RebirthsPage } from './components/RebirthsPage';
 import { Footer } from './components/Footer';
 import { TipsPage } from './components/TipsPage';
 import { AboutPage } from './components/AboutPage';
-import { FlawlessFilter } from './components/FlawlessFilter';
+import { RebirthPathSelector } from './components/RebirthPathSelector';
+import { MainLayout } from './components/MainLayout';
 
 type RarityOrAll = Rarity | 'ALL';
 type DroidTypeOrAll = DroidType | 'ALL';
@@ -47,8 +41,11 @@ export default function App() {
   const [flawlessStatus, setFlawlessStatus] = useState<FlawlessStatus>('ALL');
 
   const [search, setSearch] = useState('');
+  const [openPanel, setOpenPanel] = useState<'filters' | 'collection'>(
+    'collection'
+  );
+
   const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());
-  const [filtersOpen, setFiltersOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -66,206 +63,69 @@ export default function App() {
         onShowMissing={() => {
           setTier('ALL');
           setCollectionStatus('MISSING');
-          setFiltersOpen(false);
         }}
       />
 
-      <div className="flex justify-center gap-2 py-2">
-        {[1, 2, 3, 4].map((path) => (
-          <button
-            key={path}
-            onClick={() => setRebirthPath(path)}
-            className={`px-3 py-1 rounded border ${
-              rebirthPath === path
-                ? 'border-orange-500 text-orange-400'
-                : 'border-zinc-700 text-zinc-400'
-            }`}
-          >
-            RB{path}
-          </button>
-        ))}
-      </div>
+      <RebirthPathSelector value={rebirthPath} onChange={setRebirthPath} />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="flex flex-col">
-              <TierTabs active={tier} onChange={setTier} />
-
-              {/* Main panel: grid left + filter sidebar right on desktop */}
-              <div className="bg-zinc-950 border border-zinc-800 border-t-0 mx-3 rounded-b-lg flex flex-col lg:flex-row overflow-hidden max-h-[800px]">
-                {/* Filter sidebar — top on mobile (order-first), right on desktop (lg:order-last) */}
-                <aside className="order-first lg:order-last shrink-0 lg:w-64 lg:border-l border-b lg:border-b-0 border-zinc-800 flex flex-col bg-zinc-950">
-                  {/* Mobile toggle header */}
-                  <button
-                    type="button"
-                    onClick={() => setFiltersOpen((o) => !o)}
-                    className="lg:hidden flex items-center justify-between w-full px-4 py-2.5 text-left"
-                  >
-                    <span className="text-[10px] font-bold tracking-widest text-zinc-400">
-                      FILTERS
-                    </span>
-                    <span className="text-zinc-600 text-xs">
-                      {filtersOpen ? '▲' : '▼'}
-                    </span>
-                  </button>
-
-                  {/* Filter content: hidden on mobile until toggled, always visible on desktop */}
-                  <div
-                    className={`${filtersOpen ? 'flex' : 'hidden'} lg:flex flex-col flex-1 lg:overflow-y-auto`}
-                  >
-                    {/* Search */}
-                    <div className="px-4 py-3 border-b border-zinc-800">
-                      <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
-                        SEARCH
-                      </p>
-                      <SearchInput value={search} onChange={setSearch} />
-                    </div>
-
-                    {/* Rarity */}
-                    <div className="px-4 py-3 border-b border-zinc-800">
-                      <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
-                        RARITY
-                      </p>
-                      <RarityFilter active={rarity} onChange={setRarity} />
-                    </div>
-
-                    {/* Class */}
-                    <div className="px-4 py-3 border-b border-zinc-800">
-                      <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
-                        CLASS
-                      </p>
-                      <ClassFilter
-                        active={droidClass}
-                        onChange={setDroidClass}
-                      />
-                    </div>
-
-                    {/* Collection */}
-                    <div className="px-4 py-3">
-                      <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
-                        COLLECTION
-                      </p>
-                      <CollectionFilter
-                        active={collectionStatus}
-                        onChange={setCollectionStatus}
-                      />
-
-                      <div className="px-4 py-3 border-t border-zinc-800">
-                        <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
-                          FLAWLESS
-                        </p>
-
-                        <FlawlessFilter
-                          active={flawlessStatus}
-                          onChange={setFlawlessStatus}
-                        />
-                      </div>
-
-                      {/* REBIRTH FILTER (temporarily hidden)                   
-   <div className="px-4 py-3 border-t border-zinc-800">
-                        <p className="text-[9px] font-bold tracking-widest text-zinc-500 mb-2">
-                          REBIRTH
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                          <button
-                            onClick={() => setRebirthFilter('ALL')}
-                            className={
-                              rebirthFilter === 'ALL'
-                                ? 'filter-chip-active'
-                                : 'filter-chip'
-                            }
-                          >
-                            ALLE
-                          </button>
-
-                          <button
-                            onClick={() => setRebirthFilter('NEEDED')}
-                            className={
-                              rebirthFilter === 'NEEDED'
-                                ? 'filter-chip-active'
-                                : 'filter-chip'
-                            }
-                          >
-                            BENÖTIGT
-                          </button>
-
-                          <button
-                            onClick={() => setRebirthFilter('HISTORICAL')}
-                            className={
-                              rebirthFilter === 'HISTORICAL'
-                                ? 'filter-chip-active'
-                                : 'filter-chip'
-                            }
-                          >
-                            VERKAUFT
-                          </button>
-                        </div>
-                      </div>
-*/}
-                    </div>
-                  </div>
-                </aside>
-
-                {/* Droid grid — scrollable, fills remaining space */}
-                <div className="order-last lg:order-first flex-1 overflow-y-auto">
-                  <DroidGrid
-                    rebirthPath={rebirthPath}
-                    rebirthLevel={rebirthLevel}
-                    tier={tier}
-                    rarity={rarity}
-                    droidClass={droidClass}
-                    collectionStatus={collectionStatus}
-                    flawlessStatus={flawlessStatus}
-                    rebirthFilter="ALL"
-                    search={search}
-                    collected={collected}
-                    present={present}
-                    flawless={flawless}
-                    onToggle={toggleCollected}
-                    onTogglePresent={togglePresent}
-                    onToggleFlawless={toggleFlawless}
-                    highlightedIds={highlightedIds}
-                  />
-                </div>
-              </div>
-
-              <RebirthPanel
+      <div className="flex-1 min-h-0 flex flex-col">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MainLayout
+                openPanel={openPanel}
+                setOpenPanel={setOpenPanel}
+                search={search}
+                onSearch={setSearch}
+                tier={tier}
+                onTier={setTier}
+                rarity={rarity}
+                onRarity={setRarity}
+                droidClass={droidClass}
+                onClass={setDroidClass}
+                collectionStatus={collectionStatus}
+                onCollection={setCollectionStatus}
+                flawlessStatus={flawlessStatus}
+                onFlawless={setFlawlessStatus}
+                rebirthPath={rebirthPath}
+                rebirthLevel={rebirthLevel}
+                setRebirthLevel={setRebirthLevel}
+                collected={collected}
+                present={present}
+                flawless={flawless}
+                highlightedIds={highlightedIds}
+                setHighlightedIds={setHighlightedIds}
+                onToggleCollected={toggleCollected}
+                onTogglePresent={togglePresent}
+                onToggleFlawless={toggleFlawless}
+              />
+            }
+          />
+          <Route
+            path="/rebirths"
+            element={
+              <RebirthsPage
                 rebirthPath={rebirthPath}
                 rebirthLevel={rebirthLevel}
                 collected={collected}
                 present={present}
                 onSetRebirth={setRebirthLevel}
-                onHighlight={setHighlightedIds}
+                onTogglePresent={togglePresent}
+                onMarkLevelDone={(ids) => {
+                  ids.forEach((id) => {
+                    if (!present.has(id)) {
+                      togglePresent(id);
+                    }
+                  });
+                }}
               />
-            </div>
-          }
-        />
-        <Route
-          path="/rebirths"
-          element={
-            <RebirthsPage
-              rebirthPath={rebirthPath}
-              rebirthLevel={rebirthLevel}
-              collected={collected}
-              present={present}
-              onSetRebirth={setRebirthLevel}
-              onTogglePresent={togglePresent}
-              onMarkLevelDone={(ids) => {
-                ids.forEach((id) => {
-                  if (!present.has(id)) {
-                    togglePresent(id);
-                  }
-                });
-              }}
-            />
-          }
-        />
-        <Route path="/tips" element={<TipsPage />} />
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
+            }
+          />
+          <Route path="/tips" element={<TipsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );

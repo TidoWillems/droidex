@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
 import { useMemo, useState } from 'react';
@@ -78,7 +79,14 @@ export function RebirthPanel({
 
   return (
     <div
-      className={`border-t rebirth-panel ${allMet ? 'rebirth-panel-ready' : 'rebirth-panel-pending'}`}
+      className={`
+  border
+  border-zinc-800
+  rounded-xl
+  overflow-hidden
+  rebirth-panel
+  ${allMet ? 'rebirth-panel-ready' : 'rebirth-panel-pending'}
+`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -326,6 +334,31 @@ export function RebirthPanel({
           <span className="glow-yellow text-yellow-400 font-black text-sm tracking-widest uppercase">
             {t(UI.maxRebirth)}
           </span>
+        </div>
+      )}
+
+      {open && (
+        <div className="pt-2">
+          <Link
+            to="/rebirths"
+            className="
+			block
+			border-t border-zinc-800
+			bg-zinc-950/70
+			hover:bg-zinc-900
+      px-4 py-3
+      text-center
+      text-[11px]
+      font-bold
+      tracking-[0.25em]
+      uppercase
+      text-orange-400
+      transition-colors
+      rounded-b-xl
+    "
+          >
+            ▼ Rebirth Planner
+          </Link>
         </div>
       )}
     </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { APP_VERSION } from '../data/version';
+import { createUpdateBackup, hasUpdateBackup } from '../lib/backup';
 
 export function useAppUpdate() {
   const [updateAvailable, setUpdateAvailable] = useState(false);
@@ -15,6 +16,10 @@ export function useAppUpdate() {
           setLatestVersion(data.version);
 
           if (data.version !== APP_VERSION) {
+            if (!hasUpdateBackup()) {
+              createUpdateBackup();
+            }
+
             setUpdateAvailable(true);
           }
         })
