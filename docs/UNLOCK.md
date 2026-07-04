@@ -14,16 +14,16 @@ Architektonische Idee
 Ich würde diese Information nicht hart im UI codieren, sondern direkt an jeden Rebirth hängen.
 Beispielsweise:
 {
-  level: 6,
-  credits: 14500000,
-  unlock: 'WORKER_SLOT',
-  ...
+level: 6,
+credits: 14500000,
+unlock: 'WORKER_SLOT',
+...
 }
 oder allgemeiner:
 unlock?: 'WORKER_SLOT'
-       | 'ASTROMECH_SLOT'
-       | 'BATTLE_SLOT'
-       | 'LOUNGE_SLOT';
+| 'ASTROMECH_SLOT'
+| 'BATTLE_SLOT'
+| 'LOUNGE_SLOT';
 Das gefällt mir deutlich besser, weil dann:
 RebirthPanel automatisch anzeigen kann
 Companion später darauf zugreifen kann

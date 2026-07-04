@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.5.9
+
+✓ TierTabs wieder als Hauptnavigation integriert
+✓ MainLayout vereinfacht
+✓ Tier-Auswahl wieder oberhalb des Workspace
+✓ RebirthPanel als fester Bestandteil des MainLayouts
+✓ Vorbereitung des Panel-Refactorings
 
 ## v1.5.8
 
@@ -9,6 +16,16 @@
 ✓ getRemainingRequirementCount() eingeführt
 ✓ RebirthPage nutzt verbleibende Anforderungen statt FutureUsage
 ✓ Companion-Logik für Verkaufsentscheidungen verbessert
+
+✓ Architecture v2
+✓ Domain-oriented project model
+✓ Companion established as independent domain
+✓ Separation of
+
+- Game World
+- Domain Rules
+- User Progress
+- Companion
 
 ## v1.5.5
 

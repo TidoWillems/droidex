@@ -1,8 +1,50 @@
 # Droidex Architecture
 
-## 20260626
+# Droidex Architecture v2
 
-## Rule Layer
+## UX Principle
+
+Cards visualize atomic facts.
+
+Examples:
+
+- ✓ Owned
+- ❌ Missing
+- ↻2 Future uses
+- LAST Final use
+- DNA Progress
+
+Views determine which facts are relevant.
+
+Examples:
+
+- Collection
+- Rebirth
+- Future
+- Flawless
+
+The Companion does not repeat facts.
+
+Instead it derives relationships between facts and provides explanations, recommendations and planning assistance.
+
+## Core Principle
+
+Design Principle: Facts first, interpretation second.
+Cards visualize atomic facts.
+Views select the relevant perspective.
+The Companion only speaks when it adds information that cannot be inferred from a single card.
+
+Die Architektur wird nicht mehr im Voraus entworfen – sie wird aus wiederkehrenden Mustern extrahiert.
+
+Leitsatz von Architecture v2: Every piece of knowledge has exactly one
+domain.
+
+The UI owns no domain knowledge.
+
+The Companion interprets domain knowledge
+instead of creating it.
+
+## Domain Rules
 
 Zwischen Daten und Companion entsteht eine eigene
 Regelschicht.
@@ -269,3 +311,28 @@ Migration:
 v1 → v2 automatic
 
 ---
+
+## UI Architecture v3 (Work in Progress)
+
+Neben der Domain-Architektur entsteht
+eine eigenständige UI-Architektur.
+
+Navigation
+
+Header
+→ Rebirth Path
+→ Tier Tabs
+
+Workspace
+
+Panel
+→ Filter
+→ Collection
+→ Rebirth
+
+Die UI organisiert künftig
+Interaktion statt Inhalte.
+
+Panel-Komponenten besitzen
+ein gemeinsames Verhalten,
+während die Inhalte austauschbar bleiben.

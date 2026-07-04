@@ -1,5 +1,29 @@
 # Droidex SNAP
 
+## 20260628
+
+Architecture v2
+
+Droidex organizes knowledge by
+domain responsibility.
+
+Domains:
+
+- Game World
+- Domain Rules
+- User Progress
+- Companion
+
+Every piece of information belongs
+to exactly one domain.
+
+The UI presents domain results.
+
+The Companion interprets the
+three foundation domains and
+creates recommendations,
+explanations and planning.
+
 ## Ziel
 
 Droidex ist ein Offline-First Companion für Epic Droid Tycoon.
@@ -82,6 +106,22 @@ REBIRTH_PATHS
 ---
 
 ## Hauptmodule
+
+Workspace
+
+Der Hauptbereich entwickelt sich zu einem
+gemeinsamen Workspace.
+
+Aktuelle Bereiche:
+
+- Filter
+- Collection
+- Rebirth
+
+Diese Bereiche sollen langfristig
+denselben Panel-Aufbau,
+dieselbe Interaktion und
+dieselbe Designsprache verwenden.
 
 - Header
 - DroidGrid

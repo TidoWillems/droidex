@@ -3,7 +3,7 @@ Referenzstand festhalten
 ✓ Droidex 1.5.7
 ✓ source.zip
 ✓ Tracker PDF
-Phase 0  ✓ Referenzstand
+Phase 0 ✓ Referenzstand
 
 Spieldaten
 │
@@ -11,7 +11,7 @@ Spieldaten
 ├── droidInfo.ts
 ├── droidStats.json
 ├── rebirth*.ts
-└── nova*.ts   (zukünftig)
+└── nova*.ts (zukünftig)
 
 ↓
 
@@ -28,23 +28,24 @@ Companion
 (Liest Daten, besitzt sie aber nicht.)
 
 ##
-Phase 1  Gap-Analyse
-  □ Seite für Seite vergleichen
-  □ Gaps sammeln
-  □ Für jedes Gap entscheiden:
-      ✓ übernehmen
-      ⏳ später
-      ✗ verwerfen
 
-Phase 2  Droid-Daten ergänzen
+Phase 1 Gap-Analyse
+□ Seite für Seite vergleichen
+□ Gaps sammeln
+□ Für jedes Gap entscheiden:
+✓ übernehmen
+⏳ später
+✗ verwerfen
 
-Phase 3  Super Rebirth
+Phase 2 Droid-Daten ergänzen
 
-Phase 4  Nova
+Phase 3 Super Rebirth
 
-Phase 5  Datenmodell prüfen
+Phase 4 Nova
 
-Phase 6  Companion profitiert automatisch
+Phase 5 Datenmodell prüfen
+
+Phase 6 Companion profitiert automatisch
 
 ##
 

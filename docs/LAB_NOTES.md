@@ -1,4 +1,104 @@
-# LAB NOTES
+#LAB NOTES
+
+## Workspace Architecture
+
+Die Hauptoberfläche besteht nicht aus
+mehreren unabhängigen Komponenten.
+
+Sie bildet einen gemeinsamen Workspace.
+
+Navigation
+
+Header
+→ Rebirth Path
+→ Tier Tabs
+
+Workspace
+
+Filter
+→ Collection
+→ Rebirth
+
+Panels entwickeln sich zu
+wiederverwendbaren UI-Bausteinen.
+
+Ziel:
+
+Eine gemeinsame Panel-Architektur
+statt mehrerer Einzelkomponenten.
+
+Interaction
+→ vereinheitlichen
+
+Appearance
+→ vereinheitlichen
+
+State
+→ zentralisieren
+
+UI Architecture Discovery
+
+The architecture continues to evolve along two independent but complementary axes.
+
+Domain Architecture
+
+Organizes knowledge.
+
+Game World
+→ Domain Rules
+→ User Progress
+→ Companion
+
+UI Architecture
+
+Organizes interaction.
+
+Layout
+→ Panel
+→ Card
+→ Detail
+
+Both architectures emerged from the same observation:
+
+Repeated patterns should become first-class building blocks.
+
+Just as Companion centralizes interpretation instead of duplicating gameplay logic, Panel centralizes interaction instead of duplicating UI behavior.
+
+The same design principle therefore applies on both levels:
+
+Knowledge
+→ centralize
+
+Interaction
+→ centralize
+
+The result is not only less code duplication.
+
+It creates a common language.
+
+Instead of thinking about individual pages, Droidex gradually evolves into a system composed of reusable domains and reusable interface components.
+
+The UI begins to mirror the architectural principles of the underlying application.
+
+### Architecture Discovery
+
+The architecture was not designed first.
+
+It emerged from repeated extraction
+of domain knowledge out of the UI.
+
+Questions gradually replaced pages
+as the organizing principle.
+
+The project moved from
+
+UI
+→ Data
+→ Domains.
+
+The Companion became an
+interpretation domain instead
+of a collection of helper functions.
 
 ### Companion
 

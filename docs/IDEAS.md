@@ -1,6 +1,26 @@
 .# IDEAS
 
-20260624
+## Workspace Refactoring
+
+Status:
+In Vorbereitung
+
+Ziele:
+
+- gemeinsamer Workspace
+- einheitliche Panel-Header
+- gemeinsame Panel-Komponente
+- identische Animationen
+- identische Pfeile
+- nur äußere Ecken abrunden
+- zentraler Open-State
+- RebirthPanel vollständig integrieren
+
+## Architecture v2
+
+Future features should first be
+assigned to a domain before
+implementation begins.
 
 ## In App Logik
 

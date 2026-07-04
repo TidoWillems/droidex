@@ -1,4 +1,5 @@
 # Data Integration Gaps
+
 Ich würde das für unser zukünftiges Datenmodell deshalb eher so ausdrücken:
 BB-8
 ability:
@@ -21,14 +22,16 @@ Neu:
 - Lounge Slot Unlock
 
 → als Feld "unlock" in den Rebirth-Datenmodell übernehmen.
-## 
+
+##
+
 Spieldaten
 │
 ├── droids.ts
 ├── droidInfo.ts
 ├── droidStats.json
 ├── rebirth*.ts
-└── nova*.ts   (zukünftig)
+└── nova*.ts (zukünftig)
 
 ↓
 
@@ -45,17 +48,21 @@ Companion
 (Liest Daten, besitzt sie aber nicht.)
 
 ## Nova Shop
+
 Status: später
 Grund: Bestandteil des Nova-Systems.
 
 ## Hats
+
 Status: übernehmen
 Grund: Sammelziel für Spieler.
 
 ## Paints
+
 Status: übernehmen
 Grund: Teil des Fortschritts.
 
 ## Flawless Chance
+
 Status: nicht übernehmen
 Grund: Keine verlässlichen Werte bekannt.
