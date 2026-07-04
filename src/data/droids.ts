@@ -1,4 +1,11 @@
-export type Rarity = 'COMMON' | 'RARE' | 'EPIC' | 'LEGENDARY' | 'ICONIC';
+export type Rarity =
+  | 'COMMON'
+  | 'RARE'
+  | 'EPIC'
+  | 'LEGENDARY'
+  | 'MYTHIC'
+  | 'ICONIC';
+
 export type DroidType = 'WORKER' | 'ASTROMECH' | 'BATTLE';
 export type Tier = 'DEFAULT' | 'GOLD' | 'DIAMOND' | 'RAINBOW' | 'BESKAR';
 export type TierOrAll = Tier | 'ALL';
@@ -107,6 +114,20 @@ export const DROIDS: Droid[] = [
     tiers: ALL_TIERS,
   },
 
+  // MYTHIC
+  { name: 'SNOW MOUSE', rarity: 'MYTHIC', type: 'WORKER', tiers: ALL_TIERS },
+  { name: 'RIC', rarity: 'MYTHIC', type: 'WORKER', tiers: ALL_TIERS },
+  { name: 'LOADLIFTER', rarity: 'MYTHIC', type: 'WORKER', tiers: ALL_TIERS },
+  { name: 'RIC-1200', rarity: 'MYTHIC', type: 'WORKER', tiers: ALL_TIERS },
+
+  { name: 'DRFT-R', rarity: 'MYTHIC', type: 'ASTROMECH', tiers: ALL_TIERS },
+  { name: 'CYCLENS', rarity: 'MYTHIC', type: 'ASTROMECH', tiers: ALL_TIERS },
+  { name: 'MO-TRAK', rarity: 'MYTHIC', type: 'ASTROMECH', tiers: ALL_TIERS },
+
+  { name: 'TRI-TEK', rarity: 'MYTHIC', type: 'BATTLE', tiers: ALL_TIERS },
+  { name: 'IG', rarity: 'MYTHIC', type: 'BATTLE', tiers: ALL_TIERS },
+  { name: 'KX', rarity: 'MYTHIC', type: 'BATTLE', tiers: ALL_TIERS },
+
   // ICONIC (event locked, DEFAULT only)
 
   {
@@ -166,8 +187,10 @@ export const RARITY_ORDER: Rarity[] = [
   'RARE',
   'EPIC',
   'LEGENDARY',
+  'MYTHIC',
   'ICONIC',
 ];
+
 export const TIER_ORDER: Tier[] = [
   'DEFAULT',
   'GOLD',
