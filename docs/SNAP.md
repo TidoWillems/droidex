@@ -1,5 +1,41 @@
 # Droidex SNAP
 
+## v1.6.0
+
+Architecture continues to emerge through extraction.
+
+Neue Domain-Module:
+
+✓ droidHierarchy.ts
+Gameplay-Hierarchie
+
+✓ droidFacts.ts
+Konsolidierte Droid-Fakten
+
+✓ filterRules.ts
+UI-unabhängige Filterlogik
+
+Erkenntnis:
+
+DroidGrid besitzt keine Filterlogik mehr.
+
+Die UI beschreibt nur noch den gewünschten Zustand,
+die Domain entscheidet welche Karten sichtbar sind.
+
+Pattern
+
+UI
+→ asks
+
+Rules
+→ calculate
+
+Facts
+→ consolidate
+
+UI
+→ render
+
 ## 20260628
 
 Architecture v2

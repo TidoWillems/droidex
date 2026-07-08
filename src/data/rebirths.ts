@@ -1,4 +1,4 @@
-import type { Tier } from './droids';
+import type { Tier } from '../lib/droidTypes';
 export interface RebirthDroidReq {
   name: string;
   tier: Tier;

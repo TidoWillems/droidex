@@ -1,4 +1,4 @@
-import type { DroidType } from '../data/droids';
+import type { DroidType } from '../lib/droidTypes';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
 

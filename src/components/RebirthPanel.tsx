@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
-import { useMemo, useState } from 'react';
-import { REBIRTH_PATHS } from '../data/rebirthPaths';
-import { hasEffectiveCard, getDroidProgress } from '../lib/droidHierarchy';
-import { TierDNA } from './TierDNA';
+import { useState } from 'react';
+import { getRebirthFacts } from '../lib/rebirthFacts';
+import { RebirthRequirements } from './RebirthRequirements';
 
 interface Props {
   rebirthPath: number;
@@ -13,18 +12,6 @@ interface Props {
   present: Set<string>;
   onSetRebirth: (level: number) => void;
   onHighlight: (ids: Set<string>) => void;
-}
-
-const TIER_CLASS: Record<string, string> = {
-  DEFAULT: 'text-gray-400',
-  GOLD: 'text-amber-400',
-  DIAMOND: 'text-sky-300',
-  RAINBOW: 'rainbow-tab',
-};
-
-function imgSrc(name: string, tier: string): string {
-  const safe = name.replace(/ /g, '_');
-  return `${import.meta.env.BASE_URL}droids/${safe}_${tier}.png`;
 }
 
 export function RebirthPanel({
@@ -36,45 +23,29 @@ export function RebirthPanel({
   onHighlight,
 }: Props) {
   const [open, setOpen] = useState(true);
-  const activePath = REBIRTH_PATHS[rebirthPath as keyof typeof REBIRTH_PATHS];
 
-  const futureUseCountMap = useMemo(() => {
-    const map: Record<string, number> = {};
-
-    activePath.forEach((level) => {
-      if (level.from <= rebirthLevel) return;
-
-      level.droids.forEach((droid) => {
-        map[droid.cardId] = (map[droid.cardId] ?? 0) + 1;
-      });
-    });
-
-    return map;
-  }, [activePath, rebirthLevel]);
-
-  const MAX_REBIRTH = Math.max(...activePath.map((r) => r.from));
-
-  const nextRebirth = activePath.find((r) => r.from === rebirthLevel);
-
-  const allMet = useMemo(
-    () =>
-      nextRebirth?.droids.every((d) => hasEffectiveCard(present, d.cardId)) ??
-      false,
-    [nextRebirth, present]
-  );
-
-  const ownedCount = useMemo(
-    () =>
-      nextRebirth?.droids.filter((d) => hasEffectiveCard(present, d.cardId))
-        .length ?? 0,
-    [nextRebirth, present]
-  );
+  const {
+    futureUseCountMap,
+    maxRebirth,
+    nextLevel,
+    requiredCredits,
+    requiredDroids,
+    ready,
+    ownedCount,
+    totalCount,
+  } = getRebirthFacts({
+    rebirthPath,
+    rebirthLevel,
+    collected,
+    present,
+  });
 
   const handleMouseEnter = () => {
-    if (nextRebirth) {
-      onHighlight(new Set(nextRebirth.droids.map((d) => d.cardId)));
-    }
+    if (requiredDroids.length === 0) return;
+
+    onHighlight(new Set(requiredDroids.map((d) => d.cardId)));
   };
+
   const handleMouseLeave = () => onHighlight(new Set());
 
   return (
@@ -85,7 +56,7 @@ export function RebirthPanel({
   rounded-xl
   overflow-hidden
   rebirth-panel
-  ${allMet ? 'rebirth-panel-ready' : 'rebirth-panel-pending'}
+  ${ready ? 'rebirth-panel-ready' : 'rebirth-panel-pending'}
 `}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -118,21 +89,19 @@ export function RebirthPanel({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                onSetRebirth(Math.min(MAX_REBIRTH, rebirthLevel + 1));
+                onSetRebirth(Math.min(maxRebirth, rebirthLevel + 1));
               }}
               className="w-6 h-6 rounded-sm bg-zinc-800 border border-zinc-700 text-zinc-300 hover:bg-orange-900/40 hover:border-orange-700/60 hover:text-orange-300 flex items-center justify-center text-sm leading-none transition-colors font-bold"
             >
               +
             </button>
           </div>
-          {nextRebirth ? (
+          {nextLevel ? (
             <span className="text-zinc-500 text-xs flex items-center gap-0.5">
               <span className="text-orange-700">→</span>
               <span>
                 {t(UI.rebirth)}{' '}
-                <span className="text-zinc-300 font-bold">
-                  {nextRebirth.to}
-                </span>
+                <span className="text-zinc-300 font-bold">{nextLevel}</span>
               </span>
             </span>
           ) : (
@@ -142,21 +111,24 @@ export function RebirthPanel({
           )}
         </div>
         <div className="flex items-center gap-2">
-          {nextRebirth &&
-            (allMet ? (
+          {nextLevel &&
+            (ready ? (
               <span className="glow-green text-xs font-bold text-green-400">
                 {t(UI.ready)}
               </span>
             ) : (
               <div className="flex flex-col items-end gap-0.5">
                 <span className="text-xs font-bold text-red-400">
-                  {ownedCount}/{nextRebirth.droids.length} {t(UI.droids)}
+                  {ownedCount}/{totalCount} {t(UI.droids)}
                 </span>
+
                 <div className="flex gap-0.5">
-                  {Array.from({ length: nextRebirth.droids.length }, (_, i) => (
+                  {Array.from({ length: totalCount }, (_, i) => (
                     <div
                       key={i}
-                      className={`w-1.5 h-1 rounded-full ${i < ownedCount ? 'bg-orange-500' : 'bg-zinc-700'}`}
+                      className={`w-1.5 h-1 rounded-full ${
+                        i < ownedCount ? 'bg-orange-500' : 'bg-zinc-700'
+                      }`}
                     />
                   ))}
                 </div>
@@ -166,7 +138,7 @@ export function RebirthPanel({
         </div>
       </button>
 
-      {open && nextRebirth && (
+      {open && nextLevel && (
         <div className="px-4 pb-4 pt-1">
           {/* NEED divider */}
           <div className="flex items-center gap-3 mb-3">
@@ -177,159 +149,17 @@ export function RebirthPanel({
             <div className="need-divider-right flex-1 h-px" />
           </div>
 
-          {/* Cards container */}
-          <div className="rounded-xl border border-zinc-800/80 px-4 py-3 bg-black/40">
-            <div className="flex flex-wrap gap-3 justify-center">
-              {/* Credits card */}
-              <div className="flex flex-col items-center gap-1">
-                <div className="h-5" />
-                <div className="credits-card relative w-[88px] h-[88px] rounded-xl border-2 border-amber-500/70 flex flex-col items-center justify-center gap-0.5 overflow-hidden">
-                  <div className="credits-card-glow absolute inset-0 pointer-events-none" />
-                  <span className="text-amber-400 text-base leading-none relative z-10">
-                    ◎
-                  </span>
-                  <span className="text-amber-400 font-black text-base leading-tight text-center px-1 relative z-10">
-                    {nextRebirth.credits}
-                  </span>
-                  <span className="text-amber-600 text-[8px] uppercase tracking-widest relative z-10">
-                    {t(UI.credits)}
-                  </span>
-                </div>
-                <span className="text-zinc-400 text-[10px] font-bold w-[88px] text-center truncate">
-                  {t(UI.credits)}
-                </span>
-              </div>
-
-              {/* Droid cards */}
-              {nextRebirth.droids.map((d) => {
-                const progress = getDroidProgress(present, d.name);
-                const isCollected = collected.has(d.cardId);
-                const isPresent = hasEffectiveCard(present, d.cardId);
-                return (
-                  <div
-                    key={d.cardId}
-                    className="flex flex-col items-center gap-1"
-                  >
-                    {/* Warning triangle above card if missing */}
-                    <div className="h-5 flex items-center justify-center">
-                      {!isPresent && (
-                        <div className="flex items-center justify-center w-5 h-5 rounded bg-yellow-400/15">
-                          <svg
-                            viewBox="0 0 16 14"
-                            className="w-3.5 h-3.5"
-                            fill="none"
-                          >
-                            <polygon
-                              points="8,1 15,13 1,13"
-                              fill="#facc15"
-                              stroke="#ca8a04"
-                              strokeWidth="0.5"
-                            />
-                            <text
-                              x="8"
-                              y="11.5"
-                              textAnchor="middle"
-                              fontSize="8"
-                              fontWeight="bold"
-                              fill="#1c1917"
-                            >
-                              !
-                            </text>
-                          </svg>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Card */}
-                    <div
-                      className={`relative w-[88px] h-[88px] rounded-xl border-2 overflow-hidden bg-zinc-900 ${
-                        isPresent
-                          ? 'droid-card-owned'
-                          : isCollected
-                            ? 'border-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.45)]'
-                            : 'droid-card-missing'
-                      }`}
-                    >
-                      {/* Droid image */}
-                      <img
-                        src={imgSrc(d.name, d.tier)}
-                        alt={d.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = 'none';
-                        }}
-                      />
-
-                      {/* Tier label — bottom inside */}
-                      <div className="absolute bottom-0 left-0 right-0 text-center py-0.5 bg-black/60">
-                        <span
-                          className={`text-[8px] font-black uppercase tracking-wide ${TIER_CLASS[d.tier] ?? 'text-gray-400'}`}
-                        >
-                          {d.tier}
-                        </span>
-                      </div>
-
-                      {futureUseCountMap[d.cardId] > 0 && (
-                        <div className="absolute top-1 right-1 px-1.5 rounded bg-amber-900/90 border border-amber-500/50 text-[9px] font-bold text-amber-300">
-                          ↻{futureUseCountMap[d.cardId]}
-                        </div>
-                      )}
-
-                      {/* Check / X circle — top left */}
-                      <div
-                        className={`absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center ${
-                          isPresent
-                            ? 'bg-green-500'
-                            : isCollected
-                              ? 'bg-cyan-500'
-                              : 'bg-red-500'
-                        }`}
-                      >
-                        {isPresent ? (
-                          <svg
-                            viewBox="0 0 10 10"
-                            className="w-3 h-3"
-                            fill="none"
-                            stroke="white"
-                            strokeWidth="2.5"
-                          >
-                            <path
-                              d="M1.5 5l2.5 2.5 4.5-4"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        ) : (
-                          <svg
-                            viewBox="0 0 10 10"
-                            className="w-3 h-3"
-                            fill="none"
-                            stroke="white"
-                            strokeWidth="2.5"
-                          >
-                            <path d="M2 2l6 6M8 2l-6 6" strokeLinecap="round" />
-                          </svg>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Name below */}
-                    <span className="text-white text-[10px] font-bold w-[88px] text-center truncate">
-                      {d.name}
-                    </span>
-
-                    <div className="w-[88px] mt-0.5">
-                      <TierDNA progress={progress} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <RebirthRequirements
+            requiredCredits={requiredCredits}
+            requiredDroids={requiredDroids}
+            collected={collected}
+            present={present}
+            futureUseCountMap={futureUseCountMap}
+          />
         </div>
       )}
 
-      {open && !nextRebirth && (
+      {open && !nextLevel && (
         <div className="px-4 pb-4 pt-2 text-center">
           <span className="glow-yellow text-yellow-400 font-black text-sm tracking-widest uppercase">
             {t(UI.maxRebirth)}

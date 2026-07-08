@@ -1,14 +1,4 @@
-export type Rarity =
-  | 'COMMON'
-  | 'RARE'
-  | 'EPIC'
-  | 'LEGENDARY'
-  | 'MYTHIC'
-  | 'ICONIC';
-
-export type DroidType = 'WORKER' | 'ASTROMECH' | 'BATTLE';
-export type Tier = 'DEFAULT' | 'GOLD' | 'DIAMOND' | 'RAINBOW' | 'BESKAR';
-export type TierOrAll = Tier | 'ALL';
+import type { DroidType, Rarity, Tier } from '../lib/droidTypes';
 
 export interface Droid {
   name: string;

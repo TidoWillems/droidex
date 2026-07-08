@@ -1,4 +1,4 @@
-import type { Rarity } from '../data/droids';
+import type { Rarity } from '../lib/droidTypes';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
 

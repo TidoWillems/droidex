@@ -1,5 +1,35 @@
 # Data Integration Gaps
 
+20260705
+
+## UI Synchronisation
+
+Offen:
+
+Workspace-Panel und Collection-Ansicht
+sind momentan nicht vollständig synchron.
+
+Beobachtet:
+
+- Filteränderungen sind nicht immer sofort sichtbar.
+- Teilweise muss das Collection-Panel erneut geöffnet werden,
+  bevor das DroidGrid korrekt aktualisiert wird.
+
+Zu prüfen:
+
+Panel-State
+vs.
+Grid-State
+vs.
+Filter-State
+
+Ziel:
+
+Ein gemeinsamer Workspace-State,
+bei dem alle Panels unmittelbar konsistent reagieren.
+
+---
+
 Ich würde das für unser zukünftiges Datenmodell deshalb eher so ausdrücken:
 BB-8
 ability:

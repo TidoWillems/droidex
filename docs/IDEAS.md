@@ -1,4 +1,18 @@
-.# IDEAS
+# IDEAS
+
+## State Layer
+
+Weitere Kandidaten:
+
+- useRebirthState()
+- useCollectionState()
+- useWorkspaceState()
+- useAboutState()
+
+Ziel:
+
+Komponenten bestehen langfristig
+fast ausschließlich aus Rendering.
 
 ## Workspace Refactoring
 

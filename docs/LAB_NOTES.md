@@ -1,5 +1,29 @@
 #LAB NOTES
 
+### Filter Extraction - 20260705
+
+Die erste vollständige UI-Logik wurde erfolgreich
+aus einer React-Komponente extrahiert.
+
+getVisibleCards() bildet den ersten Schritt
+zu einer eigenständigen Domain für Ansichten.
+
+Dadurch entwickelte sich DroidGrid von
+
+UI + Regeln
+
+zu
+
+UI + Rendering.
+
+Dieses Muster soll zukünftig auch für
+
+- Rebirth Facts
+- View Models
+- Workspace
+
+verwendet werden.
+
 ## Workspace Architecture
 
 Die Hauptoberfläche besteht nicht aus
@@ -183,6 +207,30 @@ Wissen zentralisieren,
 UI vereinfachen.
 
 ## Erkenntnisse
+
+Neue Architektur-Ebene
+
+✓ useDroidCardState
+✓ useDroidGridState
+
+View-State wird schrittweise
+aus den Komponenten extrahiert.
+
+Pattern
+
+DATA
+↓
+
+RULES
+↓
+
+FACTS
+↓
+
+STATE
+↓
+
+UI
 
 Architektur-Erkenntnis
 Gerade passiert etwas, das sehr gut zu euren LAB_NOTES passt:

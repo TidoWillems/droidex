@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.6.0
+
+✓ useDroidCardState eingeführt
+✓ useDroidGridState eingeführt
+✓ DroidCard weiter vereinfacht
+✓ DroidGrid weiter vereinfacht
+✓ UI-State als eigene Schicht etabliert
+
+✓ filterRules.ts eingeführt
+✓ Filterlogik aus DroidGrid extrahiert
+✓ DroidGrid besitzt keine Domainlogik mehr
+✓ Vorbereitung für RebirthFacts
+✓ Beginn der View-Domain
+
 ## v1.5.9
 
 ✓ TierTabs wieder als Hauptnavigation integriert

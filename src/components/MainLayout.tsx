@@ -1,7 +1,7 @@
 import { FilterPanel } from './FilterPanel';
 import { CollectionPanel } from './CollectionPanel';
 import { RebirthPanel } from './RebirthPanel';
-import type { TierOrAll, DroidType, Rarity } from '../data/droids';
+import type { TierOrAll, DroidType, Rarity } from '../lib/droidTypes';
 import { TierTabs } from './TierTabs';
 
 type RarityOrAll = Rarity | 'ALL';

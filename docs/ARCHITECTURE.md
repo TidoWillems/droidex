@@ -1,8 +1,93 @@
 # Droidex Architecture
 
+Domain Flow
+
+DATA
+↓
+
+RULES
+↓
+
+FACTS
+↓
+
+STATE
+↓
+
+UI
+↓
+
+COMPANION
+
+DATA
+Owns immutable game knowledge.
+
+Examples:
+
+- droids.ts
+- droidStats.json
+- droidInfo.ts
+- rebirthPaths.ts
+
+RULES
+Calculates gameplay logic.
+
+Examples:
+
+- droidHierarchy.ts
+- filterRules.ts
+- future rebirthRules.ts
+
+FACTS
+Combines data, rules and player progress
+into consistent gameplay facts.
+
+Examples:
+
+- droidFacts.ts
+- rebirthFacts.ts
+
+STATE
+Prepares domain facts for a specific view.
+
+Examples:
+
+- useDroidCardState()
+- useDroidGridState()
+
+UI
+Visualizes state.
+Contains no gameplay rules.
+
+COMPANION
+Interprets facts.
+Explains, predicts and recommends.
+
+Vor jeder neuen Datei, jedem neuen Typ, jeder neuen Funktion und jeder neuen Komponente zuerst fragen: Gibt es bereits etwas, das dieselbe Verantwortung trägt?
+Wenn die Antwort Ja lautet:
+➡️ erweitern.
+Wenn die Antwort Nein lautet:
+➡️ neu anlegen.
+
+Jede Information besitzt genau einen "Besitzer".
+Zum Beispiel:
+droids.ts besitzt die Stammdaten.
+droidStats.json besitzt die Zahlen.
+droidInfo.ts besitzt die Spezialfähigkeiten.
+filterRules.ts besitzt die Filterlogik.
+droidFacts.ts besitzt die abgeleiteten Fakten.
+useDroidCardState() besitzt den UI-Zustand der Karte.
+DroidCard.tsx besitzt ausschließlich die Darstellung.
+Dann weiß jeder sofort:
+Wenn ich X ändern möchte, wo gehört das hin?
+
+Nicht abstrahieren, weil man es kann – abstrahieren, weil sich ein Muster mindestens zweimal gezeigt hat.
+
 # Droidex Architecture v2
 
 ## UX Principle
+
+Der Companion erklärt niemals etwas, was die UI bereits eindeutig zeigt. Er ergänzt ausschließlich Erkenntnisse, Vorhersagen und Optimierungen.
 
 Cards visualize atomic facts.
 
@@ -53,13 +138,18 @@ DATA
 → beschreibt Objekte.
 
 RULES
-→ beschreiben Gameplay-Regeln.
+→ berechnen Gameplay-Regeln.
+
+    ↓
+
+FACTS → erzeugen einen konsistenten Zustand aus Daten und Regeln.
+↓
 
 COMPANION
-→ interpretiert die Regeln.
+→ interpretiert diesen Zustand.
 
 UI
-→ stellt Ergebnisse dar.
+→ visualisiert Fakten und Companion-Erkenntnisse.
 
 Aktuelle Rule-Module:
 

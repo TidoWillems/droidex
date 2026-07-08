@@ -6,7 +6,7 @@ import { ClassFilter } from './ClassFilter';
 import { CollectionFilter } from './CollectionFilter';
 import { FlawlessFilter } from './FlawlessFilter';
 
-import type { DroidType, Rarity } from '../data/droids';
+import type { DroidType, Rarity } from '../lib/droidTypes';
 
 type RarityOrAll = Rarity | 'ALL';
 type DroidTypeOrAll = DroidType | 'ALL';

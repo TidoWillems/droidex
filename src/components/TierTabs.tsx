@@ -1,4 +1,4 @@
-import type { TierOrAll } from '../data/droids';
+import type { TierOrAll } from '../lib/droidTypes';
 import { TIER_ORDER } from '../data/droids';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';

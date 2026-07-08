@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import type { TierOrAll, DroidType, Rarity } from './data/droids';
+import type { TierOrAll, DroidType, Rarity } from './lib/droidTypes';
 import { useTracker } from './hooks/useTracker';
 import { Header } from './components/Header';
 import { RebirthsPage } from './components/RebirthsPage';

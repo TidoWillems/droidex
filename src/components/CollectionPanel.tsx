@@ -1,7 +1,7 @@
 import { Panel } from './Panel';
 import { DroidGrid } from './DroidGrid';
 
-import type { TierOrAll, DroidType, Rarity } from '../data/droids';
+import type { TierOrAll, DroidType, Rarity } from '../lib/droidTypes';
 
 type RarityOrAll = Rarity | 'ALL';
 type DroidTypeOrAll = DroidType | 'ALL';
