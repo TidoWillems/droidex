@@ -1,98 +1,46 @@
-# Data Integration Gaps
+# GAPS
 
-20260705
-
-## UI Synchronisation
-
-Offen:
-
-Workspace-Panel und Collection-Ansicht
-sind momentan nicht vollständig synchron.
-
-Beobachtet:
-
-- Filteränderungen sind nicht immer sofort sichtbar.
-- Teilweise muss das Collection-Panel erneut geöffnet werden,
-  bevor das DroidGrid korrekt aktualisiert wird.
-
-Zu prüfen:
-
-Panel-State
-vs.
-Grid-State
-vs.
-Filter-State
-
-Ziel:
-
-Ein gemeinsamer Workspace-State,
-bei dem alle Panels unmittelbar konsistent reagieren.
+Offene Punkte, die noch nicht im Datenmodell oder in der Architektur umgesetzt sind.
 
 ---
 
-Ich würde das für unser zukünftiges Datenmodell deshalb eher so ausdrücken:
-BB-8
-ability:
-Upgrade Chips ×2
-(applies to all Upgrade Chip rewards while equipped)
-Das ist allgemeingültig und muss nicht angepasst werden, falls später weitere Chip-Quellen hinzukommen.
-📌 Notiz für den Datenabgleich: Unsere momentane Tip-Karte zu BB-8 und die bisherige Interpretation der Fähigkeit sollten entsprechend aktualisiert werden. Das ist eine echte Wissensverbesserung gegenüber dem bisherigen Datenbestand.
+## UI
 
-Rebirthdaten lmax level enden angleichen.
+### Workspace Synchronisation
 
-## Seite 2 – Default Rebirth Path
+Workspace, Collection und DroidGrid besitzen noch keinen vollständig gemeinsamen State.
 
-✓ Anforderungen vollständig vorhanden.
+Ziel:
 
-Neu:
+- sofortige Synchronisation
+- keine manuellen Refreshes
+- konsistente Filter
 
-- Worker Slot Unlock
-- Astromech Slot Unlock
-- Battle Slot Unlock
-- Lounge Slot Unlock
+---
 
-→ als Feld "unlock" in den Rebirth-Datenmodell übernehmen.
+## DATA
 
-##
+### Rebirth
 
-Spieldaten
-│
-├── droids.ts
-├── droidInfo.ts
-├── droidStats.json
-├── rebirth*.ts
-└── nova*.ts (zukünftig)
+	- Unlocks in REBIRTH_PATHS integrieren
+  - Worker Slot
+  - Astromech Slot
+  - Battle Slot
+  - Lounge Slot
 
-↓
+- Max-Level aller Rebirth-Pfade vereinheitlichen
 
-UI
+---
 
-↓
+## Data Quality
 
-useTracker
-(Speichert NUR Benutzerfortschritt)
+### BB-8
 
-↓
+Ability allgemeingültig formulieren.
 
-Companion
-(Liest Daten, besitzt sie aber nicht.)
+### Flawless Chance
 
-## Nova Shop
+Noch keine belastbaren Werte vorhanden.
 
-Status: später
-Grund: Bestandteil des Nova-Systems.
+---
 
-## Hats
-
-Status: übernehmen
-Grund: Sammelziel für Spieler.
-
-## Paints
-
-Status: übernehmen
-Grund: Teil des Fortschritts.
-
-## Flawless Chance
-
-Status: nicht übernehmen
-Grund: Keine verlässlichen Werte bekannt.

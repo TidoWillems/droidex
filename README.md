@@ -1,25 +1,27 @@
 # DROIDEX
 
-Collection & Rebirth Companion for
-Fortnite Star Wars Droid Tycoon.
+Offline-first Collection, Rebirth and Progression Companion
+for Fortnite Star Wars: Droid Tycoon.
 
-Offline-first.
 Installable as a Progressive Web App.
 No account required.
 
-Forked from Erik Peik's Droidex tracker:
+Originally forked from Erik Peik's Droidex tracker:
 
 https://github.com/erikpeik/droidex
 
+Droidex has since evolved into an independent community-driven companion focused on collection management, rebirth planning and long-term progression.
+
+
 ---
 
-Live App
+## Live App
 
 https://tidowillems.github.io/droidex/
 
 ---
 
-Install as App
+## Install as App
 
 Droidex can be installed directly from your browser.
 
@@ -43,12 +45,14 @@ No Play Store required.
 
 ---
 
-Features
+## Features
 
 - Track all Droid Tycoon droids across every tier
 - Collection tracking
+- Effective Present tracking
 - Rebirth planning
-- Rebirth requirement indicators
+- Future rebirth indicators
+- Flawless tracking
 - Offline income timer
 - Local data storage
 - Offline-first operation
@@ -57,7 +61,7 @@ Features
 
 ---
 
-Rebirth Planning
+## Rebirth Planning
 
 Droidex highlights droids that are required for future rebirth milestones.
 
@@ -73,13 +77,13 @@ Required rebirth droids are visible directly on Droid Cards and in the Rebirth s
 
 ---
 
-Data
+## Data
 
-Droid list and rebirth requirements are based on community-maintained research:
+Droid list, rebirth requirements and gameplay data are based on community-maintained research.
 
 https://docs.google.com/spreadsheets/d/1otLCKSCMKICMlnefirQ8KZhh_rdZTd5Mp8h0UYFUiqg
 
-Current coverage:
+Current game coverage:
 
 - 258 documented droids
 - DEFAULT
@@ -91,7 +95,7 @@ Current coverage:
 
 ---
 
-Tech Stack
+## Tech Stack
 
 - React
 - TypeScript
@@ -101,10 +105,50 @@ Tech Stack
 - Service Worker
 - Web Manifest
 - GitHub Pages
+- GitHub Actions
 
 ---
 
-Credits
+## Architecture
+
+Droidex follows a domain-driven architecture.
+
+DATA
+↓
+RULES
+↓
+FACTS
+↓
+STATE
+↓
+UI
+↓
+COMPANION
+
+This separation keeps gameplay logic independent from React components and makes future game updates easier to integrate.
+
+---
+
+## Community
+
+Droidex is a fan-made companion app created for the Star Wars: Droid Tycoon community.
+
+Official game information:
+
+FOAD (Future Trash)
+https://www.foad.gg/
+
+Official community:
+
+FOAD Discord
+https://discord.gg/foad
+
+Many Droidex features, game data, and gameplay improvements are inspired by community research, player feedback, and discoveries shared by the FOAD community.
+
+---
+
+
+## Credits
 
 Original project:
 
@@ -116,24 +160,40 @@ Additional work in this fork:
 
 - Offline-first architecture
 - Local-first persistence
-- Collection tracking improvements
-- Rebirth planning tools
-- Mobile UI improvements
-- PWA installation support
-- Rebirth planning tools
+- Collection tracking
+- Effective Present system
+- Rebirth planning
+- Flawless tracking
 - Offline income timer
 - Mobile UI improvements
+- Progressive Web App support
+
+Community research
+
+FOAD Discord Community
+
+https://discord.gg/foad
 
 ---
 
-Fan Project Notice
+## Fan Project Notice
 
-Droidex is a fan-made project.
+Droidex is an independent fan-made companion application for Star Wars: Droid Tycoon.
 
-This project is not affiliated with, endorsed, sponsored, or approved by Epic Games, Disney, or Lucasfilm Ltd.
+It is not affiliated with, endorsed by, sponsored by, or approved by Future Trash, Epic Games, Disney, Lucasfilm Ltd., or any other rights holder.
+
+Official game website:
+https://www.foad.gg/
+
+Official community:
+https://discord.gg/foad/
 
 Fortnite is a trademark of Epic Games.
 
 Star Wars and related names are trademarks of Lucasfilm Ltd. / Disney.
 
 All game-related assets, names, and imagery belong to their respective owners.
+
+---
+
+Made with ❤️ for the Droid Tycoon community.

@@ -1,4 +1,24 @@
-#LAB NOTES
+## Droidex LAB NOTES
+
+## Purpose
+
+LAB_NOTES dokumentiert Erkenntnisse,
+Experimente und Architektur-Entdeckungen.
+
+Hier wird festgehalten,
+warum sich Droidex verändert hat.
+
+Nicht jeder Versuch wird übernommen.
+Nicht jede Idee wird umgesetzt.
+Gerade deshalb bleiben diese Notizen erhalten.
+
+LAB_NOTES dokumentiert keine Entscheidungen.
+
+Nur Erkenntnisse.
+
+Entscheidungen gehören nach DECISIONS.
+
+# 1. Architecture Discoveries #####
 
 ### Filter Extraction - 20260705
 
@@ -124,6 +144,7 @@ The Companion became an
 interpretation domain instead
 of a collection of helper functions.
 
+# 2. Companion Discoveries #####
 ### Companion
 
 Die mathematisch korrekte Antwort
@@ -144,10 +165,6 @@ einschließlich des aktuellen Rebirths.
 Dadurch unterstützt Companion
 Verkaufsentscheidungen,
 statt lediglich Daten zu zählen.
-
-20260624
-
-v1.5.5
 
 ✓ getReadyExplanation()
 
@@ -273,6 +290,9 @@ Ziel:
 
 Aus Zuständen Antworten ableiten.
 
+
+# 3. UI Discoveries #####
+
 ### AboutPage
 
 Die AboutPage entwickelte sich von einer
@@ -294,7 +314,6 @@ D G D R B
 Verdichtete Darstellung
 schlägt generischen Fortschrittsbalken.
 
----
 
 ### Rebirth UX
 
@@ -306,14 +325,12 @@ x/y
 
 statt zusätzlicher Buttons.
 
----
 
 ### Header Verdichtung
 
 Informationsdichte kann erhöht werden,
 solange die visuelle Struktur erhalten bleibt.
 
----
 
 ### Backup-System
 
@@ -323,6 +340,28 @@ solange die visuelle Struktur erhalten bleibt.
 - UI kommuniziert gesicherte Bereiche als Statusliste.
 - Zukünftige Erweiterungen über backupVersion möglich.
 
+# 4. Architecture Patterns #####
+Neue Architektur-Ebene
+
+DATA
+↓
+
+RULES
+↓
+
+FACTS
+↓
+
+STATE
+↓
+
+UI
+
+# 5. Systems #####
+
+Backup-System
+
+# 6. Documentation #####
 ### SNAP Entkopplung
 
 SNAP
@@ -333,3 +372,13 @@ LAB_NOTES
 
 CHANGELOG
 = Historie
+
+# 7. Open Questions #####
+
+Noch offene Architekturfragen.
+
+Beispiele:
+
+- Wann entsteht eine neue FACTS-Datei?
+- Welche Aufgaben gehören langfristig in Companion?
+- Wie entwickelt sich die STATE-Schicht?

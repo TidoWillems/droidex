@@ -2,86 +2,48 @@
 
 ## v1.6.0
 
-✓ useDroidCardState eingeführt
-✓ useDroidGridState eingeführt
-✓ DroidCard weiter vereinfacht
-✓ DroidGrid weiter vereinfacht
-✓ UI-State als eigene Schicht etabliert
-
-✓ filterRules.ts eingeführt
-✓ Filterlogik aus DroidGrid extrahiert
-✓ DroidGrid besitzt keine Domainlogik mehr
-✓ Vorbereitung für RebirthFacts
-✓ Beginn der View-Domain
+- Faster and cleaner Droid Card system
+- Central Facts layer
+- Rebirth planner refactoring
+- Improved domain separation
+- Reusable UI architecture
 
 ## v1.5.9
 
-✓ TierTabs wieder als Hauptnavigation integriert
-✓ MainLayout vereinfacht
-✓ Tier-Auswahl wieder oberhalb des Workspace
-✓ RebirthPanel als fester Bestandteil des MainLayouts
-✓ Vorbereitung des Panel-Refactorings
+- Restored tier navigation
+- Simplified main layout
+- Integrated Rebirth panel
+- Workspace layout improvements
 
 ## v1.5.8
 
-✓ Rebirth-Zukunftsanzeige vereinheitlicht
-✓ LAST beschreibt nun den tatsächlich letzten Einsatz eines Droiden
-✓ Countdown der verbleibenden Einsätze konsistent
-✓ getRemainingRequirementCount() eingeführt
-✓ RebirthPage nutzt verbleibende Anforderungen statt FutureUsage
-✓ Companion-Logik für Verkaufsentscheidungen verbessert
-
-✓ Architecture v2
-✓ Domain-oriented project model
-✓ Companion established as independent domain
-✓ Separation of
-
-- Game World
-- Domain Rules
-- User Progress
-- Companion
+- Improved Rebirth planning
+- Accurate LAST usage indicator
+- Consistent remaining usage display
+- Better Companion recommendations
+- Architecture v2 foundation
 
 ## v1.5.5
 
-✓ Companion in AboutPage sichtbar
-✓ Companion Roadmap sichtbar
-✓ getReadyExplanation()
-✓ getRequirementExplanation()
-✓ Companion-Dokumentation verdichtet
-✓ Companion als Interpretationsschicht geschärft
+- Companion introduced to the About page
+- Companion explanations expanded
+- Documentation improvements
 
 ## v1.5.4
 
-✓ getMissingDroids()
-✓ getReadyReason()
-✓ Companion nutzt Droid Hierarchy
-✓ Rebirth READY-Logik vereinheitlicht
+- Improved Rebirth readiness logic
+- Better Companion reasoning
 
 ## v1.5.3
 
-Companion v0
-
-- companion.ts eingeführt
-- Zukunftslogik zentralisiert
-- DroidCard nutzt Companion
-- RebirthPage nutzt Companion
-- WIP entfernt
-
-✓ Companion Layer
-✓ getFutureUsage()
-✓ getFutureUseCount()
-✓ isLastUsage()
-✓ getFutureUseCountForDroid()
-✓ DroidCard nutzt Companion
-✓ RebirthPage nutzt Companion
+- Initial Companion layer
+- Future usage analysis
+- Companion integration into Droid and Rebirth views
 
 ## v1.5.2
-
-- AboutPage redesign
-- Backup documentation
-- System overview section
-- Flawless filter integration
-- Documentation consolidation
+- About page redesign
+- Backup improvements
+- Flawless filter
 
 ## v1.5.1
 
