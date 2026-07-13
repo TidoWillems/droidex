@@ -27,7 +27,7 @@ interface Props {
   lastRequiredRebirth?: number;
   currentRebirth?: number;
 
-	futureUseCountMap: Record<string, number>;
+  futureUseCountMap: Record<string, number>;
 }
 
 export function DroidCard({
@@ -46,8 +46,7 @@ export function DroidCard({
   lastRequiredRebirth,
   currentRebirth,
 
-	futureUseCountMap,
-
+  futureUseCountMap,
 }: Props) {
   const { droid, tier, id } = card;
   const [imgFailed, setImgFailed] = useState(false);
@@ -62,8 +61,8 @@ export function DroidCard({
 
     rebirthPath: 0,
     rebirthLevel: currentRebirth ?? 0,
-		
-		futureUseCountMap,
+
+    futureUseCountMap,
 
     eventLocked: droid.eventLocked,
     canBeFlawless: droid.canBeFlawless,

@@ -3,6 +3,7 @@
 ## 2026-07
 
 ### Architecture Refactor
+
 Architecture
 
 - DATA → RULES → FACTS → STATE → UI → COMPANION
@@ -32,6 +33,7 @@ Next
 - Expand Companion through reusable domain knowledge.
 
 ### zukunftiges Muster sieser SNAP:
+
 ## 2026-08
 
 Changed

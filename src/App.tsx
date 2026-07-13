@@ -41,9 +41,11 @@ export default function App() {
   const [flawlessStatus, setFlawlessStatus] = useState<FlawlessStatus>('ALL');
 
   const [search, setSearch] = useState('');
-  const [openPanel, setOpenPanel] = useState<'filters' | 'collection'>(
-    'collection'
-  );
+  const [filtersOpen, setFiltersOpen] = useState(true);
+
+  const [collectionOpen, setCollectionOpen] = useState(true);
+
+  const [rebirthOpen, setRebirthOpen] = useState(true);
 
   const [highlightedIds, setHighlightedIds] = useState<Set<string>>(new Set());
   const location = useLocation();
@@ -74,8 +76,12 @@ export default function App() {
             path="/"
             element={
               <MainLayout
-                openPanel={openPanel}
-                setOpenPanel={setOpenPanel}
+                filtersOpen={filtersOpen}
+                setFiltersOpen={setFiltersOpen}
+                collectionOpen={collectionOpen}
+                setCollectionOpen={setCollectionOpen}
+                rebirthOpen={rebirthOpen}
+                setRebirthOpen={setRebirthOpen}
                 search={search}
                 onSearch={setSearch}
                 tier={tier}

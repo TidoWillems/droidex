@@ -41,6 +41,7 @@
 - Companion integration into Droid and Rebirth views
 
 ## v1.5.2
+
 - About page redesign
 - Backup improvements
 - Flawless filter

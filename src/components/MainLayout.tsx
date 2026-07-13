@@ -10,8 +10,14 @@ type CollectionStatus = 'ALL' | 'OWNED' | 'MISSING';
 type FlawlessStatus = 'ALL' | 'FLAWLESS' | 'MISSING';
 
 type Props = {
-  openPanel: 'filters' | 'collection';
-  setOpenPanel: (value: 'filters' | 'collection') => void;
+  filtersOpen: boolean;
+  setFiltersOpen: (value: boolean) => void;
+
+  collectionOpen: boolean;
+  setCollectionOpen: (value: boolean) => void;
+
+  rebirthOpen: boolean;
+  setRebirthOpen: (value: boolean) => void;
 
   search: string;
   onSearch: (value: string) => void;
@@ -69,12 +75,8 @@ export function MainLayout(props: Props) {
       >
         <aside className="order-first lg:order-last shrink-0 lg:w-64 lg:border-l border-b lg:border-b-0 border-zinc-800 flex flex-col bg-zinc-950 min-h-0">
           <FilterPanel
-            open={props.openPanel === 'filters'}
-            onToggle={() =>
-              props.setOpenPanel(
-                props.openPanel === 'filters' ? 'collection' : 'filters'
-              )
-            }
+            open={props.filtersOpen}
+            onToggle={() => props.setFiltersOpen(!props.filtersOpen)}
             search={props.search}
             onSearch={props.onSearch}
             rarity={props.rarity}
@@ -90,12 +92,8 @@ export function MainLayout(props: Props) {
 
         <div className="flex-1 min-h-0">
           <CollectionPanel
-            open={props.openPanel === 'collection'}
-            onToggle={() =>
-              props.setOpenPanel(
-                props.openPanel === 'collection' ? 'filters' : 'collection'
-              )
-            }
+            open={props.collectionOpen}
+            onToggle={() => props.setCollectionOpen(!props.collectionOpen)}
             rebirthPath={props.rebirthPath}
             rebirthLevel={props.rebirthLevel}
             tier={props.tier}
@@ -115,6 +113,8 @@ export function MainLayout(props: Props) {
         </div>
 
         <RebirthPanel
+          open={props.rebirthOpen}
+          onToggle={() => props.setRebirthOpen(!props.rebirthOpen)}
           rebirthPath={props.rebirthPath}
           rebirthLevel={props.rebirthLevel}
           collected={props.collected}

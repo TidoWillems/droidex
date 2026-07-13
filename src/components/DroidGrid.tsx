@@ -96,7 +96,7 @@ export function DroidGrid({
           rebirthLevels={rebirthMap[card.droid.name]}
           lastRequiredRebirth={futureUseMap[card.id]}
           currentRebirth={rebirthLevel}
-					futureUseCountMap={futureUseCountMap}
+          futureUseCountMap={futureUseCountMap}
         />
       ))}
     </div>

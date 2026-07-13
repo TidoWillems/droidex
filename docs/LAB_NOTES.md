@@ -18,7 +18,7 @@ Nur Erkenntnisse.
 
 Entscheidungen gehören nach DECISIONS.
 
-# 1. Architecture Discoveries #####
+# 1. Architecture Discoveries
 
 ### Filter Extraction - 20260705
 
@@ -144,7 +144,8 @@ The Companion became an
 interpretation domain instead
 of a collection of helper functions.
 
-# 2. Companion Discoveries #####
+# 2. Companion Discoveries
+
 ### Companion
 
 Die mathematisch korrekte Antwort
@@ -290,8 +291,7 @@ Ziel:
 
 Aus Zuständen Antworten ableiten.
 
-
-# 3. UI Discoveries #####
+# 3. UI Discoveries
 
 ### AboutPage
 
@@ -314,7 +314,6 @@ D G D R B
 Verdichtete Darstellung
 schlägt generischen Fortschrittsbalken.
 
-
 ### Rebirth UX
 
 Statusanzeigen dürfen zugleich Aktionen sein.
@@ -325,12 +324,10 @@ x/y
 
 statt zusätzlicher Buttons.
 
-
 ### Header Verdichtung
 
 Informationsdichte kann erhöht werden,
 solange die visuelle Struktur erhalten bleibt.
-
 
 ### Backup-System
 
@@ -340,7 +337,8 @@ solange die visuelle Struktur erhalten bleibt.
 - UI kommuniziert gesicherte Bereiche als Statusliste.
 - Zukünftige Erweiterungen über backupVersion möglich.
 
-# 4. Architecture Patterns #####
+# 4. Architecture Patterns
+
 Neue Architektur-Ebene
 
 DATA
@@ -357,11 +355,12 @@ STATE
 
 UI
 
-# 5. Systems #####
+# 5. Systems
 
 Backup-System
 
-# 6. Documentation #####
+# 6. Documentation
+
 ### SNAP Entkopplung
 
 SNAP
@@ -373,7 +372,7 @@ LAB_NOTES
 CHANGELOG
 = Historie
 
-# 7. Open Questions #####
+# 7. Open Questions
 
 Noch offene Architekturfragen.
 

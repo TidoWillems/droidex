@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { UI } from '../data/ui';
 import { t } from '../lib/t';
-import { useState } from 'react';
 import { getRebirthFacts } from '../lib/rebirthFacts';
 import { RebirthRequirements } from './RebirthRequirements';
 
 interface Props {
+  open: boolean;
+  onToggle: () => void;
   rebirthPath: number;
   rebirthLevel: number;
   collected: Set<string>;
@@ -15,6 +16,8 @@ interface Props {
 }
 
 export function RebirthPanel({
+  open,
+  onToggle,
   rebirthPath,
   rebirthLevel,
   collected,
@@ -22,8 +25,6 @@ export function RebirthPanel({
   onSetRebirth,
   onHighlight,
 }: Props) {
-  const [open, setOpen] = useState(true);
-
   const {
     futureUseCountMap,
     maxRebirth,
@@ -64,7 +65,7 @@ export function RebirthPanel({
       {/* Toggle header */}
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={onToggle}
         className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-zinc-900/70 transition-colors"
       >
         <div className="flex items-center gap-3">

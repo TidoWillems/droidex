@@ -1,5 +1,16 @@
 # Droidex Development Guide
 
+###
+
+Panels besitzen keine feste Höhe. Nur ihr Inhalt bestimmt den Platz.
+
+Jede neue Idee muss Droidex als Bordcomputer verbessern. Nicht nur neue Funktionen hinzufügen.
+
+Droidex ist nicht die größte Wissenssammlung über Droid Tycoon. Es ist das Bordcomputer-HUD für den Piloten.
+Der Companion sieht nicht mehr als der Pilot – aber er erinnert sich besser und erkennt Zusammenhänge schneller.
+
+###
+
 ## Development Flow
 
 Idee
@@ -53,6 +64,10 @@ Release
 
 Neue Funktionen entstehen immer in derselben Reihenfolge.
 
+KNOWLEDGE
+
+↓
+
 DATA
 
 ↓
@@ -77,11 +92,12 @@ COMPANION
 
 Nie andersherum.
 
----
-
 ## Domain Ownership
 
 Jede Information besitzt genau einen Besitzer.
+
+KNOWLEDGE
+sammelt, prüft und normalisiert Wissen.
 
 DATA
 speichert Wissen.
@@ -104,6 +120,8 @@ interpretiert Zustände.
 ---
 
 ## Design Principles
+
+Knowledge sammelt Wissen.
 
 Komponenten rendern.
 

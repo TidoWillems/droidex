@@ -22,11 +22,12 @@ Ziel:
 
 ### Rebirth
 
-	- Unlocks in REBIRTH_PATHS integrieren
-  - Worker Slot
-  - Astromech Slot
-  - Battle Slot
-  - Lounge Slot
+    - Unlocks in REBIRTH_PATHS integrieren
+
+- Worker Slot
+- Astromech Slot
+- Battle Slot
+- Lounge Slot
 
 - Max-Level aller Rebirth-Pfade vereinheitlichen
 
@@ -43,4 +44,3 @@ Ability allgemeingültig formulieren.
 Noch keine belastbaren Werte vorhanden.
 
 ---
-

@@ -36,3 +36,6 @@ Thumbs.db
 *.log
 npm-debug.log*
 log.txt
+
+# Knowledge Pipeline
+knowledge/

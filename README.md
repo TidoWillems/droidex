@@ -1,17 +1,13 @@
 # DROIDEX
 
-Offline-first Collection, Rebirth and Progression Companion
-for Fortnite Star Wars: Droid Tycoon.
+A data-driven, offline-first companion for Fortnite Star Wars: Droid Tycoon.
 
 Installable as a Progressive Web App.
 No account required.
 
-Originally forked from Erik Peik's Droidex tracker:
+Originally forked from Erik Peik's Droidex tracker.
 
-https://github.com/erikpeik/droidex
-
-Droidex has since evolved into an independent community-driven companion focused on collection management, rebirth planning and long-term progression.
-
+Today, Droidex is an independent, community-driven knowledge base and companion focused on collection management, rebirth planning, and long-term progression.
 
 ---
 
@@ -146,7 +142,6 @@ https://discord.gg/foad
 Many Droidex features, game data, and gameplay improvements are inspired by community research, player feedback, and discoveries shared by the FOAD community.
 
 ---
-
 
 ## Credits
 

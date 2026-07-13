@@ -1,7 +1,4 @@
-
-
 ## Responsibilities
-
 
 ### DOMAIN-FLOW
 
