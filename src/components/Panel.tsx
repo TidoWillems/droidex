@@ -1,7 +1,9 @@
 import { PanelHeader } from './PanelHeader';
 
 type PanelProps = {
-  title: string;
+  title?: string;
+  header?: React.ReactNode;
+
   children: React.ReactNode;
 
   open: boolean;
@@ -13,29 +15,27 @@ type PanelProps = {
 
 export function Panel({
   title,
+  header,
   children,
   open,
   onToggle,
   scroll = false,
   fill = false,
 }: PanelProps) {
-  if (!open) {
-    return (
-      <div className="flex flex-col">
-        <PanelHeader title={title} open={false} onToggle={onToggle} />
-      </div>
-    );
-  }
+  const panelHeader = header ?? (
+    <PanelHeader title={title!} open={open} onToggle={onToggle} />
+  );
 
   return (
-    <div className="flex flex-col flex-1 min-h-0">
-      <PanelHeader title={title} open={true} onToggle={onToggle} />
+    <div className="flex flex-col">
+      {panelHeader}
 
-      {scroll ? (
-        <div className="flex-1 min-h-0 overflow-y-auto">{children}</div>
-      ) : (
-        <div className={fill ? 'flex-1 min-h-0' : ''}>{children}</div>
-      )}
+      {open &&
+        (scroll ? (
+          <div className="flex-1 min-h-0 overflow-y-auto">{children}</div>
+        ) : (
+          <div className={fill ? 'flex-1 min-h-0' : ''}>{children}</div>
+        ))}
     </div>
   );
 }

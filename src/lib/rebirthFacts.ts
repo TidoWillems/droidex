@@ -12,7 +12,7 @@ export interface RebirthFactsInput {
 export interface RebirthFacts {
   maxRebirth: number;
 
-  nextLevel?: number;
+  nextLevel: number | null;
   requiredCredits: string;
   requiredDroids: readonly any[];
 
@@ -82,7 +82,7 @@ export function getRebirthFacts(input: RebirthFactsInput): RebirthFacts {
 
   return {
     maxRebirth,
-    nextLevel: nextRebirth?.to,
+    nextLevel: nextRebirth?.to ?? null,
     requiredCredits: nextRebirth?.credits ?? '',
     requiredDroids: nextRebirth?.droids ?? [],
     ready,

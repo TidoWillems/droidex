@@ -15,6 +15,7 @@ Die UI zeigt nur das an,
 was der Pilot jetzt braucht.
 
 ###
+
 Neue Spielmechaniken werden zuerst als Wissen modelliert. Erst danach werden sie im Companion interpretiert und zuletzt in der UI dargestellt.
 
 Panels besitzen keine feste Höhe. Nur ihr Inhalt bestimmt den Platz.
@@ -25,55 +26,6 @@ Droidex ist nicht die größte Wissenssammlung über Droid Tycoon. Es ist das Bo
 Der Companion sieht nicht mehr als der Pilot – aber er erinnert sich besser und erkennt Zusammenhänge schneller.
 
 ###
-
-## Development Flow
-
-Idee
-↓
-
-Existierende Domain suchen
-
-↓
-
-Implementieren
-
-↓
-
-Muster erkennen
-
-↓
-
-Extrahieren
-
-↓
-
-Refactoring
-
-↓
-
-ARCHITECTURE aktualisieren
-(Grundprinzip)
-
-↓
-
-LAB_NOTES ergänzen
-(Erkenntnis)
-
-↓
-
-SNAP aktualisieren
-(aktueller Stand)
-
-↓
-
-CHANGELOG ergänzen
-(Historie)
-
-↓
-
-Release
-
----
 
 ## Development Order
 
@@ -99,30 +51,19 @@ STATE
 
 UI
 
-## Datenfluss
+## Information Flow
 
 Patchnotes
-        │
-        ▼
+↓
 Knowledge
-        │
-        ▼
+↓
 Data
-        │
-        ▼
+↓
 Rules
-        │
-        ▼
+↓
 Facts
-        │
-        ▼
-Companion
-        │
-        ▼
-React State
-        │
-        ▼
-HUD
+├──► State ─► UI
+└──► Companion
 
 ## Companion Rule
 

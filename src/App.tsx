@@ -9,7 +9,7 @@ import { Footer } from './components/Footer';
 import { TipsPage } from './components/TipsPage';
 import { AboutPage } from './components/AboutPage';
 import { RebirthPathSelector } from './components/RebirthPathSelector';
-import { MainLayout } from './components/MainLayout';
+import { Workspace } from './components/Workspace';
 
 type RarityOrAll = Rarity | 'ALL';
 type DroidTypeOrAll = DroidType | 'ALL';
@@ -75,7 +75,7 @@ export default function App() {
           <Route
             path="/"
             element={
-              <MainLayout
+              <Workspace
                 filtersOpen={filtersOpen}
                 setFiltersOpen={setFiltersOpen}
                 collectionOpen={collectionOpen}

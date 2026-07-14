@@ -91,6 +91,7 @@ export function useDroidGridState({
     rebirthFilter,
     rebirthFacts.futureUseCountMap,
   ]);
+
   return {
     cards,
     rebirthMap: rebirthFacts.rebirthMap,

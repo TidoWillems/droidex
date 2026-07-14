@@ -1,20 +1,40 @@
 ## Responsibilities
 
-### DOMAIN-FLOW
+### DOMAIN FLOW
 
-# Droidex Architecture
+## Development Flow
 
-DATA
+Patchnotes
 ↓
-RULES
+Knowledge
 ↓
-FACTS
+Data
 ↓
-STATE
+Rules
+↓
+Facts
+↓
+Companion
+↓
+State
+↓
+UI
+
+---
+
+## Runtime Architecture
+
+Data
+↓
+Rules
+↓
+Facts
+↓
+State
 ↓
 UI
 ↓
-COMPANION
+Companion
 
 ### DATA
 
@@ -75,4 +95,3 @@ Contains no gameplay logic.
 Interprets facts.
 
 Explains, predicts and recommends.
-COMPANION

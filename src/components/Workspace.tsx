@@ -52,7 +52,9 @@ type Props = {
   onToggleFlawless: (id: string) => void;
 };
 
-export function MainLayout(props: Props) {
+export function Workspace(props: Props) {
+  const collectionLayout = props.collectionOpen ? 'flex-1 min-h-0' : 'shrink-0';
+
   return (
     <div className="flex flex-col flex-1">
       <TierTabs active={props.tier} onChange={props.onTier} />
@@ -89,8 +91,7 @@ export function MainLayout(props: Props) {
             onFlawless={props.onFlawless}
           />
         </aside>
-
-        <div className="flex-1 min-h-0">
+        <div className={collectionLayout}>
           <CollectionPanel
             open={props.collectionOpen}
             onToggle={() => props.setCollectionOpen(!props.collectionOpen)}
@@ -111,7 +112,6 @@ export function MainLayout(props: Props) {
             onToggleFlawless={props.onToggleFlawless}
           />
         </div>
-
         <RebirthPanel
           open={props.rebirthOpen}
           onToggle={() => props.setRebirthOpen(!props.rebirthOpen)}
