@@ -1,6 +1,21 @@
 # Droidex Development Guide
 
+## Droidex Identity
+
+Droidex ist ein Bordcomputer.
+
+Nicht die UI steht im Mittelpunkt,
+sondern der Pilot.
+
+Der Companion beobachtet.
+Knowledge erinnert sich.
+Rules entscheiden.
+Facts erklären.
+Die UI zeigt nur das an,
+was der Pilot jetzt braucht.
+
 ###
+Neue Spielmechaniken werden zuerst als Wissen modelliert. Erst danach werden sie im Companion interpretiert und zuletzt in der UI dargestellt.
 
 Panels besitzen keine feste Höhe. Nur ihr Inhalt bestimmt den Platz.
 
@@ -62,35 +77,58 @@ Release
 
 ## Development Order
 
-Neue Funktionen entstehen immer in derselben Reihenfolge.
+Neue Funktionen entstehen immer in derselben Reihenfolge. ↓
 
 KNOWLEDGE
-
 ↓
 
 DATA
-
 ↓
 
 RULES
-
 ↓
 
 FACTS
+↓
 
+COMPANION
 ↓
 
 STATE
-
 ↓
 
 UI
 
-↓
+## Datenfluss
 
-COMPANION
+Patchnotes
+        │
+        ▼
+Knowledge
+        │
+        ▼
+Data
+        │
+        ▼
+Rules
+        │
+        ▼
+Facts
+        │
+        ▼
+Companion
+        │
+        ▼
+React State
+        │
+        ▼
+HUD
 
-Nie andersherum.
+## Companion Rule
+
+Der Companion erzeugt niemals Daten.
+
+Er interpretiert ausschließlich vorhandenes Wissen und den aktuellen Spielerzustand.
 
 ## Domain Ownership
 
