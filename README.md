@@ -1,13 +1,10 @@
-# DROIDEX
+## DROIDEX
 
-A data-driven, offline-first companion for Fortnite Star Wars: Droid Tycoon.
+An offline-first companion for Fortnite Star Wars: Droid Tycoon.
 
-Installable as a Progressive Web App.
-No account required.
+Originally inspired by the Droidex project created by Erik Peik.
 
-Originally forked from Erik Peik's Droidex tracker.
-
-Today, Droidex is an independent, community-driven knowledge base and companion focused on collection management, rebirth planning, and long-term progression.
+Today Droidex is developed independently by FLUXX DEV and has evolved into a knowledge-driven companion focused on collection management, rebirth planning and long-term progression.
 
 ---
 
