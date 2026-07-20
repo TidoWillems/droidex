@@ -13,7 +13,7 @@ Today, Droidex is an independent, community-driven knowledge base and companion 
 
 ## Live App
 
-https://tidowillems.github.io/droidex/
+https://fluxx-dev.github.io/droidex/
 
 ---
 
