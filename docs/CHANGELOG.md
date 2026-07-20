@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.7.1
+
+### Architecture
+
+- Replaced MainLayout with Workspace
+- Unified workspace layout
+- Introduced reusable RebirthHeader
+- Simplified Panel architecture
+- Explicit `nextLevel: number | null`
+- Improved Runtime vs Development architecture documentation
+
+### UI
+
+- Collapsible Collection panel
+- Improved mobile workspace layout
+- Consistent panel interaction
+- Fixed nested button issue
+
+### Documentation
+
+- Separated Development Flow and Runtime Architecture
+- Clarified domain responsibilities
+- Updated architecture guide
+
 ## v1.6.0
 
 - Faster and cleaner Droid Card system

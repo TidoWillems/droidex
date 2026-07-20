@@ -4,6 +4,33 @@ Offene Punkte, die noch nicht im Datenmodell oder in der Architektur umgesetzt s
 
 ---
 
+## Architecture
+
+### Platform Layer
+
+Hooks erfüllen derzeit unterschiedliche Verantwortlichkeiten.
+
+Beispiele:
+
+- Domänen-State
+- Browser-/PWA-Integration
+- localStorage
+- Service Worker
+- Install Prompt
+- Update-System
+
+Zu prüfen:
+
+- Trennung zwischen Domain Hooks und Platform Hooks
+- mögliche platform/-Domain
+- klarere Verantwortlichkeiten
+- gemeinsame Runtime-Architektur
+
+
+✅ Knowledge Pipeline (knowledge/)
+✅ DATA → RULES → FACTS → STATE → UI
+🟡 Platform / Runtime (erst als Muster erkennbar)
+
 ## UI
 
 ### Workspace Synchronisation

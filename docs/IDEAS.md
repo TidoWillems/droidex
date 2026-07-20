@@ -38,6 +38,17 @@ statt reine Sammelobjekte.
 
 ### Workspace
 
+- Beobachtung:
+
+Launcher-artige Grid-Layouts könnten langfristig
+eine geeignete Organisationsform werden, falls
+Droidex neben Collection und Rebirth weitere
+gleichwertige Systeme (Timer, Companion, Events,
+Trading, Daily usw.) erhält.
+
+Nicht als freies Widget-System,
+sondern als strukturierter Workspace.
+
 - gemeinsamer Workspace
 - einheitliche Panel-Header
 - gemeinsame Panel-Komponente
